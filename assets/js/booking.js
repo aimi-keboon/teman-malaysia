@@ -1,4 +1,4 @@
-// Booking form management (Frontend only)
+// Booking form management (Frontend only) - Updated for Teman Malaysia 2025
 class BookingManager {
     constructor() {
         this.currentStep = 1;
@@ -6,46 +6,42 @@ class BookingManager {
         this.formData = {};
         this.serviceData = {
             'health-appointments': {
-                name: 'Health Appointments',
+                name: 'TEMAN to Health Appointments',
                 packages: {
-                    'hourly': { name: 'Hourly Rate', price: 70, description: 'RM35/hour (min 2 hours)' },
+                    'hourly': { name: 'Nett Price', price: 35, description: 'RM35/hour (min 2 hours)', hourly: true },
                     'package1': { name: 'Package 1', price: 132, description: '4 hours session' },
                     'package2': { name: 'Package 2', price: 186, description: '6 hours session' }
                 }
             },
             'dialysis': {
-                name: 'Dialysis Support',
+                name: 'TEMAN to Dialysis Treatments',
                 packages: {
-                    'hourly': { name: 'Hourly Rate', price: 35, description: 'RM35/hour' },
-                    'package1': { name: 'Package 1', price: 186, description: '6 hours (3 sessions)' },
-                    'package2': { name: 'Package 2', price: 720, description: '24 hours (12 sessions)' },
-                    'companion': { name: 'Companion Service', price: 30, description: 'RM30/hour during treatment' }
+                    'hourly': { name: 'Nett Price', price: 35, description: 'RM35/hour', hourly: true },
+                    'package1': { name: 'Package', price: 186, description: '6 hours (3 dialysis sessions)' },
+                    'companion': { name: 'Companion Service', price: 30, description: 'RM30/hour during treatment', hourly: true }
                 }
             },
             'home-package': {
-                name: 'Home Care Package',
+                name: 'TEMAN at Home Package',
                 packages: {
-                    'package1': { name: 'Package 1', price: 1680, description: '4 hrs/day, 20 sessions' },
-                    'package2': { name: 'Package 2', price: 2280, description: '6 hrs/day, 20 sessions' },
-                    'package3': { name: 'Package 3', price: 2880, description: '8 hrs/day, 20 sessions' },
-                    'package4': { name: 'Package 4', price: 3500, description: '10 hrs/day, 20 sessions' }
-                }
-            },
-            'home-plus-package': {
-                name: 'Home Care (Plus) Package',
-                packages: {
-                    'package1': { name: 'Package 1', price: 2000, description: '4 hrs/day, 20 sessions' },
-                    'package2': { name: 'Package 2', price: 2650, description: '6 hrs/day, 20 sessions' },
-                    'package3': { name: 'Package 3', price: 3350, description: '8 hrs/day, 20 sessions' },
-                    'package4': { name: 'Package 4', price: 4000, description: '10 hrs/day, 20 sessions' }
+                    'package1': { name: 'Package 1', price: 2800, description: '4 hrs/day, 20 sessions' },
+                    'package2': { name: 'Package 2', price: 3780, description: '6 hrs/day, 20 sessions' },
+                    'package3': { name: 'Package 3', price: 4720, description: '8 hrs/day, 20 sessions' }
                 }
             },
             'custom-activities': {
-                name: 'Custom Activities',
+                name: 'TEMAN Customised Activities',
                 packages: {
-                    'basic': { name: 'Basic Package', price: 70, description: '2 hours session' }
+                    'basic': { name: 'Nett Price', price: 35, description: 'RM35/hour (min 2 hours)', hourly: true }
                 }
             }
+        };
+
+        this.packageFieldMapping = {
+            'health-appointments': 'health_package',
+            'dialysis': 'dialysis_package',
+            'home-package': 'home_package',
+            'custom-activities': 'custom_package'
         };
 
         this.init();
@@ -55,8 +51,6 @@ class BookingManager {
         this.bindEvents();
         this.updateProgressSteps();
         this.setMinDate();
-        
-        // Initialize service selection handlers
         this.initServiceHandlers();
     }
 
@@ -71,7 +65,8 @@ class BookingManager {
         }
 
         // Service selection changes
-        document.querySelectorAll('input[name="service"]').forEach(input => {
+        const serviceInputs = document.querySelectorAll('input[name="service"]');
+        serviceInputs.forEach(input => {
             input.addEventListener('change', this.handleServiceChange.bind(this));
         });
 
@@ -83,9 +78,10 @@ class BookingManager {
         });
 
         // Form input changes for real-time validation and summary updates
-        document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => {
+        const formInputs = document.querySelectorAll('.form-input, .form-select, .form-textarea');
+        formInputs.forEach(input => {
             input.addEventListener('blur', this.validateField.bind(this));
-            input.addEventListener('input', this.updateSummary.bind(this));
+            input.addEventListener('input', this.debounce(() => this.updateSummary(), 300));
         });
 
         // Phone number formatting
@@ -97,27 +93,69 @@ class BookingManager {
 
     initServiceHandlers() {
         // Handle service selection to show/hide pricing options
-        document.querySelectorAll('input[name="service"]').forEach(input => {
+        const serviceInputs = document.querySelectorAll('input[name="service"]');
+        serviceInputs.forEach(input => {
             input.addEventListener('change', (e) => {
                 // Hide all pricing sections
-                document.querySelectorAll('.service-pricing').forEach(pricing => {
+                const allPricingSections = document.querySelectorAll('.service-pricing');
+                allPricingSections.forEach(pricing => {
                     pricing.style.display = 'none';
                 });
 
                 // Show pricing for selected service
                 const selectedService = e.target.closest('.service-option');
-                const pricingSection = selectedService.querySelector('.service-pricing');
-                if (pricingSection) {
-                    pricingSection.style.display = 'block';
+                if (selectedService) {
+                    const pricingSection = selectedService.querySelector('.service-pricing');
+                    if (pricingSection) {
+                        pricingSection.style.display = 'block';
+                    }
                 }
 
-                // Clear previous package selections
-                document.querySelectorAll('input[name$="_package"]').forEach(pkg => {
+                // Clear previous package selections and hour selections
+                const packageInputs = document.querySelectorAll('input[name$="_package"]');
+                packageInputs.forEach(pkg => {
                     pkg.checked = false;
+                });
+
+                // Hide all hour selections and reset values
+                const hourSelections = document.querySelectorAll('.hours-selection');
+                hourSelections.forEach(selection => {
+                    selection.style.display = 'none';
+                    const select = selection.querySelector('select');
+                    if (select) select.value = '';
                 });
 
                 this.updateSummary();
             });
+        });
+
+        // Handle package selection to show/hide hour selection
+        document.addEventListener('change', (e) => {
+            if (e.target.name && e.target.name.includes('_package')) {
+                // Hide all hour selections first
+                const hourSelections = document.querySelectorAll('.hours-selection');
+                hourSelections.forEach(selection => {
+                    selection.style.display = 'none';
+                    const select = selection.querySelector('select');
+                    if (select) select.value = '';
+                });
+
+                // Show hour selection for hourly packages
+                if (e.target.value === 'hourly' || e.target.value === 'basic' || e.target.value === 'companion') {
+                    const hourSelection = e.target.closest('.price-option').querySelector('.hours-selection');
+                    if (hourSelection) {
+                        hourSelection.style.display = 'block';
+                    }
+                }
+
+                this.updateSummary();
+            }
+
+            // Handle hour selection changes
+            if (e.target.name && e.target.name.includes('_hours')) {
+                console.log('Hours selected:', e.target.value); // Debug log
+                this.updateSummary();
+            }
         });
     }
 
@@ -187,12 +225,13 @@ class BookingManager {
 
     updateStepDisplay() {
         // Hide all steps
-        document.querySelectorAll('.form-step').forEach(step => {
+        const allSteps = document.querySelectorAll('.form-step');
+        allSteps.forEach(step => {
             step.classList.remove('active');
         });
 
         // Show current step
-        const currentStepElement = document.querySelector(`[data-step="${this.currentStep}"]`);
+        const currentStepElement = document.querySelector(`.form-step[data-step="${this.currentStep}"]`);
         if (currentStepElement) {
             currentStepElement.classList.add('active');
         }
@@ -202,7 +241,8 @@ class BookingManager {
     }
 
     updateProgressSteps() {
-        document.querySelectorAll('.progress-steps .step').forEach((step, index) => {
+        const progressSteps = document.querySelectorAll('.progress-steps .step');
+        progressSteps.forEach((step, index) => {
             const stepNumber = index + 1;
             step.classList.remove('active', 'completed');
             
@@ -235,27 +275,72 @@ class BookingManager {
         }
 
         const serviceType = serviceSelected.value;
-        const packageFieldName = serviceType.replace('-', '_') + '_package';
+        const packageFieldName = this.packageFieldMapping[serviceType];
+        
+        if (!packageFieldName) {
+            this.showError('Invalid service type selected');
+            return false;
+        }
+        
         const packageSelected = document.querySelector(`input[name="${packageFieldName}"]:checked`);
         
         if (!packageSelected) {
-            this.showError('Please select a package for your chosen service');
+            this.showError(`Please select a package option for ${this.serviceData[serviceType].name}`);
             return false;
+        }
+
+        // Check if hourly package requires hour selection
+        const packageData = this.serviceData[serviceType].packages[packageSelected.value];
+        if (packageData && packageData.hourly) {
+            const hoursFieldName = this.getHoursFieldName(serviceType, packageSelected.value);
+            const hoursSelected = document.querySelector(`[name="${hoursFieldName}"]`);
+            
+            if (!hoursSelected || !hoursSelected.value) {
+                this.showError('Please select the number of hours for this service');
+                this.showFieldError(hoursSelected, 'Please select number of hours');
+                return false;
+            }
+        }
+
+        // Special validation for custom activities
+        if (serviceType === 'custom-activities') {
+            const activitiesField = document.querySelector('[name="custom_activities_list"]');
+            if (!activitiesField || !activitiesField.value.trim()) {
+                this.showError('Please describe the activities you would like assistance with');
+                this.showFieldError(activitiesField, 'This field is required for custom activities');
+                return false;
+            }
         }
 
         return true;
     }
 
+    getHoursFieldName(serviceType, packageType) {
+        if (serviceType === 'health-appointments') return 'health_hours';
+        if (serviceType === 'dialysis' && packageType === 'hourly') return 'dialysis_hours';
+        if (serviceType === 'dialysis' && packageType === 'companion') return 'companion_hours';
+        if (serviceType === 'custom-activities') return 'custom_hours';
+        return null;
+    }
+
     validatePersonalDetails() {
-        const requiredFields = ['full_name', 'phone', 'email', 'address', 'preferred_date', 'preferred_time'];
+        const requiredFields = [
+            'full_name', 'phone', 'email', 'address', 'postcode', 'city', 'state',
+            'preferred_date', 'preferred_time', 'transportation_mode'
+        ];
         let isValid = true;
 
+        // Check required fields
         requiredFields.forEach(fieldName => {
             const field = document.querySelector(`[name="${fieldName}"]`);
-            if (!field || !field.value.trim()) {
-                this.showFieldError(field, 'This field is required');
+            if (!field || (field.type === 'radio' ? !document.querySelector(`[name="${fieldName}"]:checked`) : !field.value.trim())) {
+                if (field.type === 'radio') {
+                    this.showError(`Please select a ${fieldName.replace('_', ' ')}`);
+                } else {
+                    this.showFieldError(field, 'This field is required');
+                }
                 isValid = false;
-            } else {
+            } else if (field.type !== 'radio') {
                 this.clearFieldError(field);
             }
         });
@@ -271,6 +356,20 @@ class BookingManager {
         const phoneField = document.querySelector('[name="phone"]');
         if (phoneField && phoneField.value && !this.isValidPhone(phoneField.value)) {
             this.showFieldError(phoneField, 'Please enter a valid phone number');
+            isValid = false;
+        }
+
+        // Validate postcode format (Malaysian postcode)
+        const postcodeField = document.querySelector('[name="postcode"]');
+        if (postcodeField && postcodeField.value && !this.isValidPostcode(postcodeField.value)) {
+            this.showFieldError(postcodeField, 'Please enter a valid 5-digit postcode');
+            isValid = false;
+        }
+
+        // Validate date is not in the past
+        const dateField = document.querySelector('[name="preferred_date"]');
+        if (dateField && dateField.value && !this.isValidDate(dateField.value)) {
+            this.showFieldError(dateField, 'Please select a date from tomorrow onwards');
             isValid = false;
         }
 
@@ -319,6 +418,19 @@ class BookingManager {
         return /^(60)?1[0-46-9][0-9]{7,8}$/.test(cleaned);
     }
 
+    isValidPostcode(postcode) {
+        return /^[0-9]{5}$/.test(postcode.trim());
+    }
+
+    isValidDate(dateString) {
+        const selectedDate = new Date(dateString);
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        tomorrow.setHours(0, 0, 0, 0);
+        
+        return selectedDate >= tomorrow;
+    }
+
     showFieldError(field, message) {
         if (!field) return;
         
@@ -345,7 +457,8 @@ class BookingManager {
         if (window.TemanMalaysia && window.TemanMalaysia.showToast) {
             window.TemanMalaysia.showToast('error', message);
         } else {
-            alert(message);
+            // Fallback toast notification
+            this.createToast('error', message);
         }
     }
 
@@ -353,49 +466,186 @@ class BookingManager {
         if (window.TemanMalaysia && window.TemanMalaysia.showToast) {
             window.TemanMalaysia.showToast('success', message);
         } else {
-            alert(message);
+            // Fallback toast notification
+            this.createToast('success', message);
         }
     }
 
-    updateSummary() {
-        const serviceInput = document.querySelector('input[name="service"]:checked');
-        if (!serviceInput) return;
-
-        const serviceType = serviceInput.value;
-        const serviceData = this.serviceData[serviceType];
+    createToast(type, message) {
+        // Create toast if TemanMalaysia toast system isn't available
+        const toast = document.createElement('div');
+        toast.className = `toast toast--${type}`;
+        toast.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 10001;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+            max-width: 400px;
+        `;
         
-        if (!serviceData) return;
+        if (type === 'error') {
+            toast.style.background = '#ef4444';
+        } else if (type === 'success') {
+            toast.style.background = '#10b981';
+        }
+        
+        toast.innerHTML = `
+            <i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}" style="margin-right: 8px;"></i>
+            <span>${message}</span>
+        `;
+        
+        document.body.appendChild(toast);
+        
+        setTimeout(() => {
+            toast.style.transform = 'translateX(0)';
+        }, 100);
 
-        const packageFieldName = serviceType.replace('-', '_') + '_package';
-        const packageInput = document.querySelector(`input[name="${packageFieldName}"]:checked`);
-        if (!packageInput) return;
+        setTimeout(() => {
+            toast.style.transform = 'translateX(400px)';
+            setTimeout(() => toast.remove(), 300);
+        }, 5000);
+    }
 
-        const packageData = serviceData.packages[packageInput.value];
-        const amount = packageData.price;
+    updateSummary() {
+        try {
+            const serviceInput = document.querySelector('input[name="service"]:checked');
+            if (!serviceInput) return;
 
-        // Update service details
-        this.updateElement('summary-service', serviceData.name);
-        this.updateElement('summary-package', `${packageData.name} - ${packageData.description}`);
-        this.updateElement('summary-total', this.formatCurrency(amount));
+            const serviceType = serviceInput.value;
+            const serviceData = this.serviceData[serviceType];
+            
+            if (!serviceData) return;
 
-        // Update personal details if available
+            const packageFieldName = this.packageFieldMapping[serviceType];
+            const packageInput = document.querySelector(`input[name="${packageFieldName}"]:checked`);
+            if (!packageInput) return;
+
+            const packageData = serviceData.packages[packageInput.value];
+            let amount = packageData.price;
+            let packageDescription = packageData.description;
+
+            // Handle hourly pricing - extract price from dropdown selection
+            if (packageData.hourly) {
+                const hoursFieldName = this.getHoursFieldName(serviceType, packageInput.value);
+                const hoursField = document.querySelector(`[name="${hoursFieldName}"]`);
+                
+                if (hoursField && hoursField.value) {
+                    const hours = parseInt(hoursField.value);
+                    
+                    // Calculate amount based on hourly rate and selected hours
+                    let hourlyRate = packageData.price; // This is the base hourly rate
+                    amount = hourlyRate * hours;
+                    packageDescription = `${packageData.name} - ${hours} hours`;
+                } else {
+                    packageDescription = `${packageData.name} - Please select hours`;
+                    amount = 0;
+                }
+            }
+
+            // Update service details
+            this.updateElement('summary-service', serviceData.name);
+            this.updateElement('summary-package', packageDescription);
+            this.updateElement('summary-total', amount > 0 ? this.formatCurrency(amount) : 'Please complete selection');
+
+            // Handle custom activities summary
+            this.handleCustomActivitiesSummary(serviceType);
+
+            // Update transportation mode
+            this.updateTransportationSummary();
+
+            // Update personal details if available
+            this.updatePersonalDetailsSummary();
+            
+            // Update date and time
+            this.updateDateTimeSummary();
+
+            // Store current selection
+            this.formData.selectedService = serviceType;
+            this.formData.selectedPackage = packageInput.value;
+            this.formData.amount = amount;
+        } catch (error) {
+            console.error('Error updating summary:', error);
+        }
+    }
+
+    handleCustomActivitiesSummary(serviceType) {
+        const customActivitiesSummary = document.getElementById('custom-activities-summary');
+        if (!customActivitiesSummary) return;
+
+        if (serviceType === 'custom-activities') {
+            const activitiesField = document.querySelector('[name="custom_activities_list"]');
+            if (activitiesField && activitiesField.value) {
+                this.updateElement('summary-activities', activitiesField.value);
+                customActivitiesSummary.style.display = 'flex';
+            } else {
+                customActivitiesSummary.style.display = 'none';
+            }
+        } else {
+            customActivitiesSummary.style.display = 'none';
+        }
+    }
+
+    updateTransportationSummary() {
+        const transportationInput = document.querySelector('input[name="transportation_mode"]:checked');
+        if (transportationInput) {
+            const transportationLabels = {
+                'client-provided': 'Provided by Client',
+                'teman-provided': 'Provided by Teman Malaysia',
+                'e-hailing': 'E-Hailing (Taxi, Grab)',
+                'not-required': 'Not Required'
+            };
+            this.updateElement('summary-transportation', transportationLabels[transportationInput.value] || transportationInput.value);
+        }
+    }
+
+    updatePersonalDetailsSummary() {
         this.updateSummaryField('summary-name', 'full_name');
         this.updateSummaryField('summary-phone', 'phone');
         this.updateSummaryField('summary-email', 'email');
-        this.updateSummaryField('summary-address', 'address');
+        this.updateAddressSummary();
+    }
 
-        // Update date and time
+    updateDateTimeSummary() {
         const dateField = document.querySelector('[name="preferred_date"]');
         const timeField = document.querySelector('[name="preferred_time"]');
         if (dateField && dateField.value && timeField && timeField.value) {
             const date = new Date(dateField.value).toLocaleDateString('en-MY');
             this.updateElement('summary-datetime', `${date} at ${timeField.value}`);
         }
+    }
 
-        // Store current selection
-        this.formData.selectedService = serviceType;
-        this.formData.selectedPackage = packageInput.value;
-        this.formData.amount = amount;
+    updateAddressSummary() {
+        const addressField = document.querySelector('[name="address"]');
+        const cityField = document.querySelector('[name="city"]');
+        const postcodeField = document.querySelector('[name="postcode"]');
+        const stateField = document.querySelector('[name="state"]');
+        
+        let addressSummary = '';
+        
+        if (addressField && addressField.value) {
+            addressSummary = addressField.value;
+            
+            // Add city, postcode, state if available
+            const locationParts = [];
+            if (cityField && cityField.value) locationParts.push(cityField.value);
+            if (postcodeField && postcodeField.value) locationParts.push(postcodeField.value);
+            if (stateField && stateField.value) {
+                const stateText = stateField.options[stateField.selectedIndex].text;
+                locationParts.push(stateText);
+            }
+            
+            if (locationParts.length > 0) {
+                addressSummary += `, ${locationParts.join(', ')}`;
+            }
+        }
+        
+        this.updateElement('summary-address', addressSummary);
     }
 
     updateElement(id, value) {
@@ -423,8 +673,16 @@ class BookingManager {
         const formData = new FormData(document.getElementById('booking-form'));
         const data = {};
         
+        // Handle regular form fields
         for (let [key, value] of formData.entries()) {
-            data[key] = value;
+            if (key.endsWith('[]')) {
+                // Handle checkbox arrays (like mobility_needs[])
+                const arrayKey = key.slice(0, -2);
+                if (!data[arrayKey]) data[arrayKey] = [];
+                data[arrayKey].push(value);
+            } else {
+                data[key] = value;
+            }
         }
 
         // Add calculated fields
@@ -434,7 +692,44 @@ class BookingManager {
         data.booking_reference = this.generateBookingReference();
         data.submission_date = new Date().toISOString();
         
+        // Add additional computed fields
+        data.full_address = this.buildFullAddress(data);
+        data.patient_info = this.buildPatientInfo(data);
+        data.companion_preferences = this.buildCompanionPreferences(data);
+        
         return data;
+    }
+
+    buildFullAddress(data) {
+        const parts = [
+            data.address,
+            data.city,
+            data.postcode,
+            data.state
+        ].filter(part => part && part.trim());
+        
+        return parts.join(', ');
+    }
+
+    buildPatientInfo(data) {
+        const info = {};
+        if (data.patient_name) info.name = data.patient_name;
+        if (data.patient_age) info.age = data.patient_age;
+        if (data.patient_gender) info.gender = data.patient_gender;
+        if (data.patient_language) info.preferred_language = data.patient_language;
+        if (data.relationship) info.relationship_to_contact = data.relationship;
+        
+        return Object.keys(info).length > 0 ? info : null;
+    }
+
+    buildCompanionPreferences(data) {
+        const prefs = {};
+        if (data.companion_gender) prefs.gender = data.companion_gender;
+        if (data.companion_language) prefs.language = data.companion_language;
+        if (data.companion_experience) prefs.experience_level = data.companion_experience;
+        if (data.companion_age) prefs.age_range = data.companion_age;
+        
+        return Object.keys(prefs).length > 0 ? prefs : null;
     }
 
     generateBookingReference() {
@@ -464,7 +759,10 @@ class BookingManager {
             this.showBookingSuccess(bookingData.booking_reference);
             
             // Reset form
-            document.getElementById('booking-form').reset();
+            const form = document.getElementById('booking-form');
+            if (form) {
+                form.reset();
+            }
             this.currentStep = 1;
             this.updateStepDisplay();
             this.updateProgressSteps();
@@ -474,8 +772,10 @@ class BookingManager {
             this.showError('Failed to submit booking. Please try again.');
         } finally {
             const submitButton = document.getElementById('submit-booking-btn');
-            submitButton.disabled = false;
-            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
+            }
         }
     }
 
@@ -488,6 +788,19 @@ class BookingManager {
             modal.style.display = 'flex';
             modal.classList.add('show');
         }
+    }
+
+    // Utility function for debouncing
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
     }
 }
 
@@ -516,8 +829,12 @@ function closeModal() {
 document.addEventListener('DOMContentLoaded', () => {
     // Only initialize on booking page
     if (document.getElementById('booking-form')) {
-        window.bookingManager = new BookingManager();
-        console.log('Booking Manager initialized');
+        try {
+            window.bookingManager = new BookingManager();
+            console.log('Booking Manager initialized successfully');
+        } catch (error) {
+            console.error('Failed to initialize Booking Manager:', error);
+        }
     }
 });
 

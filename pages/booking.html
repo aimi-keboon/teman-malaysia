@@ -74,20 +74,38 @@
                                         <i class="fas fa-stethoscope"></i>
                                     </div>
                                     <div class="service-info">
-                                        <h3>Health Appointments</h3>
-                                        <p>Medical checkups and treatments assistance</p>
+                                        <h3>TEMAN to Health Appointments</h3>
+                                        <p>Assistance to go to medical checkups and treatments</p>
                                         <div class="service-pricing" style="display: none;">
                                             <div class="price-option">
                                                 <input type="radio" name="health_package" value="hourly" id="health-hourly">
-                                                <label for="health-hourly">RM35/hour (min 2 hours) - RM70</label>
+                                                <label for="health-hourly">Nett Price: RM35/hour (min 2 hours)</label>
+                                                <div class="hours-selection" style="display: none; margin-top: 12px;">
+                                                    <label for="health-hours" style="display: block; font-weight: 500; margin-bottom: 8px; color: #374151; font-size: 14px;">
+                                                        Number of Hours: *
+                                                    </label>
+                                                    <select name="health_hours" id="health-hours" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;">
+                                                        <option value="">Select hours</option>
+                                                        <option value="2">2 hours - RM70</option>
+                                                        <option value="3">3 hours - RM105</option>
+                                                        <option value="4">4 hours - RM140</option>
+                                                        <option value="5">5 hours - RM175</option>
+                                                        <option value="6">6 hours - RM210</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="health_package" value="package1" id="health-package1">
-                                                <label for="health-package1">Package 1: RM132 (4 hours)</label>
+                                                <label for="health-package1">Package 1: RM132 (4 hours) - Additional hour RM33</label>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="health_package" value="package2" id="health-package2">
-                                                <label for="health-package2">Package 2: RM186 (6 hours)</label>
+                                                <label for="health-package2">Package 2: RM186 (6 hours) - Additional hour RM31</label>
+                                            </div>
+                                            <div class="pricing-notes">
+                                                <small>*Transportation fee: RM0.80/KM or e-hailing fare</small><br>
+                                                <small>*Transport allowance: RM20/session</small><br>
+                                                <small>*RM37/hour surcharge for Public Holiday/Sunday/last minute booking</small>
                                             </div>
                                         </div>
                                     </div>
@@ -101,24 +119,51 @@
                                         <i class="fas fa-heartbeat"></i>
                                     </div>
                                     <div class="service-info">
-                                        <h3>Dialysis Support</h3>
-                                        <p>Dedicated companion for dialysis treatments</p>
+                                        <h3>TEMAN to Dialysis Treatments</h3>
+                                        <p>Assistance to go to dialysis center to get their treatments</p>
                                         <div class="service-pricing" style="display: none;">
                                             <div class="price-option">
                                                 <input type="radio" name="dialysis_package" value="hourly" id="dialysis-hourly">
-                                                <label for="dialysis-hourly">RM35/hour</label>
+                                                <label for="dialysis-hourly">Nett Price: RM35/hour</label>
+                                                <div class="hours-selection" style="display: none; margin-top: 12px;">
+                                                    <label for="dialysis-hours" style="display: block; font-weight: 500; margin-bottom: 8px; color: #374151; font-size: 14px;">
+                                                        Number of Hours: *
+                                                    </label>
+                                                    <select name="dialysis_hours" id="dialysis-hours" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;">
+                                                        <option value="">Select hours</option>
+                                                        <option value="2">2 hours - RM70</option>
+                                                        <option value="3">3 hours - RM105</option>
+                                                        <option value="4">4 hours - RM140</option>
+                                                        <option value="5">5 hours - RM175</option>
+                                                        <option value="6">6 hours - RM210</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="dialysis_package" value="package1" id="dialysis-package1">
-                                                <label for="dialysis-package1">Package 1: RM186 (6 hours - 3 sessions)</label>
-                                            </div>
-                                            <div class="price-option">
-                                                <input type="radio" name="dialysis_package" value="package2" id="dialysis-package2">
-                                                <label for="dialysis-package2">Package 2: RM720 (24 hours - 12 sessions)</label>
+                                                <label for="dialysis-package1">Package: RM186 (6 hours) - Suitable for 3 dialysis sessions</label>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="dialysis_package" value="companion" id="dialysis-companion">
-                                                <label for="dialysis-companion">Companion during treatment: RM30/hour</label>
+                                                <label for="dialysis-companion">Companion during treatment: RM30/hour (Optional)</label>
+                                                <div class="hours-selection" style="display: none; margin-top: 12px;">
+                                                    <label for="companion-hours" style="display: block; font-weight: 500; margin-bottom: 8px; color: #374151; font-size: 14px;">
+                                                        Number of Hours: *
+                                                    </label>
+                                                    <select name="companion_hours" id="companion-hours" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;">
+                                                        <option value="">Select hours</option>
+                                                        <option value="2">2 hours - RM60</option>
+                                                        <option value="3">3 hours - RM90</option>
+                                                        <option value="4">4 hours - RM120</option>
+                                                        <option value="5">5 hours - RM150</option>
+                                                        <option value="6">6 hours - RM180</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="pricing-notes">
+                                                <small>*Transportation fee: RM0.80/KM or e-hailing fare</small><br>
+                                                <small>*All remaining hours can be used before 60 days</small><br>
+                                                <small>*RM37/hour surcharge for Public Holiday/Sunday/last minute booking</small>
                                             </div>
                                         </div>
                                     </div>
@@ -132,55 +177,28 @@
                                         <i class="fas fa-home"></i>
                                     </div>
                                     <div class="service-info">
-                                        <h3>Home Care Package</h3>
-                                        <p>Comprehensive daily care assistance</p>
+                                        <h3>TEMAN at Home Package</h3>
+                                        <p>Day care services to provide assistance with daily activities</p>
+                                        <div class="service-features">
+                                            <p><strong>Services include:</strong> Dispensing medications, feeding/prepare meals, light physiotherapy, companionship, outdoor exercise/activity, mind wellness activities, bathing/change diapers, bedridden/wheelchair users, BP/blood sugar measurement</p>
+                                        </div>
                                         <div class="service-pricing" style="display: none;">
                                             <div class="price-option">
                                                 <input type="radio" name="home_package" value="package1" id="home-package1">
-                                                <label for="home-package1">Package 1: RM1,680 (4 hrs/day, 20 sessions)</label>
+                                                <label for="home-package1">Package 1: RM2,800 (4 hrs/day, 20 sessions)</label>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="home_package" value="package2" id="home-package2">
-                                                <label for="home-package2">Package 2: RM2,280 (6 hrs/day, 20 sessions)</label>
+                                                <label for="home-package2">Package 2: RM3,780 (6 hrs/day, 20 sessions)</label>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="home_package" value="package3" id="home-package3">
-                                                <label for="home-package3">Package 3: RM2,880 (8 hrs/day, 20 sessions)</label>
+                                                <label for="home-package3">Package 3: RM4,720 (8 hrs/day, 20 sessions)</label>
                                             </div>
-                                            <div class="price-option">
-                                                <input type="radio" name="home_package" value="package4" id="home-package4">
-                                                <label for="home-package4">Package 4: RM3,500 (10 hrs/day, 20 sessions)</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-
-                            <div class="service-option" data-service="home-plus-package">
-                                <input type="radio" name="service" value="home-plus-package" id="home-plus-package">
-                                <label for="home-plus-package" class="service-card-input">
-                                    <div class="service-icon">
-                                        <i class="fas fa-home-heart"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h3>Home Care (Plus) Package</h3>
-                                        <p>Extensive care for bedridden & wheelchair users</p>
-                                        <div class="service-pricing" style="display: none;">
-                                            <div class="price-option">
-                                                <input type="radio" name="home_plus_package" value="package1" id="home-plus-package1">
-                                                <label for="home-plus-package1">Package 1: RM2,000 (4 hrs/day, 20 sessions)</label>
-                                            </div>
-                                            <div class="price-option">
-                                                <input type="radio" name="home_plus_package" value="package2" id="home-plus-package2">
-                                                <label for="home-plus-package2">Package 2: RM2,650 (6 hrs/day, 20 sessions)</label>
-                                            </div>
-                                            <div class="price-option">
-                                                <input type="radio" name="home_plus_package" value="package3" id="home-plus-package3">
-                                                <label for="home-plus-package3">Package 3: RM3,350 (8 hrs/day, 20 sessions)</label>
-                                            </div>
-                                            <div class="price-option">
-                                                <input type="radio" name="home_plus_package" value="package4" id="home-plus-package4">
-                                                <label for="home-plus-package4">Package 4: RM4,000 (10 hrs/day, 20 sessions)</label>
+                                            <div class="pricing-notes">
+                                                <small>*Valid within 60 days of usage</small><br>
+                                                <small>*Available for weekdays only (excluding Sundays & Public Holidays)</small><br>
+                                                <small>*Inclusive transport allowance</small>
                                             </div>
                                         </div>
                                     </div>
@@ -194,12 +212,43 @@
                                         <i class="fas fa-users"></i>
                                     </div>
                                     <div class="service-info">
-                                        <h3>Custom Activities</h3>
-                                        <p>Personalized leisure and recreational activities</p>
+                                        <h3>TEMAN Customised Activities</h3>
+                                        <p>Accompany and assistance to do any kind of leisure activities</p>
                                         <div class="service-pricing" style="display: none;">
                                             <div class="price-option">
                                                 <input type="radio" name="custom_package" value="basic" id="custom-basic">
-                                                <label for="custom-basic">Basic Package: RM70 (2 hours)</label>
+                                                <label for="custom-basic">Nett Price: RM35/hour (min 2 hours)</label>
+                                                <div class="hours-selection" style="display: none; margin-top: 12px;">
+                                                    <label for="custom-hours" style="display: block; font-weight: 500; margin-bottom: 8px; color: #374151; font-size: 14px;">
+                                                        Number of Hours: *
+                                                    </label>
+                                                    <select name="custom_hours" id="custom-hours" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;">
+                                                        <option value="">Select hours</option>
+                                                        <option value="2">2 hours - RM70</option>
+                                                        <option value="3">3 hours - RM105</option>
+                                                        <option value="4">4 hours - RM140</option>
+                                                        <option value="5">5 hours - RM175</option>
+                                                        <option value="6">6 hours - RM210</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="custom-activities-section" style="margin-top: 16px;">
+                                                <label for="custom-activities-list" style="display: block; font-weight: 500; margin-bottom: 8px; color: #374151;">
+                                                    List the activities you'd like assistance with: *
+                                                </label>
+                                                <textarea 
+                                                    id="custom-activities-list" 
+                                                    name="custom_activities_list" 
+                                                    rows="4" 
+                                                    placeholder="Please describe the activities, locations, and any specific requirements. For example: Shopping at mall, visit to park, recreational activities, social outings, etc."
+                                                    style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; resize: vertical;"
+                                                ></textarea>
+                                            </div>
+                                            <div class="pricing-notes">
+                                                <small>*Transportation fee: RM0.80/KM or e-hailing fare</small><br>
+                                                <small>*Transport allowance: RM20/session</small><br>
+                                                <small>*RM37/hour surcharge for Public Holiday/Sunday/last minute booking</small><br>
+                                                <small>*For service longer than 6 hours, bulk purchase or customization - contact us for quote</small>
                                             </div>
                                         </div>
                                     </div>
@@ -219,70 +268,405 @@
                     <div class="form-step" data-step="2">
                         <h2 class="step-title">Personal Information</h2>
                         
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="full-name" class="form-label">Full Name *</label>
-                                <input type="text" id="full-name" name="full_name" class="form-input" required>
+                        <!-- Contact Person Information -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <i class="fas fa-user"></i>
+                                Contact Person Details
+                            </h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="full-name" class="form-label">Full Name *</label>
+                                    <input type="text" id="full-name" name="full_name" class="form-input" 
+                                           placeholder="Enter your full name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="relationship" class="form-label">Relationship to Patient</label>
+                                    <select id="relationship" name="relationship" class="form-select">
+                                        <option value="">Select relationship</option>
+                                        <option value="self">Self</option>
+                                        <option value="spouse">Spouse</option>
+                                        <option value="child">Son/Daughter</option>
+                                        <option value="parent">Parent</option>
+                                        <option value="sibling">Brother/Sister</option>
+                                        <option value="relative">Other Relative</option>
+                                        <option value="caregiver">Professional Caregiver</option>
+                                        <option value="friend">Friend</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" class="form-input" 
+                                           placeholder="+60 11-234 5678" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" id="email" name="email" class="form-input" 
+                                           placeholder="your.email@example.com" required>
+                                </div>
                             </div>
-                            
+
                             <div class="form-group">
-                                <label for="phone" class="form-label">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+60 11-234 5678" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email" class="form-label">Email Address *</label>
-                                <input type="email" id="email" name="email" class="form-input" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="emergency-contact" class="form-label">Emergency Contact</label>
-                                <input type="tel" id="emergency-contact" name="emergency_contact" class="form-input" placeholder="+60 11-234 5678">
+                                <label for="emergency-contact" class="form-label">Emergency Contact Person</label>
+                                <input type="text" id="emergency-contact" name="emergency_contact" class="form-input" 
+                                       placeholder="Name and phone number of emergency contact">
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="address" class="form-label">Full Address *</label>
-                            <textarea id="address" name="address" class="form-textarea" rows="3" placeholder="Please provide your complete address including postcode" required></textarea>
+                        <!-- Patient Information -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <i class="fas fa-heart-pulse"></i>
+                                Patient/Care Recipient Information
+                            </h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="patient-name" class="form-label">Patient Name</label>
+                                    <input type="text" id="patient-name" name="patient_name" class="form-input" 
+                                           placeholder="If different from contact person">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="patient-age" class="form-label">Patient Age</label>
+                                    <input type="number" id="patient-age" name="patient_age" class="form-input" 
+                                           min="1" max="120" placeholder="Age in years">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="patient-gender" class="form-label">Gender</label>
+                                    <select id="patient-gender" name="patient_gender" class="form-select">
+                                        <option value="">Prefer not to say</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="patient-language" class="form-label">Preferred Language</label>
+                                    <select id="patient-language" name="patient_language" class="form-select">
+                                        <option value="english">English</option>
+                                        <option value="bahasa">Bahasa Malaysia</option>
+                                        <option value="mandarin">Mandarin</option>
+                                        <option value="cantonese">Cantonese</option>
+                                        <option value="hokkien">Hokkien</option>
+                                        <option value="tamil">Tamil</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-grid">
+                        <!-- Service Location -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Service Location
+                            </h3>
                             <div class="form-group">
-                                <label for="preferred-date" class="form-label">Preferred Service Date *</label>
-                                <input type="date" id="preferred-date" name="preferred_date" class="form-input" required>
+                                <label for="address" class="form-label">Complete Address *</label>
+                                <textarea id="address" name="address" class="form-textarea" rows="3" 
+                                          placeholder="Please provide complete address including unit number, building name, street, postcode, city, and state" required></textarea>
                             </div>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="postcode" class="form-label">Postcode *</label>
+                                    <input type="text" id="postcode" name="postcode" class="form-input" 
+                                           placeholder="e.g. 50200" pattern="[0-9]{5}" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="city" class="form-label">City *</label>
+                                    <input type="text" id="city" name="city" class="form-input" 
+                                           placeholder="e.g. Kuala Lumpur" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="state" class="form-label">State *</label>
+                                    <select id="state" name="state" class="form-select" required>
+                                        <option value="">Select State</option>
+                                        <option value="johor">Johor</option>
+                                        <option value="kedah">Kedah</option>
+                                        <option value="kelantan">Kelantan</option>
+                                        <option value="kuala-lumpur">Kuala Lumpur</option>
+                                        <option value="labuan">Labuan</option>
+                                        <option value="melaka">Melaka</option>
+                                        <option value="negeri-sembilan">Negeri Sembilan</option>
+                                        <option value="pahang">Pahang</option>
+                                        <option value="penang">Penang</option>
+                                        <option value="perak">Perak</option>
+                                        <option value="perlis">Perlis</option>
+                                        <option value="putrajaya">Putrajaya</option>
+                                        <option value="sabah">Sabah</option>
+                                        <option value="sarawak">Sarawak</option>
+                                        <option value="selangor">Selangor</option>
+                                        <option value="terengganu">Terengganu</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="nearest-landmark" class="form-label">Nearest Landmark</label>
+                                    <input type="text" id="nearest-landmark" name="nearest_landmark" class="form-input" 
+                                           placeholder="e.g. Near KLCC, Opposite Hospital">
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- Transportation -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <i class="fas fa-car"></i>
+                                Mode of Transportation for The Service
+                            </h3>
+                            <div class="transportation-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="transportation_mode" value="client-provided" required>
+                                    <span class="radio-custom"></span>
+                                    <div class="radio-content">
+                                        <strong>Provided by Client</strong>
+                                        <p>Client will provide transportation for the Temanion</p>
+                                    </div>
+                                </label>
+                                
+                                <label class="radio-option">
+                                    <input type="radio" name="transportation_mode" value="teman-provided" required>
+                                    <span class="radio-custom"></span>
+                                    <div class="radio-content">
+                                        <strong>Provided by Teman Malaysia</strong>
+                                        <p>Our Temanion will arrange their own transportation</p>
+                                    </div>
+                                </label>
+                                
+                                <label class="radio-option">
+                                    <input type="radio" name="transportation_mode" value="e-hailing" required>
+                                    <span class="radio-custom"></span>
+                                    <div class="radio-content">
+                                        <strong>E-Hailing (Taxi, Grab)</strong>
+                                        <p>Use ride-hailing services (additional costs apply)</p>
+                                    </div>
+                                </label>
+                                
+                                <label class="radio-option">
+                                    <input type="radio" name="transportation_mode" value="not-required" required>
+                                    <span class="radio-custom"></span>
+                                    <div class="radio-content">
+                                        <strong>Not Required</strong>
+                                        <p>Service will be provided at a fixed location</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form-group" style="margin-top: 16px;">
+                                <label for="transportation-notes" class="form-label">Transportation Notes (Optional)</label>
+                                <textarea id="transportation-notes" name="transportation_notes" class="form-textarea" rows="2" 
+                                          placeholder="Any specific transportation requirements, preferences, or additional details..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Scheduling Information -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <i class="fas fa-calendar-alt"></i>
+                                Scheduling Preferences
+                            </h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="preferred-date" class="form-label">Preferred Service Date *</label>
+                                    <input type="date" id="preferred-date" name="preferred_date" class="form-input" required>
+                                    <small class="form-help">Service can be booked from tomorrow onwards</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="preferred-time" class="form-label">Preferred Start Time *</label>
+                                    <select id="preferred-time" name="preferred_time" class="form-select" required>
+                                        <option value="">Select time</option>
+                                        <option value="07:00">07:00 AM</option>
+                                        <option value="07:30">07:30 AM</option>
+                                        <option value="08:00">08:00 AM</option>
+                                        <option value="08:30">08:30 AM</option>
+                                        <option value="09:00">09:00 AM</option>
+                                        <option value="09:30">09:30 AM</option>
+                                        <option value="10:00">10:00 AM</option>
+                                        <option value="10:30">10:30 AM</option>
+                                        <option value="11:00">11:00 AM</option>
+                                        <option value="11:30">11:30 AM</option>
+                                        <option value="12:00">12:00 PM</option>
+                                        <option value="12:30">12:30 PM</option>
+                                        <option value="13:00">01:00 PM</option>
+                                        <option value="13:30">01:30 PM</option>
+                                        <option value="14:00">02:00 PM</option>
+                                        <option value="14:30">02:30 PM</option>
+                                        <option value="15:00">03:00 PM</option>
+                                        <option value="15:30">03:30 PM</option>
+                                        <option value="16:00">04:00 PM</option>
+                                        <option value="16:30">04:30 PM</option>
+                                        <option value="17:00">05:00 PM</option>
+                                        <option value="17:30">05:30 PM</option>
+                                        <option value="18:00">06:00 PM</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="urgency" class="form-label">Urgency Level</label>
+                                    <select id="urgency" name="urgency" class="form-select">
+                                        <option value="normal">Normal (24-48 hours)</option>
+                                        <option value="urgent">Urgent (Within 24 hours)</option>
+                                        <option value="asap">ASAP (Same day if possible)</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="frequency" class="form-label">Service Frequency</label>
+                                    <select id="frequency" name="frequency" class="form-select">
+                                        <option value="one-time">One-time service</option>
+                                        <option value="weekly">Weekly</option>
+                                        <option value="bi-weekly">Bi-weekly (Every 2 weeks)</option>
+                                        <option value="monthly">Monthly</option>
+                                        <option value="as-needed">As needed</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medical & Care Information -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <i class="fas fa-notes-medical"></i>
+                                Medical & Care Information
+                            </h3>
+                            
                             <div class="form-group">
-                                <label for="preferred-time" class="form-label">Preferred Time *</label>
-                                <select id="preferred-time" name="preferred_time" class="form-select" required>
-                                    <option value="">Select time</option>
-                                    <option value="08:00">08:00 AM</option>
-                                    <option value="09:00">09:00 AM</option>
-                                    <option value="10:00">10:00 AM</option>
-                                    <option value="11:00">11:00 AM</option>
-                                    <option value="12:00">12:00 PM</option>
-                                    <option value="13:00">01:00 PM</option>
-                                    <option value="14:00">02:00 PM</option>
-                                    <option value="15:00">03:00 PM</option>
-                                    <option value="16:00">04:00 PM</option>
-                                    <option value="17:00">05:00 PM</option>
+                                <label for="medical-conditions" class="form-label">Medical Conditions</label>
+                                <textarea id="medical-conditions" name="medical_conditions" class="form-textarea" rows="3" 
+                                          placeholder="Please list any medical conditions, disabilities, or health concerns that our companion should be aware of..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="medications" class="form-label">Current Medications</label>
+                                <textarea id="medications" name="medications" class="form-textarea" rows="2" 
+                                          placeholder="List current medications and any medication reminders needed..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="mobility-needs" class="form-label">Mobility & Physical Needs</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="mobility_needs[]" value="wheelchair">
+                                        <span class="checkmark"></span>
+                                        Wheelchair user
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="mobility_needs[]" value="walker">
+                                        <span class="checkmark"></span>
+                                        Uses walker/walking aid
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="mobility_needs[]" value="assistance">
+                                        <span class="checkmark"></span>
+                                        Needs assistance walking
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="mobility_needs[]" value="bedridden">
+                                        <span class="checkmark"></span>
+                                        Bedridden
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" name="mobility_needs[]" value="lifting">
+                                        <span class="checkmark"></span>
+                                        Requires lifting assistance
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="special-requirements" class="form-label">Special Care Requirements</label>
+                                <textarea id="special-requirements" name="special_requirements" class="form-textarea" rows="4" 
+                                          placeholder="Please describe any specific care needs, preferences, allergies, dietary restrictions, behavioral considerations, or other important information..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Companion Preferences -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <i class="fas fa-user-friends"></i>
+                                Companion Preferences
+                            </h3>
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="companion-gender" class="form-label">Preferred Companion Gender</label>
+                                    <select id="companion-gender" name="companion_gender" class="form-select">
+                                        <option value="no-preference">No preference</option>
+                                        <option value="female">Female</option>
+                                        <option value="male">Male</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="companion-language" class="form-label">Companion Language Preference</label>
+                                    <select id="companion-language" name="companion_language" class="form-select">
+                                        <option value="english">English</option>
+                                        <option value="bahasa">Bahasa Malaysia</option>
+                                        <option value="mandarin">Mandarin</option>
+                                        <option value="cantonese">Cantonese</option>
+                                        <option value="multilingual">Multilingual preferred</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="companion-experience" class="form-label">Required Experience Level</label>
+                                    <select id="companion-experience" name="companion_experience" class="form-select">
+                                        <option value="any">Any experience level</option>
+                                        <option value="basic">Basic care experience</option>
+                                        <option value="intermediate">Intermediate care experience</option>
+                                        <option value="advanced">Advanced/Medical care experience</option>
+                                        <option value="specialized">Specialized condition experience</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="companion-age" class="form-label">Preferred Companion Age Range</label>
+                                    <select id="companion-age" name="companion_age" class="form-select">
+                                        <option value="no-preference">No preference</option>
+                                        <option value="young-adult">Young Adult (20-30)</option>
+                                        <option value="adult">Adult (30-45)</option>
+                                        <option value="mature">Mature (45-60)</option>
+                                        <option value="senior">Senior (60+)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional Information -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">
+                                <i class="fas fa-comment-dots"></i>
+                                Additional Information
+                            </h3>
+                            
+                            <div class="form-group">
+                                <label for="additional-notes" class="form-label">Additional Notes & Requests</label>
+                                <textarea id="additional-notes" name="additional_notes" class="form-textarea" rows="4" 
+                                          placeholder="Any other information, special requests, or concerns you'd like us to know about..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="how-heard" class="form-label">How did you hear about us?</label>
+                                <select id="how-heard" name="how_heard" class="form-select">
+                                    <option value="">Please select</option>
+                                    <option value="google">Google Search</option>
+                                    <option value="facebook">Facebook</option>
+                                    <option value="instagram">Instagram</option>
+                                    <option value="friend">Friend/Family Referral</option>
+                                    <option value="doctor">Doctor/Medical Professional</option>
+                                    <option value="newspaper">Newspaper/Magazine</option>
+                                    <option value="radio">Radio</option>
+                                    <option value="other">Other</option>
                                 </select>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="patient-name" class="form-label">Patient/Care Recipient Name</label>
-                            <input type="text" id="patient-name" name="patient_name" class="form-input" placeholder="If different from above">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="special-requirements" class="form-label">Special Requirements / Medical Conditions</label>
-                            <textarea id="special-requirements" name="special_requirements" class="form-textarea" rows="4" placeholder="Please describe any special needs, medical conditions, mobility requirements, or specific care instructions..."></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="additional-notes" class="form-label">Additional Notes</label>
-                            <textarea id="additional-notes" name="additional_notes" class="form-textarea" rows="3" placeholder="Any other information that would help us serve you better..."></textarea>
                         </div>
 
                         <div class="form-actions">
@@ -312,9 +696,17 @@
                                     <span class="summary-label">Package:</span>
                                     <span class="summary-value" id="summary-package">-</span>
                                 </div>
+                                <div class="summary-item" id="custom-activities-summary" style="display: none;">
+                                    <span class="summary-label">Activities:</span>
+                                    <span class="summary-value" id="summary-activities">-</span>
+                                </div>
                                 <div class="summary-item">
                                     <span class="summary-label">Date & Time:</span>
                                     <span class="summary-value" id="summary-datetime">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Transportation:</span>
+                                    <span class="summary-value" id="summary-transportation">-</span>
                                 </div>
                                 <div class="summary-divider"></div>
                                 <div class="summary-item total">
