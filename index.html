@@ -5,15 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teman Malaysia - Care Companion Services</title>
     <meta name="description" content="Quality, safe and personalized care companion services in Klang Valley. Medical appointments, dialysis treatments, home care packages.">
+    <meta name="keywords" content="care companion, elderly care, medical assistance, dialysis support, home care, Malaysia">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://temanmalaysia.com/">
+    <meta property="og:title" content="Teman Malaysia - Care Companion Services">
+    <meta property="og:description" content="Quality, safe and personalized care companion services in Klang Valley.">
+    <meta property="og:image" content="https://temanmalaysia.com/assets/images/hero-companion.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://temanmalaysia.com/">
+    <meta property="twitter:title" content="Teman Malaysia - Care Companion Services">
+    <meta property="twitter:description" content="Quality, safe and personalized care companion services in Klang Valley.">
+    <meta property="twitter:image" content="https://temanmalaysia.com/assets/images/hero-companion.jpg">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     
     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Icons -->
@@ -21,10 +39,12 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header class="header" id="header">
         <nav class="nav container">
             <div class="nav__brand">
-                <img src="assets/images/teman-logo.png" alt="Teman Malaysia" class="nav__logo">
+                <a href="index.html">
+                    <img src="assets/images/teman-logo.png" alt="Teman Malaysia" class="nav__logo">
+                </a>
             </div>
             
             <ul class="nav__menu" id="nav-menu">
@@ -34,14 +54,8 @@
                 <li class="nav__item">
                     <a href="pages/about.html" class="nav__link">About</a>
                 </li>
-                <li class="nav__item dropdown">
-                    <a href="pages/services.html" class="nav__link">Services <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown__menu">
-                        <li><a href="pages/services.html#health-appointments">Health Appointments</a></li>
-                        <li><a href="pages/services.html#dialysis">Dialysis Treatments</a></li>
-                        <li><a href="pages/services.html#customized">Customized Activities</a></li>
-                        <li><a href="pages/services.html#home-package">Home Package</a></li>
-                    </ul>
+                <li class="nav__item">
+                    <a href="pages/services.html" class="nav__link">Services</a>
                 </li>
                 <li class="nav__item">
                     <a href="pages/contact.html" class="nav__link">Contact</a>
@@ -70,14 +84,14 @@
                 </h1>
                 <p class="hero__description">
                     Quality, safe and personalized care companion services in Klang Valley. 
-                    From medical appointments to home care, we're here to help.
+                    From medical appointments to home care, we're here to help improve their quality of life.
                 </p>
                 <div class="hero__actions">
                     <a href="pages/booking.html" class="btn btn--primary btn--large">
                         <i class="fas fa-calendar-check"></i>
                         Book Service
                     </a>
-                    <a href="#consultation" class="btn btn--outline btn--large">
+                    <a href="pages/contact.html" class="btn btn--outline btn--large">
                         <i class="fas fa-comments"></i>
                         Free Consultation
                     </a>
@@ -115,53 +129,160 @@
                 <p class="section__subtitle">Comprehensive companion care tailored to your needs</p>
             </div>
             
-            <div class="services__grid">
-                <div class="service-card">
+            <div class="services__grid grid grid-auto">
+                <div class="service-card card">
                     <div class="service-card__icon">
                         <i class="fas fa-stethoscope"></i>
                     </div>
-                    <h3 class="service-card__title">Health Appointments</h3>
-                    <p class="service-card__description">
-                        Professional assistance for medical checkups and treatments
-                    </p>
-                    <div class="service-card__price">From RM35/hour</div>
-                    <a href="pages/services.html#health-appointments" class="btn btn--outline btn--small">Learn More</a>
+                    <div class="card-body">
+                        <h3 class="service-card__title">Health Appointments</h3>
+                        <p class="service-card__description">
+                            Professional assistance for medical checkups and treatments with experienced companions.
+                        </p>
+                        <div class="service-card__price">From RM35/hour</div>
+                        <a href="pages/services.html#health-appointments" class="btn btn--outline btn--small">Learn More</a>
+                    </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card card">
                     <div class="service-card__icon">
                         <i class="fas fa-heartbeat"></i>
                     </div>
-                    <h3 class="service-card__title">Dialysis Support</h3>
-                    <p class="service-card__description">
-                        Dedicated companion for dialysis treatments and transportation
-                    </p>
-                    <div class="service-card__price">From RM35/hour</div>
-                    <a href="pages/services.html#dialysis" class="btn btn--outline btn--small">Learn More</a>
+                    <div class="card-body">
+                        <h3 class="service-card__title">Dialysis Support</h3>
+                        <p class="service-card__description">
+                            Dedicated companion for dialysis treatments including transportation and waiting assistance.
+                        </p>
+                        <div class="service-card__price">From RM35/hour</div>
+                        <a href="pages/services.html#dialysis" class="btn btn--outline btn--small">Learn More</a>
+                    </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card card">
                     <div class="service-card__icon">
                         <i class="fas fa-home"></i>
                     </div>
-                    <h3 class="service-card__title">Home Care</h3>
-                    <p class="service-card__description">
-                        Comprehensive daily care assistance in the comfort of home
-                    </p>
-                    <div class="service-card__price">From RM1,680/package</div>
-                    <a href="pages/services.html#home-package" class="btn btn--outline btn--small">Learn More</a>
+                    <div class="card-body">
+                        <h3 class="service-card__title">Home Care</h3>
+                        <p class="service-card__description">
+                            Comprehensive daily care assistance in the comfort and safety of your own home.
+                        </p>
+                        <div class="service-card__price">From RM1,680/package</div>
+                        <a href="pages/services.html#home-package" class="btn btn--outline btn--small">Learn More</a>
+                    </div>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card card">
                     <div class="service-card__icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3 class="service-card__title">Custom Activities</h3>
-                    <p class="service-card__description">
-                        Personalized leisure and recreational activities
+                    <div class="card-body">
+                        <h3 class="service-card__title">Custom Activities</h3>
+                        <p class="service-card__description">
+                            Personalized leisure and recreational activities tailored to individual preferences.
+                        </p>
+                        <div class="service-card__price">From RM70/2 hours</div>
+                        <a href="pages/services.html#customized" class="btn btn--outline btn--small">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose section bg-gray-50">
+        <div class="container">
+            <div class="section__header text-center">
+                <h2 class="section__title">Why Choose Teman Malaysia?</h2>
+                <p class="section__subtitle">We're committed to providing the highest quality of care</p>
+            </div>
+            
+            <div class="features__grid grid grid-3">
+                <div class="feature-item text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Trusted & Safe</h3>
+                    <p class="feature-description">
+                        All our Temanions are thoroughly screened, trained, and insured for your peace of mind.
                     </p>
-                    <div class="service-card__price">From RM70/2 hours</div>
-                    <a href="pages/services.html#customized" class="btn btn--outline btn--small">Learn More</a>
+                </div>
+                
+                <div class="feature-item text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">Flexible Scheduling</h3>
+                    <p class="feature-description">
+                        Book services according to your schedule with same-day availability when possible.
+                    </p>
+                </div>
+                
+                <div class="feature-item text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3 class="feature-title">Experienced Care</h3>
+                    <p class="feature-description">
+                        Our companions have extensive experience in elderly care and medical assistance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials section">
+        <div class="container">
+            <div class="section__header text-center">
+                <h2 class="section__title">What Our Clients Say</h2>
+                <p class="section__subtitle">Real stories from families we've helped</p>
+            </div>
+            
+            <div class="testimonials__grid grid grid-3">
+                <div class="testimonial-card card">
+                    <div class="card-body">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "Teman Malaysia provided excellent care for my mother during her dialysis treatments. 
+                                The companion was professional, caring, and always punctual."
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4 class="author-name">Sarah Ahmad</h4>
+                            <p class="author-role">Daughter of dialysis patient</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card card">
+                    <div class="card-body">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "I was worried about my father living alone. The home care package gave us peace of mind 
+                                knowing he had reliable daily assistance."
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4 class="author-name">Michael Tan</h4>
+                            <p class="author-role">Son of home care client</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card card">
+                    <div class="card-body">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "The companion helped my grandmother with her medical appointments and even 
+                                provided emotional support. Highly recommended!"
+                            </p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4 class="author-name">Lisa Wong</h4>
+                            <p class="author-role">Granddaughter of client</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -171,9 +292,9 @@
     <section class="cta section bg-primary">
         <div class="container">
             <div class="cta__content text-center">
-                <h2 class="cta__title text-white">Need Trusted Companion Care?</h2>
+                <h2 class="cta__title text-white">Ready to Get Started?</h2>
                 <p class="cta__description text-white">
-                    Get in touch with us for a free consultation and personalized care plan
+                    Contact us today for a free consultation and let us help you provide the best care for your loved ones.
                 </p>
                 <div class="cta__actions">
                     <a href="pages/booking.html" class="btn btn--white btn--large">
@@ -181,7 +302,7 @@
                     </a>
                     <a href="tel:+60115645396" class="btn btn--outline-white btn--large">
                         <i class="fas fa-phone"></i>
-                        Call Now
+                        Call +60 11-564 5396
                     </a>
                 </div>
             </div>
@@ -195,28 +316,33 @@
                 <div class="footer__brand">
                     <img src="assets/images/teman-logo.png" alt="Teman Malaysia" class="footer__logo">
                     <p class="footer__description">
-                        Quality, safe and personalized care companion services for your loved ones
+                        Quality, safe and personalized care companion services for your loved ones. 
+                        Improving quality of life through trusted care partnerships.
                     </p>
                     <div class="social-links">
-                        <a href="https://facebook.com/temanmalaysia" class="social-link">
+                        <a href="https://facebook.com/temanmalaysia" class="social-link" target="_blank" rel="noopener">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://instagram.com/temanmalaysia" class="social-link">
+                        <a href="https://instagram.com/temanmalaysia" class="social-link" target="_blank" rel="noopener">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://wa.me/601156453964" class="social-link">
+                        <a href="https://wa.me/601156453964" class="social-link" target="_blank" rel="noopener">
                             <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/teman-malaysia" class="social-link" target="_blank" rel="noopener">
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div class="footer__links">
-                    <h4 class="footer__title">Services</h4>
+                    <h4 class="footer__title">Quick Links</h4>
                     <ul class="footer__list">
-                        <li><a href="pages/services.html#health-appointments">Health Appointments</a></li>
-                        <li><a href="pages/services.html#dialysis">Dialysis Support</a></li>
-                        <li><a href="pages/services.html#home-package">Home Care</a></li>
-                        <li><a href="pages/services.html#customized">Custom Activities</a></li>
+                        <li><a href="pages/about.html">About Us</a></li>
+                        <li><a href="pages/services.html">Our Services</a></li>
+                        <li><a href="pages/careers.html">Careers</a></li>
+                        <li><a href="pages/contact.html">Contact Us</a></li>
+                        <li><a href="pages/booking.html">Book Now</a></li>
                     </ul>
                 </div>
                 
@@ -233,7 +359,11 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Bangsar South City, KL</span>
+                            <span>Bangsar South City, Kuala Lumpur</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Monday - Friday: 9AM - 6PM</span>
                         </div>
                     </div>
                 </div>
@@ -241,7 +371,7 @@
             
             <div class="footer__bottom">
                 <p class="footer__copyright">
-                    © 2025 Teman My Ventures PLT. All rights reserved.
+                    © 2025 Teman My Ventures PLT (LLP0025510-LGN). All rights reserved.
                 </p>
             </div>
         </div>
@@ -249,7 +379,8 @@
 
     <!-- WhatsApp Widget -->
     <div class="whatsapp-widget">
-        <a href="https://wa.me/601156453964" class="whatsapp-btn" target="_blank">
+        <a href="https://wa.me/601156453964?text=Hello! I'm interested in Teman Malaysia's care companion services." 
+           class="whatsapp-btn" target="_blank" rel="noopener">
             <i class="fab fa-whatsapp"></i>
             <span class="whatsapp-text">Chat with us!</span>
         </a>

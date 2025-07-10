@@ -1,4 +1,4 @@
-// Booking form management and Billplz integration
+// Booking form management (Frontend only)
 class BookingManager {
     constructor() {
         this.currentStep = 1;
@@ -18,7 +18,8 @@ class BookingManager {
                 packages: {
                     'hourly': { name: 'Hourly Rate', price: 35, description: 'RM35/hour' },
                     'package1': { name: 'Package 1', price: 186, description: '6 hours (3 sessions)' },
-                    'package2': { name: 'Package 2', price: 720, description: '24 hours (12 sessions)' }
+                    'package2': { name: 'Package 2', price: 720, description: '24 hours (12 sessions)' },
+                    'companion': { name: 'Companion Service', price: 30, description: 'RM30/hour during treatment' }
                 }
             },
             'home-package': {
@@ -26,7 +27,17 @@ class BookingManager {
                 packages: {
                     'package1': { name: 'Package 1', price: 1680, description: '4 hrs/day, 20 sessions' },
                     'package2': { name: 'Package 2', price: 2280, description: '6 hrs/day, 20 sessions' },
-                    'package3': { name: 'Package 3', price: 2880, description: '8 hrs/day, 20 sessions' }
+                    'package3': { name: 'Package 3', price: 2880, description: '8 hrs/day, 20 sessions' },
+                    'package4': { name: 'Package 4', price: 3500, description: '10 hrs/day, 20 sessions' }
+                }
+            },
+            'home-plus-package': {
+                name: 'Home Care (Plus) Package',
+                packages: {
+                    'package1': { name: 'Package 1', price: 2000, description: '4 hrs/day, 20 sessions' },
+                    'package2': { name: 'Package 2', price: 2650, description: '6 hrs/day, 20 sessions' },
+                    'package3': { name: 'Package 3', price: 3350, description: '8 hrs/day, 20 sessions' },
+                    'package4': { name: 'Package 4', price: 4000, description: '10 hrs/day, 20 sessions' }
                 }
             },
             'custom-activities': {
@@ -44,14 +55,20 @@ class BookingManager {
         this.bindEvents();
         this.updateProgressSteps();
         this.setMinDate();
+        
+        // Initialize service selection handlers
+        this.initServiceHandlers();
     }
 
     bindEvents() {
         // Form submission
-        document.getElementById('booking-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            this.processPayment();
-        });
+        const form = document.getElementById('booking-form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.processBooking();
+            });
+        }
 
         // Service selection changes
         document.querySelectorAll('input[name="service"]').forEach(input => {
@@ -60,15 +77,47 @@ class BookingManager {
 
         // Package selection changes
         document.addEventListener('change', (e) => {
-            if (e.target.name.includes('_package')) {
+            if (e.target.name && e.target.name.includes('_package')) {
                 this.updateSummary();
             }
         });
 
-        // Form input changes for real-time validation
+        // Form input changes for real-time validation and summary updates
         document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => {
             input.addEventListener('blur', this.validateField.bind(this));
             input.addEventListener('input', this.updateSummary.bind(this));
+        });
+
+        // Phone number formatting
+        const phoneInputs = document.querySelectorAll('input[type="tel"]');
+        phoneInputs.forEach(input => {
+            input.addEventListener('input', this.formatPhoneInput.bind(this));
+        });
+    }
+
+    initServiceHandlers() {
+        // Handle service selection to show/hide pricing options
+        document.querySelectorAll('input[name="service"]').forEach(input => {
+            input.addEventListener('change', (e) => {
+                // Hide all pricing sections
+                document.querySelectorAll('.service-pricing').forEach(pricing => {
+                    pricing.style.display = 'none';
+                });
+
+                // Show pricing for selected service
+                const selectedService = e.target.closest('.service-option');
+                const pricingSection = selectedService.querySelector('.service-pricing');
+                if (pricingSection) {
+                    pricingSection.style.display = 'block';
+                }
+
+                // Clear previous package selections
+                document.querySelectorAll('input[name$="_package"]').forEach(pkg => {
+                    pkg.checked = false;
+                });
+
+                this.updateSummary();
+            });
         });
     }
 
@@ -78,29 +127,40 @@ class BookingManager {
         tomorrow.setDate(tomorrow.getDate() + 1);
         
         const dateInput = document.getElementById('preferred-date');
-        dateInput.min = tomorrow.toISOString().split('T')[0];
+        if (dateInput) {
+            dateInput.min = tomorrow.toISOString().split('T')[0];
+        }
     }
 
     handleServiceChange(e) {
         const serviceType = e.target.value;
-        const serviceOptions = document.querySelectorAll('.service-option');
-        
-        // Hide all package options first
-        serviceOptions.forEach(option => {
-            const packageOptions = option.querySelectorAll('.service-pricing');
-            packageOptions.forEach(pkg => pkg.style.display = 'none');
-        });
-
-        // Show selected service package options
-        const selectedOption = document.querySelector(`[data-service="${serviceType}"]`);
-        if (selectedOption) {
-            const packageOptions = selectedOption.querySelector('.service-pricing');
-            if (packageOptions) {
-                packageOptions.style.display = 'block';
-            }
-        }
-
         this.updateSummary();
+    }
+
+    formatPhoneInput(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        
+        // Malaysian phone number formatting
+        if (value.startsWith('60')) {
+            value = '+' + value;
+        } else if (value.startsWith('01')) {
+            value = '+6' + value;
+        } else if (value.startsWith('1') && value.length > 1) {
+            value = '+60' + value;
+        }
+        
+        // Format display
+        if (value.startsWith('+601')) {
+            const formatted = value.replace(/(\+60)(\d{1,2})(\d{0,3})(\d{0,4})/, (match, p1, p2, p3, p4) => {
+                let result = p1 + ' ' + p2;
+                if (p3) result += '-' + p3;
+                if (p4) result += ' ' + p4;
+                return result;
+            });
+            e.target.value = formatted;
+        } else {
+            e.target.value = value;
+        }
     }
 
     nextStep() {
@@ -132,14 +192,17 @@ class BookingManager {
         });
 
         // Show current step
-        document.querySelector(`[data-step="${this.currentStep}"]`).classList.add('active');
+        const currentStepElement = document.querySelector(`[data-step="${this.currentStep}"]`);
+        if (currentStepElement) {
+            currentStepElement.classList.add('active');
+        }
 
-        // Scroll to top
+        // Scroll to top smoothly
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     updateProgressSteps() {
-        document.querySelectorAll('.step').forEach((step, index) => {
+        document.querySelectorAll('.progress-steps .step').forEach((step, index) => {
             const stepNumber = index + 1;
             step.classList.remove('active', 'completed');
             
@@ -158,7 +221,7 @@ class BookingManager {
             case 2:
                 return this.validatePersonalDetails();
             case 3:
-                return this.validatePaymentDetails();
+                return this.validateFinalStep();
             default:
                 return true;
         }
@@ -172,7 +235,8 @@ class BookingManager {
         }
 
         const serviceType = serviceSelected.value;
-        const packageSelected = document.querySelector(`input[name="${serviceType.replace('-', '_')}_package"]:checked`);
+        const packageFieldName = serviceType.replace('-', '_') + '_package';
+        const packageSelected = document.querySelector(`input[name="${packageFieldName}"]:checked`);
         
         if (!packageSelected) {
             this.showError('Please select a package for your chosen service');
@@ -188,7 +252,7 @@ class BookingManager {
 
         requiredFields.forEach(fieldName => {
             const field = document.querySelector(`[name="${fieldName}"]`);
-            if (!field.value.trim()) {
+            if (!field || !field.value.trim()) {
                 this.showFieldError(field, 'This field is required');
                 isValid = false;
             } else {
@@ -198,14 +262,14 @@ class BookingManager {
 
         // Validate email format
         const emailField = document.querySelector('[name="email"]');
-        if (emailField.value && !this.isValidEmail(emailField.value)) {
+        if (emailField && emailField.value && !this.isValidEmail(emailField.value)) {
             this.showFieldError(emailField, 'Please enter a valid email address');
             isValid = false;
         }
 
         // Validate phone format
         const phoneField = document.querySelector('[name="phone"]');
-        if (phoneField.value && !this.isValidPhone(phoneField.value)) {
+        if (phoneField && phoneField.value && !this.isValidPhone(phoneField.value)) {
             this.showFieldError(phoneField, 'Please enter a valid phone number');
             isValid = false;
         }
@@ -213,9 +277,9 @@ class BookingManager {
         return isValid;
     }
 
-    validatePaymentDetails() {
-        const termsAgreed = document.querySelector('input[name="terms_agreed"]').checked;
-        if (!termsAgreed) {
+    validateFinalStep() {
+        const termsAgreed = document.querySelector('input[name="terms_agreed"]');
+        if (!termsAgreed || !termsAgreed.checked) {
             this.showError('Please agree to the terms and conditions');
             return false;
         }
@@ -250,10 +314,14 @@ class BookingManager {
     }
 
     isValidPhone(phone) {
-        return /^(\+?6?01)[0-46-9]-*[0-9]{7,8}$/.test(phone.replace(/\s/g, ''));
+        // Remove all non-digits and check Malaysian phone format
+        const cleaned = phone.replace(/\D/g, '');
+        return /^(60)?1[0-46-9][0-9]{7,8}$/.test(cleaned);
     }
 
     showFieldError(field, message) {
+        if (!field) return;
+        
         this.clearFieldError(field);
         field.classList.add('error');
         
@@ -264,6 +332,8 @@ class BookingManager {
     }
 
     clearFieldError(field) {
+        if (!field) return;
+        
         field.classList.remove('error');
         const existingError = field.parentNode.querySelector('.field-error');
         if (existingError) {
@@ -272,44 +342,19 @@ class BookingManager {
     }
 
     showError(message) {
-        // Create toast notification
-        const toast = document.createElement('div');
-        toast.className = 'toast toast--error';
-        toast.innerHTML = `
-            <i class="fas fa-exclamation-circle"></i>
-            <span>${message}</span>
-        `;
-        
-        document.body.appendChild(toast);
-        
-        setTimeout(() => {
-            toast.classList.add('show');
-        }, 100);
-
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
-        }, 3000);
+        if (window.TemanMalaysia && window.TemanMalaysia.showToast) {
+            window.TemanMalaysia.showToast('error', message);
+        } else {
+            alert(message);
+        }
     }
 
     showSuccess(message) {
-        const toast = document.createElement('div');
-        toast.className = 'toast toast--success';
-        toast.innerHTML = `
-            <i class="fas fa-check-circle"></i>
-            <span>${message}</span>
-        `;
-        
-        document.body.appendChild(toast);
-        
-        setTimeout(() => {
-            toast.classList.add('show');
-        }, 100);
-
-        setTimeout(() => {
-            toast.classList.remove('show');
-            setTimeout(() => toast.remove(), 300);
-        }, 3000);
+        if (window.TemanMalaysia && window.TemanMalaysia.showToast) {
+            window.TemanMalaysia.showToast('success', message);
+        } else {
+            alert(message);
+        }
     }
 
     updateSummary() {
@@ -321,42 +366,57 @@ class BookingManager {
         
         if (!serviceData) return;
 
-        const packageInput = document.querySelector(`input[name="${serviceType.replace('-', '_')}_package"]:checked`);
+        const packageFieldName = serviceType.replace('-', '_') + '_package';
+        const packageInput = document.querySelector(`input[name="${packageFieldName}"]:checked`);
         if (!packageInput) return;
 
         const packageData = serviceData.packages[packageInput.value];
         const amount = packageData.price;
 
         // Update service details
-        document.getElementById('summary-service').textContent = serviceData.name;
-        document.getElementById('summary-package').textContent = `${packageData.name} - ${packageData.description}`;
-        document.getElementById('summary-total').textContent = `RM ${amount.toLocaleString()}`;
+        this.updateElement('summary-service', serviceData.name);
+        this.updateElement('summary-package', `${packageData.name} - ${packageData.description}`);
+        this.updateElement('summary-total', this.formatCurrency(amount));
 
         // Update personal details if available
-        const nameField = document.querySelector('[name="full_name"]');
-        const phoneField = document.querySelector('[name="phone"]');
-        const emailField = document.querySelector('[name="email"]');
+        this.updateSummaryField('summary-name', 'full_name');
+        this.updateSummaryField('summary-phone', 'phone');
+        this.updateSummaryField('summary-email', 'email');
+        this.updateSummaryField('summary-address', 'address');
+
+        // Update date and time
         const dateField = document.querySelector('[name="preferred_date"]');
         const timeField = document.querySelector('[name="preferred_time"]');
-
-        if (nameField && nameField.value) {
-            document.getElementById('summary-name').textContent = nameField.value;
-        }
-        if (phoneField && phoneField.value) {
-            document.getElementById('summary-phone').textContent = phoneField.value;
-        }
-        if (emailField && emailField.value) {
-            document.getElementById('summary-email').textContent = emailField.value;
-        }
         if (dateField && dateField.value && timeField && timeField.value) {
             const date = new Date(dateField.value).toLocaleDateString('en-MY');
-            document.getElementById('summary-datetime').textContent = `${date} at ${timeField.value}`;
+            this.updateElement('summary-datetime', `${date} at ${timeField.value}`);
         }
 
-        // Store current selection for payment processing
+        // Store current selection
         this.formData.selectedService = serviceType;
         this.formData.selectedPackage = packageInput.value;
         this.formData.amount = amount;
+    }
+
+    updateElement(id, value) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.textContent = value || '-';
+        }
+    }
+
+    updateSummaryField(summaryId, fieldName) {
+        const field = document.querySelector(`[name="${fieldName}"]`);
+        if (field && field.value) {
+            this.updateElement(summaryId, field.value);
+        }
+    }
+
+    formatCurrency(amount) {
+        return new Intl.NumberFormat('en-MY', {
+            style: 'currency',
+            currency: 'MYR'
+        }).format(amount);
     }
 
     collectFormData() {
@@ -369,99 +429,96 @@ class BookingManager {
 
         // Add calculated fields
         data.total_amount = this.formData.amount;
-        data.service_name = this.serviceData[this.formData.selectedService].name;
-        data.package_name = this.serviceData[this.formData.selectedService].packages[this.formData.selectedPackage].name;
+        data.service_name = this.serviceData[this.formData.selectedService]?.name;
+        data.package_name = this.serviceData[this.formData.selectedService]?.packages[this.formData.selectedPackage]?.name;
+        data.booking_reference = this.generateBookingReference();
+        data.submission_date = new Date().toISOString();
         
         return data;
     }
 
-    async processPayment() {
+    generateBookingReference() {
+        const timestamp = Date.now().toString(36).toUpperCase();
+        const random = Math.random().toString(36).substr(2, 5).toUpperCase();
+        return `TM${timestamp}${random}`;
+    }
+
+    async processBooking() {
         try {
-            this.showLoading(true);
+            const submitButton = document.getElementById('submit-booking-btn');
+            const originalText = submitButton.innerHTML;
+            
+            // Show loading state
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
             
             const bookingData = this.collectFormData();
             
-            // Create Billplz bill
-            const billData = await this.createBillplzBill(bookingData);
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
             
-            if (billData.url) {
-                // Redirect to Billplz payment page
-                window.location.href = billData.url;
-            } else {
-                throw new Error('Failed to create payment link');
-            }
+            // In a real implementation, you would send this data to your backend
+            console.log('Booking Data:', bookingData);
+            
+            // Show success modal
+            this.showBookingSuccess(bookingData.booking_reference);
+            
+            // Reset form
+            document.getElementById('booking-form').reset();
+            this.currentStep = 1;
+            this.updateStepDisplay();
+            this.updateProgressSteps();
             
         } catch (error) {
-            console.error('Payment processing error:', error);
-            this.showError('Payment processing failed. Please try again.');
+            console.error('Booking submission error:', error);
+            this.showError('Failed to submit booking. Please try again.');
         } finally {
-            this.showLoading(false);
+            const submitButton = document.getElementById('submit-booking-btn');
+            submitButton.disabled = false;
+            submitButton.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
         }
     }
 
-    async createBillplzBill(bookingData) {
-        // This function creates a Billplz bill via your backend API
-        // Since we're using GitHub Pages (static hosting), we'll use a serverless function
+    showBookingSuccess(bookingRef) {
+        const modal = document.getElementById('booking-success-modal');
+        const refElement = document.getElementById('booking-ref-number');
         
-        const billplzData = {
-            collection_id: 'your_billplz_collection_id', // Replace with your actual collection ID
-            description: `Teman Malaysia - ${bookingData.service_name}`,
-            email: bookingData.email,
-            name: bookingData.full_name,
-            amount: Math.round(bookingData.total_amount * 100), // Convert to cents
-            callback_url: `${window.location.origin}/payment-success.html`,
-            redirect_url: `${window.location.origin}/payment-success.html`,
-            reference_1_label: 'Service',
-            reference_1: bookingData.service_name,
-            reference_2_label: 'Package',
-            reference_2: bookingData.package_name
-        };
-
-        // For GitHub Pages, you'll need to use a serverless function (Netlify, Vercel, etc.)
-        // or a simple backend service to handle Billplz API calls
-        const response = await fetch('/.netlify/functions/create-billplz-bill', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ billplzData, bookingData })
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to create payment bill');
-        }
-
-        return await response.json();
-    }
-
-    showLoading(show) {
-        const modal = document.getElementById('loading-modal');
-        const payButton = document.getElementById('pay-now-btn');
-        
-        if (show) {
+        if (modal && refElement) {
+            refElement.textContent = bookingRef;
             modal.style.display = 'flex';
-            payButton.disabled = true;
-            payButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-        } else {
-            modal.style.display = 'none';
-            payButton.disabled = false;
-            payButton.innerHTML = '<i class="fas fa-lock"></i> Pay Now Securely';
+            modal.classList.add('show');
         }
     }
 }
 
 // Global functions for navigation
 function nextStep() {
-    window.bookingManager.nextStep();
+    if (window.bookingManager) {
+        window.bookingManager.nextStep();
+    }
 }
 
 function prevStep() {
-    window.bookingManager.prevStep();
+    if (window.bookingManager) {
+        window.bookingManager.prevStep();
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('booking-success-modal');
+    if (modal) {
+        modal.style.display = 'none';
+        modal.classList.remove('show');
+    }
 }
 
 // Initialize booking manager when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    window.bookingManager = new BookingManager();
+    // Only initialize on booking page
+    if (document.getElementById('booking-form')) {
+        window.bookingManager = new BookingManager();
+        console.log('Booking Manager initialized');
+    }
 });
 
 // Handle page refresh/navigation warning

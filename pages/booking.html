@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Service - Teman Malaysia</title>
+    <meta name="description" content="Book quality care companion services with Teman Malaysia. Easy online booking for health appointments, dialysis support, and home care.">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
     <link rel="stylesheet" href="../assets/css/booking.css">
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header (simplified for booking page) -->
+    <!-- Header -->
     <header class="header">
         <nav class="nav container">
             <div class="nav__brand">
@@ -27,12 +35,12 @@
         </nav>
     </header>
 
-    <!-- Booking Form Section -->
+    <!-- Booking Section -->
     <section class="booking-section">
         <div class="container">
             <div class="booking__header text-center">
                 <h1 class="booking__title">Book Your Care Companion</h1>
-                <p class="booking__subtitle">Fill in the details below and proceed to secure payment</p>
+                <p class="booking__subtitle">Fill in the details below to request our services</p>
             </div>
 
             <div class="booking__container">
@@ -48,19 +56,19 @@
                     </div>
                     <div class="step" data-step="3">
                         <div class="step__number">3</div>
-                        <div class="step__label">Payment</div>
+                        <div class="step__label">Confirmation</div>
                     </div>
                 </div>
 
                 <!-- Booking Form -->
-                <form id="booking-form" class="booking-form">
+                <form id="booking-form" class="booking-form" data-form-type="booking">
                     <!-- Step 1: Service Selection -->
                     <div class="form-step active" data-step="1">
                         <h2 class="step-title">Select Your Service</h2>
                         
                         <div class="service-options">
                             <div class="service-option" data-service="health-appointments">
-                                <input type="radio" name="service" value="health-appointments" id="health-appointments">
+                                <input type="radio" name="service" value="health-appointments" id="health-appointments" required>
                                 <label for="health-appointments" class="service-card-input">
                                     <div class="service-icon">
                                         <i class="fas fa-stethoscope"></i>
@@ -68,18 +76,18 @@
                                     <div class="service-info">
                                         <h3>Health Appointments</h3>
                                         <p>Medical checkups and treatments assistance</p>
-                                        <div class="service-pricing">
+                                        <div class="service-pricing" style="display: none;">
                                             <div class="price-option">
                                                 <input type="radio" name="health_package" value="hourly" id="health-hourly">
-                                                <label for="health-hourly">RM35/hour (min 2 hours)</label>
+                                                <label for="health-hourly">RM35/hour (min 2 hours) - RM70</label>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="health_package" value="package1" id="health-package1">
-                                                <label for="health-package1">RM132/4 hours</label>
+                                                <label for="health-package1">Package 1: RM132 (4 hours)</label>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="health_package" value="package2" id="health-package2">
-                                                <label for="health-package2">RM186/6 hours</label>
+                                                <label for="health-package2">Package 2: RM186 (6 hours)</label>
                                             </div>
                                         </div>
                                     </div>
@@ -95,18 +103,22 @@
                                     <div class="service-info">
                                         <h3>Dialysis Support</h3>
                                         <p>Dedicated companion for dialysis treatments</p>
-                                        <div class="service-pricing">
+                                        <div class="service-pricing" style="display: none;">
                                             <div class="price-option">
                                                 <input type="radio" name="dialysis_package" value="hourly" id="dialysis-hourly">
                                                 <label for="dialysis-hourly">RM35/hour</label>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="dialysis_package" value="package1" id="dialysis-package1">
-                                                <label for="dialysis-package1">RM186/6 hours (3 sessions)</label>
+                                                <label for="dialysis-package1">Package 1: RM186 (6 hours - 3 sessions)</label>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="dialysis_package" value="package2" id="dialysis-package2">
-                                                <label for="dialysis-package2">RM720/24 hours (12 sessions)</label>
+                                                <label for="dialysis-package2">Package 2: RM720 (24 hours - 12 sessions)</label>
+                                            </div>
+                                            <div class="price-option">
+                                                <input type="radio" name="dialysis_package" value="companion" id="dialysis-companion">
+                                                <label for="dialysis-companion">Companion during treatment: RM30/hour</label>
                                             </div>
                                         </div>
                                     </div>
@@ -122,18 +134,53 @@
                                     <div class="service-info">
                                         <h3>Home Care Package</h3>
                                         <p>Comprehensive daily care assistance</p>
-                                        <div class="service-pricing">
+                                        <div class="service-pricing" style="display: none;">
                                             <div class="price-option">
                                                 <input type="radio" name="home_package" value="package1" id="home-package1">
-                                                <label for="home-package1">RM1,680 (4 hrs/day, 20 sessions)</label>
+                                                <label for="home-package1">Package 1: RM1,680 (4 hrs/day, 20 sessions)</label>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="home_package" value="package2" id="home-package2">
-                                                <label for="home-package2">RM2,280 (6 hrs/day, 20 sessions)</label>
+                                                <label for="home-package2">Package 2: RM2,280 (6 hrs/day, 20 sessions)</label>
                                             </div>
                                             <div class="price-option">
                                                 <input type="radio" name="home_package" value="package3" id="home-package3">
-                                                <label for="home-package3">RM2,880 (8 hrs/day, 20 sessions)</label>
+                                                <label for="home-package3">Package 3: RM2,880 (8 hrs/day, 20 sessions)</label>
+                                            </div>
+                                            <div class="price-option">
+                                                <input type="radio" name="home_package" value="package4" id="home-package4">
+                                                <label for="home-package4">Package 4: RM3,500 (10 hrs/day, 20 sessions)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="service-option" data-service="home-plus-package">
+                                <input type="radio" name="service" value="home-plus-package" id="home-plus-package">
+                                <label for="home-plus-package" class="service-card-input">
+                                    <div class="service-icon">
+                                        <i class="fas fa-home-heart"></i>
+                                    </div>
+                                    <div class="service-info">
+                                        <h3>Home Care (Plus) Package</h3>
+                                        <p>Extensive care for bedridden & wheelchair users</p>
+                                        <div class="service-pricing" style="display: none;">
+                                            <div class="price-option">
+                                                <input type="radio" name="home_plus_package" value="package1" id="home-plus-package1">
+                                                <label for="home-plus-package1">Package 1: RM2,000 (4 hrs/day, 20 sessions)</label>
+                                            </div>
+                                            <div class="price-option">
+                                                <input type="radio" name="home_plus_package" value="package2" id="home-plus-package2">
+                                                <label for="home-plus-package2">Package 2: RM2,650 (6 hrs/day, 20 sessions)</label>
+                                            </div>
+                                            <div class="price-option">
+                                                <input type="radio" name="home_plus_package" value="package3" id="home-plus-package3">
+                                                <label for="home-plus-package3">Package 3: RM3,350 (8 hrs/day, 20 sessions)</label>
+                                            </div>
+                                            <div class="price-option">
+                                                <input type="radio" name="home_plus_package" value="package4" id="home-plus-package4">
+                                                <label for="home-plus-package4">Package 4: RM4,000 (10 hrs/day, 20 sessions)</label>
                                             </div>
                                         </div>
                                     </div>
@@ -149,10 +196,10 @@
                                     <div class="service-info">
                                         <h3>Custom Activities</h3>
                                         <p>Personalized leisure and recreational activities</p>
-                                        <div class="service-pricing">
+                                        <div class="service-pricing" style="display: none;">
                                             <div class="price-option">
                                                 <input type="radio" name="custom_package" value="basic" id="custom-basic">
-                                                <label for="custom-basic">RM70/2 hours</label>
+                                                <label for="custom-basic">Basic Package: RM70 (2 hours)</label>
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +227,7 @@
                             
                             <div class="form-group">
                                 <label for="phone" class="form-label">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="+60 11-234 5678" required>
                             </div>
                             
                             <div class="form-group">
@@ -190,40 +237,52 @@
                             
                             <div class="form-group">
                                 <label for="emergency-contact" class="form-label">Emergency Contact</label>
-                                <input type="tel" id="emergency-contact" name="emergency_contact" class="form-input">
+                                <input type="tel" id="emergency-contact" name="emergency_contact" class="form-input" placeholder="+60 11-234 5678">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="address" class="form-label">Full Address *</label>
-                            <textarea id="address" name="address" class="form-textarea" rows="3" required></textarea>
+                            <textarea id="address" name="address" class="form-textarea" rows="3" placeholder="Please provide your complete address including postcode" required></textarea>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="preferred-date" class="form-label">Preferred Service Date *</label>
+                                <input type="date" id="preferred-date" name="preferred_date" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="preferred-time" class="form-label">Preferred Time *</label>
+                                <select id="preferred-time" name="preferred_time" class="form-select" required>
+                                    <option value="">Select time</option>
+                                    <option value="08:00">08:00 AM</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">01:00 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="17:00">05:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="patient-name" class="form-label">Patient/Care Recipient Name</label>
+                            <input type="text" id="patient-name" name="patient_name" class="form-input" placeholder="If different from above">
                         </div>
 
                         <div class="form-group">
                             <label for="special-requirements" class="form-label">Special Requirements / Medical Conditions</label>
-                            <textarea id="special-requirements" name="special_requirements" class="form-textarea" rows="4" placeholder="Please describe any special needs, medical conditions, or specific requirements..."></textarea>
+                            <textarea id="special-requirements" name="special_requirements" class="form-textarea" rows="4" placeholder="Please describe any special needs, medical conditions, mobility requirements, or specific care instructions..."></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="preferred-date" class="form-label">Preferred Service Date *</label>
-                            <input type="date" id="preferred-date" name="preferred_date" class="form-input" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="preferred-time" class="form-label">Preferred Time *</label>
-                            <select id="preferred-time" name="preferred_time" class="form-select" required>
-                                <option value="">Select time</option>
-                                <option value="08:00">08:00 AM</option>
-                                <option value="09:00">09:00 AM</option>
-                                <option value="10:00">10:00 AM</option>
-                                <option value="11:00">11:00 AM</option>
-                                <option value="12:00">12:00 PM</option>
-                                <option value="13:00">01:00 PM</option>
-                                <option value="14:00">02:00 PM</option>
-                                <option value="15:00">03:00 PM</option>
-                                <option value="16:00">04:00 PM</option>
-                                <option value="17:00">05:00 PM</option>
-                            </select>
+                            <label for="additional-notes" class="form-label">Additional Notes</label>
+                            <textarea id="additional-notes" name="additional_notes" class="form-textarea" rows="3" placeholder="Any other information that would help us serve you better..."></textarea>
                         </div>
 
                         <div class="form-actions">
@@ -232,19 +291,19 @@
                                 Previous
                             </button>
                             <button type="button" class="btn btn--primary btn--large" onclick="nextStep()">
-                                Continue to Payment
+                                Review Details
                                 <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Step 3: Payment Summary -->
+                    <!-- Step 3: Confirmation -->
                     <div class="form-step" data-step="3">
-                        <h2 class="step-title">Payment Summary</h2>
+                        <h2 class="step-title">Booking Summary</h2>
                         
-                        <div class="payment-summary">
+                        <div class="booking-summary">
                             <div class="summary-card">
-                                <h3>Service Details</h3>
+                                <h3><i class="fas fa-clipboard-list"></i> Service Details</h3>
                                 <div class="summary-item">
                                     <span class="summary-label">Service:</span>
                                     <span class="summary-value" id="summary-service">-</span>
@@ -259,13 +318,14 @@
                                 </div>
                                 <div class="summary-divider"></div>
                                 <div class="summary-item total">
-                                    <span class="summary-label">Total Amount:</span>
+                                    <span class="summary-label">Estimated Cost:</span>
                                     <span class="summary-value" id="summary-total">RM 0</span>
                                 </div>
+                                <p class="cost-note">*Final cost may vary based on additional services and transportation fees</p>
                             </div>
 
                             <div class="summary-card">
-                                <h3>Customer Information</h3>
+                                <h3><i class="fas fa-user"></i> Contact Information</h3>
                                 <div class="summary-item">
                                     <span class="summary-label">Name:</span>
                                     <span class="summary-value" id="summary-name">-</span>
@@ -278,34 +338,21 @@
                                     <span class="summary-label">Email:</span>
                                     <span class="summary-value" id="summary-email">-</span>
                                 </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Address:</span>
+                                    <span class="summary-value" id="summary-address">-</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="payment-methods">
-                            <h3>Select Payment Method</h3>
-                            <div class="payment-options">
-                                <div class="payment-option">
-                                    <input type="radio" name="payment_method" value="fpx" id="fpx" checked>
-                                    <label for="fpx" class="payment-label">
-                                        <i class="fas fa-university"></i>
-                                        <span>Online Banking (FPX)</span>
-                                    </label>
-                                </div>
-                                <div class="payment-option">
-                                    <input type="radio" name="payment_method" value="card" id="card">
-                                    <label for="card" class="payment-label">
-                                        <i class="fas fa-credit-card"></i>
-                                        <span>Credit/Debit Card</span>
-                                    </label>
-                                </div>
-                                <div class="payment-option">
-                                    <input type="radio" name="payment_method" value="ewallet" id="ewallet">
-                                    <label for="ewallet" class="payment-label">
-                                        <i class="fas fa-mobile-alt"></i>
-                                        <span>E-Wallet (TNG, GrabPay)</span>
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="next-steps-info">
+                            <h3><i class="fas fa-info-circle"></i> What Happens Next?</h3>
+                            <ul class="steps-list">
+                                <li><i class="fas fa-phone"></i> Our team will call you within 24 hours to confirm details</li>
+                                <li><i class="fas fa-user-check"></i> We'll assign a suitable Temanion based on your requirements</li>
+                                <li><i class="fas fa-calendar-check"></i> You'll receive confirmation with your Temanion's details</li>
+                                <li><i class="fas fa-heart"></i> Your care companion service begins as scheduled</li>
+                            </ul>
                         </div>
 
                         <div class="terms-agreement">
@@ -321,9 +368,9 @@
                                 <i class="fas fa-arrow-left"></i>
                                 Previous
                             </button>
-                            <button type="submit" class="btn btn--primary btn--large" id="pay-now-btn">
-                                <i class="fas fa-lock"></i>
-                                Pay Now Securely
+                            <button type="submit" class="btn btn--primary btn--large" id="submit-booking-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Booking Request
                             </button>
                         </div>
                     </div>
@@ -332,17 +379,30 @@
         </div>
     </section>
 
-    <!-- Loading Modal -->
-    <div id="loading-modal" class="modal">
-        <div class="modal-content">
-            <div class="loading-spinner"></div>
-            <p>Processing your payment...</p>
+    <!-- Success Modal -->
+    <div id="booking-success-modal" class="modal" style="display: none;">
+        <div class="modal-content success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Booking Request Submitted!</h2>
+            <p>Thank you for choosing Teman Malaysia. We've received your booking request and will contact you within 24 hours to confirm the details.</p>
+            <div class="booking-reference">
+                <strong>Reference Number: <span id="booking-ref-number"></span></strong>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn--primary" onclick="window.location.href='../index.html'">
+                    Back to Home
+                </button>
+                <button class="btn btn--outline" onclick="closeModal()">
+                    Close
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Scripts -->
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/booking.js"></script>
-    <script src="../assets/js/billplz.js"></script>
 </body>
 </html>
