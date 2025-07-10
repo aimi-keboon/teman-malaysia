@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForms();
     initAnimations();
     initToastNotifications();
+    initTestimonials();
+    initVideoSection();
     
     console.log('Teman Malaysia website loaded successfully!');
 });
@@ -87,16 +89,168 @@ function initScrollEffects() {
     });
 }
 
+// ===== TESTIMONIALS SLIDER =====
+function initTestimonials() {
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.testimonial__prev');
+    const nextBtn = document.querySelector('.testimonial__next');
+    
+    if (testimonialCards.length === 0) return;
+    
+    let currentTestimonial = 0;
+    
+    function showTestimonial(index) {
+        // Hide all testimonials
+        testimonialCards.forEach(card => card.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Show current testimonial
+        testimonialCards[index].classList.add('active');
+        if (dots[index]) dots[index].classList.add('active');
+    }
+    
+    function nextTestimonial() {
+        currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+        showTestimonial(currentTestimonial);
+    }
+    
+    function prevTestimonial() {
+        currentTestimonial = (currentTestimonial - 1 + testimonialCards.length) % testimonialCards.length;
+        showTestimonial(currentTestimonial);
+    }
+    
+    // Event listeners
+    if (nextBtn) nextBtn.addEventListener('click', nextTestimonial);
+    if (prevBtn) prevBtn.addEventListener('click', prevTestimonial);
+    
+    // Dot navigation
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentTestimonial = index;
+            showTestimonial(currentTestimonial);
+        });
+    });
+    
+    // Auto-advance testimonials
+    setInterval(nextTestimonial, 5000);
+    
+    // Initialize first testimonial
+    showTestimonial(0);
+}
+
+// ===== VIDEO SECTION =====
+function initVideoSection() {
+    const videoIframe = document.querySelector('.video__iframe');
+    
+    if (videoIframe) {
+        // Lazy load video when it comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const iframe = entry.target;
+                    if (iframe.dataset.src) {
+                        iframe.src = iframe.dataset.src;
+                        iframe.removeAttribute('data-src');
+                    }
+                    observer.unobserve(iframe);
+                }
+            });
+        });
+        
+        // If iframe has data-src, observe it for lazy loading
+        if (videoIframe.dataset.src) {
+            observer.observe(videoIframe);
+        }
+    }
+}
+
 // ===== CONTACT FORMS =====
 function initContactForms() {
-    const forms = document.querySelectorAll('form[data-form-type]');
+    const contactForm = document.getElementById('contact-form');
     
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleContactFormSubmission(this);
+        });
+    }
+    
+    // General form handler
+    const forms = document.querySelectorAll('form[data-form-type]');
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             handleFormSubmission(this);
         });
     });
+}
+
+function handleContactFormSubmission(form) {
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+    
+    // Show loading state
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    
+    // Collect form data
+    const formData = new FormData(form);
+    const data = {};
+    for (let [key, value] of formData.entries()) {
+        data[key] = value;
+    }
+    
+    // Validate form
+    if (!validateContactForm(form)) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalText;
+        return;
+    }
+    
+    // Simulate form submission
+    setTimeout(() => {
+        // Reset form
+        form.reset();
+        
+        // Reset button
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalText;
+        
+        // Show success message
+        showToast('success', 'Message sent successfully! We\'ll get back to you soon.');
+        
+        // Log data (for development)
+        console.log('Contact form submitted:', data);
+        
+    }, 2000);
+}
+
+function validateContactForm(form) {
+    let isValid = true;
+    const requiredFields = form.querySelectorAll('[required]');
+    
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            showFieldError(field, 'This field is required');
+            isValid = false;
+        } else {
+            clearFieldError(field);
+            
+            // Additional validation
+            if (field.type === 'email' && !isValidEmail(field.value)) {
+                showFieldError(field, 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            if (field.type === 'tel' && field.value && !isValidPhone(field.value)) {
+                showFieldError(field, 'Please enter a valid phone number');
+                isValid = false;
+            }
+        }
+    });
+    
+    return isValid;
 }
 
 function handleFormSubmission(form) {
@@ -191,7 +345,8 @@ function isValidEmail(email) {
 
 function isValidPhone(phone) {
     // Malaysian phone number format
-    return /^(\+?6?01)[0-46-9]-*[0-9]{7,8}$/.test(phone.replace(/\s/g, ''));
+    const cleaned = phone.replace(/\s|-/g, '');
+    return /^(\+?6?01)[0-46-9]-*[0-9]{7,8}$/.test(cleaned);
 }
 
 // ===== ANIMATIONS =====
@@ -212,13 +367,23 @@ function initAnimations() {
     }, observerOptions);
     
     // Add animation to elements
-    const animateElements = document.querySelectorAll('.card, .feature-item, .testimonial-card');
+    const animateElements = document.querySelectorAll('.card, .feature-item, .testimonial-card, .service-card, .partner-logo, .media-logo');
     animateElements.forEach((el, index) => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         observer.observe(el);
     });
+    
+    // Parallax effect for hero floating card
+    const floatingCard = document.querySelector('.hero__floating-card');
+    if (floatingCard) {
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = scrolled * 0.2;
+            floatingCard.style.transform = `translateY(${parallax}px)`;
+        });
+    }
 }
 
 // ===== TOAST NOTIFICATIONS =====
@@ -259,15 +424,6 @@ function showToast(type, message, duration = 5000) {
         </button>
     `;
     
-    // Add styles for close button
-    const style = toast.querySelector('.toast-close').style;
-    style.background = 'none';
-    style.border = 'none';
-    style.color = 'inherit';
-    style.marginLeft = 'auto';
-    style.cursor = 'pointer';
-    style.padding = '0 0 0 10px';
-    
     container.appendChild(toast);
     
     // Trigger animation
@@ -284,6 +440,27 @@ function showToast(type, message, duration = 5000) {
             }
         }, 300);
     }, duration);
+}
+
+// ===== PARTNER/MEDIA LOGO EFFECTS =====
+function initLogoEffects() {
+    const logos = document.querySelectorAll('.partner-logo, .media-logo');
+    
+    logos.forEach(logo => {
+        logo.addEventListener('mouseenter', function() {
+            const img = this.querySelector('img');
+            if (img) {
+                img.style.transform = 'scale(1.1)';
+            }
+        });
+        
+        logo.addEventListener('mouseleave', function() {
+            const img = this.querySelector('img');
+            if (img) {
+                img.style.transform = 'scale(1)';
+            }
+        });
+    });
 }
 
 // ===== UTILITY FUNCTIONS =====
@@ -311,7 +488,7 @@ function formatCurrency(amount) {
     }).format(amount);
 }
 
-// Format phone number
+// Format phone number for Malaysian format
 function formatPhoneNumber(phone) {
     // Remove all non-digits
     const cleaned = phone.replace(/\D/g, '');
@@ -342,6 +519,68 @@ function generateId(prefix = 'id') {
     return `${prefix}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 }
 
+// Smooth scroll to element
+function scrollToElement(element, offset = 0) {
+    const elementPosition = element.offsetTop - offset;
+    window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+    });
+}
+
+// Check if element is in viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Lazy load images
+function lazyLoadImages() {
+    const images = document.querySelectorAll('img[data-src]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+}
+
+// ===== PERFORMANCE OPTIMIZATIONS =====
+
+// Preload critical images
+function preloadCriticalImages() {
+    const criticalImages = [
+        'assets/images/hero-companion.jpg',
+        'assets/images/teman-logo.png'
+    ];
+    
+    criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+    });
+}
+
+// Initialize performance optimizations
+document.addEventListener('DOMContentLoaded', function() {
+    preloadCriticalImages();
+    lazyLoadImages();
+    initLogoEffects();
+});
+
 // ===== GLOBAL ERROR HANDLING =====
 window.addEventListener('error', function(e) {
     console.error('Global error:', e.error);
@@ -353,6 +592,37 @@ window.addEventListener('unhandledrejection', function(e) {
     e.preventDefault();
 });
 
+// ===== ACCESSIBILITY IMPROVEMENTS =====
+function initAccessibility() {
+    // Add focus indicators for keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Tab') {
+            document.body.classList.add('using-keyboard');
+        }
+    });
+    
+    document.addEventListener('mousedown', function() {
+        document.body.classList.remove('using-keyboard');
+    });
+    
+    // Add aria-labels to social links
+    const socialLinks = document.querySelectorAll('.social-link');
+    socialLinks.forEach(link => {
+        const icon = link.querySelector('i');
+        if (icon) {
+            const platform = icon.className.includes('facebook') ? 'Facebook' :
+                            icon.className.includes('instagram') ? 'Instagram' :
+                            icon.className.includes('whatsapp') ? 'WhatsApp' :
+                            icon.className.includes('youtube') ? 'YouTube' :
+                            icon.className.includes('linkedin') ? 'LinkedIn' : 'Social Media';
+            link.setAttribute('aria-label', `Visit our ${platform} page`);
+        }
+    });
+}
+
+// Initialize accessibility on DOM ready
+document.addEventListener('DOMContentLoaded', initAccessibility);
+
 // ===== EXPORT FUNCTIONS (for use in other scripts) =====
 window.TemanMalaysia = {
     showToast,
@@ -362,5 +632,8 @@ window.TemanMalaysia = {
     generateId,
     validateForm,
     isValidEmail,
-    isValidPhone
+    isValidPhone,
+    scrollToElement,
+    isInViewport,
+    debounce
 };
