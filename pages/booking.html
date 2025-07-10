@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Service - Teman Malaysia</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/booking.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header (simplified for booking page) -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <a href="../index.html">
+                    <img src="../assets/images/teman-logo.png" alt="Teman Malaysia" class="nav__logo">
+                </a>
+            </div>
+            <div class="nav__actions">
+                <a href="../index.html" class="btn btn--outline">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Booking Form Section -->
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking__header text-center">
+                <h1 class="booking__title">Book Your Care Companion</h1>
+                <p class="booking__subtitle">Fill in the details below and proceed to secure payment</p>
+            </div>
+
+            <div class="booking__container">
+                <!-- Progress Steps -->
+                <div class="progress-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step__number">1</div>
+                        <div class="step__label">Service Selection</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step__number">2</div>
+                        <div class="step__label">Personal Details</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step__number">3</div>
+                        <div class="step__label">Payment</div>
+                    </div>
+                </div>
+
+                <!-- Booking Form -->
+                <form id="booking-form" class="booking-form">
+                    <!-- Step 1: Service Selection -->
+                    <div class="form-step active" data-step="1">
+                        <h2 class="step-title">Select Your Service</h2>
+                        
+                        <div class="service-options">
+                            <div class="service-option" data-service="health-appointments">
+                                <input type="radio" name="service" value="health-appointments" id="health-appointments">
+                                <label for="health-appointments" class="service-card-input">
+                                    <div class="service-icon">
+                                        <i class="fas fa-stethoscope"></i>
+                                    </div>
+                                    <div class="service-info">
+                                        <h3>Health Appointments</h3>
+                                        <p>Medical checkups and treatments assistance</p>
+                                        <div class="service-pricing">
+                                            <div class="price-option">
+                                                <input type="radio" name="health_package" value="hourly" id="health-hourly">
+                                                <label for="health-hourly">RM35/hour (min 2 hours)</label>
+                                            </div>
+                                            <div class="price-option">
+                                                <input type="radio" name="health_package" value="package1" id="health-package1">
+                                                <label for="health-package1">RM132/4 hours</label>
+                                            </div>
+                                            <div class="price-option">
+                                                <input type="radio" name="health_package" value="package2" id="health-package2">
+                                                <label for="health-package2">RM186/6 hours</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="service-option" data-service="dialysis">
+                                <input type="radio" name="service" value="dialysis" id="dialysis">
+                                <label for="dialysis" class="service-card-input">
+                                    <div class="service-icon">
+                                        <i class="fas fa-heartbeat"></i>
+                                    </div>
+                                    <div class="service-info">
+                                        <h3>Dialysis Support</h3>
+                                        <p>Dedicated companion for dialysis treatments</p>
+                                        <div class="service-pricing">
+                                            <div class="price-option">
+                                                <input type="radio" name="dialysis_package" value="hourly" id="dialysis-hourly">
+                                                <label for="dialysis-hourly">RM35/hour</label>
+                                            </div>
+                                            <div class="price-option">
+                                                <input type="radio" name="dialysis_package" value="package1" id="dialysis-package1">
+                                                <label for="dialysis-package1">RM186/6 hours (3 sessions)</label>
+                                            </div>
+                                            <div class="price-option">
+                                                <input type="radio" name="dialysis_package" value="package2" id="dialysis-package2">
+                                                <label for="dialysis-package2">RM720/24 hours (12 sessions)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="service-option" data-service="home-package">
+                                <input type="radio" name="service" value="home-package" id="home-package">
+                                <label for="home-package" class="service-card-input">
+                                    <div class="service-icon">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div class="service-info">
+                                        <h3>Home Care Package</h3>
+                                        <p>Comprehensive daily care assistance</p>
+                                        <div class="service-pricing">
+                                            <div class="price-option">
+                                                <input type="radio" name="home_package" value="package1" id="home-package1">
+                                                <label for="home-package1">RM1,680 (4 hrs/day, 20 sessions)</label>
+                                            </div>
+                                            <div class="price-option">
+                                                <input type="radio" name="home_package" value="package2" id="home-package2">
+                                                <label for="home-package2">RM2,280 (6 hrs/day, 20 sessions)</label>
+                                            </div>
+                                            <div class="price-option">
+                                                <input type="radio" name="home_package" value="package3" id="home-package3">
+                                                <label for="home-package3">RM2,880 (8 hrs/day, 20 sessions)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="service-option" data-service="custom-activities">
+                                <input type="radio" name="service" value="custom-activities" id="custom-activities">
+                                <label for="custom-activities" class="service-card-input">
+                                    <div class="service-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="service-info">
+                                        <h3>Custom Activities</h3>
+                                        <p>Personalized leisure and recreational activities</p>
+                                        <div class="service-pricing">
+                                            <div class="price-option">
+                                                <input type="radio" name="custom_package" value="basic" id="custom-basic">
+                                                <label for="custom-basic">RM70/2 hours</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--primary btn--large" onclick="nextStep()">
+                                Next Step
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Personal Details -->
+                    <div class="form-step" data-step="2">
+                        <h2 class="step-title">Personal Information</h2>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="full-name" class="form-label">Full Name *</label>
+                                <input type="text" id="full-name" name="full_name" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="emergency-contact" class="form-label">Emergency Contact</label>
+                                <input type="tel" id="emergency-contact" name="emergency_contact" class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address" class="form-label">Full Address *</label>
+                            <textarea id="address" name="address" class="form-textarea" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="special-requirements" class="form-label">Special Requirements / Medical Conditions</label>
+                            <textarea id="special-requirements" name="special_requirements" class="form-textarea" rows="4" placeholder="Please describe any special needs, medical conditions, or specific requirements..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferred-date" class="form-label">Preferred Service Date *</label>
+                            <input type="date" id="preferred-date" name="preferred_date" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferred-time" class="form-label">Preferred Time *</label>
+                            <select id="preferred-time" name="preferred_time" class="form-select" required>
+                                <option value="">Select time</option>
+                                <option value="08:00">08:00 AM</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--outline btn--large" onclick="prevStep()">
+                                <i class="fas fa-arrow-left"></i>
+                                Previous
+                            </button>
+                            <button type="button" class="btn btn--primary btn--large" onclick="nextStep()">
+                                Continue to Payment
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Payment Summary -->
+                    <div class="form-step" data-step="3">
+                        <h2 class="step-title">Payment Summary</h2>
+                        
+                        <div class="payment-summary">
+                            <div class="summary-card">
+                                <h3>Service Details</h3>
+                                <div class="summary-item">
+                                    <span class="summary-label">Service:</span>
+                                    <span class="summary-value" id="summary-service">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Package:</span>
+                                    <span class="summary-value" id="summary-package">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Date & Time:</span>
+                                    <span class="summary-value" id="summary-datetime">-</span>
+                                </div>
+                                <div class="summary-divider"></div>
+                                <div class="summary-item total">
+                                    <span class="summary-label">Total Amount:</span>
+                                    <span class="summary-value" id="summary-total">RM 0</span>
+                                </div>
+                            </div>
+
+                            <div class="summary-card">
+                                <h3>Customer Information</h3>
+                                <div class="summary-item">
+                                    <span class="summary-label">Name:</span>
+                                    <span class="summary-value" id="summary-name">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Phone:</span>
+                                    <span class="summary-value" id="summary-phone">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Email:</span>
+                                    <span class="summary-value" id="summary-email">-</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="payment-methods">
+                            <h3>Select Payment Method</h3>
+                            <div class="payment-options">
+                                <div class="payment-option">
+                                    <input type="radio" name="payment_method" value="fpx" id="fpx" checked>
+                                    <label for="fpx" class="payment-label">
+                                        <i class="fas fa-university"></i>
+                                        <span>Online Banking (FPX)</span>
+                                    </label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" name="payment_method" value="card" id="card">
+                                    <label for="card" class="payment-label">
+                                        <i class="fas fa-credit-card"></i>
+                                        <span>Credit/Debit Card</span>
+                                    </label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" name="payment_method" value="ewallet" id="ewallet">
+                                    <label for="ewallet" class="payment-label">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <span>E-Wallet (TNG, GrabPay)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="terms-agreement">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="terms_agreed" required>
+                                <span class="checkmark"></span>
+                                I agree to the <a href="#" target="_blank">Terms & Conditions</a> and <a href="#" target="_blank">Privacy Policy</a>
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--outline btn--large" onclick="prevStep()">
+                                <i class="fas fa-arrow-left"></i>
+                                Previous
+                            </button>
+                            <button type="submit" class="btn btn--primary btn--large" id="pay-now-btn">
+                                <i class="fas fa-lock"></i>
+                                Pay Now Securely
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading Modal -->
+    <div id="loading-modal" class="modal">
+        <div class="modal-content">
+            <div class="loading-spinner"></div>
+            <p>Processing your payment...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/booking.js"></script>
+    <script src="../assets/js/billplz.js"></script>
+</body>
+</html>
