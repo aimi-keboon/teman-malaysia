@@ -1,17 +1,4 @@
-.about__container {
-    max-width: 100%;
-}
-
-.vision-mission__combined-card {
-    max-width: 100%;
-}        .about__hero-card:last-child .about__icon-wrapper {
-background: rgba(0, 0, 0, 0.15);
-}
-
-.about__hero-card:last-child h3,
-.about__hero-card:last-child p {
-color: var(--gray-900);
-}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -372,6 +359,56 @@ line-height: 1.5;
 opacity: 0.95;
 }
 
+/* ABOUT SECTION ALTERNATIVE STYLES */
+.about__container {
+max-width: 800px;
+margin: 0 auto;
+}
+
+.about__card {
+background: var(--white);
+border-radius: var(--radius-2xl);
+padding: 2rem;
+margin-bottom: 1.5rem;
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+transition: all var(--transition-normal);
+border: 1px solid var(--gray-100);
+text-align: center;
+}
+
+.about__card:hover {
+transform: translateY(-4px);
+box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.about__header {
+margin-bottom: 1.5rem;
+}
+
+.about__icon {
+width: 60px;
+height: 60px;
+border-radius: var(--radius-full);
+background: linear-gradient(135deg, #4dd0e1, #26a69a);
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 1rem;
+}
+
+.about__title {
+font-size: 1.25rem;
+font-weight: 700;
+color: var(--gray-900);
+margin-bottom: 0.5rem;
+}
+
+.about__description {
+font-size: 1rem;
+color: var(--gray-600);
+line-height: 1.6;
+}
+
 /* VISION MISSION SECTION - HERO CARDS */
 .vision-mission-section {
 background: var(--white);
@@ -477,10 +514,68 @@ line-height: 1.5;
 margin: 0;
 }
 
+/* VISION MISSION COMBINED CARD */
+.vision-mission__combined-card {
+background: var(--gray-50);
+border-radius: var(--radius-2xl);
+padding: 2.5rem 2rem;
+border: 2px solid var(--gray-200);
+transition: all var(--transition-normal);
+position: relative;
+overflow: hidden;
+max-width: 800px;
+margin: 0 auto;
+}
+
+.vision-mission__combined-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 4px;
+background: linear-gradient(135deg, #4dd0e1, #ffc107);
+}
+
+.vision-mission__combined-card:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-xl);
+border-color: #4dd0e1;
+}
+
+.vision-mission__section {
+margin-bottom: 2.5rem;
+}
+
+.vision-mission__section:last-child {
+margin-bottom: 0;
+}
+
 /* Photo Carousel Styles */
 .memories-section {
 position: relative;
 overflow: hidden;
+}
+
+.memories-section .container {
+max-width: 1200px;
+}
+
+/* Mobile-first approach for memories grid */
+.memories-grid {
+display: flex;
+flex-direction: column;
+gap: 2rem;
+}
+
+.memories-content {
+text-align: center;
+margin-bottom: 2rem;
+}
+
+.memories-content .section__title {
+color: var(--gray-900);
+margin-bottom: 1rem;
 }
 
 .carousel-container {
@@ -813,7 +908,20 @@ transform: translateY(0);
     font-size: 1.125rem;
     max-width: 500px;
 }
+
+/* Desktop grid for memories section */
+.memories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
 }
+
+.memories-content {
+    margin-bottom: 0;
+}
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
 .container {
@@ -851,6 +959,21 @@ transform: translateY(0);
 .video__hero-card {
     padding: 2rem;
 }
+
+.about__hero-cards {
+    gap: 1rem;
+}
+
+.vision-mission__container {
+    gap: 1.5rem;
+}
+
+/* Keep memories section single column on tablet */
+.memories-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 }
 
 @media (max-width: 768px) {
@@ -858,6 +981,7 @@ transform: translateY(0);
     max-width: 100%;
     padding: 0 1rem;
 }
+
 .hero {
     padding: 120px 0 4rem;
 }
@@ -912,6 +1036,44 @@ transform: translateY(0);
 .video__wrapper {
     padding-bottom: 56.25%;
 }
+
+/* Mobile layout for about section */
+.about__hero-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.about__hero-card {
+    padding: 1.5rem;
+}
+
+/* Mobile layout for vision mission section */
+.vision-mission__container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.vision-mission__card {
+    padding: 1.5rem;
+}
+
+/* Ensure memories section is visible on mobile */
+.memories-section {
+    padding: 3rem 0;
+}
+
+.memories-grid {
+    gap: 2rem;
+}
+
+.memories-content .section__title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.carousel-container {
+    margin-top: 1rem;
+}
 }
 
 @media (max-width: 480px) {
@@ -948,6 +1110,71 @@ transform: translateY(0);
 .video__hero-card {
     padding: 1rem;
 }
+
+.about__hero-card {
+    padding: 1.25rem;
+}
+
+.about__hero-card h3 {
+    font-size: 1.125rem;
+}
+
+.about__hero-card p {
+    font-size: 0.85rem;
+}
+
+.vision-mission__card {
+    padding: 1.25rem;
+}
+
+.vision-mission__combined-card {
+    padding: 1.5rem 1rem;
+}
+
+.vision-mission__section {
+    margin-bottom: 2rem;
+}
+
+/* Further optimize memories section for small screens */
+.memories-content .section__title {
+    font-size: 1.25rem;
+}
+
+.memories-content p {
+    font-size: 0.9rem;
+}
+
+.carousel-nav {
+    width: 35px;
+    height: 35px;
+    font-size: 0.8rem;
+}
+
+.carousel-nav.prev {
+    left: 0.5rem;
+}
+
+.carousel-nav.next {
+    right: 0.5rem;
+}
+}
+
+/* Ensure proper spacing and visibility for all sections */
+.about__container {
+    max-width: 100%;
+}
+
+.vision-mission__combined-card {
+    max-width: 100%;
+}
+
+.about__hero-card:last-child .about__icon-wrapper {
+background: rgba(0, 0, 0, 0.15);
+}
+
+.about__hero-card:last-child h3,
+.about__hero-card:last-child p {
+color: var(--gray-900);
 }
 </style>
 </head>
@@ -1106,8 +1333,8 @@ transform: translateY(0);
 <!-- Memories Section with Photo Carousel -->
 <section class="section memories-section" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: white;">
 <div class="container">
-<div class="grid grid-2">
-    <div class="animate-on-scroll text-center">
+<div class="memories-grid">
+    <div class="memories-content animate-on-scroll text-center">
         <h2 class="section__title" style="color: var(--gray-900);">Some of Our Memories</h2>
         <div class="section__divider" style="background: var(--gray-900);"></div>
         <p>We appreciate everyone's involvement, and we thank you for your continued support.<br><br>Terima kasih!</p>
