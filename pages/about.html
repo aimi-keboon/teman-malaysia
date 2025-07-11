@@ -1,974 +1,1446 @@
-<!DOCTYPE html>
+.about__container {
+    max-width: 100%;
+}
+
+.vision-mission__combined-card {
+    max-width: 100%;
+}        .about__hero-card:last-child .about__icon-wrapper {
+background: rgba(0, 0, 0, 0.15);
+}
+
+.about__hero-card:last-child h3,
+.about__hero-card:last-child p {
+color: var(--gray-900);
+}<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Know More About Teman Malaysia</title>
-    <meta name="description" content="Teman Malaysia provides care companionship service for your loved ones. Want to know more about us? Our mission and vision? Click here!">
-    
-    <!-- Link to existing CSS files -->
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/responsive.css">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Page-specific styles -->
-    <style>
-        :root {
-            --primary-color: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #dbeafe;
-            --secondary-color: #059669;
-            --accent-color: #f59e0b;
-            
-            --white: #ffffff;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-800: #1f2937;
-            --gray-900: #111827;
-            
-            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --transition-fast: 150ms ease-in-out;
-            --transition-normal: 300ms ease-in-out;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-            --radius-md: 0.375rem;
-            --radius-lg: 0.5rem;
-            --radius-xl: 0.75rem;
-            --radius-2xl: 1rem;
-            --radius-full: 9999px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        .section {
-            padding: 5rem 0;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border: 2px solid transparent;
-            border-radius: var(--radius-lg);
-            font-weight: 500;
-            font-size: 0.875rem;
-            text-decoration: none;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            white-space: nowrap;
-            background: none;
-        }
-
-        .btn--primary {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        .btn--primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn--outline {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            background-color: transparent;
-        }
-
-        .btn--outline:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 140px 0 5rem;
-            background: linear-gradient(135deg, var(--gray-50) 0%, var(--primary-light) 100%);
-            text-align: center;
-        }
-
-        .hero__title {
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            color: var(--gray-900);
-        }
-
-        .hero__description {
-            font-size: 1.25rem;
-            color: var(--gray-600);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Section Headers */
-        .section__header {
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .section__tag {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .section__title {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: var(--gray-900);
-            margin-bottom: 1rem;
-        }
-
-        .section__subtitle {
-            font-size: 1.125rem;
-            color: var(--gray-600);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .section__divider {
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            margin: 1rem auto;
-            border-radius: var(--radius-full);
-        }
-
-        /* Cards */
-        .card {
-            background: var(--white);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-            transition: var(--transition-normal);
-            height: 100%;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .card-body {
-            padding: 1.5rem;
-        }
-
-        /* Grid */
-        .grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .grid-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        /* Video Section - Match index.html styling */
-        .video__container {
-            display: grid;
-            gap: 3rem;
-        }
-
-        .video__wrapper {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-xl);
-        }
-
-        .video__iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .video__content p {
-            margin-bottom: 1rem;
-            color: var(--gray-600);
-            line-height: 1.7;
-        }
-
-        /* Team Section */
-        .team-member {
-            text-align: center;
-        }
-
-        .team-member__image {
-            width: 200px;
-            height: 200px;
-            border-radius: var(--radius-full);
-            object-fit: cover;
-            margin: 0 auto 1rem;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition-normal);
-        }
-
-        .team-member:hover .team-member__image {
-            transform: scale(1.05);
-        }
-
-        .team-member__name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--gray-900);
-            margin-bottom: 0.5rem;
-        }
-
-        .team-member__role {
-            font-size: 1rem;
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-
-        /* Stats Section */
-        .stats {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--white);
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* Partners Section */
-        .partner-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .partner-logo {
-            text-align: center;
-            opacity: 0.7;
-            transition: var(--transition-fast);
-            padding: 1rem;
-        }
-
-        .partner-logo:hover {
-            opacity: 1;
-        }
-
-        .partner-logo img {
-            height: 60px;
-            width: auto;
-            margin: 0 auto;
-            filter: grayscale(100%);
-            transition: var(--transition-fast);
-        }
-
-        .partner-logo:hover img {
-            filter: grayscale(0%);
-        }
-
-        /* Contact Form */
-        .contact-section {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .contact-form {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--radius-2xl);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: var(--gray-700);
-        }
-
-        .form-input,
-        .form-select,
-        .form-textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--gray-300);
-            border-radius: var(--radius-md);
-            font-size: 1rem;
-            transition: var(--transition-fast);
-            font-family: inherit;
-            background: var(--white);
-        }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background: var(--gray-50);
-        }
-
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .testimonial {
-            padding: 2rem;
-        }
-
-        .testimonial-text {
-            font-size: 1.25rem;
-            font-style: italic;
-            color: var(--gray-700);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--gray-900);
-        }
-
-        .testimonial-role {
-            font-size: 0.875rem;
-            color: var(--gray-500);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-            
-            .hero__title {
-                font-size: 2.25rem;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .grid-3 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 120px 0 4rem;
-            }
-
-            .hero__title {
-                font-size: 2rem;
-            }
-
-            .section {
-                padding: 4rem 0;
-            }
-
-            .section__title {
-                font-size: 1.875rem;
-            }
-
-            .grid-3,
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .partner-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero__title {
-                font-size: 1.75rem;
-            }
-
-            .section__title {
-                font-size: 1.5rem;
-            }
-
-            .contact-form {
-                padding: 1.5rem;
-                margin: 0 0.75rem;
-            }
-
-            .partner-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .animate-on-scroll.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Know More About Teman Malaysia</title>
+<meta name="description" content="Teman Malaysia provides care companionship service for your loved ones. Want to know more about us? Our mission and vision? Click here!">
+
+<!-- Link to existing CSS files -->
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/responsive.css">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Page-specific styles -->
+<style>
+:root {
+--primary-color: #4dd0e1;
+--primary-dark: #26a69a;
+--primary-light: #e0f7fa;
+--secondary-color: #ffc107;
+--accent-color: #ff9800;
+
+--white: #ffffff;
+--gray-50: #f9fafb;
+--gray-100: #f3f4f6;
+--gray-200: #e5e7eb;
+--gray-300: #d1d5db;
+--gray-400: #9ca3af;
+--gray-500: #6b7280;
+--gray-600: #4b5563;
+--gray-700: #374151;
+--gray-800: #1f2937;
+--gray-900: #111827;
+
+--font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+--transition-fast: 150ms ease-in-out;
+--transition-normal: 300ms ease-in-out;
+--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+--radius-md: 0.375rem;
+--radius-lg: 0.5rem;
+--radius-xl: 0.75rem;
+--radius-2xl: 1rem;
+--radius-full: 9999px;
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 1rem;
+}
+
+/* Narrow containers for specific sections only */
+.video-section .container,
+.about-section .container,
+.vision-mission-section .container {
+max-width: 600px;
+}
+
+.section {
+padding: 3rem 0;
+}
+
+.text-center {
+text-align: center;
+}
+
+/* Buttons */
+.btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+padding: 0.75rem 1.5rem;
+border: 2px solid transparent;
+border-radius: var(--radius-lg);
+font-weight: 500;
+font-size: 0.875rem;
+text-decoration: none;
+cursor: pointer;
+transition: var(--transition-fast);
+white-space: nowrap;
+background: none;
+}
+
+.btn--primary {
+background: linear-gradient(135deg, #4dd0e1, #ffc107);
+color: var(--gray-900);
+border: none;
+}
+
+.btn--primary:hover {
+background: linear-gradient(135deg, #26a69a, #ff9800);
+transform: translateY(-2px);
+box-shadow: var(--shadow-lg);
+}
+
+.btn--outline {
+border-color: #4dd0e1;
+color: #4dd0e1;
+background-color: transparent;
+}
+
+.btn--outline:hover {
+background: linear-gradient(135deg, #4dd0e1, #ffc107);
+color: var(--gray-900);
+border-color: transparent;
+}
+
+/* Hero Section */
+.hero {
+position: relative;
+padding: 140px 0 5rem;
+background-image: url('../assets/images/image-about.jpg');
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+text-align: center;
+color: white;
+}
+
+.hero::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.6);
+z-index: 1;
+}
+
+.hero .container {
+position: relative;
+z-index: 2;
+}
+
+.hero__title {
+font-size: 3rem;
+font-weight: 700;
+line-height: 1.1;
+margin-bottom: 1.5rem;
+color: white;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hero__description {
+font-size: 1.25rem;
+color: rgba(255, 255, 255, 0.9);
+margin-bottom: 2rem;
+max-width: 600px;
+margin-left: auto;
+margin-right: auto;
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Section Headers */
+.section__header {
+margin-bottom: 2rem;
+text-align: center;
+}
+
+.section__tag {
+font-size: 0.875rem;
+font-weight: 600;
+color: #4dd0e1;
+text-transform: uppercase;
+letter-spacing: 0.05em;
+margin-bottom: 0.5rem;
+display: block;
+}
+
+.section__title {
+font-size: 1.875rem;
+font-weight: 700;
+color: var(--gray-900);
+margin-bottom: 0.75rem;
+}
+
+.section__subtitle {
+font-size: 1.125rem;
+color: var(--gray-600);
+max-width: 800px;
+margin: 0 auto;
+}
+
+.section__divider {
+width: 50px;
+height: 3px;
+background: linear-gradient(135deg, #4dd0e1, #ffc107);
+margin: 0.75rem auto;
+border-radius: var(--radius-full);
+}
+
+/* Cards */
+.card {
+background: var(--white);
+border-radius: var(--radius-xl);
+box-shadow: var(--shadow-md);
+overflow: hidden;
+transition: var(--transition-normal);
+height: 100%;
+}
+
+.card:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-xl);
+}
+
+.card-body {
+padding: 1.5rem;
+}
+
+/* Grid */
+.grid {
+display: grid;
+gap: 1.5rem;
+}
+
+.grid-2 {
+grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+grid-template-columns: repeat(3, 1fr);
+}
+
+/* VIDEO SECTION - HERO CARD STYLE */
+.video-section {
+background: linear-gradient(135deg, #4dd0e1 0%, #ffc107 100%);
+position: relative;
+overflow: hidden;
+}
+
+.video-section::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+animation: float 15s ease-in-out infinite;
+}
+
+.video__hero-card {
+background: var(--white);
+border-radius: var(--radius-2xl);
+padding: 2rem;
+margin: 0 auto;
+max-width: 500px;
+box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+position: relative;
+z-index: 2;
+}
+
+.video__wrapper {
+position: relative;
+width: 100%;
+height: 0;
+padding-bottom: 35%;
+border-radius: var(--radius-xl);
+overflow: hidden;
+box-shadow: var(--shadow-xl);
+margin-bottom: 1.5rem;
+}
+
+.video__iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+.video__content h2 {
+font-size: 1.5rem;
+font-weight: 700;
+color: var(--gray-900);
+margin-bottom: 0.75rem;
+text-align: center;
+}
+
+.video__content p {
+font-size: 1rem;
+color: var(--gray-600);
+line-height: 1.6;
+text-align: center;
+}
+
+/* ABOUT SECTION - HERO CARDS */
+.about-section {
+background: var(--gray-50);
+}
+
+.about__hero-cards {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 1.5rem;
+max-width: 800px;
+margin: 0 auto;
+}
+
+.about__hero-card {
+background: var(--white);
+border-radius: var(--radius-2xl);
+padding: 2rem 1.5rem;
+text-align: center;
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+transition: all var(--transition-normal);
+border: 1px solid var(--gray-100);
+}
+
+.about__hero-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.about__hero-card:first-child {
+background: linear-gradient(135deg, #4dd0e1, #26a69a);
+color: var(--white);
+}
+
+.about__hero-card:last-child {
+background: linear-gradient(135deg, #ffc107, #ff9800);
+color: var(--gray-900);
+}
+
+.about__icon-wrapper {
+width: 60px;
+height: 60px;
+border-radius: var(--radius-full);
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 1rem;
+background: rgba(255, 255, 255, 0.25);
+backdrop-filter: blur(10px);
+}
+
+.about__hero-card h3 {
+font-size: 1.25rem;
+font-weight: 700;
+margin-bottom: 0.75rem;
+}
+
+.about__hero-card p {
+font-size: 0.9rem;
+line-height: 1.5;
+opacity: 0.95;
+}
+
+/* VISION MISSION SECTION - HERO CARDS */
+.vision-mission-section {
+background: var(--white);
+}
+
+.vision-mission__container {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 2rem;
+max-width: 900px;
+margin: 0 auto;
+}
+
+.vision-mission__card {
+background: var(--gray-50);
+border-radius: var(--radius-2xl);
+padding: 2rem 1.5rem;
+border: 2px solid var(--gray-200);
+transition: all var(--transition-normal);
+position: relative;
+overflow: hidden;
+}
+
+.vision-mission__card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 4px;
+background: linear-gradient(135deg, #4dd0e1, #ffc107);
+}
+
+.vision-mission__card:hover {
+transform: translateY(-4px);
+box-shadow: var(--shadow-xl);
+border-color: #4dd0e1;
+}
+
+.vision-mission__header {
+text-align: center;
+margin-bottom: 1.5rem;
+}
+
+.vision-mission__icon {
+width: 50px;
+height: 50px;
+border-radius: var(--radius-full);
+background: linear-gradient(135deg, #4dd0e1, #ffc107);
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 0 auto 0.75rem;
+}
+
+.vision-mission__title {
+font-size: 1.25rem;
+font-weight: 700;
+color: var(--gray-900);
+margin-bottom: 0.25rem;
+}
+
+.vision-mission__items {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+.vision-mission__item {
+display: flex;
+align-items: flex-start;
+gap: 0.75rem;
+margin-bottom: 1rem;
+padding: 0.75rem;
+background: var(--white);
+border-radius: var(--radius-lg);
+transition: var(--transition-fast);
+border: 1px solid var(--gray-200);
+}
+
+.vision-mission__item:hover {
+transform: translateX(4px);
+box-shadow: var(--shadow-md);
+border-color: #4dd0e1;
+}
+
+.vision-mission__item-icon {
+flex-shrink: 0;
+width: 32px;
+height: 32px;
+border-radius: var(--radius-full);
+background: linear-gradient(135deg, #4dd0e1, #ffc107);
+display: flex;
+align-items: center;
+justify-content: center;
+color: var(--gray-900);
+}
+
+.vision-mission__item-text {
+font-size: 0.85rem;
+color: var(--gray-700);
+line-height: 1.5;
+margin: 0;
+}
+
+/* Photo Carousel Styles */
+.memories-section {
+position: relative;
+overflow: hidden;
+}
+
+.carousel-container {
+position: relative;
+width: 100%;
+height: 300px;
+overflow: hidden;
+border-radius: var(--radius-xl);
+box-shadow: var(--shadow-xl);
+}
+
+.carousel-track {
+display: flex;
+height: 100%;
+animation: scroll 20s linear infinite;
+}
+
+.carousel-slide {
+min-width: 300px;
+height: 100%;
+margin-right: 1rem;
+border-radius: var(--radius-lg);
+overflow: hidden;
+position: relative;
+}
+
+.carousel-slide img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.3s ease;
+}
+
+.carousel-slide:hover img {
+transform: scale(1.05);
+}
+
+.carousel-overlay {
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+background: linear-gradient(transparent, rgba(0,0,0,0.7));
+padding: 1.5rem;
+color: white;
+}
+
+.carousel-caption {
+font-size: 0.875rem;
+font-weight: 500;
+}
+
+@keyframes scroll {
+0% {
+    transform: translateX(0);
+}
+100% {
+    transform: translateX(-50%);
+}
+}
+
+.carousel-container:hover .carousel-track {
+animation-play-state: paused;
+}
+
+/* Navigation arrows */
+.carousel-nav {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background: rgba(255, 255, 255, 0.9);
+border: none;
+border-radius: 50%;
+width: 50px;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: all 0.3s ease;
+z-index: 10;
+}
+
+.carousel-nav:hover {
+background: white;
+box-shadow: var(--shadow-lg);
+}
+
+.carousel-nav.prev {
+left: 1rem;
+}
+
+.carousel-nav.next {
+right: 1rem;
+}
+
+/* Team Section */
+.team-member {
+text-align: center;
+}
+
+.team-member__image {
+width: 200px;
+height: 200px;
+border-radius: var(--radius-full);
+object-fit: cover;
+margin: 0 auto 1rem;
+box-shadow: var(--shadow-lg);
+transition: var(--transition-normal);
+}
+
+.team-member:hover .team-member__image {
+transform: scale(1.05);
+}
+
+.team-member__name {
+font-size: 1.25rem;
+font-weight: 600;
+color: var(--gray-900);
+margin-bottom: 0.5rem;
+}
+
+.team-member__role {
+font-size: 1rem;
+color: #4dd0e1;
+font-weight: 500;
+}
+
+/* Stats Section */
+.stats {
+background: var(--gray-900);
+color: var(--white);
+}
+
+.stat-card {
+text-align: center;
+padding: 2rem 1rem;
+}
+
+.stat-number {
+font-size: 3rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+color: var(--white);
+}
+
+.stat-label {
+font-size: 1rem;
+opacity: 0.9;
+}
+
+/* Partners Section */
+.partner-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+gap: 2rem;
+align-items: center;
+}
+
+.partner-logo {
+text-align: center;
+opacity: 0.7;
+transition: var(--transition-fast);
+padding: 1rem;
+}
+
+.partner-logo:hover {
+opacity: 1;
+}
+
+.partner-logo img {
+height: 60px;
+width: auto;
+margin: 0 auto;
+filter: grayscale(100%);
+transition: var(--transition-fast);
+}
+
+.partner-logo:hover img {
+filter: grayscale(0%);
+}
+
+/* Contact Form */
+.contact-section {
+background: var(--primary-color);
+color: var(--white);
+}
+
+.contact-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4rem;
+align-items: center;
+}
+
+.contact-form {
+background: var(--white);
+padding: 2rem;
+border-radius: var(--radius-2xl);
+box-shadow: var(--shadow-xl);
+}
+
+.form-group {
+margin-bottom: 1.5rem;
+}
+
+.form-label {
+display: block;
+font-weight: 500;
+margin-bottom: 0.5rem;
+color: var(--gray-700);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+width: 100%;
+padding: 0.75rem;
+border: 1px solid var(--gray-300);
+border-radius: var(--radius-md);
+font-size: 1rem;
+transition: var(--transition-fast);
+font-family: inherit;
+background: var(--white);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+outline: none;
+border-color: var(--primary-color);
+box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1rem;
+}
+
+/* Testimonials */
+.testimonials {
+background: var(--gray-50);
+}
+
+.testimonial-slider {
+max-width: 800px;
+margin: 0 auto;
+text-align: center;
+}
+
+.testimonial {
+padding: 2rem;
+}
+
+.testimonial-text {
+font-size: 1.25rem;
+font-style: italic;
+color: var(--gray-700);
+margin-bottom: 1.5rem;
+line-height: 1.6;
+}
+
+.testimonial-author {
+font-size: 1rem;
+font-weight: 600;
+color: var(--gray-900);
+}
+
+.testimonial-role {
+font-size: 0.875rem;
+color: var(--gray-500);
+}
+
+/* Floating animations */
+@keyframes float {
+0%, 100% { transform: translateY(0px) rotate(0deg); }
+50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes floatReverse {
+0%, 100% { transform: translateY(0px) rotate(0deg); }
+50% { transform: translateY(20px) rotate(-5deg); }
+}
+
+.float-animation {
+animation: float 6s ease-in-out infinite;
+}
+
+.float-animation-reverse {
+animation: floatReverse 8s ease-in-out infinite;
+}
+
+.animate-on-scroll {
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.animate {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* Desktop-specific styling for narrow centered layout */
+@media (min-width: 1200px) {
+.video-section .container,
+.about-section .container,
+.vision-mission-section .container {
+    max-width: 500px;
+}
+
+.video__hero-card {
+    max-width: 450px;
+}
+
+.about__container {
+    max-width: 450px;
+}
+
+.vision-mission__combined-card {
+    max-width: 450px;
+}
+
+.hero__title {
+    font-size: 2.5rem;
+}
+
+.hero__description {
+    font-size: 1.125rem;
+    max-width: 500px;
+}
+}
+/* Responsive Design */
+@media (max-width: 1024px) {
+.container {
+    padding: 0 1.5rem;
+}
+
+.video-section .container,
+.about-section .container,
+.vision-mission-section .container {
+    max-width: 600px;
+}
+
+.hero__title {
+    font-size: 2.25rem;
+}
+
+.contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.carousel-slide {
+    min-width: 250px;
+}
+
+.about__container,
+.vision-mission__combined-card {
+    max-width: 500px;
+}
+
+.video__hero-card {
+    padding: 2rem;
+}
+}
+
+@media (max-width: 768px) {
+.container {
+    max-width: 100%;
+    padding: 0 1rem;
+}
+.hero {
+    padding: 120px 0 4rem;
+}
+
+.hero__title {
+    font-size: 2rem;
+}
+
+.section {
+    padding: 4rem 0;
+}
+
+.section__title {
+    font-size: 1.875rem;
+}
+
+.grid-3,
+.grid-2 {
+    grid-template-columns: 1fr;
+}
+
+.form-row {
+    grid-template-columns: 1fr;
+}
+
+.partner-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.carousel-container {
+    height: 300px;
+}
+
+.carousel-slide {
+    min-width: 200px;
+}
+
+.carousel-nav {
+    width: 40px;
+    height: 40px;
+}
+
+.about__card,
+.vision-mission__combined-card {
+    padding: 2rem 1.5rem;
+}
+
+.video__hero-card {
+    padding: 1.5rem;
+}
+
+.video__wrapper {
+    padding-bottom: 56.25%;
+}
+}
+
+@media (max-width: 480px) {
+.hero__title {
+    font-size: 1.75rem;
+}
+
+.section__title {
+    font-size: 1.5rem;
+}
+
+.contact-form {
+    padding: 1.5rem;
+    margin: 0 0.75rem;
+}
+
+.partner-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.carousel-container {
+    height: 250px;
+}
+
+.carousel-slide {
+    min-width: 180px;
+}
+
+.about__card,
+.vision-mission__combined-card {
+    padding: 1.5rem 1rem;
+}
+
+.video__hero-card {
+    padding: 1rem;
+}
+}
+</style>
 </head>
 <body>
-    <!-- Header Component -->
-    <div id="header-placeholder"></div>
+<!-- Header Component -->
+<div id="header-placeholder"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1 class="hero__title animate-on-scroll">Friendly Temanion Is Always Available!</h1>
-            <p class="hero__description animate-on-scroll">We are ready to help you to take care of your loved ones.</p>
-            <a href="#contact" class="btn btn--primary animate-on-scroll">
-                <i class="fas fa-comments"></i>
-                FREE Consultation
-            </a>
-        </div>
-    </section>
+<!-- Hero Section -->
+<section class="hero">
+<div class="container">
+<h1 class="hero__title animate-on-scroll">Friendly Temanion is Always Available!</h1>
+<p class="hero__description animate-on-scroll">We are ready to help you to take care of your loved ones.</p>
+<a href="#contact" class="btn btn--primary animate-on-scroll">
+    <i class="fas fa-comments"></i>
+    FREE Consultation
+</a>
+</div>
+</section>
 
-    <!-- Video Section -->
-    <section class="section">
-        <div class="container">
-            <div class="video__container">
-                <div class="video__wrapper">
-                    <iframe 
-                        src="https://www.youtube.com/embed/E6js62YDukI" 
-                        title="Into Teman Malaysia - Your Reliable Care Companion" 
-                        frameborder="0" 
-                        allowfullscreen
-                        class="video__iframe">
-                    </iframe>
-                </div>
-                
-                <div class="video__content animate-on-scroll">
-                    <h2 class="section__title">Teman Malaysia provides the best care companion for your loved ones.</h2>
-                    <p>We provide care companionship services to improve your loved one's quality of life and provide needed assistance for them.</p>
-                </div>
+<!-- Video Section - Hero Card Style -->
+<section class="section video-section">
+<div class="container">
+<div class="video__hero-card animate-on-scroll">
+    <div class="video__wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/E6js62YDukI" 
+            title="Into Teman Malaysia - Your Reliable Care Companion" 
+            frameborder="0" 
+            allowfullscreen
+            class="video__iframe">
+        </iframe>
+    </div>
+    
+    <div class="video__content">
+        <h2>Teman Malaysia provides the best care companion for your loved ones.</h2>
+        <p>We provide care companionship services to improve your loved one's quality of life and provide needed assistance for them.</p>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- About Section - Updated Style -->
+<section class="section about-section">
+<div class="container">
+<div class="about__container">
+    <div class="about__card animate-on-scroll">
+        <div class="about__header">
+            <div class="about__icon">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
+            <h3 class="about__title">How it works?</h3>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section">
-        <div class="container">
-            <div class="grid grid-2">
-                <div class="animate-on-scroll">
-                    <h3 class="section__title">How it works?</h3>
-                    <p>Customers will be matched with Temanions to perform daily tasks, run errands, attend health appointments, or simply enjoy their free time through planned customized activities.</p>
-                </div>
-                <div class="animate-on-scroll">
-                    <h3 class="section__title">Who are Temanions?</h3>
-                    <p>Temanions are passionate and caring Malaysians who also are care companions. The term is a play of words between the Malay word "teman" and the English word "companion".</p>
-                </div>
+        <p class="about__description">Customers will be matched with Temanions to perform daily tasks, run errands, attend health appointments, or simply enjoy their free time through planned customized activities.</p>
+    </div>
+    
+    <div class="about__card animate-on-scroll">
+        <div class="about__header">
+            <div class="about__icon">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
+            <h3 class="about__title">Who are Temanions?</h3>
         </div>
-    </section>
+        <p class="about__description">Temanions are passionate and caring Malaysians who also are care companions. The term is a play of words between the Malay word "teman" and the English word "companion".</p>
+    </div>
+</div>
+</div>
+</section>
 
-    <!-- Vision & Mission Section -->
-    <section class="section">
-        <div class="container">
-            <div class="grid grid-2">
-                <div class="animate-on-scroll">
-                    <h3 class="section__title">Our Vision</h3>
-                    <ul>
-                        <li>To be the leading care companion services provider in Malaysia.</li>
-                    </ul>
-                </div>
-                <div class="animate-on-scroll">
-                    <h3 class="section__title">Our Mission</h3>
-                    <ul>
-                        <li>To utilise technology in the care companionship services.</li>
-                        <li>To amplify awareness on the importance of ageing gracefully by informative content on our website and social media.</li>
-                        <li>To provide job opportunities that help to contribute to decreasing the unemployment rate in Malaysia.</li>
-                    </ul>
-                </div>
+<!-- Vision & Mission Section - Combined Card -->
+<section class="section vision-mission-section">
+<div class="container">
+<div class="vision-mission__combined-card animate-on-scroll">
+    <!-- Vision Section -->
+    <div class="vision-mission__section">
+        <div class="vision-mission__header">
+            <div class="vision-mission__icon">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="3"/>
+                </svg>
             </div>
+            <h3 class="vision-mission__title">Our Vision</h3>
         </div>
-    </section>
-
-    <!-- Memories Section -->
-    <section class="section" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: white;">
-        <div class="container">
-            <div class="grid grid-2">
-                <div class="animate-on-scroll">
-                    <h2 class="section__title" style="color: white;">Some of Our Memories</h2>
-                    <div class="section__divider" style="background: white;"></div>
-                    <p>We appreciate everyone's involvement, and we thank you for your continued support.<br><br>Terima kasih!</p>
+        
+        <ul class="vision-mission__items">
+            <li class="vision-mission__item">
+                <div class="vision-mission__item-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
                 </div>
-                <div class="animate-on-scroll">
-                    <div class="video__wrapper">
-                        <iframe 
-                            src="https://www.youtube.com/embed/E6js62YDukI" 
-                            title="Teman Malaysia Memories" 
-                            frameborder="0" 
-                            allowfullscreen
-                            class="video__iframe">
-                        </iframe>
+                <p class="vision-mission__item-text">To be the leading care companion services provider in Malaysia.</p>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="vision-mission__section">
+        <div class="vision-mission__header">
+            <div class="vision-mission__icon">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 class="vision-mission__title">Our Mission</h3>
+        </div>
+        
+        <ul class="vision-mission__items">
+            <li class="vision-mission__item">
+                <div class="vision-mission__item-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
+                <p class="vision-mission__item-text">To utilise technology in the care companionship services.</p>
+            </li>
+            
+            <li class="vision-mission__item">
+                <div class="vision-mission__item-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        <polyline points="7.5,4.21 12,6.81 16.5,4.21"/>
+                        <polyline points="7.5,19.79 7.5,14.6 3,12"/>
+                        <polyline points="21,12 16.5,14.6 16.5,19.79"/>
+                    </svg>
+                </div>
+                <p class="vision-mission__item-text">To amplify awareness on the importance of ageing gracefully by informative content on our website and social media.</p>
+            </li>
+            
+            <li class="vision-mission__item">
+                <div class="vision-mission__item-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="8.5" cy="7" r="4"/>
+                        <line x1="20" y1="8" x2="20" y2="14"/>
+                        <line x1="23" y1="11" x2="17" y2="11"/>
+                    </svg>
+                </div>
+                <p class="vision-mission__item-text">To provide job opportunities that help to contribute to decreasing the unemployment rate in Malaysia.</p>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Memories Section with Photo Carousel -->
+<section class="section memories-section" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: white;">
+<div class="container">
+<div class="grid grid-2">
+    <div class="animate-on-scroll text-center">
+        <h2 class="section__title" style="color: var(--gray-900);">Some of Our Memories</h2>
+        <div class="section__divider" style="background: var(--gray-900);"></div>
+        <p>We appreciate everyone's involvement, and we thank you for your continued support.<br><br>Terima kasih!</p>
+    </div>
+    <div class="animate-on-scroll">
+        <div class="carousel-container">
+            <button class="carousel-nav prev" onclick="prevSlide()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-nav next" onclick="nextSlide()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="carousel-track" id="carousel-track">
+                <!-- Duplicate images for seamless loop -->
+                <div class="carousel-slide">
+                    <img src="../assets/images/memory-1.jpg" alt="Temanion helping elderly with activities">
+                    <div class="carousel-overlay">
+                        <div class="carousel-caption">Temanion helping with daily activities</div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="../assets/images/memory-2.jpg" alt="Elderly enjoying time with companion">
+                    <div class="carousel-overlay">
+                        <div class="carousel-caption">Enjoying quality time together</div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="../assets/images/memory-3.jpg" alt="Medical appointment assistance">
+                    <div class="carousel-overlay">
+                        <div class="carousel-caption">Assistance with medical appointments</div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="../assets/images/memory-4.jpg" alt="Outdoor activities with elderly">
+                    <div class="carousel-overlay">
+                        <div class="carousel-caption">Outdoor activities and exercise</div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="../assets/images/memory-5.JPG" alt="Reading together">
+                    <div class="carousel-overlay">
+                        <div class="carousel-caption">Reading and learning together</div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="../assets/images/memory-6.JPG" alt="Cooking together">
+                    <div class="carousel-overlay">
+                        <div class="carousel-caption">Cooking and meal preparation</div>
+                    </div>
+                </div>
+                <!-- Duplicated slides for seamless loop -->
+                <div class="carousel-slide">
+                    <img src="../assets/images/memory-1.jpg" alt="Temanion helping elderly with activities">
+                    <div class="carousel-overlay">
+                        <div class="carousel-caption">Temanion helping with daily activities</div>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="../assets/images/memory-2.jpg" alt="Elderly enjoying time with companion">
+                    <div class="carousel-overlay">
+                        <div class="carousel-caption">Enjoying quality time together</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</div>
+</div>
+</section>
 
-    <!-- Team Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section__header animate-on-scroll">
-                <span class="section__tag">PEOPLE</span>
-                <h2 class="section__title">Meet Our Team</h2>
-                <p class="section__subtitle">BEST TEAM</p>
-                <div class="section__divider"></div>
-            </div>
-            
-            <div class="grid grid-3">
-                <div class="team-member animate-on-scroll">
-                    <img src="../assets/images/team/ezzati-nasir.jpg" alt="Ezzati Nasir" class="team-member__image">
-                    <h3 class="team-member__name">Ezzati Nasir</h3>
-                    <p class="team-member__role">Chief Executive Officer</p>
-                </div>
-                <div class="team-member animate-on-scroll">
-                    <img src="../assets/images/team/aaril-al-aqsza.jpg" alt="Aaril Al-Aqsza" class="team-member__image">
-                    <h3 class="team-member__name">Aaril Al-Aqsza</h3>
-                    <p class="team-member__role">Head of Finance</p>
-                </div>
-                <div class="team-member animate-on-scroll">
-                    <img src="../assets/images/team/fatin-nur-hafizah.jpg" alt="Fatin Nur Hafizah" class="team-member__image">
-                    <h3 class="team-member__name">Fatin Nur Hafizah</h3>
-                    <p class="team-member__role">Operation Manager</p>
-                </div>
-            </div>
+<!-- Team Section -->
+<section class="section team-section">
+<div class="container">
+<div class="section__header animate-on-scroll">
+    <div style="margin-bottom: 1rem;">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" style="color: #4dd0e1; margin: 0 auto; display: block;">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+    <h2 class="section__title">Meet Our Team</h2>
+    <p class="section__subtitle">BEST TEAM</p>
+    <div class="section__divider"></div>
+</div>
+
+<div class="grid grid-3">
+    <div class="team-member animate-on-scroll">
+        <img src="../assets/images/team/ezzati-nasir.jpg" alt="Ezzati Nasir" class="team-member__image">
+        <h3 class="team-member__name">Ezzati Nasir</h3>
+        <p class="team-member__role">Chief Executive Officer</p>
+    </div>
+    <div class="team-member animate-on-scroll">
+        <img src="../assets/images/team/aaril-al-aqsza.jpg" alt="Aaril Al-Aqsza" class="team-member__image">
+        <h3 class="team-member__name">Aaril Al-Aqsza</h3>
+        <p class="team-member__role">Head of Finance</p>
+    </div>
+    <div class="team-member animate-on-scroll">
+        <img src="../assets/images/team/fatin-nur-hafizah.jpg" alt="Fatin Nur Hafizah" class="team-member__image">
+        <h3 class="team-member__name">Fatin Nur Hafizah</h3>
+        <p class="team-member__role">Operation Manager</p>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Stats Section -->
+<section class="section stats">
+<div class="container">
+<div class="grid grid-3">
+    <div class="stat-card animate-on-scroll">
+        <div style="margin-bottom: 1rem;">
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" style="color: rgba(255,255,255,0.8); margin: 0 auto; display: block;">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="section stats">
-        <div class="container">
-            <div class="grid grid-3">
-                <div class="stat-card animate-on-scroll">
-                    <div class="stat-number">18,050</div>
-                    <div class="stat-label">Paid Services Hours</div>
-                </div>
-                <div class="stat-card animate-on-scroll">
-                    <div class="stat-number">200</div>
-                    <div class="stat-label">Registered Temanions</div>
-                </div>
-                <div class="stat-card animate-on-scroll">
-                    <div class="stat-number">RM 6,760</div>
-                    <div class="stat-label">Social Impact Project</div>
-                </div>
-            </div>
-            <div class="text-center" style="margin-top: 2rem; opacity: 0.8;">
-                <p>Last update: 31 December 2022</p>
-            </div>
+        <div class="stat-number">18,050</div>
+        <div class="stat-label">Paid Services Hours</div>
+    </div>
+    <div class="stat-card animate-on-scroll">
+        <div style="margin-bottom: 1rem;">
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" style="color: rgba(255,255,255,0.8); margin: 0 auto; display: block;">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section__header animate-on-scroll">
-                <span class="section__tag">COLLABORATION</span>
-                <h2 class="section__title">Our Partners</h2>
-                <div class="section__divider"></div>
-            </div>
-            
-            <div class="partner-grid animate-on-scroll">
-                <div class="partner-logo">
-                    <a href="https://www.seedlab.my/" target="_blank">
-                        <img src="../assets/images/partners/seedlab-logo.png" alt="Seedlab">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="https://www.jasperlodge.com.my/" target="_blank">
-                        <img src="../assets/images/partners/jasper-logo.png" alt="Jasper Lodge">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="https://cancer.org.my/" target="_blank">
-                        <img src="../assets/images/partners/ncsm-logo.png" alt="National Cancer Society Malaysia">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="https://www.darulinsyirah.com/" target="_blank">
-                        <img src="../assets/images/partners/insyirah-logo.png" alt="Darul Insyirah">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="https://hpc.hrdcorp.gov.my/" target="_blank">
-                        <img src="../assets/images/partners/hrd-logo.png" alt="HRD HPC">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="https://azzahrah.my/" target="_blank">
-                        <img src="../assets/images/partners/hiaz-logo.png" alt="HIAZ">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="#" target="_blank">
-                        <img src="../assets/images/partners/trevor-logo.png" alt="Trevor">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="#" target="_blank">
-                        <img src="../assets/images/partners/prophysio-logo.png" alt="Prophysio">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="#" target="_blank">
-                        <img src="../assets/images/partners/socar-logo.png" alt="Socar">
-                    </a>
-                </div>
-            </div>
+        <div class="stat-number">200</div>
+        <div class="stat-label">Registered Temanions</div>
+    </div>
+    <div class="stat-card animate-on-scroll">
+        <div style="margin-bottom: 1rem;">
+            <svg width="50" height="50" viewBox="0 0 24 24" fill="none" style="color: rgba(255,255,255,0.8); margin: 0 auto; display: block;">
+                <line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </div>
-    </section>
+        <div class="stat-number">RM 6,760</div>
+        <div class="stat-label">Social Impact Project</div>
+    </div>
+</div>
+<div class="text-center" style="margin-top: 2rem; opacity: 0.8;">
+    <p>Last update: 31 December 2022</p>
+</div>
+</div>
+</section>
 
-    <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="animate-on-scroll">
-                    <h4 style="color: rgba(255,255,255,0.8); margin-bottom: 0.5rem;">Do you have any question?</h4>
-                    <h3 style="margin-bottom: 1rem;">Contact Us To Find Out How We Can Assist You And Your Loved Ones</h3>
-                    <div class="section__divider" style="background: white; margin: 1rem 0;"></div>
-                    <p>Send us your message, our customer service will contact you back!</p>
-                </div>
-                
-                <div class="contact-form animate-on-scroll">
-                    <form id="contact-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-input" placeholder="Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-input" placeholder="Email" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="tel" name="phone" class="form-input" placeholder="Phone Number">
-                            </div>
-                            <div class="form-group">
-                                <select name="subject" class="form-select">
-                                    <option value="General Questions">General Questions</option>
-                                    <option value="Health Appointments">Health Appointments</option>
-                                    <option value="Customized Activities">Customized Activities</option>
-                                    <option value="Ziarah">Ziarah</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" class="form-textarea" rows="8" placeholder="Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn--primary" style="width: 100%;">
-                            <i class="fas fa-paper-plane"></i>
-                            Submit
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Footer Component -->
+<div id="footer-placeholder"></div>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials">
-        <div class="container">
-            <div class="section__header animate-on-scroll">
-                <span class="section__tag">TESTIMONIAL</span>
-                <h2 class="section__title">From Our Clients</h2>
-                <div class="section__divider"></div>
-            </div>
-            
-            <div class="testimonial-slider animate-on-scroll">
-                <div class="testimonial">
-                    <p class="testimonial-text">"Sekarang saya mempunyai peneman untuk membantu saya ke pasar dan membawa saya kesana sini."</p>
-                    <div class="testimonial-author">Hjh. Najihah</div>
-                    <div class="testimonial-role">Bekas Guru Sekolah Agama</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+// Carousel functionality
+let currentSlide = 0;
+const track = document.getElementById('carousel-track');
+const slides = document.querySelectorAll('.carousel-slide');
+const totalSlides = slides.length / 2; // Since we duplicated slides
 
-    <!-- Footer Component -->
-    <div id="footer-placeholder"></div>
+function nextSlide() {
+currentSlide = (currentSlide + 1) % totalSlides;
+updateCarousel();
+}
 
-    <script>
-        // Load header and footer components
-        async function loadComponents() {
-            try {
-                // Load header
-                const headerResponse = await fetch('../components/header.html');
-                if (headerResponse.ok) {
-                    const headerHTML = await headerResponse.text();
-                    document.getElementById('header-placeholder').innerHTML = headerHTML;
-                    
-                    // Mark the current page as active in navigation
-                    setTimeout(() => {
-                        const aboutLink = document.querySelector('a[href="about.html"]');
-                        if (aboutLink) {
-                            aboutLink.classList.add('active');
-                        }
-                        
-                        // Initialize navigation after header is loaded
-                        initializeNavigation();
-                    }, 100);
-                }
+function prevSlide() {
+currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+updateCarousel();
+}
 
-                // Load footer
-                const footerResponse = await fetch('../components/footer.html');
-                if (footerResponse.ok) {
-                    const footerHTML = await footerResponse.text();
-                    document.getElementById('footer-placeholder').innerHTML = footerHTML;
-                }
+function updateCarousel() {
+const slideWidth = slides[0].offsetWidth + 16; // Including margin
+track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+}
 
-                // Initialize main JavaScript after components are loaded
-                initializeMainJS();
-            } catch (error) {
-                console.error('Error loading components:', error);
+// Auto-advance carousel every 4 seconds
+setInterval(nextSlide, 4000);
+
+// Load header and footer components
+async function loadComponents() {
+try {
+    // Load header
+    const headerResponse = await fetch('../components/header.html');
+    if (headerResponse.ok) {
+        const headerHTML = await headerResponse.text();
+        document.getElementById('header-placeholder').innerHTML = headerHTML;
+        
+        // Mark the current page as active in navigation
+        setTimeout(() => {
+            const aboutLink = document.querySelector('a[href="about.html"]');
+            if (aboutLink) {
+                aboutLink.classList.add('active');
             }
-        }
-
-        // Initialize navigation functionality
-        function initializeNavigation() {
-            const navToggle = document.getElementById('nav-toggle');
-            const navMenu = document.getElementById('nav-menu');
-
-            if (navToggle && navMenu) {
-                navToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('show');
-                    const icon = navToggle.querySelector('i');
-                    if (navMenu.classList.contains('show')) {
-                        icon.className = 'fas fa-times';
-                    } else {
-                        icon.className = 'fas fa-bars';
-                    }
-                });
-
-                // Close menu when clicking on nav links
-                document.querySelectorAll('.nav__link').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navMenu.classList.remove('show');
-                        const icon = navToggle.querySelector('i');
-                        if (icon) icon.className = 'fas fa-bars';
-                    });
-                });
-
-                // Close menu when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                        navMenu.classList.remove('show');
-                        const icon = navToggle.querySelector('i');
-                        if (icon) icon.className = 'fas fa-bars';
-                    }
-                });
-            }
-
-            // Header scroll effect
-            window.addEventListener('scroll', () => {
-                const header = document.getElementById('header');
-                if (header) {
-                    if (window.scrollY > 100) {
-                        header.style.background = 'rgba(255, 255, 255, 0.98)';
-                        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-                    } else {
-                        header.style.background = 'rgba(255, 255, 255, 0.95)';
-                        header.style.boxShadow = 'none';
-                    }
-                }
-            });
-        }
-
-        // Initialize main functionality
-        function initializeMainJS() {
-            // Include your existing main.js functionality here
-            // or load it as a separate script
-            if (typeof window.TemanMalaysia !== 'undefined') {
-                // Your existing initialization code
-                console.log('Teman Malaysia about page loaded successfully!');
-            }
-        }
-
-        // Load components when DOM is ready
-        document.addEventListener('DOMContentLoaded', loadComponents);
-
-        // Animate on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Contact Form
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
             
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.innerHTML;
-            
-            // Show loading state
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            
-            // Simulate form submission
-            setTimeout(() => {
-                // Reset form
-                this.reset();
-                
-                // Reset button
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalText;
-                
-                // Show success message (using your existing toast system)
-                if (typeof window.TemanMalaysia?.showToast === 'function') {
-                    window.TemanMalaysia.showToast('success', 'Message sent successfully! We\'ll get back to you soon.');
-                } else {
-                    alert('Message sent successfully! We\'ll get back to you soon.');
-                }
-            }, 2000);
-        });
+            // Initialize navigation after header is loaded
+            initializeNavigation();
+        }, 100);
+    }
 
-        // Video modal function
-        function openVideo() {
-            // You can integrate this with your existing video modal or lightbox
-            window.open('https://www.youtube.com/watch?v=E6js62YDukI', '_blank');
+    // Load footer
+    const footerResponse = await fetch('../components/footer.html');
+    if (footerResponse.ok) {
+        const footerHTML = await footerResponse.text();
+        document.getElementById('footer-placeholder').innerHTML = footerHTML;
+    }
+
+    // Initialize main JavaScript after components are loaded
+    initializeMainJS();
+} catch (error) {
+    console.error('Error loading components:', error);
+}
+}
+
+// Initialize navigation functionality
+function initializeNavigation() {
+const navToggle = document.getElementById('nav-toggle');
+const navMenu = document.getElementById('nav-menu');
+
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+        const icon = navToggle.querySelector('i');
+        if (navMenu.classList.contains('show')) {
+            icon.className = 'fas fa-times';
+        } else {
+            icon.className = 'fas fa-bars';
         }
+    });
 
-        // Counter animation for stats
-        function animateCounter(element, target) {
-            let current = 0;
-            const increment = target / 100;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(current).toLocaleString();
-            }, 20);
+    // Close menu when clicking on nav links
+    document.querySelectorAll('.nav__link').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('show');
+            const icon = navToggle.querySelector('i');
+            if (icon) icon.className = 'fas fa-bars';
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('show');
+            const icon = navToggle.querySelector('i');
+            if (icon) icon.className = 'fas fa-bars';
         }
+    });
+}
 
-        // Animate counters when they come into view
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const number = entry.target.querySelector('.stat-number');
-                    const target = parseInt(number.textContent.replace(/[^\d]/g, ''));
-                    animateCounter(number, target);
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        });
+// Header scroll effect
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if (header) {
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.98)';
+            header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.boxShadow = 'none';
+        }
+    }
+});
+}
 
-        document.querySelectorAll('.stat-card').forEach(card => {
-            statsObserver.observe(card);
-        });
-    </script>
+// Initialize main functionality
+function initializeMainJS() {
+// Include your existing main.js functionality here
+// or load it as a separate script
+if (typeof window.TemanMalaysia !== 'undefined') {
+    // Your existing initialization code
+    console.log('Teman Malaysia about page loaded successfully!');
+}
+}
 
-    <!-- Load your existing main JavaScript -->
-    <script src="../assets/js/main.js"></script>
+// Load components when DOM is ready
+document.addEventListener('DOMContentLoaded', loadComponents);
+
+// Animate on scroll
+const observerOptions = {
+threshold: 0.1,
+rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+    if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+    }
+});
+}, observerOptions);
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => {
+observer.observe(el);
+});
+
+// Video modal function
+function openVideo() {
+// You can integrate this with your existing video modal or lightbox
+window.open('https://www.youtube.com/watch?v=E6js62YDukI', '_blank');
+}
+
+// Counter animation for stats
+function animateCounter(element, target) {
+let current = 0;
+const increment = target / 100;
+const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+        current = target;
+        clearInterval(timer);
+    }
+    element.textContent = Math.floor(current).toLocaleString();
+}, 20);
+}
+
+// Animate counters when they come into view
+const statsObserver = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+    if (entry.isIntersecting) {
+        const number = entry.target.querySelector('.stat-number');
+        const target = parseInt(number.textContent.replace(/[^\d]/g, ''));
+        animateCounter(number, target);
+        statsObserver.unobserve(entry.target);
+    }
+});
+});
+
+document.querySelectorAll('.stat-card').forEach(card => {
+statsObserver.observe(card);
+});
+</script>
+
+<!-- Load your existing main JavaScript -->
+<script src="../assets/js/main.js"></script>
 </body>
 </html>
