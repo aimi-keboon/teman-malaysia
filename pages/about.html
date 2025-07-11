@@ -707,13 +707,54 @@ color: #4dd0e1;
 font-weight: 500;
 }
 
-/* Stats Section */
+/* Stats Section - Teman Gradient with Black Text */
 .stats {
-background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-color: var(--white);
-position: relative;
-overflow: hidden;
+  background: linear-gradient(135deg, #61CACC 0%, #FFC845 100%);
+  color: #000000;
+  position: relative;
+  overflow: hidden;
+  padding: 3rem 0;
 }
+
+.stat-card {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-xl);
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+  backdrop-filter: blur(6px);
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  border-color: #000;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #000000; /* Black font */
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #000000; /* Black font */
+}
+
+/* SVG Icons Themed for contrast */
+.stat-card svg {
+  color: #000000;
+}
+.stat-card:nth-child(2) svg {
+  color: #000000;
+}
+.stat-card:nth-child(3) svg {
+  color: #000000;
+}
+
 
 .stats::before {
 content: '';
