@@ -36,6 +36,937 @@
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Page-specific styles -->
+    <style>
+    :root {
+    --primary-color: #4dd0e1;
+    --primary-dark: #26a69a;
+    --primary-light: #e0f7fa;
+    --secondary-color: #ffc107;
+    --accent-color: #ff9800;
+
+    --white: #ffffff;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --transition-fast: 150ms ease-in-out;
+    --transition-normal: 300ms ease-in-out;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-full: 9999px;
+    }
+
+    .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    }
+
+    .section {
+    padding: 3rem 0;
+    }
+
+    .text-center {
+    text-align: center;
+    }
+
+    /* Buttons */
+    .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    white-space: nowrap;
+    background: none;
+    }
+
+    .btn--primary {
+    background: linear-gradient(135deg, #4dd0e1, #ffc107);
+    color: var(--gray-900);
+    border: none;
+    }
+
+    .btn--primary:hover {
+    background: linear-gradient(135deg, #26a69a, #ff9800);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    }
+
+    .btn--outline {
+    border-color: var(--gray-900);
+    color: var(--gray-900);
+    background-color: transparent;
+    }
+
+    .btn--outline:hover {
+    background: var(--gray-900);
+    color: var(--white);
+    border-color: var(--gray-900);
+    }
+
+    .btn--white {
+    background: var(--white);
+    color: var(--gray-900);
+    border: none;
+    }
+
+    .btn--white:hover {
+    background: var(--gray-100);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    }
+
+    .btn--large {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    }
+
+    .btn--small {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    }
+
+    .btn--full {
+    width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+    position: relative;
+    padding: 140px 0 5rem;
+    background: linear-gradient(135deg, #4dd0e1 0%, #ffc107 100%);
+    overflow: hidden;
+    }
+
+    .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: float 15s ease-in-out infinite;
+    }
+
+    .hero__container {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    }
+
+    .hero__title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--gray-900);
+    }
+
+    .text-gradient {
+    background: linear-gradient(135deg, #26a69a, #ff9800);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    }
+
+    .hero__description {
+    font-size: 1.25rem;
+    color: var(--gray-700);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    }
+
+    .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    }
+
+    .hero__image {
+    position: relative;
+    }
+
+    .hero__img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    }
+
+    .hero__floating-card {
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    background: var(--white);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 250px;
+    }
+
+    .hero__floating-card i {
+    font-size: 1.5rem;
+    color: #4dd0e1;
+    }
+
+    .hero__floating-card span {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--gray-700);
+    }
+
+    /* Section Headers */
+    .section__header {
+    margin-bottom: 2rem;
+    text-align: center;
+    }
+
+    .section__tag {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #4dd0e1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    display: block;
+    }
+
+    .section__title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 0.75rem;
+    }
+
+    .section__subtitle {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    max-width: 800px;
+    margin: 0 auto;
+    }
+
+    .section__divider {
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(135deg, #4dd0e1, #ffc107);
+    margin: 0.75rem auto;
+    border-radius: var(--radius-full);
+    }
+
+    /* About Section */
+    .about {
+    background: var(--gray-50);
+    }
+
+    .about__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    }
+
+    .about__images {
+    position: relative;
+    }
+
+    .about__image {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    }
+
+    .about__image--1 {
+    position: relative;
+    z-index: 3;
+    }
+
+    .about__image--2 {
+    position: absolute;
+    top: 50px;
+    right: -30px;
+    width: 60%;
+    z-index: 2;
+    }
+
+    .about__image--3 {
+    position: absolute;
+    bottom: -30px;
+    left: 30px;
+    width: 70%;
+    z-index: 1;
+    }
+
+    .about__img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    }
+
+    .about__image:hover .about__img {
+    transform: scale(1.05);
+    }
+
+    .about__content {
+    max-width: 500px;
+    }
+
+    .about__text {
+    margin-bottom: 2rem;
+    }
+
+    .about__text p {
+    font-size: 1rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    }
+
+    /* Promise Section */
+    .promise {
+    background: linear-gradient(135deg, #4dd0e1, #26a69a);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    }
+
+    .promise__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    }
+
+    .promise__divider {
+    width: 50px;
+    height: 3px;
+    background: var(--white);
+    margin: 0.75rem auto;
+    border-radius: var(--radius-full);
+    }
+
+    .promise__text {
+    font-size: 1rem;
+    opacity: 0.9;
+    }
+
+    /* Video Section */
+    .video-section {
+    background: linear-gradient(135deg, #4dd0e1 0%, #ffc107 100%);
+    position: relative;
+    overflow: hidden;
+    }
+
+    .video-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: float 15s ease-in-out infinite;
+    }
+
+    .video__container {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    }
+
+    .video__wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    background: var(--white);
+    }
+
+    .video__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    }
+
+    .video__content {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    }
+
+    .video__content p {
+    font-size: 1rem;
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    }
+
+    /* Services Section */
+    .services {
+    background: var(--gray-50);
+    }
+
+    .services__category {
+    margin-bottom: 3rem;
+    }
+
+    .services__category:last-child {
+    margin-bottom: 0;
+    }
+
+    .services__category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 0.75rem;
+    text-align: center;
+    }
+
+    .services__category-divider {
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(135deg, #4dd0e1, #ffc107);
+    margin: 0.75rem auto 2rem;
+    border-radius: var(--radius-full);
+    }
+
+    .services__grid {
+    display: grid;
+    gap: 1.5rem;
+    }
+
+    .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Service Cards */
+    .service-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: var(--transition-normal);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    }
+
+    .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    }
+
+    .service-card__icon {
+    text-align: center;
+    padding: 1.5rem 1.5rem 0;
+    }
+
+    .service-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    }
+
+    .card-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    }
+
+    .service-card__title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 1rem;
+    text-align: center;
+    }
+
+    .service-card__description {
+    flex: 1;
+    margin-bottom: 1.5rem;
+    }
+
+    .service-card__description p {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+    }
+
+    .service-card__description ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    }
+
+    .service-card__description li {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    padding: 0.25rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+    }
+
+    .service-card__description li::before {
+    content: '•';
+    color: #4dd0e1;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    }
+
+    /* CTA Section */
+    .cta {
+    background: linear-gradient(135deg, #4dd0e1, #26a69a);
+    color: var(--white);
+    }
+
+    .cta__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    }
+
+    .cta__title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    }
+
+    .cta__divider {
+    width: 50px;
+    height: 3px;
+    background: var(--white);
+    margin: 0.75rem 0;
+    border-radius: var(--radius-full);
+    }
+
+    .cta__description {
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    }
+
+    .cta__action {
+    text-align: center;
+    }
+
+    /* Partners Section */
+    .partners__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    }
+
+    .partner-logo {
+    text-align: center;
+    opacity: 0.7;
+    transition: var(--transition-fast);
+    padding: 1rem;
+    }
+
+    .partner-logo:hover {
+    opacity: 1;
+    }
+
+    .partner-logo img {
+    height: 60px;
+    width: auto;
+    margin: 0 auto;
+    filter: grayscale(100%);
+    transition: var(--transition-fast);
+    }
+
+    .partner-logo:hover img {
+    filter: grayscale(0%);
+    }
+
+    /* Media Section */
+    .media__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    }
+
+    .media-logo {
+    text-align: center;
+    opacity: 0.7;
+    transition: var(--transition-fast);
+    padding: 1rem;
+    }
+
+    .media-logo:hover {
+    opacity: 1;
+    }
+
+    .media-logo img {
+    height: 60px;
+    width: auto;
+    margin: 0 auto;
+    filter: grayscale(100%);
+    transition: var(--transition-fast);
+    }
+
+    .media-logo:hover img {
+    filter: grayscale(0%);
+    }
+
+    /* Contact Form */
+    .contact-form {
+    background: linear-gradient(135deg, #4dd0e1, #26a69a);
+    color: var(--white);
+    }
+
+    .contact__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    }
+
+    .contact__description {
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+    }
+
+    .contact__form {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    }
+
+    .form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    }
+
+    .form__group {
+    margin-bottom: 1.5rem;
+    }
+
+    .form__input,
+    .form__select,
+    .form__textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    transition: var(--transition-fast);
+    font-family: inherit;
+    background: var(--white);
+    }
+
+    .form__input:focus,
+    .form__select:focus,
+    .form__textarea:focus {
+    outline: none;
+    border-color: #4dd0e1;
+    box-shadow: 0 0 0 3px rgba(77, 208, 225, 0.1);
+    }
+
+    /* Testimonials */
+    .testimonials {
+    background: var(--white);
+    }
+
+    .testimonials__slider {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    }
+
+    .testimonial-card {
+    display: none;
+    padding: 2rem;
+    }
+
+    .testimonial-card.active {
+    display: block;
+    }
+
+    .testimonial__text {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--gray-700);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    }
+
+    .testimonial__author {
+    margin-top: 1.5rem;
+    }
+
+    .author__name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: 0.25rem;
+    }
+
+    .author__title {
+    font-size: 0.875rem;
+    color: var(--gray-500);
+    }
+
+    .testimonials__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    }
+
+    .testimonial__prev,
+    .testimonial__next {
+    background: #4dd0e1;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    color: var(--white);
+    }
+
+    .testimonial__prev:hover,
+    .testimonial__next:hover {
+    background: #26a69a;
+    transform: scale(1.1);
+    }
+
+    .testimonials__dots {
+    display: flex;
+    gap: 0.5rem;
+    }
+
+    .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--gray-300);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    }
+
+    .dot.active {
+    background: #4dd0e1;
+    }
+
+    /* Animations */
+    @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.animate {
+    opacity: 1;
+    transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .hero__title {
+        font-size: 2.25rem;
+    }
+
+    .hero__container,
+    .about__grid,
+    .video__container,
+    .contact__grid,
+    .cta__content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero__image {
+        order: -1;
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form__row {
+        grid-template-columns: 1fr;
+    }
+
+    .about__image--2,
+    .about__image--3 {
+        position: static;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    }
+
+    @media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .hero {
+        padding: 120px 0 4rem;
+    }
+
+    .hero__title {
+        font-size: 2rem;
+    }
+
+    .section {
+        padding: 4rem 0;
+    }
+
+    .section__title {
+        font-size: 1.875rem;
+    }
+
+    .grid-3,
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__actions {
+        justify-content: center;
+    }
+
+    .hero__floating-card {
+        position: static;
+        margin-top: 1rem;
+        justify-content: center;
+    }
+
+    .cta__content {
+        text-align: center;
+    }
+
+    .partners__grid,
+    .media__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    }
+
+    @media (max-width: 480px) {
+    .hero__title {
+        font-size: 1.75rem;
+    }
+
+    .section__title {
+        font-size: 1.5rem;
+    }
+
+    .hero__actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .contact__form {
+        padding: 1.5rem;
+        margin: 0 0.75rem;
+    }
+
+    .partners__grid,
+    .media__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service-card__title {
+        font-size: 1rem;
+    }
+
+    .service-card__description p,
+    .service-card__description li {
+        font-size: 0.8rem;
+    }
+    }
+
+    /* Utility classes */
+    .text-white {
+    color: var(--white);
+    }
+
+    .bg-primary {
+    background: linear-gradient(135deg, #4dd0e1, #26a69a);
+    }
+
+    .bg-gray-50 {
+    background: var(--gray-50);
+    }
+
+    .text-primary {
+    color: #4dd0e1;
+    }
+    </style>
 </head>
 <body>
     <!-- Header Component -->
@@ -43,31 +974,33 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero__container container">
-            <div class="hero__content">
-                <h1 class="hero__title">
-                    Your Loved Ones Are in <span class="text-gradient">Good Hands</span><br>
-                    with Teman
-                </h1>
-                <p class="hero__description">
-                    We at Teman Malaysia provide safe and reliable care companions. Contact us now to get FREE consultation!
-                </p>
-                <div class="hero__actions">
-                    <a href="pages/consultation.html" class="btn btn--primary btn--large">
-                        <i class="fas fa-comments"></i>
-                        Free Consultation
-                    </a>
-                    <a href="pages/booking.html" class="btn btn--outline btn--large">
-                        <i class="fas fa-calendar-check"></i>
-                        Book Service
-                    </a>
+        <div class="container">
+            <div class="hero__container">
+                <div class="hero__content animate-on-scroll">
+                    <h1 class="hero__title">
+                        Your Loved Ones Are in <span class="text-gradient">Good Hands</span><br>
+                        with Teman
+                    </h1>
+                    <p class="hero__description">
+                        We at Teman Malaysia provide safe and reliable care companions. Contact us now to get FREE consultation!
+                    </p>
+                    <div class="hero__actions">
+                        <a href="pages/consultation.html" class="btn btn--primary btn--large">
+                            <i class="fas fa-comments"></i>
+                            Free Consultation
+                        </a>
+                        <a href="pages/booking.html" class="btn btn--outline btn--large">
+                            <i class="fas fa-calendar-check"></i>
+                            Book Service
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero__image">
-                <img src="assets/images/hero-companion.jpg" alt="Teman Malaysia freelancers with elderly" class="hero__img">
-                <div class="hero__floating-card">
-                    <i class="fas fa-heart text-primary"></i>
-                    <span>Caring companion for your loved ones</span>
+                <div class="hero__image animate-on-scroll">
+                    <img src="assets/images/hero-companion.jpg" alt="Teman Malaysia freelancers with elderly" class="hero__img">
+                    <div class="hero__floating-card">
+                        <i class="fas fa-heart text-primary"></i>
+                        <span>Caring companion for your loved ones</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,7 +1010,7 @@
     <section class="about section">
         <div class="container">
             <div class="about__grid">
-                <div class="about__images">
+                <div class="about__images animate-on-scroll">
                     <div class="about__image about__image--1">
                         <img src="assets/images/temanion-couple.jpg" alt="Teman Malaysia freelancer driving car" class="about__img">
                     </div>
@@ -89,11 +1022,11 @@
                     </div>
                 </div>
                 
-                <div class="about__content">
+                <div class="about__content animate-on-scroll">
                     <div class="section__header">
                         <span class="section__tag">ABOUT US</span>
                         <h2 class="section__title">Caring companion for your loved ones.</h2>
-                        <div class="section__bg-text">TEMAN</div>
+                        <div class="section__divider"></div>
                     </div>
                     
                     <div class="about__text">
@@ -109,12 +1042,12 @@
     </section>
 
     <!-- Promise Section -->
-    <section class="promise section bg-primary">
+    <section class="promise section">
         <div class="container">
-            <div class="promise__content text-center">
-                <h2 class="promise__title text-white">Our Promise</h2>
+            <div class="promise__content animate-on-scroll">
+                <h2 class="promise__title">Our Promise</h2>
                 <div class="promise__divider"></div>
-                <p class="promise__text text-white">
+                <p class="promise__text">
                     We are committed to providing the best care possible for your loved ones.
                 </p>
             </div>
@@ -125,7 +1058,7 @@
     <section class="video-section section">
         <div class="container">
             <div class="video__container">
-                <div class="video__wrapper">
+                <div class="video__wrapper animate-on-scroll">
                     <iframe 
                         src="https://www.youtube.com/embed/GsR87QDkITI" 
                         title="Teman Malaysia - Your Reliable Care Companion" 
@@ -135,7 +1068,7 @@
                     </iframe>
                 </div>
                 
-                <div class="video__content">
+                <div class="video__content animate-on-scroll">
                     <p>We can't always be there for our loved ones. If we are travelling, working long hours, or frequently unavailable due to pressing obligations, it might not always be possible to provide the care and attention they need.</p>
                     <p>Their needs must be met as well, even if this means finding trusted companions or caregivers outside the family circle who can fill in when needed.</p>
                     <p>Teman Malaysia strives to provide the best service for customers by providing companionship and caregiving services for <strong>the elderly</strong>, <strong>pregnant women</strong>, <strong>mothers with small child</strong> and <strong>differently abled people</strong>.</p>
@@ -146,22 +1079,21 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services section bg-gray-50" id="services">
+    <section class="services section" id="services">
         <div class="container">
-            <div class="section__header text-center">
+            <div class="section__header animate-on-scroll">
                 <span class="section__tag">WHAT WE PROVIDE?</span>
                 <h2 class="section__title">Our Services</h2>
-                <div class="section__bg-text">Service</div>
                 <div class="section__divider"></div>
             </div>
             
             <!-- Short-Term Services -->
-            <div class="services__category">
+            <div class="services__category animate-on-scroll">
                 <h3 class="services__category-title">Short-Term Services</h3>
                 <div class="services__category-divider"></div>
                 
-                <div class="services__grid grid grid-3">
-                    <div class="service-card card">
+                <div class="services__grid grid-3">
+                    <div class="service-card">
                         <div class="service-card__icon">
                             <img src="assets/images/health-appointment-icon.svg" alt="Health Appointments" class="service-icon">
                         </div>
@@ -176,11 +1108,11 @@
                                     <li>any others related activities.</li>
                                 </ul>
                             </div>
-                            <a href="pages/services.html#healthappointments" class="btn btn--outline btn--small">Learn More</a>
+                            <a href="pages/booking.html" class="btn btn--outline btn--small">Book Our Service</a>
                         </div>
                     </div>
                     
-                    <div class="service-card card">
+                    <div class="service-card">
                         <div class="service-card__icon">
                             <img src="assets/images/dialysis-icon.png" alt="Dialysis Treatments" class="service-icon">
                         </div>
@@ -195,11 +1127,11 @@
                                     <li>Temanion waiting upon request.</li>
                                 </ul>
                             </div>
-                            <a href="pages/services.html#dialysis" class="btn btn--outline btn--small">Learn More</a>
+                            <a href="pages/booking.html" class="btn btn--outline btn--small">Book Our Service</a>
                         </div>
                     </div>
                     
-                    <div class="service-card card">
+                    <div class="service-card">
                         <div class="service-card__icon">
                             <img src="assets/images/custom-activities-icon.svg" alt="Customized Activities" class="service-icon">
                         </div>
@@ -214,19 +1146,19 @@
                                     <li>Long or short travel, etc.</li>
                                 </ul>
                             </div>
-                            <a href="pages/services.html#customise" class="btn btn--outline btn--small">Learn More</a>
+                            <a href="pages/booking.html" class="btn btn--outline btn--small">Book Our Service</a>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- Long-Term Services -->
-            <div class="services__category">
+            <div class="services__category animate-on-scroll">
                 <h3 class="services__category-title">Long-Term Services</h3>
                 <div class="services__category-divider"></div>
                 
-                <div class="services__grid grid grid-2">
-                    <div class="service-card card">
+                <div class="services__grid grid-2">
+                    <div class="service-card">
                         <div class="service-card__icon">
                             <img src="assets/images/home-package-icon.svg" alt="TEMAN at Home Package" class="service-icon">
                         </div>
@@ -243,11 +1175,11 @@
                                     <li>Mind Wellness Activities</li>
                                 </ul>
                             </div>
-                            <a href="pages/services.html#homepackage" class="btn btn--outline btn--small">Learn More</a>
+                            <a href="pages/booking.html" class="btn btn--outline btn--small">Book Our Service</a>
                         </div>
                     </div>
                     
-                    <div class="service-card card">
+                    <div class="service-card">
                         <div class="service-card__icon">
                             <img src="assets/images/home-plus-icon.svg" alt="TEMAN at Home (Plus) Package" class="service-icon">
                         </div>
@@ -262,7 +1194,7 @@
                                     <li>BP/blood sugar measure</li>
                                 </ul>
                             </div>
-                            <a href="pages/services.html#homepluspackage" class="btn btn--outline btn--small">Learn More</a>
+                            <a href="pages/booking.html" class="btn btn--outline btn--small">Book Our Service</a>
                         </div>
                     </div>
                 </div>
@@ -271,13 +1203,13 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta section bg-primary">
+    <section class="cta section">
         <div class="container">
-            <div class="cta__content">
+            <div class="cta__content animate-on-scroll">
                 <div class="cta__text">
-                    <h3 class="cta__title text-white">Competent Friendly Companion</h3>
+                    <h3 class="cta__title">Competent Friendly Companion</h3>
                     <div class="cta__divider"></div>
-                    <p class="cta__description text-white">
+                    <p class="cta__description">
                         Need trustable & reliable companions for your loved ones? Worry not, we are here. Teman Malaysia! Contact us now to get FREE consultation.
                     </p>
                 </div>
@@ -293,14 +1225,13 @@
     <!-- Partners Section -->
     <section class="partners section">
         <div class="container">
-            <div class="section__header text-center">
+            <div class="section__header animate-on-scroll">
                 <span class="section__tag">COLLABORATION</span>
                 <h2 class="section__title">Our Partners</h2>
-                <div class="section__bg-text">Partners</div>
                 <div class="section__divider"></div>
             </div>
             
-            <div class="partners__grid">
+            <div class="partners__grid animate-on-scroll">
                 <div class="partner-logo">
                     <a href="https://www.seedlab.my/" target="_blank">
                         <img src="assets/images/partners/seedlab-logo.png" alt="Seedlab">
@@ -336,16 +1267,15 @@
     </section>
 
     <!-- Media Coverage -->
-    <section class="media section bg-gray-50">
+    <section class="media section">
         <div class="container">
-            <div class="section__header text-center">
+            <div class="section__header animate-on-scroll">
                 <span class="section__tag">As Featured on</span>
                 <h2 class="section__title">News</h2>
-                <div class="section__bg-text">Media</div>
                 <div class="section__divider"></div>
             </div>
             
-            <div class="media__grid">
+            <div class="media__grid animate-on-scroll">
                 <div class="media-logo">
                     <a href="https://www.bfm.my/podcast/enterprise/hervantage/ent-hv-teman-a-companion-for-the-elderly" target="_blank">
                         <img src="assets/images/media/bfm-logo.png" alt="BFM 89.9">
@@ -381,19 +1311,19 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-form section bg-primary">
+    <section class="contact-form section">
         <div class="container">
             <div class="contact__grid">
-                <div class="contact__content">
+                <div class="contact__content animate-on-scroll">
                     <span class="section__tag text-white">Do you have any question?</span>
                     <h2 class="section__title text-white">Contact Us To Find Out How We Can Assist You And Your Loved Ones</h2>
                     <div class="section__divider"></div>
-                    <p class="contact__description text-white">
+                    <p class="contact__description">
                         Send us your message, our customer service will contact you back!
                     </p>
                 </div>
                 
-                <div class="contact__form">
+                <div class="contact__form animate-on-scroll">
                     <form class="form" id="contact-form">
                         <div class="form__row">
                             <div class="form__group">
@@ -437,10 +1367,9 @@
     <!-- Testimonials -->
     <section class="testimonials section">
         <div class="container">
-            <div class="section__header text-center">
+            <div class="section__header animate-on-scroll">
                 <span class="section__tag">TESTIMONIAL</span>
                 <h2 class="section__title">From Our Clients</h2>
-                <div class="section__bg-text">Testimonial</div>
                 <div class="section__divider"></div>
             </div>
             
@@ -483,9 +1412,9 @@
             <div class="testimonials__controls">
                 <button class="testimonial__prev"><i class="fas fa-chevron-left"></i></button>
                 <div class="testimonials__dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                    <span class="dot active" onclick="currentTestimonial(1)"></span>
+                    <span class="dot" onclick="currentTestimonial(2)"></span>
+                    <span class="dot" onclick="currentTestimonial(3)"></span>
                 </div>
                 <button class="testimonial__next"><i class="fas fa-chevron-right"></i></button>
             </div>
@@ -591,19 +1520,91 @@
 
         // Initialize main functionality
         function initializeMainJS() {
-            // Include your existing main.js functionality here
-            // or load it as a separate script
-            if (typeof window.TemanMalaysia !== 'undefined') {
-                // Your existing initialization code
-                console.log('Teman Malaysia index page loaded successfully!');
+            // Animate on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Testimonials functionality
+            let currentTestimonialIndex = 1;
+            const totalTestimonials = 3;
+
+            function showTestimonial(n) {
+                const testimonials = document.querySelectorAll('.testimonial-card');
+                const dots = document.querySelectorAll('.dot');
+                
+                if (n > totalTestimonials) currentTestimonialIndex = 1;
+                if (n < 1) currentTestimonialIndex = totalTestimonials;
+                
+                testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                testimonials[currentTestimonialIndex - 1].classList.add('active');
+                dots[currentTestimonialIndex - 1].classList.add('active');
             }
+
+            function nextTestimonial() {
+                showTestimonial(currentTestimonialIndex += 1);
+            }
+
+            function prevTestimonial() {
+                showTestimonial(currentTestimonialIndex -= 1);
+            }
+
+            window.currentTestimonial = function(n) {
+                showTestimonial(currentTestimonialIndex = n);
+            }
+
+            // Add event listeners for testimonial navigation
+            const nextBtn = document.querySelector('.testimonial__next');
+            const prevBtn = document.querySelector('.testimonial__prev');
+            
+            if (nextBtn) nextBtn.addEventListener('click', nextTestimonial);
+            if (prevBtn) prevBtn.addEventListener('click', prevTestimonial);
+
+            // Auto-advance testimonials
+            setInterval(nextTestimonial, 5000);
+
+            // Contact form handling
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    const data = Object.fromEntries(formData);
+                    
+                    // Here you would typically send the data to your server
+                    console.log('Form submitted:', data);
+                    
+                    // Show success message (you can customize this)
+                    alert('Thank you for your message! We will contact you soon.');
+                    
+                    // Reset form
+                    this.reset();
+                });
+            }
+
+            console.log('Teman Malaysia index page loaded successfully!');
         }
 
         // Load components when DOM is ready
         document.addEventListener('DOMContentLoaded', loadComponents);
     </script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/testimonials.js"></script>
-    <script src="assets/js/contact-form.js"></script>
 </body>
 </html>
