@@ -361,8 +361,11 @@ opacity: 0.95;
 
 /* ABOUT SECTION ALTERNATIVE STYLES */
 .about__container {
-max-width: 800px;
-margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .about__card {
@@ -1538,16 +1541,7 @@ color: var(--gray-900);
 <section class="section team-section">
 <div class="container">
 <div class="section__header animate-on-scroll">
-    <div style="margin-bottom: 1rem;">
-        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" style="color: #4dd0e1; margin: 0 auto; display: block;">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </div>
     <h2 class="section__title">Meet Our Team</h2>
-    <p class="section__subtitle">BEST TEAM</p>
     <div class="section__divider"></div>
 </div>
 
