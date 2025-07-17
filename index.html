@@ -40,936 +40,1226 @@
     <!-- Page-specific styles -->
     <style>
     :root {
-    --primary-color: #4dd0e1;
-    --primary-dark: #26a69a;
-    --primary-light: #e0f7fa;
-    --secondary-color: #ffc107;
-    --accent-color: #ff9800;
+        --primary-color: #4dd0e1;
+        --primary-dark: #26a69a;
+        --primary-light: #e0f7fa;
+        --secondary-color: #ffc107;
+        --accent-color: #ff9800;
 
-    --white: #ffffff;
-    --gray-50: #f9fafb;
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-300: #d1d5db;
-    --gray-400: #9ca3af;
-    --gray-500: #6b7280;
-    --gray-600: #4b5563;
-    --gray-700: #374151;
-    --gray-800: #1f2937;
-    --gray-900: #111827;
+        --white: #ffffff;
+        --gray-50: #f9fafb;
+        --gray-100: #f3f4f6;
+        --gray-200: #e5e7eb;
+        --gray-300: #d1d5db;
+        --gray-400: #9ca3af;
+        --gray-500: #6b7280;
+        --gray-600: #4b5563;
+        --gray-700: #374151;
+        --gray-800: #1f2937;
+        --gray-900: #111827;
 
-    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --transition-fast: 150ms ease-in-out;
-    --transition-normal: 300ms ease-in-out;
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-    --radius-md: 0.375rem;
-    --radius-lg: 0.5rem;
-    --radius-xl: 0.75rem;
-    --radius-2xl: 1rem;
-    --radius-full: 9999px;
+        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        --transition-fast: 150ms ease-in-out;
+        --transition-normal: 300ms ease-in-out;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        --radius-md: 0.375rem;
+        --radius-lg: 0.5rem;
+        --radius-xl: 0.75rem;
+        --radius-2xl: 1rem;
+        --radius-full: 9999px;
     }
 
     .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
     }
 
     .section {
-    padding: 3rem 0;
+        padding: 3rem 0;
     }
 
     .text-center {
-    text-align: center;
+        text-align: center;
     }
 
     /* Buttons */
     .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border: 2px solid transparent;
-    border-radius: var(--radius-lg);
-    font-weight: 500;
-    font-size: 0.875rem;
-    text-decoration: none;
-    cursor: pointer;
-    transition: var(--transition-fast);
-    white-space: nowrap;
-    background: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid transparent;
+        border-radius: var(--radius-lg);
+        font-weight: 500;
+        font-size: 0.875rem;
+        text-decoration: none;
+        cursor: pointer;
+        transition: var(--transition-fast);
+        white-space: nowrap;
+        background: none;
     }
 
     .btn--primary {
-    background: linear-gradient(135deg, #4dd0e1, #ffc107);
-    color: var(--gray-900);
-    border: none;
+        background: linear-gradient(135deg, #4dd0e1, #ffc107);
+        color: var(--gray-900);
+        border: none;
     }
 
     .btn--primary:hover {
-    background: linear-gradient(135deg, #26a69a, #ff9800);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+        background: linear-gradient(135deg, #26a69a, #ff9800);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
     }
 
     .btn--outline {
-    border-color: var(--gray-900);
-    color: var(--gray-900);
-    background-color: transparent;
+        border-color: var(--gray-900);
+        color: var(--gray-900);
+        background-color: transparent;
     }
 
     .btn--outline:hover {
-    background: var(--gray-900);
-    color: var(--white);
-    border-color: var(--gray-900);
+        background: var(--gray-900);
+        color: var(--white);
+        border-color: var(--gray-900);
     }
 
     .btn--white {
-    background: var(--white);
-    color: var(--gray-900);
-    border: none;
+        background: var(--white);
+        color: var(--gray-900);
+        border: none;
     }
 
     .btn--white:hover {
-    background: var(--gray-100);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+        background: var(--gray-100);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .btn--whatsapp {
+        background: #25d366;
+        color: var(--white);
+        border: none;
+    }
+
+    .btn--whatsapp:hover {
+        background: #128c7e;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
     }
 
     .btn--large {
-    padding: 1rem 2rem;
-    font-size: 1rem;
+        padding: 1rem 2rem;
+        font-size: 1rem;
     }
 
     .btn--small {
-    padding: 0.5rem 1rem;
-    font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
     }
 
     .btn--full {
-    width: 100%;
+        width: 100%;
     }
 
-    /* Hero Section */
+    /* Hero Section with Service Tabs */
     .hero {
-    position: relative;
-    padding: 140px 0 5rem;
-    background: linear-gradient(135deg, #4dd0e1 0%, #ffc107 100%);
-    overflow: hidden;
+        position: relative;
+        padding: 140px 0 2rem;
+        background: linear-gradient(135deg, #4dd0e1 0%, #ffc107 100%);
+        overflow: hidden;
     }
 
     .hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: float 15s ease-in-out infinite;
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        animation: float 15s ease-in-out infinite;
     }
 
-    .hero__container {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    .hero__content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        margin-bottom: 3rem;
     }
 
     .hero__title {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    color: var(--gray-900);
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        color: var(--gray-900);
     }
 
     .text-gradient {
-    background: linear-gradient(135deg, #26a69a, #ff9800);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+        background: linear-gradient(135deg, #26a69a, #ff9800);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
-    .hero__description {
-    font-size: 1.25rem;
-    color: var(--gray-700);
-    margin-bottom: 2rem;
-    line-height: 1.6;
+    .hero__subtitle {
+        font-size: 1.25rem;
+        color: var(--gray-700);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .hero__actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    .hero__action {
+        margin-bottom: 3rem;
     }
 
-    .hero__image {
-    position: relative;
+    /* Service Package Tabs */
+    .service-package-tabs {
+        position: relative;
+        z-index: 2;
+        margin-top: 3rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius-2xl);
+        padding: 2rem;
+        box-shadow: var(--shadow-xl);
     }
 
-    .hero__img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: var(--radius-2xl);
-    box-shadow: var(--shadow-xl);
+    .service-package-tabs__header {
+        text-align: center;
+        margin-bottom: 2rem;
     }
 
-    .hero__floating-card {
-    position: absolute;
-    bottom: -20px;
-    left: 20px;
-    background: var(--white);
-    padding: 1rem 1.5rem;
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-xl);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    max-width: 250px;
+    .service-package-tabs__title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 0.5rem;
     }
 
-    .hero__floating-card i {
-    font-size: 1.5rem;
-    color: #4dd0e1;
+    .service-package-tabs__subtitle {
+        font-size: 1rem;
+        color: var(--gray-600);
     }
 
-    .hero__floating-card span {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--gray-700);
+    .tab-navigation {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid var(--gray-200);
+        overflow-x: auto;
+        padding-bottom: 0;
     }
+
+    .tab-button {
+        background: none;
+        border: none;
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: var(--gray-600);
+        cursor: pointer;
+        transition: var(--transition-fast);
+        border-bottom: 3px solid transparent;
+        white-space: nowrap;
+        min-width: fit-content;
+    }
+
+    .tab-button:hover {
+        color: var(--primary-color);
+    }
+
+    .tab-button.active {
+        color: var(--primary-color);
+        border-bottom-color: var(--primary-color);
+    }
+
+    .tab-content {
+        display: none;
+        animation: fadeInTab 0.3s ease;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    @keyframes fadeInTab {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .service-package-card {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .service-package-card__image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+    }
+
+    .service-package-card__content {
+        flex: 1;
+    }
+
+    .service-package-card__title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 0.75rem;
+    }
+
+    .service-package-card__description {
+        font-size: 1rem;
+        color: var(--gray-700);
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .service-package-card__features {
+        margin-bottom: 1.5rem;
+    }
+
+    .service-package-card__features h4 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--gray-900);
+        margin-bottom: 1rem;
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        color: var(--gray-700);
+        padding: 0.5rem;
+        background: var(--gray-50);
+        border-radius: var(--radius-md);
+    }
+
+    .feature-item::before {
+        content: '✓';
+        color: var(--primary-color);
+        font-weight: bold;
+        width: 18px;
+        height: 18px;
+        background: var(--primary-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        flex-shrink: 0;
+    }
+
+    .service-package-card__action {
+        text-align: left;
+    }
+
+    .service-package-card__book-btn {
+        background: var(--primary-color);
+        color: var(--white);
+        border: none;
+        padding: 0.875rem 1.5rem;
+        border-radius: var(--radius-lg);
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--transition-fast);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .service-package-card__book-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
 
     /* Section Headers */
     .section__header {
-    margin-bottom: 2rem;
-    text-align: center;
+        margin-bottom: 2rem;
+        text-align: center;
     }
 
     .section__tag {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #4dd0e1;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-    display: block;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #4dd0e1;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+        display: block;
     }
 
     .section__title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    color: var(--gray-900);
-    margin-bottom: 0.75rem;
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 0.75rem;
     }
 
     .section__subtitle {
-    font-size: 1.125rem;
-    color: var(--gray-600);
-    max-width: 800px;
-    margin: 0 auto;
+        font-size: 1.125rem;
+        color: var(--gray-600);
+        max-width: 800px;
+        margin: 0 auto;
     }
 
     .section__divider {
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(135deg, #4dd0e1, #ffc107);
-    margin: 0.75rem auto;
-    border-radius: var(--radius-full);
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(135deg, #4dd0e1, #ffc107);
+        margin: 0.75rem auto;
+        border-radius: var(--radius-full);
     }
 
     /* About Section */
     .about {
-    background: var(--gray-50);
+        background: var(--gray-50);
     }
 
     .about__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
     }
 
     .about__images {
-    position: relative;
+        position: relative;
+        height: 400px;
     }
 
     .about__image {
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+        position: absolute;
     }
 
     .about__image--1 {
-    position: relative;
-    z-index: 3;
+        width: 60%;
+        height: 200px;
+        top: 0;
+        left: 0;
+        z-index: 3;
     }
 
     .about__image--2 {
-    position: absolute;
-    top: 50px;
-    right: -30px;
-    width: 60%;
-    z-index: 2;
+        width: 55%;
+        height: 180px;
+        top: 80px;
+        right: 0;
+        z-index: 2;
     }
 
     .about__image--3 {
-    position: absolute;
-    bottom: -30px;
-    left: 30px;
-    width: 70%;
-    z-index: 1;
+        width: 50%;
+        height: 160px;
+        bottom: 0;
+        left: 20%;
+        z-index: 1;
     }
 
     .about__img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
     }
 
     .about__image:hover .about__img {
-    transform: scale(1.05);
+        transform: scale(1.05);
     }
 
     .about__content {
-    max-width: 500px;
-    }
-
-    .about__text {
-    margin-bottom: 2rem;
+        max-width: 500px;
     }
 
     .about__text p {
-    font-size: 1rem;
-    color: var(--gray-600);
-    line-height: 1.6;
-    margin-bottom: 1rem;
+        font-size: 1rem;
+        color: var(--gray-600);
+        line-height: 1.6;
+        margin-bottom: 1rem;
     }
 
-    /* Promise Section */
+    /* Promise Section with Values */
     .promise {
-    background: linear-gradient(135deg, #4dd0e1, #26a69a);
-    color: var(--white);
-    text-align: center;
-    padding: 2rem 0;
+        background: linear-gradient(135deg, #4dd0e1, #26a69a);
+        color: var(--white);
+        text-align: center;
+    }
+
+    .promise__content {
+        margin-bottom: 3rem;
     }
 
     .promise__title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
+        font-size: 1.875rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
     }
 
     .promise__divider {
-    width: 50px;
-    height: 3px;
-    background: var(--white);
-    margin: 0.75rem auto;
-    border-radius: var(--radius-full);
+        width: 50px;
+        height: 3px;
+        background: var(--white);
+        margin: 0.75rem auto;
+        border-radius: var(--radius-full);
     }
 
     .promise__text {
-    font-size: 1rem;
-    opacity: 0.9;
+        font-size: 1rem;
+        opacity: 0.9;
+        margin-bottom: 3rem;
     }
 
-    /* Video Section */
-    .video-section {
-    background: linear-gradient(135deg, #4dd0e1 0%, #ffc107 100%);
-    position: relative;
-    overflow: hidden;
+    .promise__values {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
     }
 
-    .video-section::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-    animation: float 15s ease-in-out infinite;
+    .value-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius-xl);
+        padding: 2rem;
+        text-align: center;
     }
 
-    .video__container {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+    .value-card__icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--white);
     }
 
-    .video__wrapper {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    box-shadow: var(--shadow-xl);
-    background: var(--white);
+    .value-card__title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--white);
     }
 
-    .video__iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+
+
+    /* Get in Touch Section */
+    .get-in-touch {
+        background: var(--gray-50);
+        text-align: center;
     }
 
-    .video__content {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--radius-2xl);
-    box-shadow: var(--shadow-xl);
+    .get-in-touch__title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 1rem;
     }
 
-    .video__content p {
-    font-size: 1rem;
-    color: var(--gray-600);
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    .get-in-touch__subtitle {
+        font-size: 1.125rem;
+        color: var(--gray-600);
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    /* Services Section */
-    .services {
-    background: var(--gray-50);
+    .get-in-touch__actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
-    .services__category {
-    margin-bottom: 3rem;
+    /* News Carousel */
+    .news {
+        background: var(--white);
     }
 
-    .services__category:last-child {
-    margin-bottom: 0;
+    .news__carousel {
+        overflow: hidden;
+        position: relative;
     }
 
-    .services__category-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--gray-900);
-    margin-bottom: 0.75rem;
-    text-align: center;
+    .news__track {
+        display: flex;
+        animation: scroll 20s linear infinite;
+        gap: 2rem;
     }
 
-    .services__category-divider {
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(135deg, #4dd0e1, #ffc107);
-    margin: 0.75rem auto 2rem;
-    border-radius: var(--radius-full);
+    .news__item {
+        flex: 0 0 200px;
+        text-align: center;
+        opacity: 0.7;
+        transition: var(--transition-fast);
     }
 
-    .services__grid {
-    display: grid;
-    gap: 1.5rem;
+    .news__item:hover {
+        opacity: 1;
     }
 
-    .grid-3 {
-    grid-template-columns: repeat(3, 1fr);
+    .news__item img {
+        height: 60px;
+        width: auto;
+        margin: 0 auto;
+        filter: grayscale(100%);
+        transition: var(--transition-fast);
     }
 
-    .grid-2 {
-    grid-template-columns: repeat(2, 1fr);
+    .news__item:hover img {
+        filter: grayscale(0%);
     }
 
-    /* Service Cards */
-    .service-card {
-    background: var(--white);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-md);
-    overflow: hidden;
-    transition: var(--transition-normal);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100%); }
     }
 
-    .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
+    /* Testimonials */
+    .testimonials {
+        background: var(--gray-50);
     }
 
-    .service-card__icon {
-  text-align: center;
-  padding: 0.3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.service-icon {
-  max-width: 120px;
-  width: 100%;
-  height: auto;
-}
-
-
-
-    .card-body {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    .testimonials__slider {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
     }
 
-    .service-card__title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--gray-900);
-    margin-bottom: 1rem;
-    text-align: center;
+    .testimonial-card {
+        display: none;
+        padding: 2rem;
     }
 
-    .service-card__description {
-    flex: 1;
-    margin-bottom: 1.5rem;
+    .testimonial-card.active {
+        display: block;
     }
 
-    .service-card__description p {
-    font-size: 0.875rem;
-    color: var(--gray-600);
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
+    .testimonial__text {
+        font-size: 1.25rem;
+        font-style: italic;
+        color: var(--gray-700);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
     }
 
-    .service-card__description ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    .testimonial__author {
+        margin-top: 1.5rem;
     }
 
-    .service-card__description li {
-    font-size: 0.875rem;
-    color: var(--gray-600);
-    padding: 0.25rem 0;
-    position: relative;
-    padding-left: 1.5rem;
+    .author__name {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--gray-900);
+        margin-bottom: 0.25rem;
     }
 
-    .service-card__description li::before {
-    content: '•';
-    color: #4dd0e1;
-    font-weight: bold;
-    position: absolute;
-    left: 0;
+    .author__title {
+        font-size: 0.875rem;
+        color: var(--gray-500);
     }
 
-    /* CTA Section */
-    .cta {
-    background: linear-gradient(135deg, #4dd0e1, #26a69a);
-    color: var(--white);
+    .testimonials__controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
     }
 
-    .cta__content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-    align-items: center;
+    .testimonial__prev,
+    .testimonial__next {
+        background: #4dd0e1;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition-fast);
+        color: var(--white);
     }
 
-    .cta__title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
+    .testimonial__prev:hover,
+    .testimonial__next:hover {
+        background: #26a69a;
+        transform: scale(1.1);
     }
 
-    .cta__divider {
-    width: 50px;
-    height: 3px;
-    background: var(--white);
-    margin: 0.75rem 0;
-    border-radius: var(--radius-full);
+    .testimonials__dots {
+        display: flex;
+        gap: 0.5rem;
     }
 
-    .cta__description {
-    font-size: 1rem;
-    opacity: 0.9;
-    line-height: 1.6;
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--gray-300);
+        cursor: pointer;
+        transition: var(--transition-fast);
     }
 
-    .cta__action {
-    text-align: center;
+    .dot.active {
+        background: #4dd0e1;
     }
 
-    /* Partners Section */
-    .partners__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    align-items: center;
-    }
-
-    .partner-logo {
-    text-align: center;
-    opacity: 0.7;
-    transition: var(--transition-fast);
-    padding: 1rem;
-    }
-
-    .partner-logo:hover {
-    opacity: 1;
-    }
-
-    .partner-logo img {
-    height: 60px;
-    width: auto;
-    margin: 0 auto;
-    filter: grayscale(100%);
-    transition: var(--transition-fast);
-    }
-
-    .partner-logo:hover img {
-    filter: grayscale(0%);
-    }
-
-    /* Media Section */
-    .media__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    align-items: center;
-    }
-
-    .media-logo {
-    text-align: center;
-    opacity: 0.7;
-    transition: var(--transition-fast);
-    padding: 1rem;
-    }
-
-    .media-logo:hover {
-    opacity: 1;
-    }
-
-    .media-logo img {
-    height: 60px;
-    width: auto;
-    margin: 0 auto;
-    filter: grayscale(100%);
-    transition: var(--transition-fast);
-    }
-
-    .media-logo:hover img {
-    filter: grayscale(0%);
-    }
-
-    /* Contact Form */
+    /* Contact Form - Smaller */
     .contact-form {
-    background: linear-gradient(135deg, #4dd0e1, #26a69a);
-    color: var(--white);
+        background: linear-gradient(135deg, #4dd0e1, #26a69a);
+        color: var(--white);
+        padding: 3rem 0;
     }
 
     .contact__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .contact__content h2 {
+        color: var(--white);
     }
 
     .contact__description {
-    font-size: 1rem;
-    opacity: 0.9;
-    line-height: 1.6;
+        font-size: 1rem;
+        opacity: 0.9;
+        line-height: 1.6;
     }
 
     .contact__form {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: var(--radius-2xl);
-    box-shadow: var(--shadow-xl);
+        background: var(--white);
+        padding: 1.5rem;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-xl);
     }
 
     .form__row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
     }
 
     .form__group {
-    margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     .form__input,
     .form__select,
     .form__textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--gray-300);
-    border-radius: var(--radius-md);
-    font-size: 1rem;
-    transition: var(--transition-fast);
-    font-family: inherit;
-    background: var(--white);
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid var(--gray-300);
+        border-radius: var(--radius-md);
+        font-size: 1rem;
+        transition: var(--transition-fast);
+        font-family: inherit;
+        background: var(--white);
     }
 
     .form__input:focus,
     .form__select:focus,
     .form__textarea:focus {
-    outline: none;
-    border-color: #4dd0e1;
-    box-shadow: 0 0 0 3px rgba(77, 208, 225, 0.1);
-    }
-
-    /* Testimonials */
-    .testimonials {
-    background: var(--white);
-    }
-
-    .testimonials__slider {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    }
-
-    .testimonial-card {
-    display: none;
-    padding: 2rem;
-    }
-
-    .testimonial-card.active {
-    display: block;
-    }
-
-    .testimonial__text {
-    font-size: 1.25rem;
-    font-style: italic;
-    color: var(--gray-700);
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-    }
-
-    .testimonial__author {
-    margin-top: 1.5rem;
-    }
-
-    .author__name {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--gray-900);
-    margin-bottom: 0.25rem;
-    }
-
-    .author__title {
-    font-size: 0.875rem;
-    color: var(--gray-500);
-    }
-
-    .testimonials__controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-    }
-
-    .testimonial__prev,
-    .testimonial__next {
-    background: #4dd0e1;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: var(--transition-fast);
-    color: var(--white);
-    }
-
-    .testimonial__prev:hover,
-    .testimonial__next:hover {
-    background: #26a69a;
-    transform: scale(1.1);
-    }
-
-    .testimonials__dots {
-    display: flex;
-    gap: 0.5rem;
-    }
-
-    .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--gray-300);
-    cursor: pointer;
-    transition: var(--transition-fast);
-    }
-
-    .dot.active {
-    background: #4dd0e1;
+        outline: none;
+        border-color: #4dd0e1;
+        box-shadow: 0 0 0 3px rgba(77, 208, 225, 0.1);
     }
 
     /* Animations */
     @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(5deg); }
     }
 
     .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .animate-on-scroll.animate {
-    opacity: 1;
-    transform: translateY(0);
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-    .container {
-        padding: 0 1.5rem;
-    }
-
-    .hero__title {
-        font-size: 2.25rem;
-    }
-
-    .hero__container,
-    .about__grid,
-    .video__container,
-    .contact__grid,
-    .cta__content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .hero__image {
-        order: -1;
-    }
-
-    .grid-3 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .form__row {
-        grid-template-columns: 1fr;
-    }
-
-    .about__image--2,
-    .about__image--3 {
-        position: static;
-        width: 100%;
-        margin-top: 1rem;
-    }
-    }
-
-    @media (max-width: 768px) {
-    .container {
-        max-width: 100%;
-        padding: 0 1rem;
-    }
-
-    .hero {
-        padding: 120px 0 4rem;
-    }
-
-    .hero__title {
-        font-size: 2rem;
-    }
-
-    .section {
-        padding: 4rem 0;
-    }
-
-    .section__title {
-        font-size: 1.875rem;
-    }
-
-    .grid-3,
-    .grid-2 {
-        grid-template-columns: 1fr;
-    }
-
-    .hero__actions {
-        justify-content: center;
-    }
-
-    .hero__floating-card {
-        position: static;
-        margin-top: 1rem;
-        justify-content: center;
-    }
-
-    .cta__content {
-        text-align: center;
-    }
-
-    .partners__grid,
-    .media__grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    }
-
-    @media (max-width: 480px) {
-    .hero__title {
-        font-size: 1.75rem;
-    }
-
-    .section__title {
-        font-size: 1.5rem;
-    }
-
-    .hero__actions {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .btn {
-        width: 100%;
-    }
-
-    .contact__form {
-        padding: 1.5rem;
-        margin: 0 0.75rem;
-    }
-
-    .partners__grid,
-    .media__grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .service-card__title {
-        font-size: 1rem;
-    }
-
-    .service-card__description p,
-    .service-card__description li {
-        font-size: 0.8rem;
-    }
+        opacity: 1;
+        transform: translateY(0);
     }
 
     /* Utility classes */
     .text-white {
-    color: var(--white);
+        color: var(--white);
     }
 
-    .bg-primary {
-    background: linear-gradient(135deg, #4dd0e1, #26a69a);
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        .container {
+            max-width: 1000px;
+            padding: 0 2rem;
+        }
+        
+        .service-tabs {
+            gap: 1rem;
+        }
+        
+        .service-tab {
+            height: 260px;
+            padding: 1.5rem 0.75rem;
+        }
     }
 
-    .bg-gray-50 {
-    background: var(--gray-50);
+    @media (max-width: 1024px) {
+        .container {
+            padding: 0 1.5rem;
+        }
+
+        .hero__title {
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero__subtitle {
+            font-size: 1.125rem;
+        }
+
+        .service-tabs {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .service-tab {
+            height: 280px;
+            padding: 1.5rem 1rem;
+        }
+        
+        .service-tab__image {
+            height: 130px;
+        }
+
+        .about__grid,
+        .contact__grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        
+        .about__content {
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .promise__values {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .value-card {
+            padding: 1.5rem;
+        }
+
+        .about__images {
+            height: auto;
+            margin-bottom: 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+
+        .about__image--1,
+        .about__image--2,
+        .about__image--3 {
+            position: static;
+            width: 100%;
+            height: 120px;
+            margin-bottom: 0;
+        }
+        
+        .about__image--1 .about__img,
+        .about__image--2 .about__img,
+        .about__image--3 .about__img {
+            height: 120px;
+        }
+
+        .get-in-touch__actions {
+            gap: 1rem;
+        }
+        
+        .news__track {
+            gap: 1.5rem;
+        }
+        
+        .news__item {
+            flex: 0 0 180px;
+        }
     }
 
-    .text-primary {
-    color: #4dd0e1;
+    @media (max-width: 768px) {
+        .container {
+            padding: 0 1rem;
+        }
+
+        .hero {
+            padding: 100px 0 2rem;
+        }
+
+        .hero__title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero__subtitle {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+        
+        .section__title {
+            font-size: 1.75rem;
+        }
+
+        .service-tabs {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tab-navigation {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .tab-button {
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+        }
+        
+        .service-package-card {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            text-align: center;
+        }
+        
+        .service-package-card__image {
+            height: 180px;
+            margin: 0 auto;
+        }
+        
+        .service-package-card__action {
+            text-align: center;
+        }
+        
+        .feature-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .promise__values {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .value-card {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-align: left;
+        }
+        
+        .value-card__icon {
+            font-size: 2rem;
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+
+
+
+        .get-in-touch__actions {
+            flex-direction: column;
+            width: 100%;
+            gap: 0.75rem;
+        }
+        
+        .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .about__images {
+            height: auto;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .about__image--1,
+        .about__image--2,
+        .about__image--3 {
+            position: static;
+            width: 100%;
+            height: 200px;
+            margin-bottom: 0;
+        }
+        
+        .about__image--1 .about__img,
+        .about__image--2 .about__img,
+        .about__image--3 .about__img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .contact__form {
+            padding: 1.5rem;
+        }
+        
+        .form__row {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        
+        .testimonials__controls {
+            gap: 1rem;
+        }
+        
+        .testimonial__text {
+            font-size: 1.125rem;
+        }
+        
+        .news__item {
+            flex: 0 0 150px;
+        }
+        
+        .news__item img {
+            height: 45px;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .hero__title {
+            font-size: 1.875rem;
+        }
+        
+        .service-tab {
+            grid-template-columns: 100px 1fr;
+            padding: 1rem;
+        }
+        
+        .service-tab__image {
+            height: 70px;
+        }
+        
+        .service-tab__title {
+            font-size: 0.9rem;
+        }
+        
+        .service-tab__subtitle {
+            font-size: 0.75rem;
+        }
+        
+        .promise__title {
+            font-size: 1.5rem;
+        }
+        
+        .get-in-touch__title {
+            font-size: 1.5rem;
+        }
+        
+        .contact__form {
+            padding: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 0 0.75rem;
+        }
+
+        .hero {
+            padding: 90px 0 1.5rem;
+        }
+
+        .hero__title {
+            font-size: 1.75rem;
+            line-height: 1.1;
+        }
+        
+        .hero__subtitle {
+            font-size: 0.9rem;
+        }
+
+        .section {
+            padding: 2.5rem 0;
+        }
+        
+        .section__title {
+            font-size: 1.5rem;
+        }
+        
+        .section__subtitle {
+            font-size: 1rem;
+        }
+
+        .service-tab {
+            grid-template-columns: 80px 1fr;
+            padding: 1rem 0.75rem;
+            gap: 0.75rem;
+        }
+        
+        .service-tab__image {
+            height: 60px;
+        }
+        
+        .service-tab__title {
+            font-size: 0.85rem;
+            line-height: 1.2;
+        }
+        
+        .service-tab__subtitle {
+            font-size: 0.7rem;
+            line-height: 1.3;
+        }
+
+        .btn--large {
+            padding: 0.875rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .value-card {
+            padding: 1rem;
+            flex-direction: column;
+            text-align: center;
+            gap: 0.75rem;
+        }
+        
+        .value-card__icon {
+            margin-bottom: 0;
+        }
+        
+        .value-card__title {
+            font-size: 1rem;
+        }
+
+        .about__text p {
+            font-size: 0.9rem;
+        }
+
+        .contact__form {
+            padding: 0.75rem;
+            margin: 0 0.25rem;
+        }
+        
+        .form__input,
+        .form__select,
+        .form__textarea {
+            padding: 0.625rem;
+            font-size: 0.9rem;
+        }
+        
+        .testimonial__text {
+            font-size: 1rem;
+        }
+        
+        .testimonial__prev,
+        .testimonial__next {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .news__item {
+            flex: 0 0 120px;
+        }
+        
+        .news__item img {
+            height: 35px;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .container {
+            padding: 0 0.5rem;
+        }
+        
+        .hero__title {
+            font-size: 1.5rem;
+        }
+        
+        .service-tab {
+            padding: 0.75rem 0.5rem;
+        }
+        
+        .service-tab__title {
+            font-size: 0.8rem;
+        }
+        
+        .service-tab__subtitle {
+            font-size: 0.65rem;
+        }
+        
+        .contact__form {
+            padding: 0.5rem;
+        }
+    }
+
+    /* Touch-friendly improvements for mobile */
+    @media (hover: none) and (pointer: coarse) {
+        .btn {
+            min-height: 44px;
+            padding: 0.875rem 1.5rem;
+        }
+        
+        .service-tab {
+            min-height: 60px;
+        }
+        
+        .testimonial__prev,
+        .testimonial__next {
+            min-width: 44px;
+            min-height: 44px;
+        }
+        
+        .dot {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    /* High DPI displays */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .service-tab__image,
+        .about__img,
+        .news__item img {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
     }
     </style>
 </head>
@@ -977,53 +1267,169 @@
     <!-- Header Component -->
     <div id="header-placeholder"></div>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Service Tabs -->
     <section class="hero" id="home">
         <div class="container">
-            <div class="hero__container">
-                <div class="hero__content animate-on-scroll">
-                    <h1 class="hero__title">
-                        Your Loved Ones Are in <span class="text-gradient">Good Hands</span><br>
-                        with Teman
-                    </h1>
-                    <p class="hero__description">
-                        We at Teman Malaysia provide safe and reliable care companions. Contact us now to get FREE consultation!
-                    </p>
-                    <div class="hero__actions">
-                        <a href="pages/contact.html" class="btn btn--primary btn--large">
-                            <i class="fas fa-comments"></i>
-                            Free Consultation
-                        </a>
-                        <a href="pages/booking.html" class="btn btn--outline btn--large">
-                            <i class="fas fa-calendar-check"></i>
-                            Book Service
-                        </a>
+            <div class="hero__content animate-on-scroll">
+                <h1 class="hero__title">Your loved ones are in <span class="text-gradient">good hands</span> with Teman</h1>
+                <p class="hero__subtitle">
+                    Reliable and safe care companions to suit all needs and empower a healthy aged living
+                </p>
+            </div>
+            
+            <div class="service-package-tabs animate-on-scroll">
+                <div class="service-package-tabs__header">
+                    <h2 class="service-package-tabs__title">Our Care Service Packages</h2>
+                    <p class="service-package-tabs__subtitle">Choose the perfect care solution for your loved ones</p>
+                </div>
+                
+                <div class="tab-navigation">
+                    <button class="tab-button active" onclick="showPackageTab('appointment-package')">Appointment Aid</button>
+                    <button class="tab-button" onclick="showPackageTab('dialysis-package')">Dialysis Treatment</button>
+                    <button class="tab-button" onclick="showPackageTab('activity-package')">Activity Companion</button>
+                    <button class="tab-button" onclick="showPackageTab('home-package')">At Home Partner</button>
+                </div>
+                
+                <!-- Appointment Aide Package -->
+                <div id="appointment-package" class="tab-content active">
+                    <div class="service-package-card">
+                        <img src="assets/images/memory-3.jpg" alt="TEMAN Health Appointments" class="service-package-card__image">
+                        <div class="service-package-card__content">
+                            <h3 class="service-package-card__title">TEMAN Appointment Aid</h3>
+                            <p class="service-package-card__description">
+                                Assistance to go to medical checkups and treatments with professional companionship and safe transportation.
+                            </p>
+                            
+                            <div class="service-package-card__features">
+                                <h4>Service Options:</h4>
+                                <div class="feature-grid">
+                                    <div class="feature-item">Professional medical appointment support</div>
+                                    <div class="feature-item">Transportation assistance available</div>
+                                    <div class="feature-item">Flexible scheduling options</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-package-card__action">
+                                <a href="pages/services.html" class="service-package-card__book-btn">
+                                    <i class="fas fa-calendar-check"></i>
+                                    Book Now
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="hero__image animate-on-scroll">
-                    <img src="assets/images/memory-7.JPG" alt="Teman Malaysia freelancers with elderly" class="hero__img">
-                    
-                        <i class="fas fa-heart text-primary"></i>
-                        <span>Caring companion for your loved ones</span>
                 
+                <!-- Dialysis Companion Package -->
+                <div id="dialysis-package" class="tab-content">
+                    <div class="service-package-card">
+                        <img src="assets/images/memory-5.jpg" alt="TEMAN Dialysis Support" class="service-package-card__image">
+                        <div class="service-package-card__content">
+                            <h3 class="service-package-card__title">TEMAN to Dialysis Treatments</h3>
+                            <p class="service-package-card__description">
+                                Assistance to go to dialysis center to get their treatments with specialized care and transportation support.
+                            </p>
+                            
+                            <div class="service-package-card__features">
+                                <h4>Service Options:</h4>
+                                <div class="feature-grid">
+                                    <div class="feature-item">Companion during treatment (optional)</div>
+                                    <div class="feature-item">Safe transportation to/from dialysis center</div>
+                                    <div class="feature-item">Emotional support throughout process</div>
+                                    <div class="feature-item">Flexible scheduling for regular treatments</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-package-card__action">
+                                <a href="pages/services.html" class="service-package-card__book-btn">
+                                    <i class="fas fa-calendar-check"></i>
+                                    Book Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activity Companion Package -->
+                <div id="activity-package" class="tab-content">
+                    <div class="service-package-card">
+                        <img src="assets/images/memory-2.jpg" alt="TEMAN Customised Activities" class="service-package-card__image">
+                        <div class="service-package-card__content">
+                            <h3 class="service-package-card__title">TEMAN Customised Activities</h3>
+                            <p class="service-package-card__description">
+                                Accompany and assistance to do any kind of leisure activities, social outings, and daily errands.
+                            </p>
+                            
+                            <div class="service-package-card__features">
+                                <h4>Activities Include:</h4>
+                                <div class="feature-grid">
+                                    <div class="feature-item">Shopping and errands</div>
+                                    <div class="feature-item">Social activities and outings</div>
+                                    <div class="feature-item">Recreational activities</div>
+                                    <div class="feature-item">Bank or administrative appointments</div>
+                                    <div class="feature-item">Exercise and fitness activities</div>
+                                    <div class="feature-item">Customized to your preferences</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-package-card__action">
+                                <a href="pages/services.html" class="service-package-card__book-btn">
+                                    <i class="fas fa-calendar-check"></i>
+                                    Book Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- At Home Partner Package -->
+                <div id="home-package" class="tab-content">
+                    <div class="service-package-card">
+                        <img src="assets/images/memory-7.JPG" alt="TEMAN at Home" class="service-package-card__image">
+                        <div class="service-package-card__content">
+                            <h3 class="service-package-card__title">TEMAN at Home Package</h3>
+                            <p class="service-package-card__description">
+                                Day care services to provide assistance with daily activities in the comfort of your own home.
+                            </p>
+                            
+                            <div class="service-package-card__features">
+                                <h4>Services Include:</h4>
+                                <div class="feature-grid">
+                                    <div class="feature-item">Dispensing medications</div>
+                                    <div class="feature-item">Feeding/prepare meals</div>
+                                    <div class="feature-item">Light physiotherapy</div>
+                                    <div class="feature-item">Companionship & mind wellness</div>
+                                    <div class="feature-item">Bathing/personal care</div>
+                                    <div class="feature-item">BP/blood sugar measurement</div>
+                                    <div class="feature-item">Outdoor exercise/activities</div>
+                                </div>
+                            </div>
+                            
+                            <div class="service-package-card__action">
+                                <a href="pages/services.html" class="service-package-card__book-btn">
+                                    <i class="fas fa-calendar-check"></i>
+                                    Book Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about section">
+    <section class="about section" id="about">
         <div class="container">
             <div class="about__grid">
                 <div class="about__images animate-on-scroll">
                     <div class="about__image about__image--1">
-                        <img src="assets/images/memory-2.jpg" alt="Teman Malaysia freelancer driving car" class="about__img">
+                        <img src="assets/images/memory-1.jpg" alt="Teman Malaysia freelancer driving car" class="about__img">
                     </div>
                     <div class="about__image about__image--2">
-                        <img src="assets/images/memory-3.jpg" alt="Teman Malaysia freelancer help elderly with hospital appointments" class="about__img">
+                        <img src="assets/images/memory-4.jpg" alt="Teman Malaysia freelancer help elderly with hospital appointments" class="about__img">
                     </div>
                     <div class="about__image about__image--3">
-                        <img src="assets/images/memory-4.jpg" alt="Teman Malaysia freelancer with elderly women" class="about__img">
+                        <img src="assets/images/memory-6.jpg" alt="Teman Malaysia freelancer with elderly women" class="about__img">
                     </div>
                 </div>
                 
@@ -1044,7 +1450,7 @@
         </div>
     </section>
 
-    <!-- Promise Section -->
+    <!-- Promise Section with Values -->
     <section class="promise section">
         <div class="container">
             <div class="promise__content animate-on-scroll">
@@ -1054,222 +1460,36 @@
                     We are committed to providing the best care possible for your loved ones.
                 </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Video Section -->
-    <section class="video-section section">
-        <div class="container">
-            <div class="video__container">
-                <div class="video__wrapper animate-on-scroll">
-                    <iframe 
-                        src="https://www.youtube.com/embed/GsR87QDkITI" 
-                        title="Teman Malaysia - Your Reliable Care Companion" 
-                        frameborder="0" 
-                        allowfullscreen
-                        class="video__iframe">
-                    </iframe>
+            
+            <div class="promise__values animate-on-scroll">
+                <div class="value-card">
+                    <div class="value-card__icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="value-card__title">Companionship</h3>
                 </div>
                 
-                <div class="video__content animate-on-scroll">
-                    <p>We can't always be there for our loved ones. If we are travelling, working long hours, or frequently unavailable due to pressing obligations, it might not always be possible to provide the care and attention they need.</p>
-                    <p>Their needs must be met as well, even if this means finding trusted companions or caregivers outside the family circle who can fill in when needed.</p>
-                    <p>Teman Malaysia strives to provide the best service for customers by providing companionship and caregiving services for <strong>the elderly</strong>, <strong>pregnant women</strong>, <strong>mothers with small child</strong> and <strong>differently abled people</strong>.</p>
-                    <p>Our Temanions or caregivers are carefully selected as we want you to have peace of mind knowing your loved ones will be in reliable and trusted hands.</p>
+                <div class="value-card">
+                    <div class="value-card__icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="value-card__title">Assistance</h3>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services section" id="services">
-        <div class="container">
-            <div class="section__header animate-on-scroll">
-                <span class="section__tag"></span>
-                <h2 class="section__title">WHAT WE PROVIDE?</h2>
-            </div>
-            
-            <!-- Short-Term Services -->
-            <div class="services__category animate-on-scroll">
-                <h3 class="services__category-title">Short-Term Services</h3>
-                <div class="services__category-divider"></div>
                 
-                <div class="services__grid grid-3">
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <img src="assets/images/svg-1.png" alt="Health Appointments" class="service-icon">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="service-card__title">TEMAN to Health Appointments</h3>
-                            <div class="service-card__description">
-                                <p>Accompany the customer for health check-ups and visit their doctors:</p>
-                                <ul>
-                                    <li>Medical appointments.</li>
-                                    <li>Go to Pharmacy.</li>
-                                    <li>Physiotherapy.</li>
-                                    <li>any others related activities.</li>
-                                </ul>
-                            </div>
-                            <a href="pages/booking.html" class="btn btn--outline btn--small">Book Our Service</a>
-                        </div>
+                <div class="value-card">
+                    <div class="value-card__icon">
+                        <i class="fas fa-leaf"></i>
                     </div>
-                    
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <img src="assets/images/svg-2.png" alt="Dialysis Treatments" class="service-icon">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="service-card__title">TEMAN to Dialysis Treatments</h3>
-                            <div class="service-card__description">
-                                <p>Accompany the customer to dialysis center to get treatments:</p>
-                                <ul>
-                                    <li>Pick-up from home.</li>
-                                    <li>drop-off and assist to dialysis center.</li>
-                                    <li>Bring back to home after treatment complete.</li>
-                                    <li>Temanion waiting upon request.</li>
-                                </ul>
-                            </div>
-                            <a href="pages/booking.html" class="btn btn--outline btn--small">Book Our Service</a>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <img src="assets/images/svg-3.png" alt="Customized Activities" class="service-icon">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="service-card__title">Curated Customized Activities</h3>
-                            <div class="service-card__description">
-                                <p>Accompany the customers to go anywhere, or to do anything:</p>
-                                <ul>
-                                    <li>Accompanying run errands.</li>
-                                    <li>Mind wellness.</li>
-                                    <li>Recreational and hobbies.</li>
-                                    <li>Long or short travel, etc.</li>
-                                </ul>
-                            </div>
-                            <a href="pages/booking.html" class="btn btn--outline btn--small">Book Our Service</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Long-Term Services -->
-            <div class="services__category animate-on-scroll">
-                <h3 class="services__category-title">Long-Term Services</h3>
-                <div class="services__category-divider"></div>
-                
-                <div class="services__grid grid-2">
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <img src="assets/images/svg-4.png" alt="TEMAN at Home Package" class="service-icon">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="service-card__title">TEMAN at Home Package</h3>
-                            <div class="service-card__description">
-                                <p>Accompany the customer at home and help them with their daily activities:</p>
-                                <ul>
-                                    <li>Dispensing Medications</li>
-                                    <li>Feeding/Prepare meal</li>
-                                    <li>Light physiotherapy</li>
-                                    <li>Companionship</li>
-                                    <li>Outdoor exercise/activity</li>
-                                    <li>Mind Wellness Activities</li>
-                                </ul>
-                            </div>
-                            <a href="pages/booking.html" class="btn btn--outline btn--small">Book Our Service</a>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <img src="assets/images/svg-5.png" alt="TEMAN at Home (Plus) Package" class="service-icon">
-                        </div>
-                        <div class="card-body">
-                            <h3 class="service-card__title">TEMAN at Home (Plus) Package</h3>
-                            <div class="service-card__description">
-                                <p>Accompany the customer at home and match them with specific Temanion:</p>
-                                <ul>
-                                    <li>Anything from TEMAN at home package, plus:</li>
-                                    <li>Bathing/change diapers</li>
-                                    <li>Bedridden/wheelchair users</li>
-                                    <li>BP/blood sugar measure</li>
-                                </ul>
-                            </div>
-                            <a href="pages/booking.html" class="btn btn--outline btn--small">Book Our Service</a>
-                        </div>
-                    </div>
+                    <h3 class="value-card__title">Wellness</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta section">
-        <div class="container">
-            <div class="cta__content animate-on-scroll">
-                <div class="cta__text">
-                    <h3 class="cta__title">Competent Friendly Companion</h3>
-                    <div class="cta__divider"></div>
-                    <p class="cta__description">
-                        Need trustable & reliable companions for your loved ones? Worry not, we are here. Teman Malaysia! Contact us now to get FREE consultation.
-                    </p>
-                </div>
-                <div class="cta__action">
-                    <a href="pages/contact.html" class="btn btn--white btn--large">
-                        Free Consultation
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Partners Section -->
-    <section class="partners section">
-        <div class="container">
-            <div class="section__header animate-on-scroll">
-                <span class="section__tag">COLLABORATION</span>
-                <h2 class="section__title">Our Partners</h2>
-                <div class="section__divider"></div>
-            </div>
-            
-            <div class="partners__grid animate-on-scroll">
-                <div class="partner-logo">
-                    <a href="https://www.seedlab.my/" target="_blank">
-                        <img src="assets/images/partners/seedlab-logo.png" alt="Seedlab">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="https://www.jasperlodge.com.my/" target="_blank">
-                        <img src="assets/images/partners/jasper-logo.png" alt="Jasper Lodge">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="https://cancer.org.my/" target="_blank">
-                        <img src="assets/images/partners/ncsm-logo.png" alt="NCSM">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="https://www.darulinsyirah.com/" target="_blank">
-                        <img src="assets/images/partners/insyirah-logo.png" alt="Darul Insyirah">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="https://hpc.hrdcorp.gov.my/" target="_blank">
-                        <img src="assets/images/partners/hrd-logo.png" alt="HRD Corp">
-                    </a>
-                </div>
-                <div class="partner-logo">
-                    <a href="https://azzahrah.my/" target="_blank">
-                        <img src="assets/images/partners/hiaz-logo.png" alt="HIAZ">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Media Coverage -->
-    <section class="media section">
+    <!-- News Carousel -->
+    <section class="news section">
         <div class="container">
             <div class="section__header animate-on-scroll">
                 <span class="section__tag">As Featured on</span>
@@ -1277,90 +1497,69 @@
                 <div class="section__divider"></div>
             </div>
             
-            <div class="media__grid animate-on-scroll">
-                <div class="media-logo">
-                    <a href="https://www.bfm.my/podcast/enterprise/hervantage/ent-hv-teman-a-companion-for-the-elderly" target="_blank">
-                        <img src="assets/images/media/bfm-logo.png" alt="BFM 89.9">
-                    </a>
-                </div>
-                <div class="media-logo">
-                    <a href="https://www.bharian.com.my/berita/nasional/2021/08/846055/teman-di-saat-memerlukan" target="_blank">
-                        <img src="assets/images/media/berita-harian-logo.png" alt="Berita Harian">
-                    </a>
-                </div>
-                <div class="media-logo">
-                    <a href="https://www.utusan.com.my/ekonomi/2021/05/teman-malaysia-bantu-menjaga-warga-emas/" target="_blank">
-                        <img src="assets/images/media/utusan-logo.png" alt="Utusan Malaysia">
-                    </a>
-                </div>
-                <div class="media-logo">
-                    <a href="https://says.com/my/lifestyle/service-to-help-elderly" target="_blank">
-                        <img src="assets/images/media/says-logo.png" alt="SAYS">
-                    </a>
-                </div>
-                <div class="media-logo">
-                    <a href="https://www.malaysiakini.com/news/576449" target="_blank">
-                        <img src="assets/images/media/malaysiakini-logo.png" alt="Malaysiakini">
-                    </a>
-                </div>
-                <div class="media-logo">
-                    <a href="https://www.theedgemarkets.com/article/aged-care-offering-companionship-elderly" target="_blank">
-                        <img src="assets/images/media/the-edge-logo.png" alt="The Edge Malaysia">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-form section">
-        <div class="container">
-            <div class="contact__grid">
-                <div class="contact__content animate-on-scroll">
-                    <span class="section__tag text-white">Do you have any question?</span>
-                    <h2 class="section__title text-white">Contact Us To Find Out How We Can Assist You And Your Loved Ones</h2>
-                    <div class="section__divider"></div>
-                    <p class="contact__description">
-                        Send us your message, our customer service will contact you back!
-                    </p>
-                </div>
-                
-                <div class="contact__form animate-on-scroll">
-                    <form class="form" id="contact-form">
-                        <div class="form__row">
-                            <div class="form__group">
-                                <input type="text" name="name" class="form__input" placeholder="Name" required>
-                            </div>
-                            <div class="form__group">
-                                <input type="email" name="email" class="form__input" placeholder="Email" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form__row">
-                            <div class="form__group">
-                                <input type="tel" name="phone" class="form__input" placeholder="Phone Number">
-                            </div>
-                            <div class="form__group">
-                                <select name="service" class="form__select" required>
-                                    <option value="">Select Service</option>
-                                    <option value="Health Appointments">Health Appointments</option>
-                                    <option value="Dialysis Treatments">Dialysis Treatments</option>
-                                    <option value="Customized Activities">Customized Activities</option>
-                                    <option value="At Home">At Home</option>
-                                    <option value="At Home (Plus)">At Home (Plus)</option>
-                                    <option value="General Questions">General Questions</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form__group">
-                            <textarea name="message" class="form__textarea" placeholder="Message" rows="8"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn--white btn--full">
-                            Submit
-                        </button>
-                    </form>
+            <div class="news__carousel animate-on-scroll">
+                <div class="news__track">
+                    <div class="news__item">
+                        <a href="https://www.bfm.my/podcast/enterprise/hervantage/ent-hv-teman-a-companion-for-the-elderly" target="_blank">
+                            <img src="assets/images/media/bfm-logo.png" alt="BFM 89.9">
+                        </a>
+                    </div>
+                    <div class="news__item">
+                        <a href="https://www.bharian.com.my/berita/nasional/2021/08/846055/teman-di-saat-memerlukan" target="_blank">
+                            <img src="assets/images/media/berita-harian-logo.png" alt="Berita Harian">
+                        </a>
+                    </div>
+                    <div class="news__item">
+                        <a href="https://www.utusan.com.my/ekonomi/2021/05/teman-malaysia-bantu-menjaga-warga-emas/" target="_blank">
+                            <img src="assets/images/media/utusan-logo.png" alt="Utusan Malaysia">
+                        </a>
+                    </div>
+                    <div class="news__item">
+                        <a href="https://says.com/my/lifestyle/service-to-help-elderly" target="_blank">
+                            <img src="assets/images/media/says-logo.png" alt="SAYS">
+                        </a>
+                    </div>
+                    <div class="news__item">
+                        <a href="https://www.malaysiakini.com/news/576449" target="_blank">
+                            <img src="assets/images/media/malaysiakini-logo.png" alt="Malaysiakini">
+                        </a>
+                    </div>
+                    <div class="news__item">
+                        <a href="https://www.theedgemarkets.com/article/aged-care-offering-companionship-elderly" target="_blank">
+                            <img src="assets/images/media/the-edge-logo.png" alt="The Edge Malaysia">
+                        </a>
+                    </div>
+                    <!-- Duplicate for seamless loop -->
+                    <div class="news__item">
+                        <a href="https://www.bfm.my/podcast/enterprise/hervantage/ent-hv-teman-a-companion-for-the-elderly" target="_blank">
+                            <img src="assets/images/media/bfm-logo.png" alt="BFM 89.9">
+                        </a>
+                    </div>
+                    <div class="news__item">
+                        <a href="https://www.bharian.com.my/berita/nasional/2021/08/846055/teman-di-saat-memerlukan" target="_blank">
+                            <img src="assets/images/media/berita-harian-logo.png" alt="Berita Harian">
+                        </a>
+                    </div>
+                    <div class="news__item">
+                        <a href="https://www.utusan.com.my/ekonomi/2021/05/teman-malaysia-bantu-menjaga-warga-emas/" target="_blank">
+                            <img src="assets/images/media/utusan-logo.png" alt="Utusan Malaysia">
+                        </a>
+                    </div>
+                    <div class="news__item">
+                        <a href="https://says.com/my/lifestyle/service-to-help-elderly" target="_blank">
+                            <img src="assets/images/media/says-logo.png" alt="SAYS">
+                        </a>
+                    </div>
+                    <div class="news__item">
+                        <a href="https://www.malaysiakini.com/news/576449" target="_blank">
+                            <img src="assets/images/media/malaysiakini-logo.png" alt="Malaysiakini">
+                        </a>
+                    </div>
+                    <div class="news__item">
+                        <a href="https://www.theedgemarkets.com/article/aged-care-offering-companionship-elderly" target="_blank">
+                            <img src="assets/images/media/the-edge-logo.png" alt="The Edge Malaysia">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1419,6 +1618,60 @@
                     <span class="dot" onclick="currentTestimonial(3)"></span>
                 </div>
                 <button class="testimonial__next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form - Smaller -->
+    <section class="contact-form section" id="contact">
+        <div class="container">
+            <div class="contact__grid">
+                <div class="contact__content animate-on-scroll">
+                    <span class="section__tag text-white">Do you have any question?</span>
+                    <h2 class="section__title text-white">Contact Us</h2>
+                    <div class="section__divider"></div>
+                    <p class="contact__description">
+                        Send us your message, our customer service will contact you back!
+                    </p>
+                </div>
+                
+                <div class="contact__form animate-on-scroll">
+                    <form class="form" id="contact-form">
+                        <div class="form__row">
+                            <div class="form__group">
+                                <input type="text" name="name" class="form__input" placeholder="Name" required>
+                            </div>
+                            <div class="form__group">
+                                <input type="email" name="email" class="form__input" placeholder="Email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form__row">
+                            <div class="form__group">
+                                <input type="tel" name="phone" class="form__input" placeholder="Phone Number">
+                            </div>
+                            <div class="form__group">
+                                <select name="service" class="form__select" required>
+                                    <option value="">Select Service</option>
+                                    <option value="Teman Health Appointments">Teman Health Appointments</option>
+                                    <option value="Teman Customised Activity">Teman Customised Activity</option>
+                                    <option value="Teman Dialysis Treatment">Teman Dialysis Treatment</option>
+                                    <option value="Teman at Home">Teman at Home</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Corporate Inquiry">Corporate Inquiry</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form__group">
+                            <textarea name="message" class="form__textarea" placeholder="Message" rows="4"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary btn--full">
+                            Submit
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -1599,6 +1852,23 @@
                     // Reset form
                     this.reset();
                 });
+            }
+
+
+
+            // Service Package Tabs functionality
+            window.showPackageTab = function(packageId) {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab-button').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab and corresponding content
+                event.target.classList.add('active');
+                document.getElementById(packageId).classList.add('active');
             }
 
             console.log('Teman Malaysia index page loaded successfully!');
