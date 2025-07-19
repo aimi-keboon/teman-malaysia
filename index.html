@@ -636,13 +636,31 @@
         100% { transform: translateX(-100%); }
     }
 
-    /* Testimonials */
+    /* Testimonials - Enhanced Previous Style */
     .testimonials {
-        background: var(--gray-50);
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .testimonials::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(77, 208, 225, 0.1) 0%, transparent 70%);
+        animation: float 20s ease-in-out infinite;
+    }
+
+    .testimonials__container {
+        position: relative;
+        z-index: 2;
     }
 
     .testimonials__slider {
-        max-width: 800px;
+        max-width: 900px;
         margin: 0 auto;
         text-align: center;
         position: relative;
@@ -650,82 +668,154 @@
 
     .testimonial-card {
         display: none;
-        padding: 2rem;
+        padding: 3rem 2rem;
+        background: var(--white);
+        border-radius: var(--radius-2xl);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        margin: 2rem auto;
+        position: relative;
+        border: 1px solid rgba(77, 208, 225, 0.1);
     }
 
     .testimonial-card.active {
         display: block;
+        animation: fadeInTestimonial 0.6s ease;
+    }
+
+    @keyframes fadeInTestimonial {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 6rem;
+        color: var(--primary-color);
+        font-family: Georgia, serif;
+        opacity: 0.2;
+        line-height: 1;
+    }
+
+    .testimonial__content {
+        position: relative;
+        z-index: 2;
     }
 
     .testimonial__text {
-        font-size: 1.25rem;
+        font-size: 1.375rem;
         font-style: italic;
         color: var(--gray-700);
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
+        margin-bottom: 2.5rem;
+        line-height: 1.7;
+        position: relative;
+        padding-top: 2rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .testimonial__author {
-        margin-top: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding-top: 2rem;
+        border-top: 2px solid var(--gray-100);
+    }
+
+    .author__avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-weight: bold;
+        font-size: 1.75rem;
+        flex-shrink: 0;
+        border: 4px solid var(--white);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .author__info {
+        text-align: left;
     }
 
     .author__name {
-        font-size: 1rem;
-        font-weight: 600;
+        font-size: 1.25rem;
+        font-weight: 700;
         color: var(--gray-900);
-        margin-bottom: 0.25rem;
+        margin-bottom: 0.5rem;
     }
 
     .author__title {
-        font-size: 0.875rem;
+        font-size: 1rem;
         color: var(--gray-500);
+        font-weight: 500;
     }
 
     .testimonials__controls {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 2rem;
-        margin-top: 2rem;
+        gap: 3rem;
+        margin-top: 3rem;
     }
 
     .testimonial__prev,
     .testimonial__next {
-        background: #4dd0e1;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
         border: none;
         border-radius: 50%;
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: var(--transition-fast);
+        transition: all 0.3s ease;
         color: var(--white);
+        font-size: 1.25rem;
+        box-shadow: 0 8px 25px rgba(77, 208, 225, 0.3);
     }
 
     .testimonial__prev:hover,
     .testimonial__next:hover {
-        background: #26a69a;
-        transform: scale(1.1);
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 15px 35px rgba(77, 208, 225, 0.4);
     }
 
     .testimonials__dots {
         display: flex;
-        gap: 0.5rem;
+        gap: 0.75rem;
     }
 
     .dot {
-        width: 12px;
-        height: 12px;
+        width: 16px;
+        height: 16px;
         border-radius: 50%;
         background: var(--gray-300);
         cursor: pointer;
-        transition: var(--transition-fast);
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
     }
 
     .dot.active {
-        background: #4dd0e1;
+        background: var(--primary-color);
+        transform: scale(1.2);
+        border-color: var(--white);
+        box-shadow: 0 4px 15px rgba(77, 208, 225, 0.3);
+    }
+
+    .dot:hover {
+        background: var(--primary-light);
+        transform: scale(1.1);
     }
 
     /* Contact Form */
@@ -1022,6 +1112,48 @@
         .testimonial__text {
             font-size: 1.125rem;
         }
+
+        /* Modern testimonials mobile */
+        .testimonials__slider {
+            max-width: 100%;
+        }
+
+        .testimonial-card {
+            padding: 2rem 1.5rem;
+            margin: 1rem auto;
+        }
+
+        .testimonial__text {
+            font-size: 1.125rem;
+            padding-top: 1rem;
+        }
+
+        .testimonial-card::before {
+            font-size: 4rem;
+            top: -15px;
+        }
+
+        .author__avatar {
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+        }
+
+        .author__info {
+            text-align: left;
+        }
+
+        .testimonials__controls {
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial__prev,
+        .testimonial__next {
+            width: 50px;
+            height: 50px;
+            font-size: 1rem;
+        }
         
         .news__item {
             flex: 0 0 150px;
@@ -1231,6 +1363,9 @@
     </style>
 </head>
 <body>
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
+
     <!-- Hero Section with Service Tabs -->
     <section class="hero" id="home">
         <div class="container">
@@ -1387,7 +1522,7 @@
                         <img src="assets/images/memory-1.jpg" alt="Teman Malaysia freelancer driving car" class="about__img">
                     </div>
                     <div class="about__image about__image--2">
-                        <img src="assets/images/memory-4.jpg" alt="Teman Malaysia freelancer with elderly women" class="about__img">
+                        <img src="assets/images/memory-5.jpg" alt="Teman Malaysia freelancer with elderly women" class="about__img">
                     </div>
                 </div> 
                 
@@ -1523,33 +1658,58 @@
 
     <!-- Testimonials -->
     <section class="testimonials section">
-        <div class="container">
+        <div class="container testimonials__container">
             <div class="section__header animate-on-scroll">
                 <span class="section__tag">TESTIMONIAL</span>
                 <h2 class="section__title">From Our Clients</h2>
                 <div class="section__divider"></div>
             </div>
             
-            <div class="testimonials__slider">
-                <div class="testimonial-card active">
+            <div class="testimonials__grid animate-on-scroll">
+                <div class="testimonial-card">
                     <div class="testimonial__content">
                         <p class="testimonial__text">
                             "Sekarang saya mempunyai peneman untuk membantu saya ke pasar dan membawa saya kesana sini."
                         </p>
                         <div class="testimonial__author">
-                            <h4 class="author__name">Hjh. Najihah</h4>
-                            <p class="author__title">Bekas Guru Sekolah Agama</p>
+                            <div class="author__avatar">
+                                HN
+                            </div>
+                            <div class="author__info">
+                                <h4 class="author__name">Hjh. Najihah</h4>
+                                <p class="author__title">Bekas Guru Sekolah Agama</p>
+                                <div class="testimonial__rating">
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
+                <div class="testimonial-card featured">
                     <div class="testimonial__content">
                         <p class="testimonial__text">
                             "Saya tidak dapat meneman ibu saya hari ini kerana kekangan masa. Servis ini sangat bermanfaat untuk anak-anak yang bekerja sepenuh masa dan tidak sentiasa dapat untuk menjaga ibu bapa mereka."
                         </p>
                         <div class="testimonial__author">
-                            <h4 class="author__name">Yazmin Kadir</h4>
+                            <div class="author__avatar">
+                                YK
+                            </div>
+                            <div class="author__info">
+                                <h4 class="author__name">Yazmin Kadir</h4>
+                                <p class="author__title">Working Mother</p>
+                                <div class="testimonial__rating">
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1560,20 +1720,23 @@
                             "Bagus dan bermanfaat untuk komuniti kita. Bagusnya jika dapat diluaskan lagi di kawasan luar bandar."
                         </p>
                         <div class="testimonial__author">
-                            <h4 class="author__name">Puan Badariah</h4>
+                            <div class="author__avatar">
+                                PB
+                            </div>
+                            <div class="author__info">
+                                <h4 class="author__name">Puan Badariah</h4>
+                                <p class="author__title">Community Member</p>
+                                <div class="testimonial__rating">
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="testimonials__controls">
-                <button class="testimonial__prev"><i class="fas fa-chevron-left"></i></button>
-                <div class="testimonials__dots">
-                    <span class="dot active" onclick="currentTestimonial(1)"></span>
-                    <span class="dot" onclick="currentTestimonial(2)"></span>
-                    <span class="dot" onclick="currentTestimonial(3)"></span>
-                </div>
-                <button class="testimonial__next"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -1632,94 +1795,205 @@
         </div>
     </section>
 
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
     <!-- Scripts -->
     <script>
-        // Animate on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Load header and footer components for index.html
+        async function loadComponents() {
+            try {
+                // Load header
+                const headerResponse = await fetch('components/header.html');
+                if (headerResponse.ok) {
+                    let headerHTML = await headerResponse.text();
+                    // For index.html, we need to adjust the paths in the header
+                    headerHTML = headerHTML.replace(/\.\.\/index\.html/g, 'index.html');
+                    headerHTML = headerHTML.replace(/\.\.\/assets\//g, 'assets/');
+                    headerHTML = headerHTML.replace(/href="([^"]*\.html)"/g, 'href="pages/$1"');
+                    // Fix the home link specifically
+                    headerHTML = headerHTML.replace(/href="pages\/index\.html"/g, 'href="index.html"');
+                    document.getElementById('header-placeholder').innerHTML = headerHTML;
+                    
+                    // Mark home as active and initialize navigation
+                    setTimeout(() => {
+                        const homeLink = document.querySelector('a[href="index.html"]');
+                        if (homeLink) {
+                            homeLink.classList.add('active');
+                        }
+                        initializeNavigation();
+                    }, 100);
+                }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
+                // Load footer
+                const footerResponse = await fetch('components/footer.html');
+                if (footerResponse.ok) {
+                    let footerHTML = await footerResponse.text();
+                    // For index.html, we need to adjust the paths in the footer
+                    footerHTML = footerHTML.replace(/\.\.\/assets\//g, 'assets/');
+                    footerHTML = footerHTML.replace(/href="([^"]*\.html)"/g, 'href="pages/$1"');
+                    document.getElementById('footer-placeholder').innerHTML = footerHTML;
+                }
+
+                // Initialize main JavaScript after components are loaded
+                initializeMainJS();
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+
+        // Initialize navigation functionality
+        function initializeNavigation() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('show');
+                    const icon = navToggle.querySelector('i');
+                    if (navMenu.classList.contains('show')) {
+                        icon.className = 'fas fa-times';
+                    } else {
+                        icon.className = 'fas fa-bars';
+                    }
+                });
+
+                // Close menu when clicking on nav links
+                document.querySelectorAll('.nav__link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('show');
+                        const icon = navToggle.querySelector('i');
+                        if (icon) icon.className = 'fas fa-bars';
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                        navMenu.classList.remove('show');
+                        const icon = navToggle.querySelector('i');
+                        if (icon) icon.className = 'fas fa-bars';
+                    }
+                });
+            }
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (header) {
+                    if (window.scrollY > 100) {
+                        header.style.background = 'rgba(255, 255, 255, 0.98)';
+                        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                    } else {
+                        header.style.background = 'rgba(255, 255, 255, 0.95)';
+                        header.style.boxShadow = 'none';
+                    }
                 }
             });
-        }, observerOptions);
+        }
+        {
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            observer.observe(el);
-        });
+            // Animate on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
 
-        // Service Package Tabs functionality
-        function showPackageTab(packageId) {
-            // Remove active class from all tabs and contents
-            document.querySelectorAll('.tab-button').forEach(tab => {
-                tab.classList.remove('active');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
             });
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
+
+            // Testimonials functionality
+            let currentTestimonialIndex = 1;
+            const totalTestimonials = 3;
+
+            function showTestimonial(n) {
+                const testimonials = document.querySelectorAll('.testimonial-card');
+                const dots = document.querySelectorAll('.dot');
+                
+                if (n > totalTestimonials) currentTestimonialIndex = 1;
+                if (n < 1) currentTestimonialIndex = totalTestimonials;
+                
+                testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                testimonials[currentTestimonialIndex - 1].classList.add('active');
+                dots[currentTestimonialIndex - 1].classList.add('active');
+            }
+
+            function nextTestimonial() {
+                showTestimonial(currentTestimonialIndex += 1);
+            }
+
+            function prevTestimonial() {
+                showTestimonial(currentTestimonialIndex -= 1);
+            }
+
+            window.currentTestimonial = function(n) {
+                showTestimonial(currentTestimonialIndex = n);
+            }
+
+            // Add event listeners for testimonial navigation
+            const nextBtn = document.querySelector('.testimonial__next');
+            const prevBtn = document.querySelector('.testimonial__prev');
             
-            // Add active class to clicked tab and corresponding content
-            event.target.classList.add('active');
-            document.getElementById(packageId).classList.add('active');
+            if (nextBtn) nextBtn.addEventListener('click', nextTestimonial);
+            if (prevBtn) prevBtn.addEventListener('click', prevTestimonial);
+
+            // Auto-advance testimonials
+            setInterval(nextTestimonial, 5000);
+
+            // Contact form handling
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    const data = Object.fromEntries(formData);
+                    
+                    // Here you would typically send the data to your server
+                    console.log('Form submitted:', data);
+                    
+                    // Show success message (you can customize this)
+                    alert('Thank you for your message! We will contact you soon.');
+                    
+                    // Reset form
+                    this.reset();
+                });
+            }
+
+            // Service Package Tabs functionality
+            window.showPackageTab = function(packageId) {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.tab-button').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab and corresponding content
+                event.target.classList.add('active');
+                document.getElementById(packageId).classList.add('active');
+            }
+
+            console.log('Teman Malaysia index page loaded successfully!');
         }
 
-        // Testimonials functionality
-        let currentTestimonialIndex = 1;
-        const totalTestimonials = 3;
-
-        function showTestimonial(n) {
-            const testimonials = document.querySelectorAll('.testimonial-card');
-            const dots = document.querySelectorAll('.dot');
-            
-            if (n > totalTestimonials) currentTestimonialIndex = 1;
-            if (n < 1) currentTestimonialIndex = totalTestimonials;
-            
-            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            
-            testimonials[currentTestimonialIndex - 1].classList.add('active');
-            dots[currentTestimonialIndex - 1].classList.add('active');
-        }
-
-        function nextTestimonial() {
-            showTestimonial(currentTestimonialIndex += 1);
-        }
-
-        function prevTestimonial() {
-            showTestimonial(currentTestimonialIndex -= 1);
-        }
-
-        function currentTestimonial(n) {
-            showTestimonial(currentTestimonialIndex = n);
-        }
-
-        // Add event listeners for testimonial navigation
-        document.querySelector('.testimonial__next').addEventListener('click', nextTestimonial);
-        document.querySelector('.testimonial__prev').addEventListener('click', prevTestimonial);
-
-        // Auto-advance testimonials
-        setInterval(nextTestimonial, 5000);
-
-        // Contact form handling
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Show success message
-            alert('Thank you for your message! We will contact you soon.');
-            
-            // Reset form
-            this.reset();
-        });
-
-        console.log('Teman Malaysia page loaded successfully!');
+        // Load components when DOM is ready
+        document.addEventListener('DOMContentLoaded', loadComponents);
+    </script>
+    <script src="assets/js/main.js"></script>
     </script>
 </body>
 </html>
