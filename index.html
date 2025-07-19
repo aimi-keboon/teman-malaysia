@@ -398,7 +398,6 @@
         box-shadow: var(--shadow-lg);
     }
 
-
     /* Section Headers */
     .section__header {
         margin-bottom: 2rem;
@@ -437,7 +436,7 @@
         border-radius: var(--radius-full);
     }
 
-    /* About Section */
+    /* About Section - Updated for 4 photos */
     .about {
         background: var(--gray-50);
     }
@@ -451,8 +450,9 @@
 
     .about__images {
         position: relative;
-        height: 450px;
+        height: 500px;
         perspective: 1000px;
+        overflow: visible;
     }
 
     .about__image {
@@ -462,6 +462,7 @@
         position: absolute;
         transition: transform 0.4s ease, box-shadow 0.4s ease;
         border: 4px solid var(--white);
+        background: var(--white);
     }
 
     .about__image::before {
@@ -472,9 +473,10 @@
         right: 0;
         bottom: 0;
         background: linear-gradient(45deg, rgba(77, 208, 225, 0.15), rgba(255, 193, 7, 0.15));
-        z-index: 1;
+        z-index: 2;
         opacity: 0;
         transition: opacity 0.3s ease;
+        pointer-events: none;
     }
 
     .about__image:hover::before {
@@ -482,51 +484,74 @@
     }
 
     .about__image--1 {
-        width: 65%;
-        height: 220px;
+        width: 55%;
+        height: 180px;
         top: 0;
         left: 0;
-        z-index: 3;
-        transform: rotate(-2deg);
+        z-index: 14;
+        transform: rotate(-3deg);
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
 
     .about__image--1:hover {
-        transform: rotate(0deg) scale(1.02);
-        z-index: 4;
+        transform: rotate(-1deg) scale(1.02);
+        z-index: 18;
         box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
     }
 
     .about__image--2 {
-        width: 58%;
-        height: 200px;
-        top: 120px;
-        right: -5%;
-        z-index: 2;
-        transform: rotate(3deg);
+        width: 50%;
+        height: 160px;
+        top: 50px;
+        right: 0;
+        z-index: 13;
+        transform: rotate(4deg);
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
     }
 
     .about__image--2:hover {
-        transform: rotate(1deg) scale(1.02);
-        z-index: 4;
+        transform: rotate(2deg) scale(1.02);
+        z-index: 18;
         box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
     }
 
     .about__image--3 {
-        width: 52%;
-        height: 180px;
-        bottom: 10px;
-        left: 25%;
-        z-index: 1;
-        transform: rotate(-1deg);
+        width: 48%;
+        height: 170px;
+        bottom: 140px;
+        left: 20%;
+        z-index: 12;
+        transform: rotate(-2deg);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
     .about__image--3:hover {
-        transform: rotate(-3deg) scale(1.02);
-        z-index: 4;
+        transform: rotate(-4deg) scale(1.02);
+        z-index: 18;
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .about__image--4 {
+        width: 52%;
+        height: 150px;
+        bottom: 0;
+        right: 10%;
+        z-index: 11;
+        transform: rotate(2deg);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .about__image--4:hover {
+        transform: rotate(0deg) scale(1.02);
+        z-index: 18;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .about__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
     }
 
     .about__content {
@@ -596,8 +621,6 @@
         font-weight: 600;
         color: var(--white);
     }
-
-
 
     /* Get in Touch Section */
     .get-in-touch {
@@ -764,7 +787,7 @@
         background: #4dd0e1;
     }
 
-    /* Contact Form - Smaller */
+    /* Contact Form */
     .contact-form {
         background: linear-gradient(135deg, #4dd0e1, #26a69a);
         color: var(--white);
@@ -880,20 +903,6 @@
             font-size: 1.125rem;
         }
 
-        .service-tabs {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-        
-        .service-tab {
-            height: 280px;
-            padding: 1.5rem 1rem;
-        }
-        
-        .service-tab__image {
-            height: 130px;
-        }
-
         .about__grid,
         .contact__grid {
             grid-template-columns: 1fr;
@@ -915,26 +924,36 @@
         }
 
         .about__images {
-            height: auto;
+            height: 400px;
             margin-bottom: 1rem;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.5rem;
         }
 
         .about__image--1,
         .about__image--2,
-        .about__image--3 {
-            position: static;
-            width: 100%;
-            height: 120px;
-            margin-bottom: 0;
+        .about__image--3,
+        .about__image--4 {
+            width: 45%;
+            height: 140px;
         }
-        
-        .about__image--1 .about__img,
-        .about__image--2 .about__img,
-        .about__image--3 .about__img {
-            height: 120px;
+
+        .about__image--1 {
+            top: 0;
+            left: 0;
+        }
+
+        .about__image--2 {
+            top: 0;
+            right: 0;
+        }
+
+        .about__image--3 {
+            bottom: 0;
+            left: 0;
+        }
+
+        .about__image--4 {
+            bottom: 0;
+            right: 0;
         }
 
         .get-in-touch__actions {
@@ -975,12 +994,6 @@
         
         .section__title {
             font-size: 1.75rem;
-        }
-
-        .service-tabs {
-            grid-template-columns: 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
         }
 
         .tab-navigation {
@@ -1032,8 +1045,6 @@
             flex-shrink: 0;
         }
 
-
-
         .get-in-touch__actions {
             flex-direction: column;
             width: 100%;
@@ -1049,25 +1060,19 @@
             height: auto;
             position: relative;
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
 
         .about__image--1,
         .about__image--2,
-        .about__image--3 {
+        .about__image--3,
+        .about__image--4 {
             position: static;
             width: 100%;
-            height: 200px;
+            height: 150px;
             margin-bottom: 0;
-        }
-        
-        .about__image--1 .about__img,
-        .about__image--2 .about__img,
-        .about__image--3 .about__img {
-            height: 200px;
-            width: 100%;
-            object-fit: cover;
+            transform: none;
         }
 
         .contact__form {
@@ -1101,23 +1106,6 @@
             font-size: 1.875rem;
         }
         
-        .service-tab {
-            grid-template-columns: 100px 1fr;
-            padding: 1rem;
-        }
-        
-        .service-tab__image {
-            height: 70px;
-        }
-        
-        .service-tab__title {
-            font-size: 0.9rem;
-        }
-        
-        .service-tab__subtitle {
-            font-size: 0.75rem;
-        }
-        
         .promise__title {
             font-size: 1.5rem;
         }
@@ -1128,6 +1116,17 @@
         
         .contact__form {
             padding: 1rem;
+        }
+
+        .about__images {
+            grid-template-columns: 1fr;
+        }
+
+        .about__image--1,
+        .about__image--2,
+        .about__image--3,
+        .about__image--4 {
+            height: 120px;
         }
     }
 
@@ -1161,26 +1160,6 @@
             font-size: 1rem;
         }
 
-        .service-tab {
-            grid-template-columns: 80px 1fr;
-            padding: 1rem 0.75rem;
-            gap: 0.75rem;
-        }
-        
-        .service-tab__image {
-            height: 60px;
-        }
-        
-        .service-tab__title {
-            font-size: 0.85rem;
-            line-height: 1.2;
-        }
-        
-        .service-tab__subtitle {
-            font-size: 0.7rem;
-            line-height: 1.3;
-        }
-
         .btn--large {
             padding: 0.875rem 1.5rem;
             font-size: 0.9rem;
@@ -1203,6 +1182,13 @@
 
         .about__text p {
             font-size: 0.9rem;
+        }
+
+        .about__image--1,
+        .about__image--2,
+        .about__image--3,
+        .about__image--4 {
+            height: 100px;
         }
 
         .contact__form {
@@ -1245,18 +1231,6 @@
             font-size: 1.5rem;
         }
         
-        .service-tab {
-            padding: 0.75rem 0.5rem;
-        }
-        
-        .service-tab__title {
-            font-size: 0.8rem;
-        }
-        
-        .service-tab__subtitle {
-            font-size: 0.65rem;
-        }
-        
         .contact__form {
             padding: 0.5rem;
         }
@@ -1267,10 +1241,6 @@
         .btn {
             min-height: 44px;
             padding: 0.875rem 1.5rem;
-        }
-        
-        .service-tab {
-            min-height: 60px;
         }
         
         .testimonial__prev,
@@ -1287,8 +1257,8 @@
 
     /* High DPI displays */
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        .service-tab__image,
-        .about__img,
+        .service-package-card__image,
+        .about__image img,
         .news__item img {
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
@@ -1297,9 +1267,6 @@
     </style>
 </head>
 <body>
-    <!-- Header Component -->
-    <div id="header-placeholder"></div>
-
     <!-- Hero Section with Service Tabs -->
     <section class="hero" id="home">
         <div class="container">
@@ -1323,7 +1290,7 @@
                     <button class="tab-button" onclick="showPackageTab('home-package')">At Home Partner</button>
                 </div>
                 
-                <!-- Appointment Aide Package -->
+                <!-- Service Package Content Tabs -->
                 <div id="appointment-package" class="tab-content active">
                     <div class="service-package-card">
                         <img src="assets/images/memory-3.jpg" alt="TEMAN Health Appointments" class="service-package-card__image">
@@ -1343,7 +1310,7 @@
                             </div>
                             
                             <div class="service-package-card__action">
-                                <a href="pages/booking.html" class="service-package-card__book-btn">
+                                <a href="#contact" class="service-package-card__book-btn">
                                     <i class="fas fa-calendar-check"></i>
                                     Book Now
                                 </a>
@@ -1352,7 +1319,6 @@
                     </div>
                 </div>
                 
-                <!-- Dialysis Companion Package -->
                 <div id="dialysis-package" class="tab-content">
                     <div class="service-package-card">
                         <img src="assets/images/memory-8.JPG" alt="TEMAN Dialysis Support" class="service-package-card__image">
@@ -1373,7 +1339,7 @@
                             </div>
                             
                             <div class="service-package-card__action">
-                                <a href="pages/boooking.html" class="service-package-card__book-btn">
+                                <a href="#contact" class="service-package-card__book-btn">
                                     <i class="fas fa-calendar-check"></i>
                                     Book Now
                                 </a>
@@ -1382,7 +1348,6 @@
                     </div>
                 </div>
                 
-                <!-- Activity Companion Package -->
                 <div id="activity-package" class="tab-content">
                     <div class="service-package-card">
                         <img src="assets/images/memory-2.jpg" alt="TEMAN Customised Activities" class="service-package-card__image">
@@ -1405,7 +1370,7 @@
                             </div>
                             
                             <div class="service-package-card__action">
-                                <a href="pages/boooking.html" class="service-package-card__book-btn">
+                                <a href="#contact" class="service-package-card__book-btn">
                                     <i class="fas fa-calendar-check"></i>
                                     Book Now
                                 </a>
@@ -1414,7 +1379,6 @@
                     </div>
                 </div>
                 
-                <!-- At Home Partner Package -->
                 <div id="home-package" class="tab-content">
                     <div class="service-package-card">
                         <img src="assets/images/memory-7.JPG" alt="TEMAN at Home" class="service-package-card__image">
@@ -1438,7 +1402,7 @@
                             </div>
                             
                             <div class="service-package-card__action">
-                                <a href="pages/boooking.html" class="service-package-card__book-btn">
+                                <a href="#contact" class="service-package-card__book-btn">
                                     <i class="fas fa-calendar-check"></i>
                                     Book Now
                                 </a>
@@ -1450,7 +1414,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section with 4 Photos -->
     <section class="about section" id="about">
         <div class="container">
             <div class="about__grid">
@@ -1463,6 +1427,9 @@
                     </div>
                     <div class="about__image about__image--3">
                         <img src="assets/images/memory-5.jpg" alt="Teman Malaysia freelancer with elderly women" class="about__img">
+                    </div>
+                    <div class="about__image about__image--4">
+                        <img src="assets/images/memory-6.jpg" alt="Teman Malaysia customised activities" class="about__img">
                     </div>
                 </div> 
                 
@@ -1518,8 +1485,6 @@
             </div>
         </div>
     </section>
-
-
 
     <!-- News Carousel -->
     <section class="news section">
@@ -1655,7 +1620,7 @@
         </div>
     </section>
 
-    <!-- Contact Form - Smaller -->
+    <!-- Contact Form -->
     <section class="contact-form section" id="contact">
         <div class="container">
             <div class="contact__grid">
@@ -1709,207 +1674,94 @@
         </div>
     </section>
 
-    <!-- Footer Component -->
-    <div id="footer-placeholder"></div>
-
     <!-- Scripts -->
     <script>
-        // Load header and footer components for index.html
-        async function loadComponents() {
-            try {
-                // Load header
-                const headerResponse = await fetch('components/header.html');
-                if (headerResponse.ok) {
-                    let headerHTML = await headerResponse.text();
-                    // For index.html, we need to adjust the paths in the header
-                    headerHTML = headerHTML.replace(/\.\.\/index\.html/g, 'index.html');
-                    headerHTML = headerHTML.replace(/\.\.\/assets\//g, 'assets/');
-                    headerHTML = headerHTML.replace(/href="([^"]*\.html)"/g, 'href="pages/$1"');
-                    // Fix the home link specifically
-                    headerHTML = headerHTML.replace(/href="pages\/index\.html"/g, 'href="index.html"');
-                    document.getElementById('header-placeholder').innerHTML = headerHTML;
-                    
-                    // Mark home as active and initialize navigation
-                    setTimeout(() => {
-                        const homeLink = document.querySelector('a[href="index.html"]');
-                        if (homeLink) {
-                            homeLink.classList.add('active');
-                        }
-                        initializeNavigation();
-                    }, 100);
-                }
+        // Animate on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-                // Load footer
-                const footerResponse = await fetch('components/footer.html');
-                if (footerResponse.ok) {
-                    let footerHTML = await footerResponse.text();
-                    // For index.html, we need to adjust the paths in the footer
-                    footerHTML = footerHTML.replace(/\.\.\/assets\//g, 'assets/');
-                    footerHTML = footerHTML.replace(/href="([^"]*\.html)"/g, 'href="pages/$1"');
-                    document.getElementById('footer-placeholder').innerHTML = footerHTML;
-                }
-
-                // Initialize main JavaScript after components are loaded
-                initializeMainJS();
-            } catch (error) {
-                console.error('Error loading components:', error);
-            }
-        }
-
-        // Initialize navigation functionality
-        function initializeNavigation() {
-            const navToggle = document.getElementById('nav-toggle');
-            const navMenu = document.getElementById('nav-menu');
-
-            if (navToggle && navMenu) {
-                navToggle.addEventListener('click', () => {
-                    navMenu.classList.toggle('show');
-                    const icon = navToggle.querySelector('i');
-                    if (navMenu.classList.contains('show')) {
-                        icon.className = 'fas fa-times';
-                    } else {
-                        icon.className = 'fas fa-bars';
-                    }
-                });
-
-                // Close menu when clicking on nav links
-                document.querySelectorAll('.nav__link').forEach(link => {
-                    link.addEventListener('click', () => {
-                        navMenu.classList.remove('show');
-                        const icon = navToggle.querySelector('i');
-                        if (icon) icon.className = 'fas fa-bars';
-                    });
-                });
-
-                // Close menu when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                        navMenu.classList.remove('show');
-                        const icon = navToggle.querySelector('i');
-                        if (icon) icon.className = 'fas fa-bars';
-                    }
-                });
-            }
-
-            // Header scroll effect
-            window.addEventListener('scroll', () => {
-                const header = document.getElementById('header');
-                if (header) {
-                    if (window.scrollY > 100) {
-                        header.style.background = 'rgba(255, 255, 255, 0.98)';
-                        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-                    } else {
-                        header.style.background = 'rgba(255, 255, 255, 0.95)';
-                        header.style.boxShadow = 'none';
-                    }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
                 }
             });
-        }
+        }, observerOptions);
 
-        // Initialize main functionality
-        function initializeMainJS() {
-            // Animate on scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
+        // Service Package Tabs functionality
+        function showPackageTab(packageId) {
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.tab-button').forEach(tab => {
+                tab.classList.remove('active');
             });
-
-            // Testimonials functionality
-            let currentTestimonialIndex = 1;
-            const totalTestimonials = 3;
-
-            function showTestimonial(n) {
-                const testimonials = document.querySelectorAll('.testimonial-card');
-                const dots = document.querySelectorAll('.dot');
-                
-                if (n > totalTestimonials) currentTestimonialIndex = 1;
-                if (n < 1) currentTestimonialIndex = totalTestimonials;
-                
-                testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                
-                testimonials[currentTestimonialIndex - 1].classList.add('active');
-                dots[currentTestimonialIndex - 1].classList.add('active');
-            }
-
-            function nextTestimonial() {
-                showTestimonial(currentTestimonialIndex += 1);
-            }
-
-            function prevTestimonial() {
-                showTestimonial(currentTestimonialIndex -= 1);
-            }
-
-            window.currentTestimonial = function(n) {
-                showTestimonial(currentTestimonialIndex = n);
-            }
-
-            // Add event listeners for testimonial navigation
-            const nextBtn = document.querySelector('.testimonial__next');
-            const prevBtn = document.querySelector('.testimonial__prev');
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
             
-            if (nextBtn) nextBtn.addEventListener('click', nextTestimonial);
-            if (prevBtn) prevBtn.addEventListener('click', prevTestimonial);
-
-            // Auto-advance testimonials
-            setInterval(nextTestimonial, 5000);
-
-            // Contact form handling
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Get form data
-                    const formData = new FormData(this);
-                    const data = Object.fromEntries(formData);
-                    
-                    // Here you would typically send the data to your server
-                    console.log('Form submitted:', data);
-                    
-                    // Show success message (you can customize this)
-                    alert('Thank you for your message! We will contact you soon.');
-                    
-                    // Reset form
-                    this.reset();
-                });
-            }
-
-
-
-            // Service Package Tabs functionality
-            window.showPackageTab = function(packageId) {
-                // Remove active class from all tabs and contents
-                document.querySelectorAll('.tab-button').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-                
-                // Add active class to clicked tab and corresponding content
-                event.target.classList.add('active');
-                document.getElementById(packageId).classList.add('active');
-            }
-
-            console.log('Teman Malaysia index page loaded successfully!');
+            // Add active class to clicked tab and corresponding content
+            event.target.classList.add('active');
+            document.getElementById(packageId).classList.add('active');
         }
 
-        // Load components when DOM is ready
-        document.addEventListener('DOMContentLoaded', loadComponents);
+        // Testimonials functionality
+        let currentTestimonialIndex = 1;
+        const totalTestimonials = 3;
+
+        function showTestimonial(n) {
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (n > totalTestimonials) currentTestimonialIndex = 1;
+            if (n < 1) currentTestimonialIndex = totalTestimonials;
+            
+            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            testimonials[currentTestimonialIndex - 1].classList.add('active');
+            dots[currentTestimonialIndex - 1].classList.add('active');
+        }
+
+        function nextTestimonial() {
+            showTestimonial(currentTestimonialIndex += 1);
+        }
+
+        function prevTestimonial() {
+            showTestimonial(currentTestimonialIndex -= 1);
+        }
+
+        function currentTestimonial(n) {
+            showTestimonial(currentTestimonialIndex = n);
+        }
+
+        // Add event listeners for testimonial navigation
+        document.querySelector('.testimonial__next').addEventListener('click', nextTestimonial);
+        document.querySelector('.testimonial__prev').addEventListener('click', prevTestimonial);
+
+        // Auto-advance testimonials
+        setInterval(nextTestimonial, 5000);
+
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message
+            alert('Thank you for your message! We will contact you soon.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        console.log('Teman Malaysia page loaded successfully!');
     </script>
-    <script src="assets/js/main.js"></script>
 </body>
 </html>
