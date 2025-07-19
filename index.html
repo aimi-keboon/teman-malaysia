@@ -636,7 +636,7 @@
         100% { transform: translateX(-100%); }
     }
 
-    /* Testimonials - Enhanced Previous Style */
+    /* Testimonials - Carousel Version */
     .testimonials {
         background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         position: relative;
@@ -656,166 +656,162 @@
 
     .testimonials__container {
         position: relative;
-        z-index: 2;
     }
 
-    .testimonials__slider {
-        max-width: 900px;
-        margin: 0 auto;
-        text-align: center;
+    .testimonials__carousel {
+        overflow: hidden;
         position: relative;
+        margin-top: 2rem;
+        border-radius: var(--radius-xl);
+    }
+
+    .testimonials__track {
+        display: flex;
+        transition: transform 0.5s ease;
+        gap: 1.5rem;
+        padding: 0 0.75rem;
     }
 
     .testimonial-card {
-        display: none;
-        padding: 3rem 2rem;
         background: var(--white);
-        border-radius: var(--radius-2xl);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        margin: 2rem auto;
+        border-radius: var(--radius-xl);
+        padding: 1.5rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
         position: relative;
         border: 1px solid rgba(77, 208, 225, 0.1);
+        text-align: center;
+        flex: 0 0 350px; /* Fixed width for carousel */
+        min-height: 200px;
     }
 
-    .testimonial-card.active {
-        display: block;
-        animation: fadeInTestimonial 0.6s ease;
-    }
-
-    @keyframes fadeInTestimonial {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
+    .testimonial-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
     }
 
     .testimonial-card::before {
         content: '"';
         position: absolute;
-        top: -20px;
+        top: -8px;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 6rem;
+        font-size: 2.5rem;
         color: var(--primary-color);
         font-family: Georgia, serif;
         opacity: 0.2;
         line-height: 1;
     }
 
-    .testimonial__content {
-        position: relative;
-        z-index: 2;
-    }
-
     .testimonial__text {
-        font-size: 1.375rem;
+        font-size: 0.875rem;
         font-style: italic;
         color: var(--gray-700);
-        margin-bottom: 2.5rem;
-        line-height: 1.7;
+        margin-bottom: 1rem;
+        line-height: 1.5;
         position: relative;
-        padding-top: 2rem;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
+        padding-top: 1rem;
     }
 
     .testimonial__author {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        padding-top: 2rem;
+        margin-top: 1rem;
+        padding-top: 1rem;
         border-top: 2px solid var(--gray-100);
     }
 
-    .author__avatar {
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--white);
-        font-weight: bold;
-        font-size: 1.75rem;
-        flex-shrink: 0;
-        border: 4px solid var(--white);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .author__info {
-        text-align: left;
-    }
-
     .author__name {
-        font-size: 1.25rem;
+        font-size: 1rem;
         font-weight: 700;
         color: var(--gray-900);
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem;
     }
 
     .author__title {
-        font-size: 1rem;
+        font-size: 0.8rem;
         color: var(--gray-500);
         font-weight: 500;
     }
 
+    /* Carousel Controls */
     .testimonials__controls {
         display: flex;
-        align-items: center;
         justify-content: center;
-        gap: 3rem;
-        margin-top: 3rem;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
     }
 
-    .testimonial__prev,
-    .testimonial__next {
-        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-        border: none;
+    .testimonial__nav-btn {
+        background: var(--white);
+        border: 2px solid var(--primary-color);
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
-        width: 60px;
-        height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: var(--transition-fast);
+        color: var(--primary-color);
+        font-size: 1.2rem;
+    }
+
+    .testimonial__nav-btn:hover {
+        background: var(--primary-color);
         color: var(--white);
-        font-size: 1.25rem;
-        box-shadow: 0 8px 25px rgba(77, 208, 225, 0.3);
+        transform: scale(1.05);
     }
 
-    .testimonial__prev:hover,
-    .testimonial__next:hover {
-        transform: translateY(-3px) scale(1.1);
-        box-shadow: 0 15px 35px rgba(77, 208, 225, 0.4);
+    .testimonial__nav-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
     }
 
+    .testimonial__nav-btn:disabled:hover {
+        background: var(--white);
+        color: var(--primary-color);
+    }
+
+    /* Dots Indicator */
     .testimonials__dots {
         display: flex;
-        gap: 0.75rem;
+        justify-content: center;
+        gap: 0.5rem;
     }
 
-    .dot {
-        width: 16px;
-        height: 16px;
+    .testimonial__dot {
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
         background: var(--gray-300);
         cursor: pointer;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
+        transition: var(--transition-fast);
     }
 
-    .dot.active {
+    .testimonial__dot.active {
         background: var(--primary-color);
         transform: scale(1.2);
-        border-color: var(--white);
-        box-shadow: 0 4px 15px rgba(77, 208, 225, 0.3);
     }
 
-    .dot:hover {
-        background: var(--primary-light);
-        transform: scale(1.1);
+    .testimonial__dot:hover {
+        background: var(--primary-dark);
+    }
+
+    /* Auto-scroll animation for 3 slides */
+    @keyframes testimonialScroll {
+        0% { transform: translateX(0); }
+        33.33% { transform: translateX(-370px); }
+        66.66% { transform: translateX(-740px); }
+        100% { transform: translateX(0); }
+    }
+
+    .testimonials__track.auto-scroll {
+        animation: testimonialScroll 9s infinite; /* 3 seconds per slide */
+    }
+
+    .testimonials__track.auto-scroll:hover {
+        animation-play-state: paused;
     }
 
     /* Contact Form */
@@ -1113,45 +1109,34 @@
             font-size: 1.125rem;
         }
 
-        /* Modern testimonials mobile */
-        .testimonials__slider {
-            max-width: 100%;
-        }
-
+        /* Testimonials mobile - carousel version */
         .testimonial-card {
-            padding: 2rem 1.5rem;
-            margin: 1rem auto;
+            flex: 0 0 280px; /* Smaller width for mobile */
+            min-height: 180px;
+            padding: 1.25rem;
         }
 
         .testimonial__text {
-            font-size: 1.125rem;
-            padding-top: 1rem;
+            font-size: 0.8rem;
+            padding-top: 0.75rem;
         }
 
         .testimonial-card::before {
-            font-size: 4rem;
-            top: -15px;
+            font-size: 2rem;
+            top: -6px;
         }
 
-        .author__avatar {
-            width: 60px;
-            height: 60px;
-            font-size: 1.5rem;
+        .author__name {
+            font-size: 0.9rem;
         }
 
-        .author__info {
-            text-align: left;
+        .author__title {
+            font-size: 0.75rem;
         }
 
-        .testimonials__controls {
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .testimonial__prev,
-        .testimonial__next {
-            width: 50px;
-            height: 50px;
+        .testimonial__nav-btn {
+            width: 45px;
+            height: 45px;
             font-size: 1rem;
         }
         
@@ -1282,8 +1267,46 @@
             font-size: 0.9rem;
         }
         
+        /* Testimonials even smaller on mobile */
+        .testimonial-card {
+            flex: 0 0 250px; /* Even smaller for very small screens */
+            padding: 1rem;
+            min-height: 160px;
+        }
+
         .testimonial__text {
-            font-size: 1rem;
+            font-size: 0.75rem;
+            margin-bottom: 0.75rem;
+            padding-top: 0.5rem;
+        }
+
+        .testimonial__author {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+        }
+
+        .testimonial-card::before {
+            font-size: 1.75rem;
+            top: -5px;
+        }
+
+        .author__name {
+            font-size: 0.85rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author__title {
+            font-size: 0.7rem;
+        }
+
+        .testimonial__nav-btn {
+            width: 40px;
+            height: 40px;
+            font-size: 0.9rem;
+        }
+
+        .testimonials__controls {
+            margin-top: 1.5rem;
         }
         
         .testimonial__prev,
@@ -1522,7 +1545,7 @@
                         <img src="assets/images/memory-1.jpg" alt="Teman Malaysia freelancer driving car" class="about__img">
                     </div>
                     <div class="about__image about__image--2">
-                        <img src="assets/images/memory-5.jpg" alt="Teman Malaysia freelancer with elderly women" class="about__img">
+                        <img src="assets/images/memory-4.jpg" alt="Teman Malaysia freelancer with elderly women" class="about__img">
                     </div>
                 </div> 
                 
@@ -1656,7 +1679,7 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Testimonials Carousel -->
     <section class="testimonials section">
         <div class="container testimonials__container">
             <div class="section__header animate-on-scroll">
@@ -1665,78 +1688,66 @@
                 <div class="section__divider"></div>
             </div>
             
-            <div class="testimonials__grid animate-on-scroll">
-                <div class="testimonial-card">
-                    <div class="testimonial__content">
-                        <p class="testimonial__text">
-                            "Sekarang saya mempunyai peneman untuk membantu saya ke pasar dan membawa saya kesana sini."
-                        </p>
-                        <div class="testimonial__author">
-                            <div class="author__avatar">
-                                HN
-                            </div>
-                            <div class="author__info">
-                                <h4 class="author__name">Hjh. Najihah</h4>
-                                <p class="author__title">Bekas Guru Sekolah Agama</p>
-                                <div class="testimonial__rating">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
+            <div class="testimonials__carousel animate-on-scroll">
+                <div class="testimonials__track auto-scroll" id="testimonials-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial__content">
+                            <p class="testimonial__text">
+                                "Sekarang saya mempunyai peneman untuk membantu saya ke pasar dan membawa saya kesana sini."
+                            </p>
+                            <div class="testimonial__author">
+                                <div class="author__info">
+                                    <h4 class="author__name">Hjh. Najihah</h4>
+                                    <p class="author__title">Bekas Guru Sekolah Agama</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial__content">
+                            <p class="testimonial__text">
+                                "Saya tidak dapat meneman ibu saya hari ini kerana kekangan masa. Servis ini sangat bermanfaat untuk anak-anak yang bekerja sepenuh masa dan tidak sentiasa dapat untuk menjaga ibu bapa mereka."
+                            </p>
+                            <div class="testimonial__author">
+                                <div class="author__info">
+                                    <h4 class="author__name">Yazmin Kadir</h4>
+                                    <p class="author__title">Working Mother</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial__content">
+                            <p class="testimonial__text">
+                                "Bagus dan bermanfaat untuk komuniti kita. Bagusnya jika dapat diluaskan lagi di kawasan luar bandar."
+                            </p>
+                            <div class="testimonial__author">
+                                <div class="author__info">
+                                    <h4 class="author__name">Puan Badariah</h4>
+                                    <p class="author__title">Community Member</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonials__controls">
+                <button class="testimonial__nav-btn" id="testimonial-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="testimonials__dots" id="testimonials-dots">
+                    <div class="testimonial__dot active" data-slide="0"></div>
+                    <div class="testimonial__dot" data-slide="1"></div>
+                    <div class="testimonial__dot" data-slide="2"></div>
                 </div>
                 
-                <div class="testimonial-card featured">
-                    <div class="testimonial__content">
-                        <p class="testimonial__text">
-                            "Saya tidak dapat meneman ibu saya hari ini kerana kekangan masa. Servis ini sangat bermanfaat untuk anak-anak yang bekerja sepenuh masa dan tidak sentiasa dapat untuk menjaga ibu bapa mereka."
-                        </p>
-                        <div class="testimonial__author">
-                            <div class="author__avatar">
-                                YK
-                            </div>
-                            <div class="author__info">
-                                <h4 class="author__name">Yazmin Kadir</h4>
-                                <p class="author__title">Working Mother</p>
-                                <div class="testimonial__rating">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial__content">
-                        <p class="testimonial__text">
-                            "Bagus dan bermanfaat untuk komuniti kita. Bagusnya jika dapat diluaskan lagi di kawasan luar bandar."
-                        </p>
-                        <div class="testimonial__author">
-                            <div class="author__avatar">
-                                PB
-                            </div>
-                            <div class="author__info">
-                                <h4 class="author__name">Puan Badariah</h4>
-                                <p class="author__title">Community Member</p>
-                                <div class="testimonial__rating">
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                    <span class="star">★</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button class="testimonial__nav-btn" id="testimonial-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -1891,8 +1902,8 @@
                 }
             });
         }
-        {
 
+        function initializeMainJS() {
             // Animate on scroll
             const observerOptions = {
                 threshold: 0.1,
@@ -1910,46 +1921,6 @@
             document.querySelectorAll('.animate-on-scroll').forEach(el => {
                 observer.observe(el);
             });
-
-            // Testimonials functionality
-            let currentTestimonialIndex = 1;
-            const totalTestimonials = 3;
-
-            function showTestimonial(n) {
-                const testimonials = document.querySelectorAll('.testimonial-card');
-                const dots = document.querySelectorAll('.dot');
-                
-                if (n > totalTestimonials) currentTestimonialIndex = 1;
-                if (n < 1) currentTestimonialIndex = totalTestimonials;
-                
-                testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                
-                testimonials[currentTestimonialIndex - 1].classList.add('active');
-                dots[currentTestimonialIndex - 1].classList.add('active');
-            }
-
-            function nextTestimonial() {
-                showTestimonial(currentTestimonialIndex += 1);
-            }
-
-            function prevTestimonial() {
-                showTestimonial(currentTestimonialIndex -= 1);
-            }
-
-            window.currentTestimonial = function(n) {
-                showTestimonial(currentTestimonialIndex = n);
-            }
-
-            // Add event listeners for testimonial navigation
-            const nextBtn = document.querySelector('.testimonial__next');
-            const prevBtn = document.querySelector('.testimonial__prev');
-            
-            if (nextBtn) nextBtn.addEventListener('click', nextTestimonial);
-            if (prevBtn) prevBtn.addEventListener('click', prevTestimonial);
-
-            // Auto-advance testimonials
-            setInterval(nextTestimonial, 5000);
 
             // Contact form handling
             const contactForm = document.getElementById('contact-form');
@@ -1969,6 +1940,92 @@
                     
                     // Reset form
                     this.reset();
+                });
+            }
+
+            // Testimonials Carousel functionality
+            let currentTestimonialSlide = 0;
+            const testimonialTrack = document.getElementById('testimonials-track');
+            const testimonialDots = document.querySelectorAll('.testimonial__dot');
+            const testimonialPrevBtn = document.getElementById('testimonial-prev');
+            const testimonialNextBtn = document.getElementById('testimonial-next');
+            const totalTestimonialSlides = 3; // Only 3 real testimonials
+
+            function updateTestimonialCarousel() {
+                if (testimonialTrack) {
+                    const translateX = currentTestimonialSlide * -370; // 350px width + 20px gap
+                    testimonialTrack.style.transform = `translateX(${translateX}px)`;
+                    
+                    // Update dots
+                    testimonialDots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentTestimonialSlide);
+                    });
+                    
+                    // Update button states
+                    if (testimonialPrevBtn) {
+                        testimonialPrevBtn.disabled = currentTestimonialSlide === 0;
+                    }
+                    if (testimonialNextBtn) {
+                        testimonialNextBtn.disabled = currentTestimonialSlide === totalTestimonialSlides - 1;
+                    }
+                }
+            }
+
+            function nextTestimonialSlide() {
+                if (currentTestimonialSlide < totalTestimonialSlides - 1) {
+                    currentTestimonialSlide++;
+                    updateTestimonialCarousel();
+                    // Pause auto-scroll when user interacts
+                    if (testimonialTrack) {
+                        testimonialTrack.classList.remove('auto-scroll');
+                    }
+                }
+            }
+
+            function prevTestimonialSlide() {
+                if (currentTestimonialSlide > 0) {
+                    currentTestimonialSlide--;
+                    updateTestimonialCarousel();
+                    // Pause auto-scroll when user interacts
+                    if (testimonialTrack) {
+                        testimonialTrack.classList.remove('auto-scroll');
+                    }
+                }
+            }
+
+            function goToTestimonialSlide(slideIndex) {
+                currentTestimonialSlide = slideIndex;
+                updateTestimonialCarousel();
+                // Pause auto-scroll when user interacts
+                if (testimonialTrack) {
+                    testimonialTrack.classList.remove('auto-scroll');
+                }
+            }
+
+            // Event listeners for testimonial carousel
+            if (testimonialNextBtn) {
+                testimonialNextBtn.addEventListener('click', nextTestimonialSlide);
+            }
+            if (testimonialPrevBtn) {
+                testimonialPrevBtn.addEventListener('click', prevTestimonialSlide);
+            }
+
+            // Dot navigation
+            testimonialDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => goToTestimonialSlide(index));
+            });
+
+            // Initialize testimonial carousel
+            updateTestimonialCarousel();
+
+            // Auto-scroll functionality (pauses on hover)
+            if (testimonialTrack) {
+                testimonialTrack.addEventListener('mouseenter', () => {
+                    testimonialTrack.style.animationPlayState = 'paused';
+                });
+                
+                testimonialTrack.addEventListener('mouseleave', () => {
+                    testimonialTrack.style.animationPlayState = 'running';
                 });
             }
 
@@ -1994,6 +2051,5 @@
         document.addEventListener('DOMContentLoaded', loadComponents);
     </script>
     <script src="assets/js/main.js"></script>
-    </script>
 </body>
 </html>
