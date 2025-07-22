@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Teman Malaysia</title>
+    <meta name="description" content="Get in touch with Teman Malaysia for care companion services. Contact us for consultations, bookings, and inquiries about elderly care services.">
+    <meta name="keywords" content="contact teman malaysia, care companion inquiry, elderly care contact, malaysia caregiving services">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://temanmalaysia.com/contact.html">
+    <meta property="og:title" content="Contact Us - Teman Malaysia">
+    <meta property="og:description" content="Get in touch with Teman Malaysia for care companion services. Contact us for consultations and inquiries.">
+    <meta property="og:image" content="https://temanmalaysia.com/assets/images/hero-companion.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://temanmalaysia.com/contact.html">
+    <meta property="twitter:title" content="Contact Us - Teman Malaysia">
+    <meta property="twitter:description" content="Get in touch with Teman Malaysia for care companion services. Contact us for consultations and inquiries.">
+    <meta property="twitter:image" content="https://temanmalaysia.com/assets/images/hero-companion.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Page-specific styles -->
+    <style>
+    :root {
+        --primary-color: #4dd0e1;
+        --primary-dark: #26a69a;
+        --primary-light: #e0f7fa;
+        --secondary-color: #ffc107;
+        --accent-color: #ff9800;
+
+        --white: #ffffff;
+        --gray-50: #f9fafb;
+        --gray-100: #f3f4f6;
+        --gray-200: #e5e7eb;
+        --gray-300: #d1d5db;
+        --gray-400: #9ca3af;
+        --gray-500: #6b7280;
+        --gray-600: #4b5563;
+        --gray-700: #374151;
+        --gray-800: #1f2937;
+        --gray-900: #111827;
+
+        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        --transition-fast: 150ms ease-in-out;
+        --transition-normal: 300ms ease-in-out;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        --radius-md: 0.375rem;
+        --radius-lg: 0.5rem;
+        --radius-xl: 0.75rem;
+        --radius-2xl: 1rem;
+        --radius-full: 9999px;
+    }
+
+    body {
+        font-family: var(--font-family);
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        color: var(--gray-700);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    /* Buttons */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: 2px solid transparent;
+        border-radius: var(--radius-lg);
+        font-weight: 500;
+        font-size: 0.875rem;
+        text-decoration: none;
+        cursor: pointer;
+        transition: var(--transition-fast);
+        white-space: nowrap;
+        background: none;
+        font-family: inherit;
+    }
+
+    .btn--primary {
+        background: linear-gradient(135deg, #4dd0e1, #ffc107);
+        color: var(--gray-900);
+        border: none;
+    }
+
+    .btn--primary:hover {
+        background: linear-gradient(135deg, #26a69a, #ff9800);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .btn--secondary {
+        background: var(--secondary-color);
+        color: var(--gray-900);
+        border: none;
+    }
+
+    .btn--secondary:hover {
+        background: var(--accent-color);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .btn--full {
+        width: 100%;
+    }
+
+    .btn--large {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        position: relative;
+        padding: 140px 0 5rem;
+        background-image: url('../assets/images/image-about.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+    }
+
+    .hero .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero__content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+    }
+
+    .hero__title {
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero__subtitle {
+        font-size: 1.25rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Section Headers */
+    .section__header {
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .section__tag {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #4dd0e1;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .section__title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 0.75rem;
+    }
+
+    .section__subtitle {
+        font-size: 1.125rem;
+        color: var(--gray-600);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .section__divider {
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(135deg, #4dd0e1, #ffc107);
+        margin: 0.75rem auto;
+        border-radius: var(--radius-full);
+    }
+
+    /* Business Hours Section */
+    .business-hours {
+        background: var(--gray-50);
+    }
+
+    .hours-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .hours-card {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-md);
+        border-left: 4px solid var(--primary-color);
+        transition: var(--transition-fast);
+        text-align: center;
+    }
+
+    .hours-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-xl);
+    }
+
+    .hours-card__icon {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 1.25rem;
+        margin: 0 auto 1rem;
+    }
+
+    .hours-card__title {
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .hours-card__time {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .hours-card__desc {
+        color: var(--gray-600);
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+    }
+
+    /* Location Section */
+    .location {
+        background: var(--white);
+    }
+
+    .location__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+
+    .location__content h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 1rem;
+    }
+
+    .location__content p {
+        color: var(--gray-600);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .location__address {
+        background: var(--gray-50);
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+        border-left: 4px solid var(--primary-color);
+    }
+
+    .location__address-title {
+        font-weight: 600;
+        color: var(--gray-900);
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .location__address-text {
+        color: var(--gray-700);
+        line-height: 1.6;
+    }
+
+    .map-container {
+        position: relative;
+        border-radius: var(--radius-xl);
+        overflow: hidden;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .map-iframe {
+        width: 100%;
+        height: 350px;
+        border: none;
+        border-radius: var(--radius-xl);
+    }
+
+    /* Contact Form Section */
+    .contact-form {
+        background: var(--gray-50);
+    }
+
+    .contact-form__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    .contact-form__content {
+        padding-right: 2rem;
+    }
+
+    .contact-form__content h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 1rem;
+    }
+
+    .contact-form__content p {
+        color: var(--gray-600);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .form {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-lg);
+        border: 2px solid var(--gray-100);
+    }
+
+    .form__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .form__group {
+        margin-bottom: 1rem;
+    }
+
+    .form__label {
+        display: block;
+        font-weight: 500;
+        color: var(--gray-700);
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .form__input,
+    .form__select,
+    .form__textarea {
+        width: 100%;
+        padding: 0.875rem;
+        border: 2px solid var(--gray-200);
+        border-radius: var(--radius-lg);
+        font-size: 1rem;
+        transition: var(--transition-fast);
+        font-family: inherit;
+        background: var(--white);
+        box-sizing: border-box;
+    }
+
+    .form__input:focus,
+    .form__select:focus,
+    .form__textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(77, 208, 225, 0.1);
+    }
+
+    .form__textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    /* Success Message */
+    .success-message {
+        display: none;
+        background: #d4edda;
+        color: #155724;
+        padding: 1rem;
+        border-radius: var(--radius-lg);
+        border: 1px solid #c3e6cb;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .success-message.show {
+        display: block;
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Temanion Application Section */
+    .temanion-application {
+        background: linear-gradient(135deg, #ffc107, #ff9800);
+        color: var(--gray-900);
+        text-align: center;
+    }
+
+    .temanion-application__title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--gray-900);
+    }
+
+    .temanion-application__subtitle {
+        font-size: 1.125rem;
+        margin-bottom: 2rem;
+        opacity: 0.8;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn--dark {
+        background: var(--gray-900);
+        color: var(--white);
+        border: none;
+    }
+
+    .btn--dark:hover {
+        background: var(--gray-800);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    /* Animations */
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-on-scroll.animate {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .container {
+            padding: 0 1.5rem;
+        }
+
+        .hero__title {
+            font-size: 2.5rem;
+        }
+
+        .contact-form__grid,
+        .location__grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .contact-form__content {
+            padding-right: 0;
+        }
+
+        .hours-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 0 1rem;
+        }
+
+        .hero {
+            padding: 120px 0 4rem;
+        }
+
+        .hero__title {
+            font-size: 2rem;
+        }
+
+        .hero__subtitle {
+            font-size: 1rem;
+        }
+
+        .section {
+            padding: 2.5rem 0;
+        }
+
+        .section__title {
+            font-size: 1.75rem;
+        }
+
+        .form {
+            padding: 1.5rem;
+        }
+
+        .form__row {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .hours-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .hours-card {
+            padding: 1.5rem;
+        }
+
+        .map-iframe {
+            height: 250px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .container {
+            padding: 0 0.75rem;
+        }
+
+        .hero {
+            padding: 100px 0 3rem;
+        }
+
+        .hero__title {
+            font-size: 1.75rem;
+        }
+
+        .hero__subtitle {
+            font-size: 0.9rem;
+        }
+
+        .form {
+            padding: 1rem;
+        }
+
+        .form__input,
+        .form__select,
+        .form__textarea {
+            padding: 0.75rem;
+        }
+
+        .btn--large {
+            padding: 0.875rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .hours-card {
+            padding: 1.25rem;
+        }
+
+        .map-iframe {
+            height: 200px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content animate-on-scroll">
+                <h1 class="hero__title">Contact Us</h1>
+                <p class="hero__subtitle">
+                    Get in touch with us for consultations, bookings, or any inquiries about our care companion services
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Temanion Application Section -->
+    <section class="temanion-application section">
+        <div class="container">
+            <div class="animate-on-scroll">
+                <h2 class="temanion-application__title">Interested in Becoming a Temanion?</h2>
+                <p class="temanion-application__subtitle">
+                    Join our team of caring companions and make a difference in someone's life. Apply today to become a certified Temanion.
+                </p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeYrTwvKfJzbkAEDQbBDMMENRgYSLVwF3Pq3e9Ktad83apnGg/viewform" class="btn btn--dark btn--large" target="_blank">
+                    <i class="fas fa-user-plus"></i>
+                    Apply to Become a Temanion
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location section">
+        <div class="container">
+            <div class="section__header animate-on-scroll">
+                <span class="section__tag">FIND US</span>
+                <h2 class="section__title">Our Location</h2>
+                <div class="section__divider"></div>
+                <p class="section__subtitle">
+                    Visit us at our office in Bangsar South City, Kuala Lumpur
+                </p>
+            </div>
+            
+            <div class="location__grid animate-on-scroll">
+                <div class="location__content">
+                    <h3>Visit Our Office</h3>
+                    <p>
+                        Our team is available for in-person consultations and meetings. We're conveniently located in Bangsar South City, Kuala Lumpur for easy access.
+                    </p>
+                    
+                    <div class="location__address">
+                        <div class="location__address-title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Office Address
+                        </div>
+                        <div class="location__address-text">
+                            Common Ground, Level 1 & 2,<br>
+                            Tower 3, Avenue 7 Horizon 2,<br>
+                            Bangsar South City,<br>
+                            59200 Kuala Lumpur, Malaysia
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.1947686647056!2d101.67753531567896!3d3.1142997976989564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4a3e64e1b3a9%3A0xb84f92b30fd50b46!2sBangsar%20South%20City%2C%20Kuala%20Lumpur%2C%20Federal%20Territory%20of%20Kuala%20Lumpur!5e0!3m2!1sen!2smy!4v1625123456789!5m2!1sen!2smy" 
+                        class="map-iframe"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form section">
+        <div class="container">
+            <div class="contact-form__grid animate-on-scroll">
+                <div class="contact-form__content">
+                    <span class="section__tag">SEND MESSAGE</span>
+                    <h3>Send Us a Message</h3>
+                    <p>
+                        Fill out the form and we'll get back to you as soon as possible. Our team is ready to assist you with any questions about our services.
+                    </p>
+                    
+                    <!-- Business Hours Section -->
+                    <div style="margin-top: 2rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.1rem; font-weight: 600;">
+                            <i class="fas fa-clock"></i> Business Hours
+                        </h4>
+                        <div style="background: var(--gray-50); padding: 1rem; border-radius: var(--radius-lg); border-left: 4px solid var(--primary-color);">
+                            <div style="font-weight: 600; color: var(--gray-900); margin-bottom: 0.25rem;">Office Hours</div>
+                            <div style="color: var(--primary-color); font-weight: 500;">Monday – Friday: 09:00 AM – 06:00 PM</div>
+                            <div style="color: var(--gray-600); font-size: 0.9rem; margin-top: 0.25rem;">General inquiries and consultations</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-container">
+                    <div class="success-message" id="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        Thank you for your message! We'll get back to you within 24 hours.
+                    </div>
+                    
+                    <form class="form" id="contact-form">
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label for="name" class="form__label">Full Name *</label>
+                                <input type="text" id="name" name="name" class="form__input" placeholder="Your full name" required>
+                            </div>
+                            <div class="form__group">
+                                <label for="email" class="form__label">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form__input" placeholder="your.email@example.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form__row">
+                            <div class="form__group">
+                                <label for="phone" class="form__label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form__input" placeholder="+60 12-345 6789">
+                            </div>
+                            <div class="form__group">
+                                <label for="service" class="form__label">Service of Interest *</label>
+                                <select id="service" name="service" class="form__select" required>
+                                    <option value="">Select a service</option>
+                                    <option value="Teman Health Appointments">Teman Health Appointments</option>
+                                    <option value="Teman Customised Activity">Teman Customised Activity</option>
+                                    <option value="Teman Dialysis Treatment">Teman Dialysis Treatment</option>
+                                    <option value="Teman at Home">Teman at Home</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                    <option value="Corporate Partnership">Corporate Partnership</option>
+                                    <option value="Media Inquiry">Media Inquiry</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form__group">
+                            <label for="message" class="form__label">Message *</label>
+                            <textarea id="message" name="message" class="form__textarea" placeholder="Tell us about your needs, preferred schedule, or any specific requirements..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn--primary btn--full btn--large">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script>
+        // Load header and footer components for contact.html
+        async function loadComponents() {
+            try {
+                // Load header
+                const headerResponse = await fetch('../components/header.html');
+                if (headerResponse.ok) {
+                    let headerHTML = await headerResponse.text();
+                    document.getElementById('header-placeholder').innerHTML = headerHTML;
+                    
+                    // Mark contact as active and initialize navigation
+                    setTimeout(() => {
+                        const contactLink = document.querySelector('a[href="contact.html"]');
+                        if (contactLink) {
+                            contactLink.classList.add('active');
+                        }
+                        initializeNavigation();
+                    }, 100);
+                }
+
+                // Load footer
+                const footerResponse = await fetch('../components/footer.html');
+                if (footerResponse.ok) {
+                    let footerHTML = await footerResponse.text();
+                    document.getElementById('footer-placeholder').innerHTML = footerHTML;
+                }
+
+                // Initialize main JavaScript after components are loaded
+                initializeMainJS();
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+
+        // Initialize navigation functionality
+        function initializeNavigation() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('show');
+                    const icon = navToggle.querySelector('i');
+                    if (navMenu.classList.contains('show')) {
+                        icon.className = 'fas fa-times';
+                    } else {
+                        icon.className = 'fas fa-bars';
+                    }
+                });
+
+                // Close menu when clicking on nav links
+                document.querySelectorAll('.nav__link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('show');
+                        const icon = navToggle.querySelector('i');
+                        if (icon) icon.className = 'fas fa-bars';
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                        navMenu.classList.remove('show');
+                        const icon = navToggle.querySelector('i');
+                        if (icon) icon.className = 'fas fa-bars';
+                    }
+                });
+            }
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (header) {
+                    if (window.scrollY > 100) {
+                        header.style.background = 'rgba(255, 255, 255, 0.98)';
+                        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                    } else {
+                        header.style.background = 'rgba(255, 255, 255, 0.95)';
+                        header.style.boxShadow = 'none';
+                    }
+                }
+            });
+        }
+
+        function initializeMainJS() {
+            // Animate on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Contact form handling
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    const data = Object.fromEntries(formData);
+                    
+                    // Basic form validation
+                    if (!data.name || !data.email || !data.service || !data.message) {
+                        alert('Please fill in all required fields.');
+                        return;
+                    }
+                    
+                    // Simulate form submission (replace with actual API call)
+                    console.log('Form submitted:', data);
+                    
+                    // Show success message
+                    if (successMessage) {
+                        successMessage.classList.add('show');
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.classList.remove('show');
+                        }, 5000);
+                    }
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            }
+
+            // Add form field focus effects
+            const formInputs = document.querySelectorAll('.form__input, .form__select, .form__textarea');
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.classList.add('focused');
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.parentElement.classList.remove('focused');
+                    }
+                });
+            });
+
+            console.log('Teman Malaysia contact page loaded successfully!');
+        }
+
+        // Load components when DOM is ready
+        document.addEventListener('DOMContentLoaded', loadComponents);
+    </script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

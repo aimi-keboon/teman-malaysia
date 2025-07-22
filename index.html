@@ -810,163 +810,6 @@
         transform: scale(1.2);
     }
 
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-        .testimonials__simple {
-            min-height: 200px;
-        }
-
-        .testimonial__card {
-            padding: 1.25rem;
-            margin: 0 1rem;
-            max-width: 450px;
-        }
-
-        .testimonial__quote {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .testimonial__text {
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-
-        .testimonial__name {
-            font-size: 0.9rem;
-        }
-
-        .testimonial__role {
-            font-size: 0.7rem;
-        }
-
-        .testimonial__btn {
-            width: 36px;
-            height: 36px;
-            font-size: 0.9rem;
-        }
-
-        .testimonials__navigation {
-            gap: 1.25rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .testimonials__simple {
-            min-height: 180px;
-        }
-
-        .testimonial__card {
-            padding: 1rem;
-            margin: 0 0.5rem;
-            max-width: 400px;
-        }
-
-        .testimonial__quote {
-            font-size: 1.75rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .testimonial__text {
-            font-size: 0.8rem;
-            margin-bottom: 0.875rem;
-            line-height: 1.4;
-        }
-
-        .testimonial__author {
-            padding-top: 0.875rem;
-        }
-
-        .testimonial__name {
-            font-size: 0.85rem;
-            margin-bottom: 0.15rem;
-        }
-
-        .testimonial__role {
-            font-size: 0.65rem;
-        }
-
-        .testimonial__btn {
-            width: 32px;
-            height: 32px;
-            font-size: 0.8rem;
-        }
-
-        .testimonials__navigation {
-            gap: 1rem;
-            margin-top: 1.25rem;
-        }
-
-        .testimonial__indicator {
-            width: 8px;
-            height: 8px;
-        }
-    }
-
-    /* Contact Form */
-    .contact-form {
-        background: linear-gradient(135deg, #4dd0e1, #26a69a);
-        color: var(--white);
-        padding: 3rem 0;
-    }
-
-    .contact__grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        align-items: center;
-    }
-
-    .contact__content h2 {
-        color: var(--white);
-    }
-
-    .contact__description {
-        font-size: 1rem;
-        opacity: 0.9;
-        line-height: 1.6;
-    }
-
-    .contact__form {
-        background: var(--white);
-        padding: 1.5rem;
-        border-radius: var(--radius-xl);
-        box-shadow: var(--shadow-xl);
-    }
-
-    .form__row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
-
-    .form__group {
-        margin-bottom: 1rem;
-    }
-
-    .form__input,
-    .form__select,
-    .form__textarea {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid var(--gray-300);
-        border-radius: var(--radius-md);
-        font-size: 1rem;
-        transition: var(--transition-fast);
-        font-family: inherit;
-        background: var(--white);
-    }
-
-    .form__input:focus,
-    .form__select:focus,
-    .form__textarea:focus {
-        outline: none;
-        border-color: #4dd0e1;
-        box-shadow: 0 0 0 3px rgba(77, 208, 225, 0.1);
-    }
-
     /* Animations */
     @keyframes float {
         0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -995,15 +838,6 @@
             max-width: 1000px;
             padding: 0 2rem;
         }
-        
-        .service-tabs {
-            gap: 1rem;
-        }
-        
-        .service-tab {
-            height: 260px;
-            padding: 1.5rem 0.75rem;
-        }
     }
 
     @media (max-width: 1024px) {
@@ -1020,8 +854,7 @@
             font-size: 1.125rem;
         }
 
-        .about__grid,
-        .contact__grid {
+        .about__grid {
             grid-template-columns: 1fr;
             gap: 2rem;
         }
@@ -1182,15 +1015,6 @@
             justify-content: center;
         }
 
-        .contact__form {
-            padding: 1.5rem;
-        }
-        
-        .form__row {
-            grid-template-columns: 1fr;
-            gap: 0;
-        }
-        
         .testimonials__controls {
             gap: 1rem;
         }
@@ -1250,10 +1074,6 @@
         
         .get-in-touch__title {
             font-size: 1.5rem;
-        }
-        
-        .contact__form {
-            padding: 1rem;
         }
 
         /* Keep both images visible on smaller screens */
@@ -1345,18 +1165,6 @@
             width: 100%;
         }
 
-        .contact__form {
-            padding: 0.75rem;
-            margin: 0 0.25rem;
-        }
-        
-        .form__input,
-        .form__select,
-        .form__textarea {
-            padding: 0.625rem;
-            font-size: 0.9rem;
-        }
-        
         /* Testimonials even smaller on mobile */
         .testimonial-card {
             flex: 0 0 250px; /* Even smaller for very small screens */
@@ -1421,10 +1229,6 @@
         
         .hero__title {
             font-size: 1.5rem;
-        }
-        
-        .contact__form {
-            padding: 0.5rem;
         }
 
         /* Even on the smallest screens, keep both images */
@@ -1733,7 +1537,6 @@
                             <img src="assets/images/media/the-edge-logo.png" alt="The Edge Malaysia">
                         </a>
                     </div>
-                    <!-- Duplicate for seamless loop -->
                     <div class="news__item">
                         <a href="https://www.bfm.my/podcast/enterprise/hervantage/ent-hv-teman-a-companion-for-the-elderly" target="_blank">
                             <img src="assets/images/media/bfm-logo.png" alt="BFM 89.9">
@@ -1837,60 +1640,6 @@
                 <button class="testimonial__btn testimonial__btn--next" onclick="changeTestimonial(1)">
                     <i class="fas fa-chevron-right"></i>
                 </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form -->
-    <section class="contact-form section" id="contact">
-        <div class="container">
-            <div class="contact__grid">
-                <div class="contact__content animate-on-scroll">
-                    <span class="section__tag text-white">Do you have any question?</span>
-                    <h2 class="section__title text-white">Contact Us</h2>
-                    <div class="section__divider"></div>
-                    <p class="contact__description">
-                        Send us your message, our customer service will contact you back!
-                    </p>
-                </div>
-                
-                <div class="contact__form animate-on-scroll">
-                    <form class="form" id="contact-form">
-                        <div class="form__row">
-                            <div class="form__group">
-                                <input type="text" name="name" class="form__input" placeholder="Name" required>
-                            </div>
-                            <div class="form__group">
-                                <input type="email" name="email" class="form__input" placeholder="Email" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form__row">
-                            <div class="form__group">
-                                <input type="tel" name="phone" class="form__input" placeholder="Phone Number">
-                            </div>
-                            <div class="form__group">
-                                <select name="service" class="form__select" required>
-                                    <option value="">Select Service</option>
-                                    <option value="Teman Health Appointments">Teman Health Appointments</option>
-                                    <option value="Teman Customised Activity">Teman Customised Activity</option>
-                                    <option value="Teman Dialysis Treatment">Teman Dialysis Treatment</option>
-                                    <option value="Teman at Home">Teman at Home</option>
-                                    <option value="General Inquiry">General Inquiry</option>
-                                    <option value="Corporate Inquiry">Corporate Inquiry</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form__group">
-                            <textarea name="message" class="form__textarea" placeholder="Message" rows="4"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn--primary btn--full">
-                            Submit
-                        </button>
-                    </form>
-                </div>
             </div>
         </div>
     </section>
@@ -2010,27 +1759,6 @@
             document.querySelectorAll('.animate-on-scroll').forEach(el => {
                 observer.observe(el);
             });
-
-            // Contact form handling
-            const contactForm = document.getElementById('contact-form');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Get form data
-                    const formData = new FormData(this);
-                    const data = Object.fromEntries(formData);
-                    
-                    // Here you would typically send the data to your server
-                    console.log('Form submitted:', data);
-                    
-                    // Show success message (you can customize this)
-                    alert('Thank you for your message! We will contact you soon.');
-                    
-                    // Reset form
-                    this.reset();
-                });
-            }
 
             // Ultra Simple Testimonials - Global Functions
             let currentTestimonial = 0;
