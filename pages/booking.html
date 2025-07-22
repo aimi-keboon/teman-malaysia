@@ -1,1871 +1,2569 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Service - Teman Malaysia</title>
-    <meta name="description" content="Book quality care companion services with Teman Malaysia. Easy online booking for health appointments, dialysis support, and home care.">
-    
+    <meta
+      name="description"
+      content="Book quality care companion services with Teman Malaysia. Easy online booking for health appointments, dialysis support, and home care."
+    />
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #374151;
-            background: #f9fafb;
-        }
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: #374151;
+        background: #f9fafb;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-        /* Header */
-        .header {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+      /* Header Styles - Updated for component header */
+      .header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        transition: all 0.3s ease;
+      }
 
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-        }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+      }
 
-        .nav__logo {
-            height: 40px;
-            width: auto;
-        }
+      .nav__logo {
+        height: 40px;
+        width: auto;
+      }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 500;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 500;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+      }
 
-        .btn--primary {
-            background: #3b82f6;
-            color: white;
-        }
+      .btn--primary {
+        background: #3b82f6;
+        color: white;
+      }
 
-        .btn--primary:hover {
-            background: #2563eb;
-        }
+      .btn--primary:hover {
+        background: #2563eb;
+      }
 
-        .btn--outline {
-            background: transparent;
-            color: #3b82f6;
-            border: 2px solid #3b82f6;
-        }
+      .btn--outline {
+        background: transparent;
+        color: #3b82f6;
+        border: 2px solid #3b82f6;
+      }
 
-        .btn--outline:hover {
-            background: #3b82f6;
-            color: white;
-        }
+      .btn--outline:hover {
+        background: #3b82f6;
+        color: white;
+      }
 
-        .btn--large {
-            padding: 16px 32px;
-            font-size: 16px;
-        }
+      .btn--large {
+        padding: 16px 32px;
+        font-size: 16px;
+      }
 
-        /* Booking Section */
-        .booking-section {
-            padding: 40px 0 80px 0;
-        }
+      /* Booking Section */
+      .booking-section {
+        padding: 120px 0 80px 0; /* Added top padding to account for sticky header */
+      }
 
-        .booking__header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
+      .booking__header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
 
+      .booking__title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 16px;
+      }
+
+      .booking__subtitle {
+        font-size: 1.25rem;
+        color: #6b7280;
+      }
+
+      .booking__container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      /* Progress Steps - No connecting line */
+      .progress-steps {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 40px 0 60px 0;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 80px;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step__number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 18px;
+        background: #e5e7eb;
+        color: #6b7280;
+        border: 3px solid #e5e7eb;
+        transition: all 0.3s ease;
+        margin-bottom: 12px;
+      }
+
+      .step.active .step__number {
+        background: #3b82f6;
+        color: white;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+      }
+
+      .step.completed .step__number {
+        background: #10b981;
+        color: white;
+        border-color: #10b981;
+      }
+
+      .step__label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #6b7280;
+        text-align: center;
+        transition: color 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .step.active .step__label {
+        color: #3b82f6;
+        font-weight: 600;
+      }
+
+      .step.completed .step__label {
+        color: #10b981;
+        font-weight: 600;
+      }
+
+      /* Form Styles */
+      .booking-form {
+        padding: 40px;
+      }
+
+      .form-step {
+        display: none;
+      }
+
+      .form-step.active {
+        display: block;
+      }
+
+      .step-title {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 32px;
+        text-align: center;
+      }
+
+      /* Service Options */
+      .service-options {
+        display: grid;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .service-option {
+        position: relative;
+      }
+
+      .service-option input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .service-card-input {
+        display: block;
+        padding: 24px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: white;
+      }
+
+      .service-card-input:hover {
+        border-color: #3b82f6;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+      }
+
+      .service-option input[type="radio"]:checked + .service-card-input {
+        border-color: #3b82f6;
+        background: #f0f9ff;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+      }
+
+      .service-card-input {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        background: #3b82f6;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .service-icon i {
+        font-size: 24px;
+        color: white;
+      }
+
+      .service-info {
+        flex: 1;
+      }
+
+      .service-info h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 8px;
+      }
+
+      .service-info p {
+        color: #6b7280;
+        margin-bottom: 16px;
+      }
+
+      .service-features {
+        margin: 16px 0;
+      }
+
+      .service-features p {
+        font-size: 14px;
+        color: #4b5563;
+        margin-bottom: 8px;
+      }
+
+      .service-pricing {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .price-option {
+        margin: 12px 0;
+      }
+
+      .price-option input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .price-option label {
+        display: block;
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .price-option input[type="radio"]:checked + label {
+        border-color: #3b82f6;
+        background: #f0f9ff;
+      }
+
+      .pricing-notes {
+        margin-top: 16px;
+        padding: 12px;
+        background: #f9fafb;
+        border-radius: 6px;
+      }
+
+      .pricing-notes small {
+        display: block;
+        color: #6b7280;
+        margin-bottom: 4px;
+      }
+
+      /* Form Sections */
+      .form-section {
+        margin-bottom: 40px;
+        padding: 24px;
+        background: #f9fafb;
+        border-radius: 12px;
+      }
+
+      .form-section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 24px;
+      }
+
+      .form-section-title i {
+        color: #3b82f6;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-label {
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .form-help {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 4px;
+      }
+
+      /* Transportation Options */
+      .transportation-options {
+        display: grid;
+        gap: 16px;
+      }
+
+      .radio-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .radio-option:hover {
+        border-color: #3b82f6;
+      }
+
+      /* Hide the actual radio button */
+      .radio-option input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .radio-option input[type="radio"]:checked ~ .radio-content {
+        color: #3b82f6;
+      }
+
+      .radio-custom {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #d1d5db;
+        border-radius: 50%;
+        position: relative;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+
+      .radio-option:hover .radio-custom {
+        border-color: #3b82f6;
+      }
+
+      .radio-option input[type="radio"]:checked ~ .radio-custom {
+        border-color: #3b82f6;
+      }
+
+      .radio-option input[type="radio"]:checked ~ .radio-custom::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: #3b82f6;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .radio-content strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .radio-content p {
+        font-size: 14px;
+        color: #6b7280;
+        margin: 0;
+      }
+
+      /* Checkbox Group */
+      .checkbox-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+
+      /* Hide the actual checkbox */
+      .checkbox-item input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .checkmark {
+        width: 18px;
+        height: 18px;
+        border: 2px solid #d1d5db;
+        border-radius: 4px;
+        position: relative;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+
+      .checkbox-item:hover .checkmark {
+        border-color: #3b82f6;
+      }
+
+      .checkbox-item input[type="checkbox"]:checked ~ .checkmark {
+        background: #3b82f6;
+        border-color: #3b82f6;
+      }
+
+      .checkbox-item input[type="checkbox"]:checked ~ .checkmark::after {
+        content: "✓";
+        color: white;
+        font-size: 12px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* Form Actions */
+      .form-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 40px;
+      }
+
+      /* Booking Summary */
+      .booking-summary {
+        display: grid;
+        gap: 24px;
+        margin-bottom: 40px;
+      }
+
+      .summary-card {
+        background: #f9fafb;
+        border-radius: 12px;
+        padding: 24px;
+      }
+
+      .summary-card h3 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 20px;
+      }
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        gap: 16px;
+      }
+
+      .summary-label {
+        font-weight: 500;
+        color: #6b7280;
+        flex-shrink: 0;
+      }
+
+      .summary-value {
+        color: #1f2937;
+        text-align: right;
+        flex: 1;
+      }
+
+      .summary-divider {
+        height: 1px;
+        background: #d1d5db;
+        margin: 16px 0;
+      }
+
+      .summary-item.total {
+        font-size: 1.125rem;
+        font-weight: 600;
+        padding-top: 16px;
+      }
+
+      .cost-note {
+        font-size: 12px;
+        color: #6b7280;
+        font-style: italic;
+        margin-top: 8px;
+      }
+
+      /* Next Steps */
+      .next-steps-info {
+        background: #f0f9ff;
+        border: 1px solid #bfdbfe;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 32px;
+      }
+
+      .next-steps-info h3 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #1e40af;
+        margin-bottom: 16px;
+      }
+
+      .steps-list {
+        list-style: none;
+      }
+
+      .steps-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        color: #1e40af;
+      }
+
+      .steps-list i {
+        width: 20px;
+        text-align: center;
+      }
+
+      /* Terms Agreement */
+      .terms-agreement {
+        margin-bottom: 32px;
+      }
+
+      .checkbox-label {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        cursor: pointer;
+      }
+
+      .checkbox-label input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .checkbox-label a {
+        color: #3b82f6;
+        text-decoration: none;
+      }
+
+      .checkbox-label a:hover {
+        text-decoration: underline;
+      }
+
+      /* Modal */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+      }
+
+      .success-icon {
+        font-size: 4rem;
+        color: #10b981;
+        margin-bottom: 24px;
+      }
+
+      .booking-reference {
+        background: #f0f9ff;
+        padding: 16px;
+        border-radius: 8px;
+        margin: 24px 0;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 32px;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
         .booking__title {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 16px;
+          font-size: 2rem;
         }
 
-        .booking__subtitle {
-            font-size: 1.25rem;
-            color: #6b7280;
-        }
-
-        .booking__container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
-
-        /* Progress Steps - No connecting line */
-        .progress-steps {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 40px 0 60px 0;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            gap: 80px;
-        }
-
-        .step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .step__number {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 18px;
-            background: #e5e7eb;
-            color: #6b7280;
-            border: 3px solid #e5e7eb;
-            transition: all 0.3s ease;
-            margin-bottom: 12px;
-        }
-
-        .step.active .step__number {
-            background: #3b82f6;
-            color: white;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-        }
-
-        .step.completed .step__number {
-            background: #10b981;
-            color: white;
-            border-color: #10b981;
-        }
-
-        .step__label {
-            font-size: 14px;
-            font-weight: 500;
-            color: #6b7280;
-            text-align: center;
-            transition: color 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .step.active .step__label {
-            color: #3b82f6;
-            font-weight: 600;
-        }
-
-        .step.completed .step__label {
-            color: #10b981;
-            font-weight: 600;
-        }
-
-        /* Form Styles */
         .booking-form {
-            padding: 40px;
-        }
-
-        .form-step {
-            display: none;
-        }
-
-        .form-step.active {
-            display: block;
-        }
-
-        .step-title {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 32px;
-            text-align: center;
-        }
-
-        /* Service Options */
-        .service-options {
-            display: grid;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .service-option {
-            position: relative;
-        }
-
-        .service-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .service-card-input {
-            display: block;
-            padding: 24px;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .service-card-input:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
-        }
-
-        .service-option input[type="radio"]:checked + .service-card-input {
-            border-color: #3b82f6;
-            background: #f0f9ff;
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
-        }
-
-        .service-card-input {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: #3b82f6;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .service-icon i {
-            font-size: 24px;
-            color: white;
-        }
-
-        .service-info {
-            flex: 1;
-        }
-
-        .service-info h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 8px;
-        }
-
-        .service-info p {
-            color: #6b7280;
-            margin-bottom: 16px;
-        }
-
-        .service-features {
-            margin: 16px 0;
-        }
-
-        .service-features p {
-            font-size: 14px;
-            color: #4b5563;
-            margin-bottom: 8px;
-        }
-
-        .service-pricing {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .price-option {
-            margin: 12px 0;
-        }
-
-        .price-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .price-option label {
-            display: block;
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .price-option input[type="radio"]:checked + label {
-            border-color: #3b82f6;
-            background: #f0f9ff;
-        }
-
-        .pricing-notes {
-            margin-top: 16px;
-            padding: 12px;
-            background: #f9fafb;
-            border-radius: 6px;
-        }
-
-        .pricing-notes small {
-            display: block;
-            color: #6b7280;
-            margin-bottom: 4px;
-        }
-
-        /* Form Sections */
-        .form-section {
-            margin-bottom: 40px;
-            padding: 24px;
-            background: #f9fafb;
-            border-radius: 12px;
-        }
-
-        .form-section-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 24px;
-        }
-
-        .form-section-title i {
-            color: #3b82f6;
+          padding: 24px;
         }
 
         .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+          grid-template-columns: 1fr;
         }
 
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-label {
-            font-weight: 500;
-            color: #374151;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .form-input,
-        .form-select,
-        .form-textarea {
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-input:focus,
-        .form-select:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .form-help {
-            font-size: 12px;
-            color: #6b7280;
-            margin-top: 4px;
-        }
-
-        /* Transportation Options */
-        .transportation-options {
-            display: grid;
-            gap: 16px;
-        }
-
-        .radio-option {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 16px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .radio-option:hover {
-            border-color: #3b82f6;
-        }
-
-        /* Hide the actual radio button */
-        .radio-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .radio-option input[type="radio"]:checked ~ .radio-content {
-            color: #3b82f6;
-        }
-
-        .radio-custom {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #d1d5db;
-            border-radius: 50%;
-            position: relative;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .radio-option:hover .radio-custom {
-            border-color: #3b82f6;
-        }
-
-        .radio-option input[type="radio"]:checked ~ .radio-custom {
-            border-color: #3b82f6;
-        }
-
-        .radio-option input[type="radio"]:checked ~ .radio-custom::after {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #3b82f6;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .radio-content strong {
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .radio-content p {
-            font-size: 14px;
-            color: #6b7280;
-            margin: 0;
-        }
-
-        /* Checkbox Group */
-        .checkbox-group {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-
-        /* Hide the actual checkbox */
-        .checkbox-item input[type="checkbox"] {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .checkmark {
-            width: 18px;
-            height: 18px;
-            border: 2px solid #d1d5db;
-            border-radius: 4px;
-            position: relative;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .checkbox-item:hover .checkmark {
-            border-color: #3b82f6;
-        }
-
-        .checkbox-item input[type="checkbox"]:checked ~ .checkmark {
-            background: #3b82f6;
-            border-color: #3b82f6;
-        }
-
-        .checkbox-item input[type="checkbox"]:checked ~ .checkmark::after {
-            content: '✓';
-            color: white;
-            font-size: 12px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        /* Form Actions */
         .form-actions {
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-            margin-top: 40px;
+          flex-direction: column;
         }
 
-        /* Booking Summary */
-        .booking-summary {
-            display: grid;
-            gap: 24px;
-            margin-bottom: 40px;
+        .service-card-input {
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
         }
 
-        .summary-card {
-            background: #f9fafb;
-            border-radius: 12px;
-            padding: 24px;
+        .service-icon {
+          margin-bottom: 16px;
         }
 
-        .summary-card h3 {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 20px;
+        .progress-steps {
+          margin: 30px 0 40px 0;
+          gap: 40px;
         }
 
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-            gap: 16px;
+        .step__number {
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
         }
 
-        .summary-label {
-            font-weight: 500;
-            color: #6b7280;
-            flex-shrink: 0;
+        .step__label {
+          font-size: 12px;
         }
+      }
 
-        .summary-value {
-            color: #1f2937;
-            text-align: right;
-            flex: 1;
-        }
+      .text-center {
+        text-align: center;
+      }
 
-        .summary-divider {
-            height: 1px;
-            background: #d1d5db;
-            margin: 16px 0;
-        }
+      .hours-selection {
+        margin-top: 12px;
+      }
 
-        .summary-item.total {
-            font-size: 1.125rem;
-            font-weight: 600;
-            padding-top: 16px;
-        }
-
-        .cost-note {
-            font-size: 12px;
-            color: #6b7280;
-            font-style: italic;
-            margin-top: 8px;
-        }
-
-        /* Next Steps */
-        .next-steps-info {
-            background: #f0f9ff;
-            border: 1px solid #bfdbfe;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 32px;
-        }
-
-        .next-steps-info h3 {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #1e40af;
-            margin-bottom: 16px;
-        }
-
-        .steps-list {
-            list-style: none;
-        }
-
-        .steps-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            color: #1e40af;
-        }
-
-        .steps-list i {
-            width: 20px;
-            text-align: center;
-        }
-
-        /* Terms Agreement */
-        .terms-agreement {
-            margin-bottom: 32px;
-        }
-
-        .checkbox-label {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            cursor: pointer;
-        }
-
-        .checkbox-label input[type="checkbox"] {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .checkbox-label a {
-            color: #3b82f6;
-            text-decoration: none;
-        }
-
-        .checkbox-label a:hover {
-            text-decoration: underline;
-        }
-
-        /* Modal */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-        }
-
-        .success-icon {
-            font-size: 4rem;
-            color: #10b981;
-            margin-bottom: 24px;
-        }
-
-        .booking-reference {
-            background: #f0f9ff;
-            padding: 16px;
-            border-radius: 8px;
-            margin: 24px 0;
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-top: 32px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .booking__title {
-                font-size: 2rem;
-            }
-
-            .booking-form {
-                padding: 24px;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-actions {
-                flex-direction: column;
-            }
-
-            .service-card-input {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .progress-steps {
-                margin: 30px 0 40px 0;
-                gap: 40px;
-            }
-
-            .step__number {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-
-            .step__label {
-                font-size: 12px;
-            }
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .hours-selection {
-            margin-top: 12px;
-        }
-
-        .custom-activities-section {
-            margin-top: 16px;
-        }
+      .custom-activities-section {
+        margin-top: 16px;
+      }
     </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav container">
-            <div class="nav__brand">
-                <a href="../index.html">
-                    <img src="../assets/images/teman-logo.png" alt="Teman Malaysia" class="nav__logo">
-                </a>
-            </div>
-            <div class="nav__actions">
-                <a href="../index.html" class="btn btn--outline">
-                    <i class="fas fa-arrow-left"></i>
-                    Back to Home
-                </a>
-            </div>
-        </nav>
-    </header>
+  </head>
+  <body>
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
 
     <!-- Booking Section -->
     <section class="booking-section">
-        <div class="container">
-            <div class="booking__header text-center">
-                <h1 class="booking__title">Book Your Care Companion</h1>
-                <p class="booking__subtitle">Fill in the details below to request our services</p>
-            </div>
+      <div class="container">
+        <div class="booking__header text-center">
+          <h1 class="booking__title">Book Your Care Companion</h1>
+          <p class="booking__subtitle">
+            Fill in the details below to request our services
+          </p>
+        </div>
 
-            <div class="booking__container">
-                <!-- Progress Steps -->
-                <div class="progress-steps" id="progressSteps">
-                    <div class="step active" data-step="1">
-                        <div class="step__number">1</div>
-                        <div class="step__label">Service</div>
+        <div class="booking__container">
+          <!-- Progress Steps -->
+          <div class="progress-steps" id="progressSteps">
+            <div class="step active" data-step="1">
+              <div class="step__number">1</div>
+              <div class="step__label">Service</div>
+            </div>
+            <div class="step" data-step="2">
+              <div class="step__number">2</div>
+              <div class="step__label">Personal Details</div>
+            </div>
+            <div class="step" data-step="3">
+              <div class="step__number">3</div>
+              <div class="step__label">Confirm</div>
+            </div>
+          </div>
+
+          <!-- Booking Form -->
+          <form id="booking-form" class="booking-form" data-form-type="booking">
+            <!-- Step 1: Service Selection -->
+            <div class="form-step active" data-step="1">
+              <h2 class="step-title">Select Your Service</h2>
+
+              <div class="service-options">
+                <div class="service-option" data-service="health-appointments">
+                  <input
+                    type="radio"
+                    name="service"
+                    value="health-appointments"
+                    id="health-appointments"
+                    required
+                  />
+                  <label for="health-appointments" class="service-card-input">
+                    <div class="service-icon">
+                      <i class="fas fa-stethoscope"></i>
                     </div>
-                    <div class="step" data-step="2">
-                        <div class="step__number">2</div>
-                        <div class="step__label">Personal Details</div>
+                    <div class="service-info">
+                      <h3>TEMAN to Health Appointments</h3>
+                      <p>Assistance to go to medical checkups and treatments</p>
+                      <div class="service-pricing" style="display: none">
+                        <div class="price-option">
+                          <input
+                            type="radio"
+                            name="health_package"
+                            value="hourly"
+                            id="health-hourly"
+                          />
+                          <label for="health-hourly"
+                            >Nett Price: RM35/hour (min 2 hours)</label
+                          >
+                          <div
+                            class="hours-selection"
+                            style="display: none; margin-top: 12px"
+                          >
+                            <label
+                              for="health-hours"
+                              style="
+                                display: block;
+                                font-weight: 500;
+                                margin-bottom: 8px;
+                                color: #374151;
+                                font-size: 14px;
+                              "
+                            >
+                              Number of Hours: *
+                            </label>
+                            <select
+                              name="health_hours"
+                              id="health-hours"
+                              style="
+                                width: 100%;
+                                padding: 8px;
+                                border: 1px solid #d1d5db;
+                                border-radius: 6px;
+                                font-size: 14px;
+                              "
+                            >
+                              <option value="">Select hours</option>
+                              <option value="2">2 hours - RM70</option>
+                              <option value="3">3 hours - RM105</option>
+                              <option value="4">4 hours - RM140</option>
+                              <option value="5">5 hours - RM175</option>
+                              <option value="6">6 hours - RM210</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="price-option">
+                          <input
+                            type="radio"
+                            name="health_package"
+                            value="package1"
+                            id="health-package1"
+                          />
+                          <label for="health-package1"
+                            >Package 1: RM132 (4 hours) - Additional hour
+                            RM33</label
+                          >
+                        </div>
+                        <div class="price-option">
+                          <input
+                            type="radio"
+                            name="health_package"
+                            value="package2"
+                            id="health-package2"
+                          />
+                          <label for="health-package2"
+                            >Package 2: RM186 (6 hours) - Additional hour
+                            RM31</label
+                          >
+                        </div>
+                        <div class="pricing-notes">
+                          <small
+                            >*Transportation fee: RM0.80/KM or e-hailing
+                            fare</small
+                          ><br />
+                          <small>*Transport allowance: RM20/session</small
+                          ><br />
+                          <small
+                            >*RM37/hour surcharge for Public Holiday/Sunday/last
+                            minute booking</small
+                          >
+                        </div>
+                      </div>
                     </div>
-                    <div class="step" data-step="3">
-                        <div class="step__number">3</div>
-                        <div class="step__label">Confirm</div>
-                    </div>
+                  </label>
                 </div>
 
-                <!-- Booking Form -->
-                <form id="booking-form" class="booking-form" data-form-type="booking">
-                    <!-- Step 1: Service Selection -->
-                    <div class="form-step active" data-step="1">
-                        <h2 class="step-title">Select Your Service</h2>
-                        
-                        <div class="service-options">
-                            <div class="service-option" data-service="health-appointments">
-                                <input type="radio" name="service" value="health-appointments" id="health-appointments" required>
-                                <label for="health-appointments" class="service-card-input">
-                                    <div class="service-icon">
-                                        <i class="fas fa-stethoscope"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h3>TEMAN to Health Appointments</h3>
-                                        <p>Assistance to go to medical checkups and treatments</p>
-                                        <div class="service-pricing" style="display: none;">
-                                            <div class="price-option">
-                                                <input type="radio" name="health_package" value="hourly" id="health-hourly">
-                                                <label for="health-hourly">Nett Price: RM35/hour (min 2 hours)</label>
-                                                <div class="hours-selection" style="display: none; margin-top: 12px;">
-                                                    <label for="health-hours" style="display: block; font-weight: 500; margin-bottom: 8px; color: #374151; font-size: 14px;">
-                                                        Number of Hours: *
-                                                    </label>
-                                                    <select name="health_hours" id="health-hours" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;">
-                                                        <option value="">Select hours</option>
-                                                        <option value="2">2 hours - RM70</option>
-                                                        <option value="3">3 hours - RM105</option>
-                                                        <option value="4">4 hours - RM140</option>
-                                                        <option value="5">5 hours - RM175</option>
-                                                        <option value="6">6 hours - RM210</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="price-option">
-                                                <input type="radio" name="health_package" value="package1" id="health-package1">
-                                                <label for="health-package1">Package 1: RM132 (4 hours) - Additional hour RM33</label>
-                                            </div>
-                                            <div class="price-option">
-                                                <input type="radio" name="health_package" value="package2" id="health-package2">
-                                                <label for="health-package2">Package 2: RM186 (6 hours) - Additional hour RM31</label>
-                                            </div>
-                                            <div class="pricing-notes">
-                                                <small>*Transportation fee: RM0.80/KM or e-hailing fare</small><br>
-                                                <small>*Transport allowance: RM20/session</small><br>
-                                                <small>*RM37/hour surcharge for Public Holiday/Sunday/last minute booking</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-
-                            <div class="service-option" data-service="dialysis">
-                                <input type="radio" name="service" value="dialysis" id="dialysis">
-                                <label for="dialysis" class="service-card-input">
-                                    <div class="service-icon">
-                                        <i class="fas fa-heartbeat"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h3>TEMAN to Dialysis Treatments</h3>
-                                        <p>Assistance to go to dialysis center to get their treatments</p>
-                                        <div class="service-pricing" style="display: none;">
-                                            <div class="price-option">
-                                                <input type="radio" name="dialysis_package" value="hourly" id="dialysis-hourly">
-                                                <label for="dialysis-hourly">Nett Price: RM35/hour</label>
-                                                <div class="hours-selection" style="display: none; margin-top: 12px;">
-                                                    <label for="dialysis-hours" style="display: block; font-weight: 500; margin-bottom: 8px; color: #374151; font-size: 14px;">
-                                                        Number of Hours: *
-                                                    </label>
-                                                    <select name="dialysis_hours" id="dialysis-hours" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;">
-                                                        <option value="">Select hours</option>
-                                                        <option value="2">2 hours - RM70</option>
-                                                        <option value="3">3 hours - RM105</option>
-                                                        <option value="4">4 hours - RM140</option>
-                                                        <option value="5">5 hours - RM175</option>
-                                                        <option value="6">6 hours - RM210</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="price-option">
-                                                <input type="radio" name="dialysis_package" value="package1" id="dialysis-package1">
-                                                <label for="dialysis-package1">Package: RM186 (6 hours) - Suitable for 3 dialysis sessions</label>
-                                            </div>
-                                            <div class="price-option">
-                                                <input type="radio" name="dialysis_package" value="companion" id="dialysis-companion">
-                                                <label for="dialysis-companion">Companion during treatment: RM30/hour (Optional)</label>
-                                                <div class="hours-selection" style="display: none; margin-top: 12px;">
-                                                    <label for="companion-hours" style="display: block; font-weight: 500; margin-bottom: 8px; color: #374151; font-size: 14px;">
-                                                        Number of Hours: *
-                                                    </label>
-                                                    <select name="companion_hours" id="companion-hours" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;">
-                                                        <option value="">Select hours</option>
-                                                        <option value="2">2 hours - RM60</option>
-                                                        <option value="3">3 hours - RM90</option>
-                                                        <option value="4">4 hours - RM120</option>
-                                                        <option value="5">5 hours - RM150</option>
-                                                        <option value="6">6 hours - RM180</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="pricing-notes">
-                                                <small>*Transportation fee: RM0.80/KM or e-hailing fare</small><br>
-                                                <small>*All remaining hours can be used before 60 days</small><br>
-                                                <small>*RM37/hour surcharge for Public Holiday/Sunday/last minute booking</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-
-                            <div class="service-option" data-service="home-package">
-                                <input type="radio" name="service" value="home-package" id="home-package">
-                                <label for="home-package" class="service-card-input">
-                                    <div class="service-icon">
-                                        <i class="fas fa-home"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h3>TEMAN at Home Package</h3>
-                                        <p>Day care services to provide assistance with daily activities</p>
-                                        <div class="service-features">
-                                            <p><strong>Services include:</strong> Dispensing medications, feeding/prepare meals, light physiotherapy, companionship, outdoor exercise/activity, mind wellness activities, bathing/change diapers, bedridden/wheelchair users, BP/blood sugar measurement</p>
-                                        </div>
-                                        <div class="service-pricing" style="display: none;">
-                                            <div class="price-option">
-                                                <input type="radio" name="home_package" value="package1" id="home-package1">
-                                                <label for="home-package1">Package 1: RM2,800 (4 hrs/day, 20 sessions)</label>
-                                            </div>
-                                            <div class="price-option">
-                                                <input type="radio" name="home_package" value="package2" id="home-package2">
-                                                <label for="home-package2">Package 2: RM3,780 (6 hrs/day, 20 sessions)</label>
-                                            </div>
-                                            <div class="price-option">
-                                                <input type="radio" name="home_package" value="package3" id="home-package3">
-                                                <label for="home-package3">Package 3: RM4,720 (8 hrs/day, 20 sessions)</label>
-                                            </div>
-                                            <div class="pricing-notes">
-                                                <small>*Valid within 60 days of usage</small><br>
-                                                <small>*Available for weekdays only (excluding Sundays & Public Holidays)</small><br>
-                                                <small>*Inclusive transport allowance</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-
-                            <div class="service-option" data-service="custom-activities">
-                                <input type="radio" name="service" value="custom-activities" id="custom-activities">
-                                <label for="custom-activities" class="service-card-input">
-                                    <div class="service-icon">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                    <div class="service-info">
-                                        <h3>TEMAN Customised Activities</h3>
-                                        <p>Accompany and assistance to do any kind of leisure activities</p>
-                                        <div class="service-pricing" style="display: none;">
-                                            <div class="price-option">
-                                                <input type="radio" name="custom_package" value="basic" id="custom-basic">
-                                                <label for="custom-basic">Nett Price: RM35/hour (min 2 hours)</label>
-                                                <div class="hours-selection" style="display: none; margin-top: 12px;">
-                                                    <label for="custom-hours" style="display: block; font-weight: 500; margin-bottom: 8px; color: #374151; font-size: 14px;">
-                                                        Number of Hours: *
-                                                    </label>
-                                                    <select name="custom_hours" id="custom-hours" style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;">
-                                                        <option value="">Select hours</option>
-                                                        <option value="2">2 hours - RM70</option>
-                                                        <option value="3">3 hours - RM105</option>
-                                                        <option value="4">4 hours - RM140</option>
-                                                        <option value="5">5 hours - RM175</option>
-                                                        <option value="6">6 hours - RM210</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="custom-activities-section" style="margin-top: 16px;">
-                                                <label for="custom-activities-list" style="display: block; font-weight: 500; margin-bottom: 8px; color: #374151;">
-                                                    List the activities you'd like assistance with: *
-                                                </label>
-                                                <textarea 
-                                                    id="custom-activities-list" 
-                                                    name="custom_activities_list" 
-                                                    rows="4" 
-                                                    placeholder="Please describe the activities, locations, and any specific requirements. For example: Shopping at mall, visit to park, recreational activities, social outings, etc."
-                                                    style="width: 100%; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; resize: vertical;"
-                                                ></textarea>
-                                            </div>
-                                            <div class="pricing-notes">
-                                                <small>*Transportation fee: RM0.80/KM or e-hailing fare</small><br>
-                                                <small>*Transport allowance: RM20/session</small><br>
-                                                <small>*RM37/hour surcharge for Public Holiday/Sunday/last minute booking</small><br>
-                                                <small>*For service longer than 6 hours, bulk purchase or customization - contact us for quote</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="button" class="btn btn--primary btn--large" onclick="nextStep()">
-                                Next Step
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
+                <div class="service-option" data-service="dialysis">
+                  <input
+                    type="radio"
+                    name="service"
+                    value="dialysis"
+                    id="dialysis"
+                  />
+                  <label for="dialysis" class="service-card-input">
+                    <div class="service-icon">
+                      <i class="fas fa-heartbeat"></i>
                     </div>
-
-                    <!-- Step 2: Personal Details -->
-                    <div class="form-step" data-step="2">
-                        <h2 class="step-title">Personal Information</h2>
-                        
-                        <!-- Contact Person Information -->
-                        <div class="form-section">
-                            <h3 class="form-section-title">
-                                <i class="fas fa-user"></i>
-                                Contact Person Details
-                            </h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="full-name" class="form-label">Full Name *</label>
-                                    <input type="text" id="full-name" name="full_name" class="form-input" 
-                                           placeholder="Enter your full name" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="relationship" class="form-label">Relationship to Patient</label>
-                                    <select id="relationship" name="relationship" class="form-select">
-                                        <option value="">Select relationship</option>
-                                        <option value="self">Self</option>
-                                        <option value="spouse">Spouse</option>
-                                        <option value="child">Son/Daughter</option>
-                                        <option value="parent">Parent</option>
-                                        <option value="sibling">Brother/Sister</option>
-                                        <option value="relative">Other Relative</option>
-                                        <option value="caregiver">Professional Caregiver</option>
-                                        <option value="friend">Friend</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="phone" class="form-label">Phone Number *</label>
-                                    <input type="tel" id="phone" name="phone" class="form-input" 
-                                           placeholder="+60 11-234 5678" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="email" class="form-label">Email Address *</label>
-                                    <input type="email" id="email" name="email" class="form-input" 
-                                           placeholder="your.email@example.com" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="emergency-contact" class="form-label">Emergency Contact Person</label>
-                                <input type="text" id="emergency-contact" name="emergency_contact" class="form-input" 
-                                       placeholder="Name and phone number of emergency contact">
-                            </div>
-                        </div>
-
-                        <!-- Patient Information -->
-                        <div class="form-section">
-                            <h3 class="form-section-title">
-                                <i class="fas fa-heart-pulse"></i>
-                                Patient/Care Recipient Information
-                            </h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="patient-name" class="form-label">Patient Name</label>
-                                    <input type="text" id="patient-name" name="patient_name" class="form-input" 
-                                           placeholder="If different from contact person">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="patient-age" class="form-label">Patient Age</label>
-                                    <input type="number" id="patient-age" name="patient_age" class="form-input" 
-                                           min="1" max="120" placeholder="Age in years">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="patient-gender" class="form-label">Gender</label>
-                                    <select id="patient-gender" name="patient_gender" class="form-select">
-                                        <option value="">Prefer not to say</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="patient-language" class="form-label">Preferred Language</label>
-                                    <select id="patient-language" name="patient_language" class="form-select">
-                                        <option value="english">English</option>
-                                        <option value="bahasa">Bahasa Malaysia</option>
-                                        <option value="mandarin">Mandarin</option>
-                                        <option value="cantonese">Cantonese</option>
-                                        <option value="hokkien">Hokkien</option>
-                                        <option value="tamil">Tamil</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Service Location -->
-                        <div class="form-section">
-                            <h3 class="form-section-title">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Service Location
-                            </h3>
-                            <div class="form-group">
-                                <label for="address" class="form-label">Complete Address *</label>
-                                <textarea id="address" name="address" class="form-textarea" rows="3" 
-                                          placeholder="Please provide complete address including unit number, building name, street, postcode, city, and state" required></textarea>
-                            </div>
-                            
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="postcode" class="form-label">Postcode *</label>
-                                    <input type="text" id="postcode" name="postcode" class="form-input" 
-                                           placeholder="e.g. 50200" pattern="[0-9]{5}" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="city" class="form-label">City *</label>
-                                    <input type="text" id="city" name="city" class="form-input" 
-                                           placeholder="e.g. Kuala Lumpur" required>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="state" class="form-label">State *</label>
-                                    <select id="state" name="state" class="form-select" required>
-                                        <option value="">Select State</option>
-                                        <option value="johor">Johor</option>
-                                        <option value="kedah">Kedah</option>
-                                        <option value="kelantan">Kelantan</option>
-                                        <option value="kuala-lumpur">Kuala Lumpur</option>
-                                        <option value="labuan">Labuan</option>
-                                        <option value="melaka">Melaka</option>
-                                        <option value="negeri-sembilan">Negeri Sembilan</option>
-                                        <option value="pahang">Pahang</option>
-                                        <option value="penang">Penang</option>
-                                        <option value="perak">Perak</option>
-                                        <option value="perlis">Perlis</option>
-                                        <option value="putrajaya">Putrajaya</option>
-                                        <option value="sabah">Sabah</option>
-                                        <option value="sarawak">Sarawak</option>
-                                        <option value="selangor">Selangor</option>
-                                        <option value="terengganu">Terengganu</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="nearest-landmark" class="form-label">Nearest Landmark</label>
-                                    <input type="text" id="nearest-landmark" name="nearest_landmark" class="form-input" 
-                                           placeholder="e.g. Near KLCC, Opposite Hospital">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Transportation -->
-                        <div class="form-section">
-                            <h3 class="form-section-title">
-                                <i class="fas fa-car"></i>
-                                Mode of Transportation for The Service
-                            </h3>
-                            <div class="transportation-options">
-                                <label class="radio-option">
-                                    <input type="radio" name="transportation_mode" value="client-provided" required>
-                                    <span class="radio-custom"></span>
-                                    <div class="radio-content">
-                                        <strong>Provided by Client</strong>
-                                        <p>Client will provide transportation for the Temanion</p>
-                                    </div>
-                                </label>
-                                
-                                <label class="radio-option">
-                                    <input type="radio" name="transportation_mode" value="teman-provided" required>
-                                    <span class="radio-custom"></span>
-                                    <div class="radio-content">
-                                        <strong>Provided by Teman Malaysia</strong>
-                                        <p>Our Temanion will arrange their own transportation</p>
-                                    </div>
-                                </label>
-                                
-                                <label class="radio-option">
-                                    <input type="radio" name="transportation_mode" value="e-hailing" required>
-                                    <span class="radio-custom"></span>
-                                    <div class="radio-content">
-                                        <strong>E-Hailing (Taxi, Grab)</strong>
-                                        <p>Use ride-hailing services (additional costs apply)</p>
-                                    </div>
-                                </label>
-                                
-                                <label class="radio-option">
-                                    <input type="radio" name="transportation_mode" value="not-required" required>
-                                    <span class="radio-custom"></span>
-                                    <div class="radio-content">
-                                        <strong>Not Required</strong>
-                                        <p>Service will be provided at a fixed location</p>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="form-group" style="margin-top: 16px;">
-                                <label for="transportation-notes" class="form-label">Transportation Notes (Optional)</label>
-                                <textarea id="transportation-notes" name="transportation_notes" class="form-textarea" rows="2" 
-                                          placeholder="Any specific transportation requirements, preferences, or additional details..."></textarea>
-                            </div>
-                        </div>
-
-                        <!-- Scheduling Information -->
-                        <div class="form-section">
-                            <h3 class="form-section-title">
-                                <i class="fas fa-calendar-alt"></i>
-                                Scheduling Preferences
-                            </h3>
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="preferred-date" class="form-label">Preferred Service Date *</label>
-                                    <input type="date" id="preferred-date" name="preferred_date" class="form-input" required>
-                                    <small class="form-help">Service can be booked from tomorrow onwards</small>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="preferred-time" class="form-label">Preferred Start Time *</label>
-                                    <select id="preferred-time" name="preferred_time" class="form-select" required>
-                                        <option value="">Select time</option>
-                                        <option value="07:00">07:00 AM</option>
-                                        <option value="07:30">07:30 AM</option>
-                                        <option value="08:00">08:00 AM</option>
-                                        <option value="08:30">08:30 AM</option>
-                                        <option value="09:00">09:00 AM</option>
-                                        <option value="09:30">09:30 AM</option>
-                                        <option value="10:00">10:00 AM</option>
-                                        <option value="10:30">10:30 AM</option>
-                                        <option value="11:00">11:00 AM</option>
-                                        <option value="11:30">11:30 AM</option>
-                                        <option value="12:00">12:00 PM</option>
-                                        <option value="12:30">12:30 PM</option>
-                                        <option value="13:00">01:00 PM</option>
-                                        <option value="13:30">01:30 PM</option>
-                                        <option value="14:00">02:00 PM</option>
-                                        <option value="14:30">02:30 PM</option>
-                                        <option value="15:00">03:00 PM</option>
-                                        <option value="15:30">03:30 PM</option>
-                                        <option value="16:00">04:00 PM</option>
-                                        <option value="16:30">04:30 PM</option>
-                                        <option value="17:00">05:00 PM</option>
-                                        <option value="17:30">05:30 PM</option>
-                                        <option value="18:00">06:00 PM</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="urgency" class="form-label">Urgency Level</label>
-                                    <select id="urgency" name="urgency" class="form-select">
-                                        <option value="normal">Normal (24-48 hours)</option>
-                                        <option value="urgent">Urgent (Within 24 hours)</option>
-                                        <option value="asap">ASAP (Same day if possible)</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="frequency" class="form-label">Service Frequency</label>
-                                    <select id="frequency" name="frequency" class="form-select">
-                                        <option value="one-time">One-time service</option>
-                                        <option value="weekly">Weekly</option>
-                                        <option value="bi-weekly">Bi-weekly (Every 2 weeks)</option>
-                                        <option value="monthly">Monthly</option>
-                                        <option value="as-needed">As needed</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Medical & Care Information -->
-                        <div class="form-section">
-                            <h3 class="form-section-title">
-                                <i class="fas fa-notes-medical"></i>
-                                Medical & Care Information
-                            </h3>
-                            
-                            <div class="form-group">
-                                <label for="medical-conditions" class="form-label">Medical Conditions</label>
-                                <textarea id="medical-conditions" name="medical_conditions" class="form-textarea" rows="3" 
-                                          placeholder="Please list any medical conditions, disabilities, or health concerns that our companion should be aware of..."></textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="medications" class="form-label">Current Medications</label>
-                                <textarea id="medications" name="medications" class="form-textarea" rows="2" 
-                                          placeholder="List current medications and any medication reminders needed..."></textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="mobility-needs" class="form-label">Mobility & Physical Needs</label>
-                                <div class="checkbox-group">
-                                    <label class="checkbox-item">
-                                        <input type="checkbox" name="mobility_needs[]" value="wheelchair">
-                                        <span class="checkmark"></span>
-                                        Wheelchair user
-                                    </label>
-                                    <label class="checkbox-item">
-                                        <input type="checkbox" name="mobility_needs[]" value="walker">
-                                        <span class="checkmark"></span>
-                                        Uses walker/walking aid
-                                    </label>
-                                    <label class="checkbox-item">
-                                        <input type="checkbox" name="mobility_needs[]" value="assistance">
-                                        <span class="checkmark"></span>
-                                        Needs assistance walking
-                                    </label>
-                                    <label class="checkbox-item">
-                                        <input type="checkbox" name="mobility_needs[]" value="bedridden">
-                                        <span class="checkmark"></span>
-                                        Bedridden
-                                    </label>
-                                    <label class="checkbox-item">
-                                        <input type="checkbox" name="mobility_needs[]" value="lifting">
-                                        <span class="checkmark"></span>
-                                        Requires lifting assistance
-                                    </label>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="special-requirements" class="form-label">Special Care Requirements</label>
-                                <textarea id="special-requirements" name="special_requirements" class="form-textarea" rows="4" 
-                                          placeholder="Please describe any specific care needs, preferences, allergies, dietary restrictions, behavioral considerations, or other important information..."></textarea>
-                            </div>
-                        </div>
-
-                        <!-- Companion Preferences -->
-                        <div class="form-section">
-                            <h3 class="form-section-title">
-                                <i class="fas fa-user-friends"></i>
-                                Companion Preferences
-                            </h3>
-                            
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="companion-gender" class="form-label">Preferred Companion Gender</label>
-                                    <select id="companion-gender" name="companion_gender" class="form-select">
-                                        <option value="no-preference">No preference</option>
-                                        <option value="female">Female</option>
-                                        <option value="male">Male</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="companion-language" class="form-label">Companion Language Preference</label>
-                                    <select id="companion-language" name="companion_language" class="form-select">
-                                        <option value="english">English</option>
-                                        <option value="bahasa">Bahasa Malaysia</option>
-                                        <option value="mandarin">Mandarin</option>
-                                        <option value="cantonese">Cantonese</option>
-                                        <option value="multilingual">Multilingual preferred</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="companion-experience" class="form-label">Required Experience Level</label>
-                                    <select id="companion-experience" name="companion_experience" class="form-select">
-                                        <option value="any">Any experience level</option>
-                                        <option value="basic">Basic care experience</option>
-                                        <option value="intermediate">Intermediate care experience</option>
-                                        <option value="advanced">Advanced/Medical care experience</option>
-                                        <option value="specialized">Specialized condition experience</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="companion-age" class="form-label">Preferred Companion Age Range</label>
-                                    <select id="companion-age" name="companion_age" class="form-select">
-                                        <option value="no-preference">No preference</option>
-                                        <option value="young-adult">Young Adult (20-30)</option>
-                                        <option value="adult">Adult (30-45)</option>
-                                        <option value="mature">Mature (45-60)</option>
-                                        <option value="senior">Senior (60+)</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Additional Information -->
-                        <div class="form-section">
-                            <h3 class="form-section-title">
-                                <i class="fas fa-comment-dots"></i>
-                                Additional Information
-                            </h3>
-                            
-                            <div class="form-group">
-                                <label for="additional-notes" class="form-label">Additional Notes & Requests</label>
-                                <textarea id="additional-notes" name="additional_notes" class="form-textarea" rows="4" 
-                                          placeholder="Any other information, special requests, or concerns you'd like us to know about..."></textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="how-heard" class="form-label">How did you hear about us?</label>
-                                <select id="how-heard" name="how_heard" class="form-select">
-                                    <option value="">Please select</option>
-                                    <option value="google">Google Search</option>
-                                    <option value="facebook">Facebook</option>
-                                    <option value="instagram">Instagram</option>
-                                    <option value="friend">Friend/Family Referral</option>
-                                    <option value="doctor">Doctor/Medical Professional</option>
-                                    <option value="newspaper">Newspaper/Magazine</option>
-                                    <option value="radio">Radio</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="button" class="btn btn--outline btn--large" onclick="prevStep()">
-                                <i class="fas fa-arrow-left"></i>
-                                Previous
-                            </button>
-                            <button type="button" class="btn btn--primary btn--large" onclick="nextStep()">
-                                Review Details
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Confirmation -->
-                    <div class="form-step" data-step="3">
-                        <h2 class="step-title">Booking Summary</h2>
-                        
-                        <div class="booking-summary">
-                            <div class="summary-card">
-                                <h3><i class="fas fa-clipboard-list"></i> Service Details</h3>
-                                <div class="summary-item">
-                                    <span class="summary-label">Service:</span>
-                                    <span class="summary-value" id="summary-service">-</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="summary-label">Package:</span>
-                                    <span class="summary-value" id="summary-package">-</span>
-                                </div>
-                                <div class="summary-item" id="custom-activities-summary" style="display: none;">
-                                    <span class="summary-label">Activities:</span>
-                                    <span class="summary-value" id="summary-activities">-</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="summary-label">Date & Time:</span>
-                                    <span class="summary-value" id="summary-datetime">-</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="summary-label">Transportation:</span>
-                                    <span class="summary-value" id="summary-transportation">-</span>
-                                </div>
-                                <div class="summary-divider"></div>
-                                <div class="summary-item total">
-                                    <span class="summary-label">Estimated Cost:</span>
-                                    <span class="summary-value" id="summary-total">RM 0</span>
-                                </div>
-                                <p class="cost-note">*Final cost may vary based on additional services and transportation fees</p>
-                            </div>
-
-                            <div class="summary-card">
-                                <h3><i class="fas fa-user"></i> Contact Information</h3>
-                                <div class="summary-item">
-                                    <span class="summary-label">Name:</span>
-                                    <span class="summary-value" id="summary-name">-</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="summary-label">Phone:</span>
-                                    <span class="summary-value" id="summary-phone">-</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="summary-label">Email:</span>
-                                    <span class="summary-value" id="summary-email">-</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="summary-label">Address:</span>
-                                    <span class="summary-value" id="summary-address">-</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="next-steps-info">
-                            <h3><i class="fas fa-info-circle"></i> What Happens Next?</h3>
-                            <ul class="steps-list">
-                                <li><i class="fas fa-phone"></i> Our team will call you within 24 hours to confirm details</li>
-                                <li><i class="fas fa-user-check"></i> We'll assign a suitable Temanion based on your requirements</li>
-                                <li><i class="fas fa-calendar-check"></i> You'll receive confirmation with your Temanion's details</li>
-                                <li><i class="fas fa-heart"></i> Your care companion service begins as scheduled</li>
-                            </ul>
-                        </div>
-
-                        <div class="terms-agreement">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="terms_agreed" required>
-                                <span class="checkmark"></span>
-                                I agree to the <a href="#" target="_blank">Terms & Conditions</a> and <a href="#" target="_blank">Privacy Policy</a>
+                    <div class="service-info">
+                      <h3>TEMAN to Dialysis Treatments</h3>
+                      <p>
+                        Assistance to go to dialysis center to get their
+                        treatments
+                      </p>
+                      <div class="service-pricing" style="display: none">
+                        <div class="price-option">
+                          <input
+                            type="radio"
+                            name="dialysis_package"
+                            value="hourly"
+                            id="dialysis-hourly"
+                          />
+                          <label for="dialysis-hourly"
+                            >Nett Price: RM35/hour</label
+                          >
+                          <div
+                            class="hours-selection"
+                            style="display: none; margin-top: 12px"
+                          >
+                            <label
+                              for="dialysis-hours"
+                              style="
+                                display: block;
+                                font-weight: 500;
+                                margin-bottom: 8px;
+                                color: #374151;
+                                font-size: 14px;
+                              "
+                            >
+                              Number of Hours: *
                             </label>
+                            <select
+                              name="dialysis_hours"
+                              id="dialysis-hours"
+                              style="
+                                width: 100%;
+                                padding: 8px;
+                                border: 1px solid #d1d5db;
+                                border-radius: 6px;
+                                font-size: 14px;
+                              "
+                            >
+                              <option value="">Select hours</option>
+                              <option value="2">2 hours - RM70</option>
+                              <option value="3">3 hours - RM105</option>
+                              <option value="4">4 hours - RM140</option>
+                              <option value="5">5 hours - RM175</option>
+                              <option value="6">6 hours - RM210</option>
+                            </select>
+                          </div>
                         </div>
-
-                        <div class="form-actions">
-                            <button type="button" class="btn btn--outline btn--large" onclick="prevStep()">
-                                <i class="fas fa-arrow-left"></i>
-                                Previous
-                            </button>
-                            <button type="submit" class="btn btn--primary btn--large" id="submit-booking-btn">
-                                <i class="fas fa-paper-plane"></i>
-                                Submit Booking Request
-                            </button>
+                        <div class="price-option">
+                          <input
+                            type="radio"
+                            name="dialysis_package"
+                            value="package1"
+                            id="dialysis-package1"
+                          />
+                          <label for="dialysis-package1"
+                            >Package: RM186 (6 hours) - Suitable for 3 dialysis
+                            sessions</label
+                          >
                         </div>
+                        <div class="price-option">
+                          <input
+                            type="radio"
+                            name="dialysis_package"
+                            value="companion"
+                            id="dialysis-companion"
+                          />
+                          <label for="dialysis-companion"
+                            >Companion during treatment: RM30/hour
+                            (Optional)</label
+                          >
+                          <div
+                            class="hours-selection"
+                            style="display: none; margin-top: 12px"
+                          >
+                            <label
+                              for="companion-hours"
+                              style="
+                                display: block;
+                                font-weight: 500;
+                                margin-bottom: 8px;
+                                color: #374151;
+                                font-size: 14px;
+                              "
+                            >
+                              Number of Hours: *
+                            </label>
+                            <select
+                              name="companion_hours"
+                              id="companion-hours"
+                              style="
+                                width: 100%;
+                                padding: 8px;
+                                border: 1px solid #d1d5db;
+                                border-radius: 6px;
+                                font-size: 14px;
+                              "
+                            >
+                              <option value="">Select hours</option>
+                              <option value="2">2 hours - RM60</option>
+                              <option value="3">3 hours - RM90</option>
+                              <option value="4">4 hours - RM120</option>
+                              <option value="5">5 hours - RM150</option>
+                              <option value="6">6 hours - RM180</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="pricing-notes">
+                          <small
+                            >*Transportation fee: RM0.80/KM or e-hailing
+                            fare</small
+                          ><br />
+                          <small
+                            >*All remaining hours can be used before 60
+                            days</small
+                          ><br />
+                          <small
+                            >*RM37/hour surcharge for Public Holiday/Sunday/last
+                            minute booking</small
+                          >
+                        </div>
+                      </div>
                     </div>
-                </form>
+                  </label>
+                </div>
+
+                <div class="service-option" data-service="home-package">
+                  <input
+                    type="radio"
+                    name="service"
+                    value="home-package"
+                    id="home-package"
+                  />
+                  <label for="home-package" class="service-card-input">
+                    <div class="service-icon">
+                      <i class="fas fa-home"></i>
+                    </div>
+                    <div class="service-info">
+                      <h3>TEMAN at Home Package</h3>
+                      <p>
+                        Day care services to provide assistance with daily
+                        activities
+                      </p>
+                      <div class="service-features">
+                        <p>
+                          <strong>Services include:</strong> Dispensing
+                          medications, feeding/prepare meals, light
+                          physiotherapy, companionship, outdoor
+                          exercise/activity, mind wellness activities,
+                          bathing/change diapers, bedridden/wheelchair users,
+                          BP/blood sugar measurement
+                        </p>
+                      </div>
+                      <div class="service-pricing" style="display: none">
+                        <div class="price-option">
+                          <input
+                            type="radio"
+                            name="home_package"
+                            value="package1"
+                            id="home-package1"
+                          />
+                          <label for="home-package1"
+                            >Package 1: RM2,800 (4 hrs/day, 20 sessions)</label
+                          >
+                        </div>
+                        <div class="price-option">
+                          <input
+                            type="radio"
+                            name="home_package"
+                            value="package2"
+                            id="home-package2"
+                          />
+                          <label for="home-package2"
+                            >Package 2: RM3,780 (6 hrs/day, 20 sessions)</label
+                          >
+                        </div>
+                        <div class="price-option">
+                          <input
+                            type="radio"
+                            name="home_package"
+                            value="package3"
+                            id="home-package3"
+                          />
+                          <label for="home-package3"
+                            >Package 3: RM4,720 (8 hrs/day, 20 sessions)</label
+                          >
+                        </div>
+                        <div class="pricing-notes">
+                          <small>*Valid within 60 days of usage</small><br />
+                          <small
+                            >*Available for weekdays only (excluding Sundays &
+                            Public Holidays)</small
+                          ><br />
+                          <small>*Inclusive transport allowance</small>
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+
+                <div class="service-option" data-service="custom-activities">
+                  <input
+                    type="radio"
+                    name="service"
+                    value="custom-activities"
+                    id="custom-activities"
+                  />
+                  <label for="custom-activities" class="service-card-input">
+                    <div class="service-icon">
+                      <i class="fas fa-users"></i>
+                    </div>
+                    <div class="service-info">
+                      <h3>TEMAN Customised Activities</h3>
+                      <p>
+                        Accompany and assistance to do any kind of leisure
+                        activities
+                      </p>
+                      <div class="service-pricing" style="display: none">
+                        <div class="price-option">
+                          <input
+                            type="radio"
+                            name="custom_package"
+                            value="basic"
+                            id="custom-basic"
+                          />
+                          <label for="custom-basic"
+                            >Nett Price: RM35/hour (min 2 hours)</label
+                          >
+                          <div
+                            class="hours-selection"
+                            style="display: none; margin-top: 12px"
+                          >
+                            <label
+                              for="custom-hours"
+                              style="
+                                display: block;
+                                font-weight: 500;
+                                margin-bottom: 8px;
+                                color: #374151;
+                                font-size: 14px;
+                              "
+                            >
+                              Number of Hours: *
+                            </label>
+                            <select
+                              name="custom_hours"
+                              id="custom-hours"
+                              style="
+                                width: 100%;
+                                padding: 8px;
+                                border: 1px solid #d1d5db;
+                                border-radius: 6px;
+                                font-size: 14px;
+                              "
+                            >
+                              <option value="">Select hours</option>
+                              <option value="2">2 hours - RM70</option>
+                              <option value="3">3 hours - RM105</option>
+                              <option value="4">4 hours - RM140</option>
+                              <option value="5">5 hours - RM175</option>
+                              <option value="6">6 hours - RM210</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div
+                          class="custom-activities-section"
+                          style="margin-top: 16px"
+                        >
+                          <label
+                            for="custom-activities-list"
+                            style="
+                              display: block;
+                              font-weight: 500;
+                              margin-bottom: 8px;
+                              color: #374151;
+                            "
+                          >
+                            List the activities you'd like assistance with: *
+                          </label>
+                          <textarea
+                            id="custom-activities-list"
+                            name="custom_activities_list"
+                            rows="4"
+                            placeholder="Please describe the activities, locations, and any specific requirements. For example: Shopping at mall, visit to park, recreational activities, social outings, etc."
+                            style="
+                              width: 100%;
+                              padding: 12px;
+                              border: 1px solid #d1d5db;
+                              border-radius: 6px;
+                              font-size: 14px;
+                              resize: vertical;
+                            "
+                          ></textarea>
+                        </div>
+                        <div class="pricing-notes">
+                          <small
+                            >*Transportation fee: RM0.80/KM or e-hailing
+                            fare</small
+                          ><br />
+                          <small>*Transport allowance: RM20/session</small
+                          ><br />
+                          <small
+                            >*RM37/hour surcharge for Public Holiday/Sunday/last
+                            minute booking</small
+                          ><br />
+                          <small
+                            >*For service longer than 6 hours, bulk purchase or
+                            customization - contact us for quote</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn btn--primary btn--large"
+                  onclick="nextStep()"
+                >
+                  Next Step
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
             </div>
+
+            <!-- Step 2: Personal Details -->
+            <div class="form-step" data-step="2">
+              <h2 class="step-title">Personal Information</h2>
+
+              <!-- Contact Person Information -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-user"></i>
+                  Contact Person Details
+                </h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="full-name" class="form-label"
+                      >Full Name *</label
+                    >
+                    <input
+                      type="text"
+                      id="full-name"
+                      name="full_name"
+                      class="form-input"
+                      placeholder="Enter your full name"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="relationship" class="form-label"
+                      >Relationship to Patient</label
+                    >
+                    <select
+                      id="relationship"
+                      name="relationship"
+                      class="form-select"
+                    >
+                      <option value="">Select relationship</option>
+                      <option value="self">Self</option>
+                      <option value="spouse">Spouse</option>
+                      <option value="child">Son/Daughter</option>
+                      <option value="parent">Parent</option>
+                      <option value="sibling">Brother/Sister</option>
+                      <option value="relative">Other Relative</option>
+                      <option value="caregiver">Professional Caregiver</option>
+                      <option value="friend">Friend</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number *</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      class="form-input"
+                      placeholder="+60 11-234 5678"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email" class="form-label"
+                      >Email Address *</label
+                    >
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="form-input"
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="emergency-contact" class="form-label"
+                    >Emergency Contact Person</label
+                  >
+                  <input
+                    type="text"
+                    id="emergency-contact"
+                    name="emergency_contact"
+                    class="form-input"
+                    placeholder="Name and phone number of emergency contact"
+                  />
+                </div>
+              </div>
+
+              <!-- Patient Information -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-heart-pulse"></i>
+                  Patient/Care Recipient Information
+                </h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="patient-name" class="form-label"
+                      >Patient Name</label
+                    >
+                    <input
+                      type="text"
+                      id="patient-name"
+                      name="patient_name"
+                      class="form-input"
+                      placeholder="If different from contact person"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="patient-age" class="form-label"
+                      >Patient Age</label
+                    >
+                    <input
+                      type="number"
+                      id="patient-age"
+                      name="patient_age"
+                      class="form-input"
+                      min="1"
+                      max="120"
+                      placeholder="Age in years"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="patient-gender" class="form-label"
+                      >Gender</label
+                    >
+                    <select
+                      id="patient-gender"
+                      name="patient_gender"
+                      class="form-select"
+                    >
+                      <option value="">Prefer not to say</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="patient-language" class="form-label"
+                      >Preferred Language</label
+                    >
+                    <select
+                      id="patient-language"
+                      name="patient_language"
+                      class="form-select"
+                    >
+                      <option value="english">English</option>
+                      <option value="bahasa">Bahasa Malaysia</option>
+                      <option value="mandarin">Mandarin</option>
+                      <option value="cantonese">Cantonese</option>
+                      <option value="hokkien">Hokkien</option>
+                      <option value="tamil">Tamil</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Service Location -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Service Location
+                </h3>
+                <div class="form-group">
+                  <label for="address" class="form-label"
+                    >Complete Address *</label
+                  >
+                  <textarea
+                    id="address"
+                    name="address"
+                    class="form-textarea"
+                    rows="3"
+                    placeholder="Please provide complete address including unit number, building name, street, postcode, city, and state"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="postcode" class="form-label">Postcode *</label>
+                    <input
+                      type="text"
+                      id="postcode"
+                      name="postcode"
+                      class="form-input"
+                      placeholder="e.g. 50200"
+                      pattern="[0-9]{5}"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="city" class="form-label">City *</label>
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      class="form-input"
+                      placeholder="e.g. Kuala Lumpur"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="state" class="form-label">State *</label>
+                    <select
+                      id="state"
+                      name="state"
+                      class="form-select"
+                      required
+                    >
+                      <option value="">Select State</option>
+                      <option value="johor">Johor</option>
+                      <option value="kedah">Kedah</option>
+                      <option value="kelantan">Kelantan</option>
+                      <option value="kuala-lumpur">Kuala Lumpur</option>
+                      <option value="labuan">Labuan</option>
+                      <option value="melaka">Melaka</option>
+                      <option value="negeri-sembilan">Negeri Sembilan</option>
+                      <option value="pahang">Pahang</option>
+                      <option value="penang">Penang</option>
+                      <option value="perak">Perak</option>
+                      <option value="perlis">Perlis</option>
+                      <option value="putrajaya">Putrajaya</option>
+                      <option value="sabah">Sabah</option>
+                      <option value="sarawak">Sarawak</option>
+                      <option value="selangor">Selangor</option>
+                      <option value="terengganu">Terengganu</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="nearest-landmark" class="form-label"
+                      >Nearest Landmark</label
+                    >
+                    <input
+                      type="text"
+                      id="nearest-landmark"
+                      name="nearest_landmark"
+                      class="form-input"
+                      placeholder="e.g. Near KLCC, Opposite Hospital"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Transportation -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-car"></i>
+                  Mode of Transportation for The Service
+                </h3>
+                <div class="transportation-options">
+                  <label class="radio-option">
+                    <input
+                      type="radio"
+                      name="transportation_mode"
+                      value="client-provided"
+                      required
+                    />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>Provided by Client</strong>
+                      <p>Client will provide transportation for the Temanion</p>
+                    </div>
+                  </label>
+
+                  <label class="radio-option">
+                    <input
+                      type="radio"
+                      name="transportation_mode"
+                      value="teman-provided"
+                      required
+                    />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>Provided by Teman Malaysia</strong>
+                      <p>Our Temanion will arrange their own transportation</p>
+                    </div>
+                  </label>
+
+                  <label class="radio-option">
+                    <input
+                      type="radio"
+                      name="transportation_mode"
+                      value="e-hailing"
+                      required
+                    />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>E-Hailing (Taxi, Grab)</strong>
+                      <p>Use ride-hailing services (additional costs apply)</p>
+                    </div>
+                  </label>
+
+                  <label class="radio-option">
+                    <input
+                      type="radio"
+                      name="transportation_mode"
+                      value="not-required"
+                      required
+                    />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>Not Required</strong>
+                      <p>Service will be provided at a fixed location</p>
+                    </div>
+                  </label>
+                </div>
+                <div class="form-group" style="margin-top: 16px">
+                  <label for="transportation-notes" class="form-label"
+                    >Transportation Notes (Optional)</label
+                  >
+                  <textarea
+                    id="transportation-notes"
+                    name="transportation_notes"
+                    class="form-textarea"
+                    rows="2"
+                    placeholder="Any specific transportation requirements, preferences, or additional details..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Scheduling Information -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-calendar-alt"></i>
+                  Scheduling Preferences
+                </h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="preferred-date" class="form-label"
+                      >Preferred Service Date *</label
+                    >
+                    <input
+                      type="date"
+                      id="preferred-date"
+                      name="preferred_date"
+                      class="form-input"
+                      required
+                    />
+                    <small class="form-help"
+                      >Service can be booked from tomorrow onwards</small
+                    >
+                  </div>
+
+                  <div class="form-group">
+                    <label for="preferred-time" class="form-label"
+                      >Preferred Start Time *</label
+                    >
+                    <select
+                      id="preferred-time"
+                      name="preferred_time"
+                      class="form-select"
+                      required
+                    >
+                      <option value="">Select time</option>
+                      <option value="07:00">07:00 AM</option>
+                      <option value="07:30">07:30 AM</option>
+                      <option value="08:00">08:00 AM</option>
+                      <option value="08:30">08:30 AM</option>
+                      <option value="09:00">09:00 AM</option>
+                      <option value="09:30">09:30 AM</option>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:30">10:30 AM</option>
+                      <option value="11:00">11:00 AM</option>
+                      <option value="11:30">11:30 AM</option>
+                      <option value="12:00">12:00 PM</option>
+                      <option value="12:30">12:30 PM</option>
+                      <option value="13:00">01:00 PM</option>
+                      <option value="13:30">01:30 PM</option>
+                      <option value="14:00">02:00 PM</option>
+                      <option value="14:30">02:30 PM</option>
+                      <option value="15:00">03:00 PM</option>
+                      <option value="15:30">03:30 PM</option>
+                      <option value="16:00">04:00 PM</option>
+                      <option value="16:30">04:30 PM</option>
+                      <option value="17:00">05:00 PM</option>
+                      <option value="17:30">05:30 PM</option>
+                      <option value="18:00">06:00 PM</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="urgency" class="form-label"
+                      >Urgency Level</label
+                    >
+                    <select id="urgency" name="urgency" class="form-select">
+                      <option value="normal">Normal (24-48 hours)</option>
+                      <option value="urgent">Urgent (Within 24 hours)</option>
+                      <option value="asap">ASAP (Same day if possible)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="frequency" class="form-label"
+                      >Service Frequency</label
+                    >
+                    <select id="frequency" name="frequency" class="form-select">
+                      <option value="one-time">One-time service</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="bi-weekly">
+                        Bi-weekly (Every 2 weeks)
+                      </option>
+                      <option value="monthly">Monthly</option>
+                      <option value="as-needed">As needed</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Medical & Care Information -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-notes-medical"></i>
+                  Medical & Care Information
+                </h3>
+
+                <div class="form-group">
+                  <label for="medical-conditions" class="form-label"
+                    >Medical Conditions</label
+                  >
+                  <textarea
+                    id="medical-conditions"
+                    name="medical_conditions"
+                    class="form-textarea"
+                    rows="3"
+                    placeholder="Please list any medical conditions, disabilities, or health concerns that our companion should be aware of..."
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="medications" class="form-label"
+                    >Current Medications</label
+                  >
+                  <textarea
+                    id="medications"
+                    name="medications"
+                    class="form-textarea"
+                    rows="2"
+                    placeholder="List current medications and any medication reminders needed..."
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="mobility-needs" class="form-label"
+                    >Mobility & Physical Needs</label
+                  >
+                  <div class="checkbox-group">
+                    <label class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        name="mobility_needs[]"
+                        value="wheelchair"
+                      />
+                      <span class="checkmark"></span>
+                      Wheelchair user
+                    </label>
+                    <label class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        name="mobility_needs[]"
+                        value="walker"
+                      />
+                      <span class="checkmark"></span>
+                      Uses walker/walking aid
+                    </label>
+                    <label class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        name="mobility_needs[]"
+                        value="assistance"
+                      />
+                      <span class="checkmark"></span>
+                      Needs assistance walking
+                    </label>
+                    <label class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        name="mobility_needs[]"
+                        value="bedridden"
+                      />
+                      <span class="checkmark"></span>
+                      Bedridden
+                    </label>
+                    <label class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        name="mobility_needs[]"
+                        value="lifting"
+                      />
+                      <span class="checkmark"></span>
+                      Requires lifting assistance
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="special-requirements" class="form-label"
+                    >Special Care Requirements</label
+                  >
+                  <textarea
+                    id="special-requirements"
+                    name="special_requirements"
+                    class="form-textarea"
+                    rows="4"
+                    placeholder="Please describe any specific care needs, preferences, allergies, dietary restrictions, behavioral considerations, or other important information..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Companion Preferences -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-user-friends"></i>
+                  Companion Preferences
+                </h3>
+
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="companion-gender" class="form-label"
+                      >Preferred Companion Gender</label
+                    >
+                    <select
+                      id="companion-gender"
+                      name="companion_gender"
+                      class="form-select"
+                    >
+                      <option value="no-preference">No preference</option>
+                      <option value="female">Female</option>
+                      <option value="male">Male</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="companion-language" class="form-label"
+                      >Companion Language Preference</label
+                    >
+                    <select
+                      id="companion-language"
+                      name="companion_language"
+                      class="form-select"
+                    >
+                      <option value="english">English</option>
+                      <option value="bahasa">Bahasa Malaysia</option>
+                      <option value="mandarin">Mandarin</option>
+                      <option value="cantonese">Cantonese</option>
+                      <option value="multilingual">
+                        Multilingual preferred
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="companion-experience" class="form-label"
+                      >Required Experience Level</label
+                    >
+                    <select
+                      id="companion-experience"
+                      name="companion_experience"
+                      class="form-select"
+                    >
+                      <option value="any">Any experience level</option>
+                      <option value="basic">Basic care experience</option>
+                      <option value="intermediate">
+                        Intermediate care experience
+                      </option>
+                      <option value="advanced">
+                        Advanced/Medical care experience
+                      </option>
+                      <option value="specialized">
+                        Specialized condition experience
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="companion-age" class="form-label"
+                      >Preferred Companion Age Range</label
+                    >
+                    <select
+                      id="companion-age"
+                      name="companion_age"
+                      class="form-select"
+                    >
+                      <option value="no-preference">No preference</option>
+                      <option value="young-adult">Young Adult (20-30)</option>
+                      <option value="adult">Adult (30-45)</option>
+                      <option value="mature">Mature (45-60)</option>
+                      <option value="senior">Senior (60+)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Additional Information -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-comment-dots"></i>
+                  Additional Information
+                </h3>
+
+                <div class="form-group">
+                  <label for="additional-notes" class="form-label"
+                    >Additional Notes & Requests</label
+                  >
+                  <textarea
+                    id="additional-notes"
+                    name="additional_notes"
+                    class="form-textarea"
+                    rows="4"
+                    placeholder="Any other information, special requests, or concerns you'd like us to know about..."
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="how-heard" class="form-label"
+                    >How did you hear about us?</label
+                  >
+                  <select id="how-heard" name="how_heard" class="form-select">
+                    <option value="">Please select</option>
+                    <option value="google">Google Search</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="friend">Friend/Family Referral</option>
+                    <option value="doctor">Doctor/Medical Professional</option>
+                    <option value="newspaper">Newspaper/Magazine</option>
+                    <option value="radio">Radio</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn btn--outline btn--large"
+                  onclick="prevStep()"
+                >
+                  <i class="fas fa-arrow-left"></i>
+                  Previous
+                </button>
+                <button
+                  type="button"
+                  class="btn btn--primary btn--large"
+                  onclick="nextStep()"
+                >
+                  Review Details
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Confirmation -->
+            <div class="form-step" data-step="3">
+              <h2 class="step-title">Booking Summary</h2>
+
+              <div class="booking-summary">
+                <div class="summary-card">
+                  <h3><i class="fas fa-clipboard-list"></i> Service Details</h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Service:</span>
+                    <span class="summary-value" id="summary-service">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Package:</span>
+                    <span class="summary-value" id="summary-package">-</span>
+                  </div>
+                  <div
+                    class="summary-item"
+                    id="custom-activities-summary"
+                    style="display: none"
+                  >
+                    <span class="summary-label">Activities:</span>
+                    <span class="summary-value" id="summary-activities">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Date & Time:</span>
+                    <span class="summary-value" id="summary-datetime">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Transportation:</span>
+                    <span class="summary-value" id="summary-transportation"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-divider"></div>
+                  <div class="summary-item total">
+                    <span class="summary-label">Estimated Cost:</span>
+                    <span class="summary-value" id="summary-total">RM 0</span>
+                  </div>
+                  <p class="cost-note">
+                    *Final cost may vary based on additional services and
+                    transportation fees
+                  </p>
+                </div>
+
+                <div class="summary-card">
+                  <h3><i class="fas fa-user"></i> Contact Information</h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Name:</span>
+                    <span class="summary-value" id="summary-name">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Phone:</span>
+                    <span class="summary-value" id="summary-phone">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Email:</span>
+                    <span class="summary-value" id="summary-email">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Address:</span>
+                    <span class="summary-value" id="summary-address">-</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="next-steps-info">
+                <h3><i class="fas fa-info-circle"></i> What Happens Next?</h3>
+                <ul class="steps-list">
+                  <li>
+                    <i class="fas fa-phone"></i> Our team will call you within
+                    24 hours to confirm details
+                  </li>
+                  <li>
+                    <i class="fas fa-user-check"></i> We'll assign a suitable
+                    Temanion based on your requirements
+                  </li>
+                  <li>
+                    <i class="fas fa-calendar-check"></i> You'll receive
+                    confirmation with your Temanion's details
+                  </li>
+                  <li>
+                    <i class="fas fa-heart"></i> Your care companion service
+                    begins as scheduled
+                  </li>
+                </ul>
+              </div>
+
+              <div class="terms-agreement">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="terms_agreed" required />
+                  <span class="checkmark"></span>
+                  I agree to the
+                  <a href="#" target="_blank">Terms & Conditions</a> and
+                  <a href="#" target="_blank">Privacy Policy</a>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn btn--outline btn--large"
+                  onclick="prevStep()"
+                >
+                  <i class="fas fa-arrow-left"></i>
+                  Previous
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn--primary btn--large"
+                  id="submit-booking-btn"
+                >
+                  <i class="fas fa-paper-plane"></i>
+                  Submit Booking Request
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
+      </div>
     </section>
 
     <!-- Success Modal -->
-    <div id="booking-success-modal" class="modal" style="display: none;">
-        <div class="modal-content success-modal">
-            <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h2>Booking Request Submitted!</h2>
-            <p>Thank you for choosing Teman Malaysia. We've received your booking request and will contact you within 24 hours to confirm the details.</p>
-            <div class="booking-reference">
-                <strong>Reference Number: <span id="booking-ref-number"></span></strong>
-            </div>
-            <div class="modal-actions">
-                <button class="btn btn--primary" onclick="window.location.href='../index.html'">
-                    Back to Home
-                </button>
-                <button class="btn btn--outline" onclick="closeModal()">
-                    Close
-                </button>
-            </div>
+    <div id="booking-success-modal" class="modal" style="display: none">
+      <div class="modal-content success-modal">
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
         </div>
+        <h2>Booking Request Submitted!</h2>
+        <p>
+          Thank you for choosing Teman Malaysia. We've received your booking
+          request and will contact you within 24 hours to confirm the details.
+        </p>
+        <div class="booking-reference">
+          <strong
+            >Reference Number: <span id="booking-ref-number"></span
+          ></strong>
+        </div>
+        <div class="modal-actions">
+          <button
+            class="btn btn--primary"
+            onclick="window.location.href='../index.html'"
+          >
+            Back to Home
+          </button>
+          <button class="btn btn--outline" onclick="closeModal()">Close</button>
+        </div>
+      </div>
     </div>
 
     <script>
-        // Current step tracking
-        let currentStep = 1;
-        const totalSteps = 3;
+      // Current step tracking
+      let currentStep = 1;
+      const totalSteps = 3;
 
-        // Update progress steps visual state
-        function updateProgressSteps() {
-            const steps = document.querySelectorAll('.step');
+      // Update progress steps visual state
+      function updateProgressSteps() {
+        const steps = document.querySelectorAll(".step");
 
-            // Update individual steps
-            steps.forEach((step, index) => {
-                const stepNumber = index + 1;
-                step.classList.remove('active', 'completed');
-                
-                if (stepNumber < currentStep) {
-                    step.classList.add('completed');
-                } else if (stepNumber === currentStep) {
-                    step.classList.add('active');
-                }
-            });
-        }
+        // Update individual steps
+        steps.forEach((step, index) => {
+          const stepNumber = index + 1;
+          step.classList.remove("active", "completed");
 
-        // Navigate to next step
-        function nextStep() {
-            if (currentStep < totalSteps) {
-                // Validate current step before proceeding
-                if (validateCurrentStep()) {
-                    // Hide current step
-                    document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove('active');
-                    
-                    // Move to next step
-                    currentStep++;
-                    
-                    // Show next step
-                    document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add('active');
-                    
-                    // Update progress visual
-                    updateProgressSteps();
-                    
-                    // Update summary if on final step
-                    if (currentStep === 3) {
-                        updateBookingSummary();
-                    }
-                    
-                    // Scroll to top
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            }
-        }
+          if (stepNumber < currentStep) {
+            step.classList.add("completed");
+          } else if (stepNumber === currentStep) {
+            step.classList.add("active");
+          }
+        });
+      }
 
-        // Navigate to previous step
-        function prevStep() {
-            if (currentStep > 1) {
-                // Hide current step
-                document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove('active');
-                
-                // Move to previous step
-                currentStep--;
-                
-                // Show previous step
-                document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add('active');
-                
-                // Update progress visual
-                updateProgressSteps();
-                
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
+      // Navigate to next step
+      function nextStep() {
+        if (currentStep < totalSteps) {
+          // Validate current step before proceeding
+          if (validateCurrentStep()) {
+            // Hide current step
+            document
+              .querySelector(`.form-step[data-step="${currentStep}"]`)
+              .classList.remove("active");
 
-        // Validate current step
-        function validateCurrentStep() {
-            if (currentStep === 1) {
-                // Validate service selection
-                const serviceSelected = document.querySelector('input[name="service"]:checked');
-                if (!serviceSelected) {
-                    alert('Please select a service before continuing.');
-                    return false;
-                }
-                
-                // Validate service-specific requirements
-                const serviceType = serviceSelected.value;
-                if (serviceType === 'health-appointments') {
-                    const packageSelected = document.querySelector('input[name="health_package"]:checked');
-                    if (!packageSelected) {
-                        alert('Please select a package for health appointments.');
-                        return false;
-                    }
-                    if (packageSelected.value === 'hourly' && !document.getElementById('health-hours').value) {
-                        alert('Please select the number of hours.');
-                        return false;
-                    }
-                } else if (serviceType === 'dialysis') {
-                    const packageSelected = document.querySelector('input[name="dialysis_package"]:checked');
-                    if (!packageSelected) {
-                        alert('Please select a package for dialysis treatment.');
-                        return false;
-                    }
-                    if (packageSelected.value === 'hourly' && !document.getElementById('dialysis-hours').value) {
-                        alert('Please select the number of hours.');
-                        return false;
-                    }
-                    if (packageSelected.value === 'companion' && !document.getElementById('companion-hours').value) {
-                        alert('Please select the number of companion hours.');
-                        return false;
-                    }
-                } else if (serviceType === 'home-package') {
-                    const packageSelected = document.querySelector('input[name="home_package"]:checked');
-                    if (!packageSelected) {
-                        alert('Please select a home package.');
-                        return false;
-                    }
-                } else if (serviceType === 'custom-activities') {
-                    const packageSelected = document.querySelector('input[name="custom_package"]:checked');
-                    if (!packageSelected) {
-                        alert('Please select a package for custom activities.');
-                        return false;
-                    }
-                    if (!document.getElementById('custom-hours').value) {
-                        alert('Please select the number of hours.');
-                        return false;
-                    }
-                    if (!document.getElementById('custom-activities-list').value.trim()) {
-                        alert('Please describe the activities you need assistance with.');
-                        return false;
-                    }
-                }
-            } else if (currentStep === 2) {
-                // Validate required fields in step 2
-                const requiredFields = [
-                    'full_name', 'phone', 'email', 'address', 'postcode', 'city', 'state',
-                    'preferred_date', 'preferred_time'
-                ];
-                
-                for (let field of requiredFields) {
-                    const element = document.querySelector(`[name="${field}"]`);
-                    if (!element.value.trim()) {
-                        alert(`Please fill in the ${field.replace('_', ' ')} field.`);
-                        element.focus();
-                        return false;
-                    }
-                }
-                
-                // Validate transportation mode
-                const transportationSelected = document.querySelector('input[name="transportation_mode"]:checked');
-                if (!transportationSelected) {
-                    alert('Please select a transportation mode.');
-                    return false;
-                }
-            }
-            return true;
-        }
+            // Move to next step
+            currentStep++;
 
-        // Update booking summary
-        function updateBookingSummary() {
-            // Service details
-            const selectedService = document.querySelector('input[name="service"]:checked');
-            if (selectedService) {
-                const serviceLabel = document.querySelector(`label[for="${selectedService.id}"] h3`).textContent;
-                document.getElementById('summary-service').textContent = serviceLabel;
-                
-                // Package details
-                let packageInfo = '';
-                let estimatedCost = 0;
-                
-                if (selectedService.value === 'health-appointments') {
-                    const selectedPackage = document.querySelector('input[name="health_package"]:checked');
-                    if (selectedPackage) {
-                        if (selectedPackage.value === 'hourly') {
-                            const hours = document.getElementById('health-hours').value;
-                            packageInfo = `Hourly - ${hours} hours`;
-                            estimatedCost = hours * 35;
-                        } else if (selectedPackage.value === 'package1') {
-                            packageInfo = 'Package 1 (4 hours)';
-                            estimatedCost = 132;
-                        } else if (selectedPackage.value === 'package2') {
-                            packageInfo = 'Package 2 (6 hours)';
-                            estimatedCost = 186;
-                        }
-                    }
-                } else if (selectedService.value === 'dialysis') {
-                    const selectedPackage = document.querySelector('input[name="dialysis_package"]:checked');
-                    if (selectedPackage) {
-                        if (selectedPackage.value === 'hourly') {
-                            const hours = document.getElementById('dialysis-hours').value;
-                            packageInfo = `Hourly - ${hours} hours`;
-                            estimatedCost = hours * 35;
-                        } else if (selectedPackage.value === 'package1') {
-                            packageInfo = 'Package (6 hours) - 3 sessions';
-                            estimatedCost = 186;
-                        } else if (selectedPackage.value === 'companion') {
-                            const hours = document.getElementById('companion-hours').value;
-                            packageInfo = `Companion - ${hours} hours`;
-                            estimatedCost = hours * 30;
-                        }
-                    }
-                } else if (selectedService.value === 'home-package') {
-                    const selectedPackage = document.querySelector('input[name="home_package"]:checked');
-                    if (selectedPackage) {
-                        if (selectedPackage.value === 'package1') {
-                            packageInfo = 'Package 1 (4 hrs/day, 20 sessions)';
-                            estimatedCost = 2800;
-                        } else if (selectedPackage.value === 'package2') {
-                            packageInfo = 'Package 2 (6 hrs/day, 20 sessions)';
-                            estimatedCost = 3780;
-                        } else if (selectedPackage.value === 'package3') {
-                            packageInfo = 'Package 3 (8 hrs/day, 20 sessions)';
-                            estimatedCost = 4720;
-                        }
-                    }
-                } else if (selectedService.value === 'custom-activities') {
-                    const hours = document.getElementById('custom-hours').value;
-                    packageInfo = `Custom Activities - ${hours} hours`;
-                    estimatedCost = hours * 35;
-                    
-                    // Show custom activities
-                    const activities = document.getElementById('custom-activities-list').value;
-                    document.getElementById('summary-activities').textContent = activities;
-                    document.getElementById('custom-activities-summary').style.display = 'flex';
-                }
-                
-                document.getElementById('summary-package').textContent = packageInfo;
-                document.getElementById('summary-total').textContent = `RM ${estimatedCost}`;
-            }
-            
-            // Date and time
-            const date = document.getElementById('preferred-date').value;
-            const time = document.getElementById('preferred-time').value;
-            if (date && time) {
-                const formattedDate = new Date(date).toLocaleDateString('en-MY', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                });
-                document.getElementById('summary-datetime').textContent = `${formattedDate} at ${time}`;
-            }
-            
-            // Transportation
-            const transportation = document.querySelector('input[name="transportation_mode"]:checked');
-            if (transportation) {
-                const transportLabel = transportation.nextElementSibling.nextElementSibling.querySelector('strong').textContent;
-                document.getElementById('summary-transportation').textContent = transportLabel;
-            }
-            
-            // Contact information
-            document.getElementById('summary-name').textContent = document.getElementById('full-name').value || '-';
-            document.getElementById('summary-phone').textContent = document.getElementById('phone').value || '-';
-            document.getElementById('summary-email').textContent = document.getElementById('email').value || '-';
-            
-            const address = document.getElementById('address').value;
-            const city = document.getElementById('city').value;
-            const state = document.getElementById('state').value;
-            if (address && city && state) {
-                document.getElementById('summary-address').textContent = `${address}, ${city}, ${state}`;
-            }
-        }
+            // Show next step
+            document
+              .querySelector(`.form-step[data-step="${currentStep}"]`)
+              .classList.add("active");
 
-        // Handle service selection and show/hide pricing
-        document.addEventListener('DOMContentLoaded', function() {
-            const serviceOptions = document.querySelectorAll('input[name="service"]');
-            
-            serviceOptions.forEach(option => {
-                option.addEventListener('change', function() {
-                    // Hide all pricing sections
-                    document.querySelectorAll('.service-pricing').forEach(pricing => {
-                        pricing.style.display = 'none';
-                    });
-                    
-                    // Show pricing for selected service
-                    if (this.checked) {
-                        const pricingSection = this.parentElement.querySelector('.service-pricing');
-                        if (pricingSection) {
-                            pricingSection.style.display = 'block';
-                        }
-                    }
-                });
-            });
-            
-            // Handle package selection for hourly services
-            document.addEventListener('change', function(e) {
-                if (e.target.type === 'radio' && e.target.name.includes('_package')) {
-                    const hoursSelection = e.target.parentElement.querySelector('.hours-selection');
-                    if (hoursSelection) {
-                        if (e.target.value === 'hourly' || e.target.value === 'basic' || e.target.value === 'companion') {
-                            hoursSelection.style.display = 'block';
-                        } else {
-                            hoursSelection.style.display = 'none';
-                        }
-                    }
-                }
-            });
-            
-            // Set minimum date to tomorrow
-            const today = new Date();
-            const tomorrow = new Date(today);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            const minDate = tomorrow.toISOString().split('T')[0];
-            document.getElementById('preferred-date').setAttribute('min', minDate);
-            
-            // Initialize progress steps
+            // Update progress visual
             updateProgressSteps();
-        });
 
-        // Handle form submission
-        document.getElementById('booking-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validate terms agreement
-            const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
-            if (!termsAgreed) {
-                alert('Please agree to the Terms & Conditions and Privacy Policy to continue.');
-                return;
+            // Update summary if on final step
+            if (currentStep === 3) {
+              updateBookingSummary();
             }
-            
-            // Generate random booking reference
-            const refNumber = 'TM' + Date.now().toString().slice(-6);
-            document.getElementById('booking-ref-number').textContent = refNumber;
-            
-            // Show success modal
-            document.getElementById('booking-success-modal').style.display = 'flex';
-            
-            // Here you would normally send the form data to your server
-            console.log('Form submitted successfully');
-        });
 
-        // Close modal function
-        function closeModal() {
-            document.getElementById('booking-success-modal').style.display = 'none';
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }
+      }
+
+      // Navigate to previous step
+      function prevStep() {
+        if (currentStep > 1) {
+          // Hide current step
+          document
+            .querySelector(`.form-step[data-step="${currentStep}"]`)
+            .classList.remove("active");
+
+          // Move to previous step
+          currentStep--;
+
+          // Show previous step
+          document
+            .querySelector(`.form-step[data-step="${currentStep}"]`)
+            .classList.add("active");
+
+          // Update progress visual
+          updateProgressSteps();
+
+          // Scroll to top
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      // Validate current step
+      function validateCurrentStep() {
+        if (currentStep === 1) {
+          // Validate service selection
+          const serviceSelected = document.querySelector(
+            'input[name="service"]:checked'
+          );
+          if (!serviceSelected) {
+            alert("Please select a service before continuing.");
+            return false;
+          }
+
+          // Validate service-specific requirements
+          const serviceType = serviceSelected.value;
+          if (serviceType === "health-appointments") {
+            const packageSelected = document.querySelector(
+              'input[name="health_package"]:checked'
+            );
+            if (!packageSelected) {
+              alert("Please select a package for health appointments.");
+              return false;
+            }
+            if (
+              packageSelected.value === "hourly" &&
+              !document.getElementById("health-hours").value
+            ) {
+              alert("Please select the number of hours.");
+              return false;
+            }
+          } else if (serviceType === "dialysis") {
+            const packageSelected = document.querySelector(
+              'input[name="dialysis_package"]:checked'
+            );
+            if (!packageSelected) {
+              alert("Please select a package for dialysis treatment.");
+              return false;
+            }
+            if (
+              packageSelected.value === "hourly" &&
+              !document.getElementById("dialysis-hours").value
+            ) {
+              alert("Please select the number of hours.");
+              return false;
+            }
+            if (
+              packageSelected.value === "companion" &&
+              !document.getElementById("companion-hours").value
+            ) {
+              alert("Please select the number of companion hours.");
+              return false;
+            }
+          } else if (serviceType === "home-package") {
+            const packageSelected = document.querySelector(
+              'input[name="home_package"]:checked'
+            );
+            if (!packageSelected) {
+              alert("Please select a home package.");
+              return false;
+            }
+          } else if (serviceType === "custom-activities") {
+            const packageSelected = document.querySelector(
+              'input[name="custom_package"]:checked'
+            );
+            if (!packageSelected) {
+              alert("Please select a package for custom activities.");
+              return false;
+            }
+            if (!document.getElementById("custom-hours").value) {
+              alert("Please select the number of hours.");
+              return false;
+            }
+            if (
+              !document.getElementById("custom-activities-list").value.trim()
+            ) {
+              alert("Please describe the activities you need assistance with.");
+              return false;
+            }
+          }
+        } else if (currentStep === 2) {
+          // Validate required fields in step 2
+          const requiredFields = [
+            "full_name",
+            "phone",
+            "email",
+            "address",
+            "postcode",
+            "city",
+            "state",
+            "preferred_date",
+            "preferred_time",
+          ];
+
+          for (let field of requiredFields) {
+            const element = document.querySelector(`[name="${field}"]`);
+            if (!element.value.trim()) {
+              alert(`Please fill in the ${field.replace("_", " ")} field.`);
+              element.focus();
+              return false;
+            }
+          }
+
+          // Validate transportation mode
+          const transportationSelected = document.querySelector(
+            'input[name="transportation_mode"]:checked'
+          );
+          if (!transportationSelected) {
+            alert("Please select a transportation mode.");
+            return false;
+          }
+        }
+        return true;
+      }
+
+      // Update booking summary
+      function updateBookingSummary() {
+        // Service details
+        const selectedService = document.querySelector(
+          'input[name="service"]:checked'
+        );
+        if (selectedService) {
+          const serviceLabel = document.querySelector(
+            `label[for="${selectedService.id}"] h3`
+          ).textContent;
+          document.getElementById("summary-service").textContent = serviceLabel;
+
+          // Package details
+          let packageInfo = "";
+          let estimatedCost = 0;
+
+          if (selectedService.value === "health-appointments") {
+            const selectedPackage = document.querySelector(
+              'input[name="health_package"]:checked'
+            );
+            if (selectedPackage) {
+              if (selectedPackage.value === "hourly") {
+                const hours = document.getElementById("health-hours").value;
+                packageInfo = `Hourly - ${hours} hours`;
+                estimatedCost = hours * 35;
+              } else if (selectedPackage.value === "package1") {
+                packageInfo = "Package 1 (4 hours)";
+                estimatedCost = 132;
+              } else if (selectedPackage.value === "package2") {
+                packageInfo = "Package 2 (6 hours)";
+                estimatedCost = 186;
+              }
+            }
+          } else if (selectedService.value === "dialysis") {
+            const selectedPackage = document.querySelector(
+              'input[name="dialysis_package"]:checked'
+            );
+            if (selectedPackage) {
+              if (selectedPackage.value === "hourly") {
+                const hours = document.getElementById("dialysis-hours").value;
+                packageInfo = `Hourly - ${hours} hours`;
+                estimatedCost = hours * 35;
+              } else if (selectedPackage.value === "package1") {
+                packageInfo = "Package (6 hours) - 3 sessions";
+                estimatedCost = 186;
+              } else if (selectedPackage.value === "companion") {
+                const hours = document.getElementById("companion-hours").value;
+                packageInfo = `Companion - ${hours} hours`;
+                estimatedCost = hours * 30;
+              }
+            }
+          } else if (selectedService.value === "home-package") {
+            const selectedPackage = document.querySelector(
+              'input[name="home_package"]:checked'
+            );
+            if (selectedPackage) {
+              if (selectedPackage.value === "package1") {
+                packageInfo = "Package 1 (4 hrs/day, 20 sessions)";
+                estimatedCost = 2800;
+              } else if (selectedPackage.value === "package2") {
+                packageInfo = "Package 2 (6 hrs/day, 20 sessions)";
+                estimatedCost = 3780;
+              } else if (selectedPackage.value === "package3") {
+                packageInfo = "Package 3 (8 hrs/day, 20 sessions)";
+                estimatedCost = 4720;
+              }
+            }
+          } else if (selectedService.value === "custom-activities") {
+            const hours = document.getElementById("custom-hours").value;
+            packageInfo = `Custom Activities - ${hours} hours`;
+            estimatedCost = hours * 35;
+
+            // Show custom activities
+            const activities = document.getElementById(
+              "custom-activities-list"
+            ).value;
+            document.getElementById("summary-activities").textContent =
+              activities;
+            document.getElementById("custom-activities-summary").style.display =
+              "flex";
+          }
+
+          document.getElementById("summary-package").textContent = packageInfo;
+          document.getElementById(
+            "summary-total"
+          ).textContent = `RM ${estimatedCost}`;
         }
 
-        // Close modal when clicking outside
-        document.getElementById('booking-success-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
+        // Date and time
+        const date = document.getElementById("preferred-date").value;
+        const time = document.getElementById("preferred-time").value;
+        if (date && time) {
+          const formattedDate = new Date(date).toLocaleDateString("en-MY", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+          document.getElementById(
+            "summary-datetime"
+          ).textContent = `${formattedDate} at ${time}`;
+        }
+
+        // Transportation
+        const transportation = document.querySelector(
+          'input[name="transportation_mode"]:checked'
+        );
+        if (transportation) {
+          const transportLabel =
+            transportation.nextElementSibling.nextElementSibling.querySelector(
+              "strong"
+            ).textContent;
+          document.getElementById("summary-transportation").textContent =
+            transportLabel;
+        }
+
+        // Contact information
+        document.getElementById("summary-name").textContent =
+          document.getElementById("full-name").value || "-";
+        document.getElementById("summary-phone").textContent =
+          document.getElementById("phone").value || "-";
+        document.getElementById("summary-email").textContent =
+          document.getElementById("email").value || "-";
+
+        const address = document.getElementById("address").value;
+        const city = document.getElementById("city").value;
+        const state = document.getElementById("state").value;
+        if (address && city && state) {
+          document.getElementById(
+            "summary-address"
+          ).textContent = `${address}, ${city}, ${state}`;
+        }
+      }
+
+      // Handle service selection and show/hide pricing
+      document.addEventListener("DOMContentLoaded", function () {
+        const serviceOptions = document.querySelectorAll(
+          'input[name="service"]'
+        );
+
+        serviceOptions.forEach((option) => {
+          option.addEventListener("change", function () {
+            // Hide all pricing sections
+            document.querySelectorAll(".service-pricing").forEach((pricing) => {
+              pricing.style.display = "none";
+            });
+
+            // Show pricing for selected service
+            if (this.checked) {
+              const pricingSection =
+                this.parentElement.querySelector(".service-pricing");
+              if (pricingSection) {
+                pricingSection.style.display = "block";
+              }
             }
+          });
         });
+
+        // Handle package selection for hourly services
+        document.addEventListener("change", function (e) {
+          if (e.target.type === "radio" && e.target.name.includes("_package")) {
+            const hoursSelection =
+              e.target.parentElement.querySelector(".hours-selection");
+            if (hoursSelection) {
+              if (
+                e.target.value === "hourly" ||
+                e.target.value === "basic" ||
+                e.target.value === "companion"
+              ) {
+                hoursSelection.style.display = "block";
+              } else {
+                hoursSelection.style.display = "none";
+              }
+            }
+          }
+        });
+
+        // Set minimum date to tomorrow
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split("T")[0];
+        document.getElementById("preferred-date").setAttribute("min", minDate);
+
+        // Initialize progress steps
+        updateProgressSteps();
+      });
+
+      // Handle form submission
+      document
+        .getElementById("booking-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Validate terms agreement
+          const termsAgreed = document.querySelector(
+            'input[name="terms_agreed"]:checked'
+          );
+          if (!termsAgreed) {
+            alert(
+              "Please agree to the Terms & Conditions and Privacy Policy to continue."
+            );
+            return;
+          }
+
+          // Generate random booking reference
+          const refNumber = "TM" + Date.now().toString().slice(-6);
+          document.getElementById("booking-ref-number").textContent = refNumber;
+
+          // Show success modal
+          document.getElementById("booking-success-modal").style.display =
+            "flex";
+
+          // Here you would normally send the form data to your server
+          console.log("Form submitted successfully");
+        });
+
+      // Close modal function
+      function closeModal() {
+        document.getElementById("booking-success-modal").style.display = "none";
+      }
+
+      // Load header and footer components
+      async function loadComponents() {
+        try {
+          // Load header
+          const headerResponse = await fetch("../components/header.html");
+          if (headerResponse.ok) {
+            const headerHTML = await headerResponse.text();
+            document.getElementById("header-placeholder").innerHTML =
+              headerHTML;
+
+            // Mark the current page as active in navigation
+            setTimeout(() => {
+              const bookingLink = document.querySelector(
+                'a[href="booking.html"]'
+              );
+              if (bookingLink) {
+                bookingLink.classList.add("active");
+              }
+
+              // Initialize navigation after header is loaded
+              initializeNavigation();
+            }, 100);
+          }
+
+          // Initialize main JavaScript after components are loaded
+          initializeMainJS();
+        } catch (error) {
+          console.error("Error loading components:", error);
+        }
+      }
+
+      // Initialize navigation functionality
+      function initializeNavigation() {
+        const navToggle = document.getElementById("nav-toggle");
+        const navMenu = document.getElementById("nav-menu");
+
+        if (navToggle && navMenu) {
+          navToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+            const icon = navToggle.querySelector("i");
+            if (navMenu.classList.contains("show")) {
+              icon.className = "fas fa-times";
+            } else {
+              icon.className = "fas fa-bars";
+            }
+          });
+
+          // Close menu when clicking on nav links
+          document.querySelectorAll(".nav__link").forEach((link) => {
+            link.addEventListener("click", () => {
+              navMenu.classList.remove("show");
+              const icon = navToggle.querySelector("i");
+              if (icon) icon.className = "fas fa-bars";
+            });
+          });
+
+          // Close menu when clicking outside
+          document.addEventListener("click", (e) => {
+            if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+              navMenu.classList.remove("show");
+              const icon = navToggle.querySelector("i");
+              if (icon) icon.className = "fas fa-bars";
+            }
+          });
+        }
+
+        // Header scroll effect
+        window.addEventListener("scroll", () => {
+          const header = document.getElementById("header");
+          if (header) {
+            if (window.scrollY > 100) {
+              header.style.background = "rgba(255, 255, 255, 0.98)";
+              header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+            } else {
+              header.style.background = "rgba(255, 255, 255, 0.95)";
+              header.style.boxShadow = "none";
+            }
+          }
+        });
+      }
+
+      // Initialize main functionality
+      function initializeMainJS() {
+        // Include your existing main.js functionality here
+        if (typeof window.TemanMalaysia !== "undefined") {
+          console.log("Teman Malaysia booking page loaded successfully!");
+        }
+      }
+
+      // Load components when DOM is ready
+      document.addEventListener("DOMContentLoaded", function () {
+        loadComponents();
+      });
     </script>
-</body>
+  </body>
 </html>
