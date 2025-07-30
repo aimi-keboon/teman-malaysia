@@ -1,0 +1,1954 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Custom Activities - Teman Malaysia</title>
+    <meta
+      name="description"
+      content="Book personalized companionship for leisure activities, social outings, and recreational pursuits with Teman Malaysia."
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        color: #374151;
+        background: #f9fafb;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header Styles */
+      .header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        transition: all 0.3s ease;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 0;
+      }
+
+      .nav__logo {
+        height: 40px;
+        width: auto;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 500;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 14px;
+      }
+
+      .btn--primary {
+        background: #f59e0b;
+        color: white;
+      }
+
+      .btn--primary:hover {
+        background: #d97706;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+      }
+
+      .btn--outline {
+        background: transparent;
+        color: #f59e0b;
+        border: 2px solid #f59e0b;
+      }
+
+      .btn--outline:hover {
+        background: #f59e0b;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .btn--large {
+        padding: 16px 32px;
+        font-size: 16px;
+      }
+
+      .btn--secondary {
+        background: #10b981;
+        color: white;
+      }
+
+      .btn--secondary:hover {
+        background: #059669;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      }
+
+      /* Main Section */
+      .booking-section {
+        padding: 120px 0 80px 0;
+        min-height: 100vh;
+      }
+
+      .booking__header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .booking__title {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 16px;
+      }
+
+      .booking__subtitle {
+        font-size: 1.25rem;
+        color: #6b7280;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .service-info-card {
+        background: white;
+        border-radius: 16px;
+        padding: 32px;
+        margin-bottom: 40px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border: 2px solid #fef3c7;
+      }
+
+      .service-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 24px;
+      }
+
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        background: #f59e0b;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .service-icon i {
+        font-size: 24px;
+        color: white;
+      }
+
+      .service-header h2 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin: 0;
+      }
+
+      .service-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: #4b5563;
+      }
+
+      .feature-item i {
+        color: #10b981;
+        font-size: 12px;
+      }
+
+      .activities-showcase {
+        background: #fffbeb;
+        border-radius: 12px;
+        padding: 24px;
+        margin-top: 24px;
+      }
+
+      .activities-showcase h4 {
+        color: #f59e0b;
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .activities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px;
+      }
+
+      .activity-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: #92400e;
+      }
+
+      .activity-item i {
+        color: #f59e0b;
+        font-size: 12px;
+        width: 12px;
+      }
+
+      /* Progress Steps */
+      .progress-steps {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 40px 0 60px 0;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 80px;
+      }
+
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step__number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 18px;
+        background: #e5e7eb;
+        color: #6b7280;
+        border: 3px solid #e5e7eb;
+        transition: all 0.3s ease;
+        margin-bottom: 12px;
+      }
+
+      .step.active .step__number {
+        background: #f59e0b;
+        color: white;
+        border-color: #f59e0b;
+        box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+      }
+
+      .step.completed .step__number {
+        background: #10b981;
+        color: white;
+        border-color: #10b981;
+      }
+
+      .step__label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #6b7280;
+        text-align: center;
+        transition: color 0.3s ease;
+        white-space: nowrap;
+      }
+
+      .step.active .step__label {
+        color: #f59e0b;
+        font-weight: 600;
+      }
+
+      .step.completed .step__label {
+        color: #10b981;
+        font-weight: 600;
+      }
+
+      /* Form Container */
+      .booking__container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      /* Form Styles */
+      .booking-form {
+        padding: 40px;
+      }
+
+      .form-step {
+        display: none;
+      }
+
+      .form-step.active {
+        display: block;
+      }
+
+      .step-title {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 32px;
+        text-align: center;
+      }
+
+      /* Package Selection */
+      .package-options {
+        display: grid;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .package-option {
+        position: relative;
+      }
+
+      .package-option input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .package-card {
+        display: block;
+        padding: 24px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: white;
+      }
+
+      .package-card:hover {
+        border-color: #f59e0b;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+      }
+
+      .package-option input[type="radio"]:checked + .package-card {
+        border-color: #f59e0b;
+        background: #fffbeb;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+      }
+
+      .package-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+
+      .package-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+      }
+
+      .package-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #f59e0b;
+      }
+
+      .package-description {
+        color: #6b7280;
+        margin-bottom: 16px;
+      }
+
+      .hours-selection {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .activities-input-section {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .package-notes {
+        margin-top: 16px;
+        padding: 12px;
+        background: #fffbeb;
+        border-radius: 6px;
+        border-left: 4px solid #f59e0b;
+      }
+
+      .package-notes small {
+        display: block;
+        color: #92400e;
+        margin-bottom: 4px;
+      }
+
+      /* Form Sections */
+      .form-section {
+        margin-bottom: 40px;
+        padding: 24px;
+        background: #f9fafb;
+        border-radius: 12px;
+      }
+
+      .form-section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 24px;
+      }
+
+      .form-section-title i {
+        color: #f59e0b;
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-label {
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        outline: none;
+        border-color: #f59e0b;
+        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+      }
+
+      .form-help {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 4px;
+      }
+
+      /* Radio and Checkbox Options */
+      .radio-option,
+      .checkbox-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 12px;
+      }
+
+      .radio-option:hover,
+      .checkbox-item:hover {
+        border-color: #f59e0b;
+      }
+
+      .radio-option input[type="radio"],
+      .checkbox-item input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .radio-custom,
+      .checkmark {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #d1d5db;
+        position: relative;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+
+      .radio-custom {
+        border-radius: 50%;
+      }
+
+      .checkmark {
+        border-radius: 4px;
+      }
+
+      .radio-option:hover .radio-custom,
+      .checkbox-item:hover .checkmark {
+        border-color: #f59e0b;
+      }
+
+      .radio-option input[type="radio"]:checked ~ .radio-custom {
+        border-color: #f59e0b;
+      }
+
+      .radio-option input[type="radio"]:checked ~ .radio-custom::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: #f59e0b;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .checkbox-item input[type="checkbox"]:checked ~ .checkmark {
+        background: #f59e0b;
+        border-color: #f59e0b;
+      }
+
+      .checkbox-item input[type="checkbox"]:checked ~ .checkmark::after {
+        content: "✓";
+        color: white;
+        font-size: 12px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .radio-content strong {
+        display: block;
+        margin-bottom: 4px;
+        color: #1f2937;
+      }
+
+      .radio-content p {
+        font-size: 14px;
+        color: #6b7280;
+        margin: 0;
+      }
+
+      /* Checkbox Group */
+      .checkbox-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+      }
+
+      /* Form Actions */
+      .form-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 40px;
+      }
+
+      /* Back Link */
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #6b7280;
+        text-decoration: none;
+        margin-bottom: 24px;
+        font-size: 14px;
+        transition: color 0.3s ease;
+      }
+
+      .back-link:hover {
+        color: #f59e0b;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .booking__title {
+          font-size: 2rem;
+        }
+
+        .booking-form {
+          padding: 24px;
+        }
+
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .form-actions {
+          flex-direction: column;
+        }
+
+        .service-header {
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
+        }
+
+        .service-icon {
+          margin-bottom: 16px;
+        }
+
+        .progress-steps {
+          margin: 30px 0 40px 0;
+          gap: 40px;
+        }
+
+        .step__number {
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
+        }
+
+        .step__label {
+          font-size: 12px;
+        }
+
+        .package-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+        }
+
+        .activities-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .text-center {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+      <div class="container">
+        <a href="booking.html" class="back-link">
+          <i class="fas fa-arrow-left"></i>
+          Back to Services
+        </a>
+
+        <div class="booking__header text-center">
+          <h1 class="booking__title">Custom Activities Companion</h1>
+          <p class="booking__subtitle">
+            Personalized companionship for leisure activities, social outings, and recreational pursuits
+          </p>
+        </div>
+
+        <!-- Service Information Card -->
+        <div class="service-info-card">
+          <div class="service-header">
+            <div class="service-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h2>TEMAN Customised Activities</h2>
+          </div>
+          <p>Enjoy personalized companionship for any leisure activity or social outing. Our friendly Temanions will accompany you to create memorable experiences while ensuring your safety and comfort throughout your chosen activities.</p>
+          
+          <div class="activities-showcase">
+            <h4><i class="fas fa-star"></i> Popular Activity Options:</h4>
+            <div class="activities-grid">
+              <div class="activity-item">
+                <i class="fas fa-shopping-bag"></i>
+                Shopping & errands
+              </div>
+              <div class="activity-item">
+                <i class="fas fa-tree"></i>
+                Park visits & nature walks
+              </div>
+              <div class="activity-item">
+                <i class="fas fa-utensils"></i>
+                Dining & cafe visits
+              </div>
+              <div class="activity-item">
+                <i class="fas fa-palette"></i>
+                Art galleries & museums
+              </div>
+              <div class="activity-item">
+                <i class="fas fa-music"></i>
+                Concerts & shows
+              </div>
+              <div class="activity-item">
+                <i class="fas fa-dumbbell"></i>
+                Light exercise & activities
+              </div>
+              <div class="activity-item">
+                <i class="fas fa-camera"></i>
+                Sightseeing & photography
+              </div>
+              <div class="activity-item">
+                <i class="fas fa-book"></i>
+                Library & bookstore visits
+              </div>
+              <div class="activity-item">
+                <i class="fas fa-coffee"></i>
+                Social meetups
+              </div>
+              <div class="activity-item">
+                <i class="fas fa-gamepad"></i>
+                Recreational activities
+              </div>
+              <div class="activity-item">
+                <i class="fas fa-car"></i>
+                Scenic drives
+              </div>
+              <div class="activity-item">
+                <i class="fas fa-heart"></i>
+                Any activity you enjoy!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking__container">
+          <!-- Progress Steps -->
+          <div class="progress-steps" id="progressSteps">
+            <div class="step active" data-step="1">
+              <div class="step__number">1</div>
+              <div class="step__label">Activities & Hours</div>
+            </div>
+            <div class="step" data-step="2">
+              <div class="step__number">2</div>
+              <div class="step__label">Details</div>
+            </div>
+            <div class="step" data-step="3">
+              <div class="step__number">3</div>
+              <div class="step__label">Confirm</div>
+            </div>
+          </div>
+
+          <!-- Booking Form -->
+          <form id="custom-activities-booking-form" class="booking-form" data-form-type="custom-activities">
+            <!-- Step 1: Package Selection -->
+            <div class="form-step active" data-step="1">
+              <h2 class="step-title">Choose Your Package & Activities</h2>
+
+              <div class="package-options">
+                <div class="package-option">
+                  <input
+                    type="radio"
+                    name="package"
+                    value="basic"
+                    id="basic-package"
+                    required
+                  />
+                  <label for="basic-package" class="package-card">
+                    <div class="package-header">
+                      <div class="package-title">Hourly Rate</div>
+                      <div class="package-price">RM35/hour</div>
+                    </div>
+                    <div class="package-description">
+                      Flexible hourly booking for any leisure activities or social outings. Minimum 2 hours required.
+                    </div>
+                    
+                    <div class="hours-selection" style="display: none">
+                      <label for="hours" class="form-label">Number of Hours: *</label>
+                      <select name="hours" id="hours" class="form-select">
+                        <option value="">Select hours</option>
+                        <option value="2">2 hours - RM70</option>
+                        <option value="3">3 hours - RM105</option>
+                        <option value="4">4 hours - RM140</option>
+                        <option value="5">5 hours - RM175</option>
+                        <option value="6">6 hours - RM210</option>
+                        <option value="custom">More than 6 hours (Contact us)</option>
+                      </select>
+                    </div>
+
+                    <div class="activities-input-section" style="display: none">
+                      <label for="activities-list" class="form-label">Activities You'd Like to Do: *</label>
+                      <textarea
+                        id="activities-list"
+                        name="activities_list"
+                        rows="4"
+                        class="form-textarea"
+                        placeholder="Please describe the activities, locations, and any specific requirements. For example: Shopping at mall, visit to park, recreational activities, social outings, etc."
+                      ></textarea>
+                    </div>
+                    
+                    <div class="package-notes">
+                      <small>• Perfect for any leisure or social activities</small>
+                      <small>• Completely customizable to your interests</small>
+                      <small>• Flexible scheduling available</small>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div style="background: #fffbeb; padding: 16px; border-radius: 8px; margin-bottom: 32px; border-left: 4px solid #f59e0b;">
+                <h4 style="color: #d97706; margin-bottom: 8px;">Additional Fees & Information:</h4>
+                <small style="display: block; color: #d97706; margin-bottom: 4px;">• Transportation fee: RM0.80/KM or e-hailing fare</small>
+                <small style="display: block; color: #d97706; margin-bottom: 4px;">• Transport allowance: RM20/session</small>
+                <small style="display: block; color: #d97706; margin-bottom: 4px;">• Surcharge: RM37/hour for Public Holiday/Sunday/last minute booking</small>
+                <small style="display: block; color: #d97706;">• For service longer than 6 hours, bulk purchase or customization - contact us for quote</small>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn btn--primary btn--large"
+                  onclick="nextStep()"
+                >
+                  Continue to Details
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Step 2: Personal Details -->
+            <div class="form-step" data-step="2">
+              <h2 class="step-title">Activity Details & Information</h2>
+
+              <!-- Contact Information -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-user"></i>
+                  Contact Information
+                </h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="full-name" class="form-label">Full Name *</label>
+                    <input
+                      type="text"
+                      id="full-name"
+                      name="full_name"
+                      class="form-input"
+                      placeholder="Enter your full name"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="relationship" class="form-label">Relationship to Participant</label>
+                    <select id="relationship" name="relationship" class="form-select">
+                      <option value="">Select relationship</option>
+                      <option value="self">Self</option>
+                      <option value="spouse">Spouse</option>
+                      <option value="child">Son/Daughter</option>
+                      <option value="parent">Parent</option>
+                      <option value="sibling">Brother/Sister</option>
+                      <option value="relative">Other Relative</option>
+                      <option value="caregiver">Professional Caregiver</option>
+                      <option value="friend">Friend</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number *</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      class="form-input"
+                      placeholder="+60 11-234 5678"
+                      required
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email" class="form-label">Email Address *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      class="form-input"
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="emergency-contact" class="form-label">Emergency Contact Person</label>
+                  <input
+                    type="text"
+                    id="emergency-contact"
+                    name="emergency_contact"
+                    class="form-input"
+                    placeholder="Name and phone number of emergency contact"
+                  />
+                </div>
+              </div>
+
+              <!-- Participant Information -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-heart-pulse"></i>
+                  Participant Information
+                </h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="participant-name" class="form-label">Participant Name</label>
+                    <input
+                      type="text"
+                      id="participant-name"
+                      name="participant_name"
+                      class="form-input"
+                      placeholder="If different from contact person"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="participant-age" class="form-label">Age</label>
+                    <input
+                      type="number"
+                      id="participant-age"
+                      name="participant_age"
+                      class="form-input"
+                      min="1"
+                      max="120"
+                      placeholder="Age in years"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="participant-gender" class="form-label">Gender</label>
+                    <select id="participant-gender" name="participant_gender" class="form-select">
+                      <option value="">Prefer not to say</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="participant-language" class="form-label">Preferred Language</label>
+                    <select id="participant-language" name="participant_language" class="form-select">
+                      <option value="english">English</option>
+                      <option value="bahasa">Bahasa Malaysia</option>
+                      <option value="mandarin">Mandarin</option>
+                      <option value="cantonese">Cantonese</option>
+                      <option value="hokkien">Hokkien</option>
+                      <option value="tamil">Tamil</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Activity Details -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-calendar-alt"></i>
+                  Activity Scheduling
+                </h3>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="activity-date" class="form-label">Preferred Activity Date *</label>
+                    <input
+                      type="date"
+                      id="activity-date"
+                      name="activity_date"
+                      class="form-input"
+                      required
+                    />
+                    <small class="form-help">Activity can be scheduled from tomorrow onwards</small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="activity-time" class="form-label">Preferred Start Time *</label>
+                    <select id="activity-time" name="activity_time" class="form-select" required>
+                      <option value="">Select time</option>
+                      <option value="07:00">07:00 AM</option>
+                      <option value="08:00">08:00 AM</option>
+                      <option value="09:00">09:00 AM</option>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="11:00">11:00 AM</option>
+                      <option value="12:00">12:00 PM</option>
+                      <option value="13:00">01:00 PM</option>
+                      <option value="14:00">02:00 PM</option>
+                      <option value="15:00">03:00 PM</option>
+                      <option value="16:00">04:00 PM</option>
+                      <option value="17:00">05:00 PM</option>
+                      <option value="18:00">06:00 PM</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="urgency" class="form-label">Urgency Level</label>
+                    <select id="urgency" name="urgency" class="form-select">
+                      <option value="normal">Normal (2-3 days notice)</option>
+                      <option value="urgent">Urgent (Within 24 hours)</option>
+                      <option value="asap">ASAP (Same day if possible)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="frequency" class="form-label">Activity Frequency</label>
+                    <select id="frequency" name="frequency" class="form-select">
+                      <option value="one-time">One-time activity</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="bi-weekly">Bi-weekly (Every 2 weeks)</option>
+                      <option value="monthly">Monthly</option>
+                      <option value="as-needed">As needed</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Activity Locations -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Activity Locations & Meeting Point
+                </h3>
+                <div class="form-group">
+                  <label for="meeting-address" class="form-label">Meeting/Pickup Address *</label>
+                  <textarea
+                    id="meeting-address"
+                    name="meeting_address"
+                    class="form-textarea"
+                    rows="3"
+                    placeholder="Address where our Temanion should meet you"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="activity-locations" class="form-label">Activity Locations *</label>
+                  <textarea
+                    id="activity-locations"
+                    name="activity_locations"
+                    class="form-textarea"
+                    rows="3"
+                    placeholder="List the places you'd like to visit (malls, parks, restaurants, etc.)"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="postcode" class="form-label">Area Postcode</label>
+                    <input
+                      type="text"
+                      id="postcode"
+                      name="postcode"
+                      class="form-input"
+                      placeholder="e.g. 50200"
+                      pattern="[0-9]{5}"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="city" class="form-label">City/Area</label>
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      class="form-input"
+                      placeholder="e.g. Kuala Lumpur"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="return-location" class="form-label">Return/Drop-off Address</label>
+                    <input
+                      type="text"
+                      id="return-location"
+                      name="return_location"
+                      class="form-input"
+                      placeholder="If different from meeting point"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Transportation -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-car"></i>
+                  Transportation for Activities
+                </h3>
+                <div style="display: grid; gap: 12px;">
+                  <label class="radio-option">
+                    <input type="radio" name="transportation_mode" value="client-provided" required />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>I will provide transportation</strong>
+                      <p>You will drive or arrange transportation for the activities</p>
+                    </div>
+                  </label>
+
+                  <label class="radio-option">
+                    <input type="radio" name="transportation_mode" value="teman-provided" required />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>Temanion will arrange transportation</strong>
+                      <p>Our Temanion will handle transportation arrangements</p>
+                    </div>
+                  </label>
+
+                  <label class="radio-option">
+                    <input type="radio" name="transportation_mode" value="e-hailing" required />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>E-Hailing Service (Grab/Taxi)</strong>
+                      <p>Use ride-hailing services for activities (additional costs apply)</p>
+                    </div>
+                  </label>
+
+                  <label class="radio-option">
+                    <input type="radio" name="transportation_mode" value="public-transport" required />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>Public Transportation</strong>
+                      <p>Use buses, trains, or other public transport for activities</p>
+                    </div>
+                  </label>
+
+                  <label class="radio-option">
+                    <input type="radio" name="transportation_mode" value="walking" required />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>Walking/Nearby Activities</strong>
+                      <p>Activities within walking distance, no transportation needed</p>
+                    </div>
+                  </label>
+                </div>
+
+                <div class="form-group" style="margin-top: 16px">
+                  <label for="transportation-notes" class="form-label">Transportation Notes</label>
+                  <textarea
+                    id="transportation-notes"
+                    name="transportation_notes"
+                    class="form-textarea"
+                    rows="2"
+                    placeholder="Any specific transportation preferences, accessibility needs, or special instructions..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Activity Preferences -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-star"></i>
+                  Activity Preferences & Interests
+                </h3>
+                
+                <div class="form-group">
+                  <label class="form-label">Activity Categories (Select all that interest you):</label>
+                  <div class="checkbox-group">
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="activity_categories[]" value="shopping" />
+                      <span class="checkmark"></span>
+                      Shopping & errands
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="activity_categories[]" value="nature" />
+                      <span class="checkmark"></span>
+                      Nature & outdoor activities
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="activity_categories[]" value="dining" />
+                      <span class="checkmark"></span>
+                      Dining & food experiences
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="activity_categories[]" value="culture" />
+                      <span class="checkmark"></span>
+                      Cultural activities & arts
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="activity_categories[]" value="entertainment" />
+                      <span class="checkmark"></span>
+                      Entertainment & shows
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="activity_categories[]" value="exercise" />
+                      <span class="checkmark"></span>
+                      Light exercise & wellness
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="activity_categories[]" value="social" />
+                      <span class="checkmark"></span>
+                      Social activities & meetups
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="activity_categories[]" value="hobbies" />
+                      <span class="checkmark"></span>
+                      Hobbies & crafts
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="activity_categories[]" value="sightseeing" />
+                      <span class="checkmark"></span>
+                      Sightseeing & tourism
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="activity-pace" class="form-label">Preferred Activity Pace</label>
+                  <select id="activity-pace" name="activity_pace" class="form-select">
+                    <option value="">Select pace preference</option>
+                    <option value="relaxed">Relaxed & leisurely</option>
+                    <option value="moderate">Moderate pace</option>
+                    <option value="active">Active & energetic</option>
+                    <option value="flexible">Flexible, adapt as needed</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="budget-range" class="form-label">Activity Budget Range (Optional)</label>
+                  <select id="budget-range" name="budget_range" class="form-select">
+                    <option value="">No specific budget</option>
+                    <option value="budget-friendly">Budget-friendly (Under RM50)</option>
+                    <option value="moderate">Moderate (RM50-150)</option>
+                    <option value="comfortable">Comfortable (RM150-300)</option>
+                    <option value="premium">Premium (Above RM300)</option>
+                  </select>
+                  <small class="form-help">This helps us suggest appropriate activities and venues</small>
+                </div>
+              </div>
+
+              <!-- Health & Mobility Information -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-notes-medical"></i>
+                  Health & Mobility Information
+                </h3>
+
+                <div class="form-group">
+                  <label for="health-conditions" class="form-label">Health Conditions or Limitations</label>
+                  <textarea
+                    id="health-conditions"
+                    name="health_conditions"
+                    class="form-textarea"
+                    rows="3"
+                    placeholder="Any health conditions, mobility limitations, or medical concerns that might affect activities..."
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="mobility-assistance" class="form-label">Mobility Assistance Needed</label>
+                  <div class="checkbox-group">
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="mobility_needs[]" value="wheelchair" />
+                      <span class="checkmark"></span>
+                      Wheelchair assistance
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="mobility_needs[]" value="walker" />
+                      <span class="checkmark"></span>
+                      Walker/walking aid
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="mobility_needs[]" value="assistance" />
+                      <span class="checkmark"></span>
+                      Walking assistance
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="mobility_needs[]" value="rest-breaks" />
+                      <span class="checkmark"></span>
+                      Frequent rest breaks needed
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="mobility_needs[]" value="accessibility" />
+                      <span class="checkmark"></span>
+                      Accessibility requirements
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="dietary-restrictions" class="form-label">Dietary Restrictions or Allergies</label>
+                  <textarea
+                    id="dietary-restrictions"
+                    name="dietary_restrictions"
+                    class="form-textarea"
+                    rows="2"
+                    placeholder="Food allergies, dietary restrictions, or preferences for dining activities..."
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="emergency-procedures" class="form-label">Emergency Procedures or Medical Information</label>
+                  <textarea
+                    id="emergency-procedures"
+                    name="emergency_procedures"
+                    class="form-textarea"
+                    rows="3"
+                    placeholder="Any emergency procedures, medications carried, or important medical information the companion should know..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Companion Preferences -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-user-friends"></i>
+                  Companion Preferences
+                </h3>
+
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="companion-gender" class="form-label">Preferred Gender</label>
+                    <select id="companion-gender" name="companion_gender" class="form-select">
+                      <option value="no-preference">No preference</option>
+                      <option value="female">Female</option>
+                      <option value="male">Male</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="companion-language" class="form-label">Language Preference</label>
+                    <select id="companion-language" name="companion_language" class="form-select">
+                      <option value="english">English</option>
+                      <option value="bahasa">Bahasa Malaysia</option>
+                      <option value="mandarin">Mandarin</option>
+                      <option value="cantonese">Cantonese</option>
+                      <option value="multilingual">Multilingual preferred</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="companion-age" class="form-label">Preferred Age Range</label>
+                    <select id="companion-age" name="companion_age" class="form-select">
+                      <option value="no-preference">No preference</option>
+                      <option value="young-adult">Young Adult (20-30)</option>
+                      <option value="adult">Adult (30-45)</option>
+                      <option value="mature">Mature (45-60)</option>
+                      <option value="senior">Senior (60+)</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="companion-personality" class="form-label">Preferred Personality</label>
+                    <select id="companion-personality" name="companion_personality" class="form-select">
+                      <option value="no-preference">No preference</option>
+                      <option value="outgoing">Outgoing & social</option>
+                      <option value="calm">Calm & patient</option>
+                      <option value="enthusiastic">Enthusiastic & energetic</option>
+                      <option value="professional">Professional & discrete</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="companion-experience" class="form-label">Preferred Experience/Interests</label>
+                  <div class="checkbox-group">
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="companion_interests[]" value="local-knowledge" />
+                      <span class="checkmark"></span>
+                      Local area knowledge
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="companion_interests[]" value="photography" />
+                      <span class="checkmark"></span>
+                      Photography skills
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="companion_interests[]" value="arts-culture" />
+                      <span class="checkmark"></span>
+                      Arts & culture interest
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="companion_interests[]" value="fitness" />
+                      <span class="checkmark"></span>
+                      Fitness & wellness background
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="companion_interests[]" value="food" />
+                      <span class="checkmark"></span>
+                      Food & dining knowledge
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Additional Information -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-comment-dots"></i>
+                  Additional Information
+                </h3>
+
+                <div class="form-group">
+                  <label for="activity-goals" class="form-label">Activity Goals & Expectations</label>
+                  <textarea
+                    id="activity-goals"
+                    name="activity_goals"
+                    class="form-textarea"
+                    rows="3"
+                    placeholder="What do you hope to achieve from these activities? (e.g., social interaction, exercise, enjoyment, exploration, etc.)"
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="previous-experiences" class="form-label">Previous Activity Experiences</label>
+                  <textarea
+                    id="previous-experiences"
+                    name="previous_experiences"
+                    class="form-textarea"
+                    rows="2"
+                    placeholder="Tell us about activities you've enjoyed before or would like to try again..."
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="additional-notes" class="form-label">Additional Notes & Special Requests</label>
+                  <textarea
+                    id="additional-notes"
+                    name="additional_notes"
+                    class="form-textarea"
+                    rows="4"
+                    placeholder="Any other information, preferences, concerns, or special requests that would help us provide the best experience..."
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="how-heard" class="form-label">How did you hear about us?</label>
+                  <select id="how-heard" name="how_heard" class="form-select">
+                    <option value="">Please select</option>
+                    <option value="google">Google Search</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="friend">Friend/Family Referral</option>
+                    <option value="doctor">Doctor/Medical Professional</option>
+                    <option value="community-center">Community Center</option>
+                    <option value="newspaper">Newspaper/Magazine</option>
+                    <option value="radio">Radio</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn btn--outline btn--large" onclick="prevStep()">
+                  <i class="fas fa-arrow-left"></i>
+                  Previous
+                </button>
+                <button type="button" class="btn btn--primary btn--large" onclick="nextStep()">
+                  Review Booking
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Step 3: Confirmation -->
+            <div class="form-step" data-step="3">
+              <h2 class="step-title">Booking Summary</h2>
+
+              <div class="booking-summary">
+                <div class="summary-card">
+                  <h3><i class="fas fa-clipboard-list"></i> Activity Details</h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Service:</span>
+                    <span class="summary-value">Custom Activities Companion</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Duration:</span>
+                    <span class="summary-value" id="summary-duration">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Activities:</span>
+                    <span class="summary-value" id="summary-activities">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Date & Time:</span>
+                    <span class="summary-value" id="summary-datetime">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Meeting Point:</span>
+                    <span class="summary-value" id="summary-meeting-point">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Transportation:</span>
+                    <span class="summary-value" id="summary-transportation">-</span>
+                  </div>
+                  <div class="summary-divider"></div>
+                  <div class="summary-item total">
+                    <span class="summary-label">Estimated Cost:</span>
+                    <span class="summary-value" id="summary-total">RM 0</span>
+                  </div>
+                  <p class="cost-note">
+                    *Final cost may vary based on transportation fees and activity expenses
+                  </p>
+                </div>
+
+                <div class="summary-card">
+                  <h3><i class="fas fa-user"></i> Contact Information</h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Name:</span>
+                    <span class="summary-value" id="summary-name">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Phone:</span>
+                    <span class="summary-value" id="summary-phone">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Email:</span>
+                    <span class="summary-value" id="summary-email">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Participant:</span>
+                    <span class="summary-value" id="summary-participant">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Activity Categories:</span>
+                    <span class="summary-value" id="summary-categories">-</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="background: #fffbeb; border: 1px solid #fed7aa; border-radius: 12px; padding: 24px; margin-bottom: 32px;">
+                <h3 style="display: flex; align-items: center; gap: 8px; color: #d97706; margin-bottom: 16px;">
+                  <i class="fas fa-info-circle"></i> What Happens Next?
+                </h3>
+                <ul style="list-style: none; padding: 0;">
+                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #d97706;">
+                    <i class="fas fa-phone" style="width: 20px; text-align: center;"></i>
+                    Our team will call you within 24 hours to discuss activity details
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #d97706;">
+                    <i class="fas fa-user-check" style="width: 20px; text-align: center;"></i>
+                    We'll match you with a Temanion who shares your interests
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #d97706;">
+                    <i class="fas fa-map" style="width: 20px; text-align: center;"></i>
+                    We'll help plan the perfect itinerary for your activities
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; color: #d97706;">
+                    <i class="fas fa-star" style="width: 20px; text-align: center;"></i>
+                    Enjoy your personalized activity experience!
+                  </li>
+                </ul>
+              </div>
+
+              <div style="background: #fef3c7; border: 1px solid #fcd34d; border-radius: 12px; padding: 24px; margin-bottom: 32px;">
+                <h3 style="display: flex; align-items: center; gap: 8px; color: #92400e; margin-bottom: 16px;">
+                  <i class="fas fa-lightbulb"></i> Activity Tips & Reminders
+                </h3>
+                <ul style="list-style: none; padding: 0;">
+                  <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; color: #92400e;">
+                    <i class="fas fa-clock" style="width: 20px; text-align: center; margin-top: 2px;"></i>
+                    Please arrive 10-15 minutes early at the meeting point
+                  </li>
+                  <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; color: #92400e;">
+                    <i class="fas fa-wallet" style="width: 20px; text-align: center; margin-top: 2px;"></i>
+                    Bring payment for personal expenses (meals, tickets, purchases)
+                  </li>
+                  <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; color: #92400e;">
+                    <i class="fas fa-umbrella" style="width: 20px; text-align: center; margin-top: 2px;"></i>
+                    Check weather conditions and dress appropriately for activities
+                  </li>
+                  <li style="display: flex; align-items: flex-start; gap: 12px; color: #92400e;">
+                    <i class="fas fa-mobile-alt" style="width: 20px; text-align: center; margin-top: 2px;"></i>
+                    Your Temanion's contact details will be shared before the activity
+                  </li>
+                </ul>
+              </div>
+
+              <div style="margin-bottom: 32px;">
+                <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer;">
+                  <input type="checkbox" name="terms_agreed" required style="position: absolute; opacity: 0; pointer-events: none;" />
+                  <span class="checkmark"></span>
+                  <span style="font-size: 14px; color: #374151;">
+                    I agree to the <a href="#" style="color: #f59e0b; text-decoration: none;">Terms & Conditions</a> and 
+                    <a href="#" style="color: #f59e0b; text-decoration: none;">Privacy Policy</a>. I understand that activity expenses are separate from the companion fee.
+                  </span>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn btn--outline btn--large" onclick="prevStep()">
+                  <i class="fas fa-arrow-left"></i>
+                  Previous
+                </button>
+                <button type="submit" class="btn btn--primary btn--large" id="submit-booking-btn">
+                  <i class="fas fa-paper-plane"></i>
+                  Submit Booking Request
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="booking-success-modal" class="modal" style="display: none">
+      <div class="modal-content">
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Booking Request Submitted!</h2>
+        <p>
+          Thank you for choosing Teman Malaysia for your custom activity experience. 
+          We've received your booking request and will contact you within 24 hours to finalize the activity details and match you with the perfect companion.
+        </p>
+        <div class="booking-reference">
+          <strong>Reference Number: <span id="booking-ref-number"></span></strong>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn--primary" onclick="window.location.href='booking.html'">
+            Book Another Service
+          </button>
+          <button class="btn btn--outline" onclick="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script>
+      // Current step tracking
+      let currentStep = 1;
+      const totalSteps = 3;
+
+      // Update progress steps visual state
+      function updateProgressSteps() {
+        const steps = document.querySelectorAll(".step");
+
+        steps.forEach((step, index) => {
+          const stepNumber = index + 1;
+          step.classList.remove("active", "completed");
+
+          if (stepNumber < currentStep) {
+            step.classList.add("completed");
+          } else if (stepNumber === currentStep) {
+            step.classList.add("active");
+          }
+        });
+      }
+
+      // Navigate to next step
+      function nextStep() {
+        if (currentStep < totalSteps) {
+          if (validateCurrentStep()) {
+            document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove("active");
+            currentStep++;
+            document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add("active");
+            updateProgressSteps();
+
+            if (currentStep === 3) {
+              updateBookingSummary();
+            }
+
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }
+      }
+
+      // Navigate to previous step
+      function prevStep() {
+        if (currentStep > 1) {
+          document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove("active");
+          currentStep--;
+          document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add("active");
+          updateProgressSteps();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      // Validate current step
+      function validateCurrentStep() {
+        if (currentStep === 1) {
+          const packageSelected = document.querySelector('input[name="package"]:checked');
+          if (!packageSelected) {
+            alert("Please select a package before continuing.");
+            return false;
+          }
+
+          if (!document.getElementById("hours").value) {
+            alert("Please select the number of hours.");
+            return false;
+          }
+
+          if (!document.getElementById("activities-list").value.trim()) {
+            alert("Please describe the activities you'd like to do.");
+            return false;
+          }
+        } else if (currentStep === 2) {
+          const requiredFields = [
+            "full_name", "phone", "email", "activity_date", "activity_time", 
+            "meeting_address", "activity_locations"
+          ];
+
+          for (let field of requiredFields) {
+            const element = document.querySelector(`[name="${field}"]`);
+            if (!element.value.trim()) {
+              alert(`Please fill in the ${field.replace("_", " ")} field.`);
+              element.focus();
+              return false;
+            }
+          }
+
+          const transportationSelected = document.querySelector('input[name="transportation_mode"]:checked');
+          if (!transportationSelected) {
+            alert("Please select a transportation mode.");
+            return false;
+          }
+        }
+        return true;
+      }
+
+      // Update booking summary
+      function updateBookingSummary() {
+        // Duration details
+        const hours = document.getElementById("hours").value;
+        if (hours) {
+          const estimatedCost = hours * 35;
+          document.getElementById("summary-duration").textContent = `${hours} hours`;
+          document.getElementById("summary-total").textContent = `RM ${estimatedCost}`;
+        }
+
+        // Activities
+        const activities = document.getElementById("activities-list").value;
+        document.getElementById("summary-activities").textContent = 
+          activities ? activities.substring(0, 100) + (activities.length > 100 ? "..." : "") : "-";
+
+        // Date and time
+        const date = document.getElementById("activity-date").value;
+        const time = document.getElementById("activity-time").value;
+        if (date && time) {
+          const formattedDate = new Date(date).toLocaleDateString("en-MY", {
+            weekday: "long", year: "numeric", month: "long", day: "numeric"
+          });
+          document.getElementById("summary-datetime").textContent = `${formattedDate} at ${time}`;
+        }
+
+        // Meeting point
+        const meetingAddress = document.getElementById("meeting-address").value;
+        document.getElementById("summary-meeting-point").textContent = 
+          meetingAddress ? meetingAddress.substring(0, 80) + (meetingAddress.length > 80 ? "..." : "") : "-";
+
+        // Transportation
+        const transportation = document.querySelector('input[name="transportation_mode"]:checked');
+        if (transportation) {
+          const transportLabel = transportation.nextElementSibling.nextElementSibling.querySelector("strong").textContent;
+          document.getElementById("summary-transportation").textContent = transportLabel;
+        }
+
+        // Contact information
+        document.getElementById("summary-name").textContent = 
+          document.getElementById("full-name").value || "-";
+        document.getElementById("summary-phone").textContent = 
+          document.getElementById("phone").value || "-";
+        document.getElementById("summary-email").textContent = 
+          document.getElementById("email").value || "-";
+
+        // Participant info
+        const participantName = document.getElementById("participant-name").value;
+        const participantAge = document.getElementById("participant-age").value;
+        const relationship = document.getElementById("relationship").value;
+        
+        let participantText = "";
+        if (participantName && participantAge) {
+          participantText = `${participantName} (Age: ${participantAge})`;
+        } else if (participantAge) {
+          if (relationship === "self") {
+            participantText = `Self (Age: ${participantAge})`;
+          } else {
+            participantText = `Age: ${participantAge}`;
+          }
+        } else if (relationship === "self") {
+          participantText = "Self";
+        }
+        document.getElementById("summary-participant").textContent = participantText || "-";
+
+        // Activity categories
+        const selectedCategories = document.querySelectorAll('input[name="activity_categories[]"]:checked');
+        let categoriesText = "";
+        if (selectedCategories.length > 0) {
+          const categoryLabels = Array.from(selectedCategories).map(category => {
+            return category.parentElement.textContent.trim();
+          });
+          categoriesText = categoryLabels.slice(0, 3).join(", ");
+          if (categoryLabels.length > 3) {
+            categoriesText += ` and ${categoryLabels.length - 3} more`;
+          }
+        }
+        document.getElementById("summary-categories").textContent = categoriesText || "None specified";
+      }
+
+      // Handle package selection
+      document.addEventListener("DOMContentLoaded", function () {
+        // Show hours selection and activities input when basic package is selected
+        const basicPackage = document.getElementById("basic-package");
+        const hoursSelection = document.querySelector(".hours-selection");
+        const activitiesSection = document.querySelector(".activities-input-section");
+        
+        basicPackage.addEventListener("change", function() {
+          if (this.checked) {
+            hoursSelection.style.display = "block";
+            activitiesSection.style.display = "block";
+          }
+        });
+
+        // Set minimum date to tomorrow
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split("T")[0];
+        document.getElementById("activity-date").setAttribute("min", minDate);
+
+        // Initialize progress steps
+        updateProgressSteps();
+      });
+
+      // Handle form submission
+      document.getElementById("custom-activities-booking-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
+        if (!termsAgreed) {
+          alert("Please agree to the Terms & Conditions and Privacy Policy to continue.");
+          return;
+        }
+
+        const refNumber = "TM" + Date.now().toString().slice(-6);
+        document.getElementById("booking-ref-number").textContent = refNumber;
+        document.getElementById("booking-success-modal").style.display = "flex";
+
+        console.log("Custom activities booking submitted successfully");
+      });
+
+      // Close modal function
+      function closeModal() {
+        document.getElementById("booking-success-modal").style.display = "none";
+      }
+
+      // Load header and footer components
+      async function loadComponents() {
+        try {
+          const headerResponse = await fetch("../components/header.html");
+          if (headerResponse.ok) {
+            const headerHTML = await headerResponse.text();
+            document.getElementById("header-placeholder").innerHTML = headerHTML;
+
+            setTimeout(() => {
+              const bookingLink = document.querySelector('a[href="booking.html"]');
+              if (bookingLink) {
+                bookingLink.classList.add("active");
+              }
+              initializeNavigation();
+            }, 100);
+          }
+
+          const footerResponse = await fetch("../components/footer.html");
+          if (footerResponse.ok) {
+            const footerHTML = await footerResponse.text();
+            document.getElementById("footer-placeholder").innerHTML = footerHTML;
+          }
+
+          initializeMainJS();
+        } catch (error) {
+          console.error("Error loading components:", error);
+        }
+      }
+
+      // Initialize navigation functionality
+      function initializeNavigation() {
+        const navToggle = document.getElementById("nav-toggle");
+        const navMenu = document.getElementById("nav-menu");
+
+        if (navToggle && navMenu) {
+          navToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("show");
+            const icon = navToggle.querySelector("i");
+            if (navMenu.classList.contains("show")) {
+              icon.className = "fas fa-times";
+            } else {
+              icon.className = "fas fa-bars";
+            }
+          });
+
+          document.querySelectorAll(".nav__link").forEach((link) => {
+            link.addEventListener("click", () => {
+              navMenu.classList.remove("show");
+              const icon = navToggle.querySelector("i");
+              if (icon) icon.className = "fas fa-bars";
+            });
+          });
+
+          document.addEventListener("click", (e) => {
+            if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+              navMenu.classList.remove("show");
+              const icon = navToggle.querySelector("i");
+              if (icon) icon.className = "fas fa-bars";
+            }
+          });
+        }
+
+        window.addEventListener("scroll", () => {
+          const header = document.getElementById("header");
+          if (header) {
+            if (window.scrollY > 100) {
+              header.style.background = "rgba(255, 255, 255, 0.98)";
+              header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+            } else {
+              header.style.background = "rgba(255, 255, 255, 0.95)";
+              header.style.boxShadow = "none";
+            }
+          }
+        });
+      }
+
+      function initializeMainJS() {
+        console.log("Teman Malaysia custom activities booking loaded successfully!");
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        loadComponents();
+      });
+    </script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
