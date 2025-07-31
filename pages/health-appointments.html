@@ -154,7 +154,7 @@
         margin: 0 auto 40px auto;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         border: 2px solid #e5f3ff;
-        max-width: 600px;
+        max-width: 800px;
       }
 
       .service-header {
@@ -878,13 +878,14 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="emergency-contact" class="form-label">Emergency Contact Person</label>
+                  <label for="emergency-contact" class="form-label">Emergency Contact Person *</label>
                   <input
                     type="text"
                     id="emergency-contact"
                     name="emergency_contact"
                     class="form-input"
                     placeholder="Name and phone number of emergency contact"
+                    required
                   />
                 </div>
               </div>
@@ -923,7 +924,6 @@
                   <div class="form-group">
                     <label for="patient-gender" class="form-label">Gender</label>
                     <select id="patient-gender" name="patient_gender" class="form-select">
-                      <option value="">Prefer not to say</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                     </select>
@@ -1445,7 +1445,7 @@
           }
         } else if (currentStep === 2) {
           const requiredFields = [
-            "full_name", "phone", "email", "appointment_type", "medical_facility", 
+            "full_name", "phone", "email", "emergency_contact", "appointment_type", "medical_facility", 
             "appointment_date", "appointment_time", "facility_address", "pickup_address", "pickup_time"
           ];
 

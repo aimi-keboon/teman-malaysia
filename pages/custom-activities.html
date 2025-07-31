@@ -918,13 +918,14 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="emergency-contact" class="form-label">Emergency Contact Person</label>
+                  <label for="emergency-contact" class="form-label">Emergency Contact Person *</label>
                   <input
                     type="text"
                     id="emergency-contact"
                     name="emergency_contact"
                     class="form-input"
                     placeholder="Name and phone number of emergency contact"
+                    required
                   />
                 </div>
               </div>
@@ -963,7 +964,7 @@
                   <div class="form-group">
                     <label for="participant-gender" class="form-label">Gender</label>
                     <select id="participant-gender" name="participant_gender" class="form-select">
-                      <option value="">Prefer not to say</option>
+                      
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                     </select>
@@ -1719,7 +1720,7 @@
           }
         } else if (currentStep === 2) {
           const requiredFields = [
-            "full_name", "phone", "email", "activity_date", "activity_time", 
+            "full_name", "phone", "email", "emergency_contact", "activity_date", "activity_time", 
             "meeting_address", "activity_locations"
           ];
 
