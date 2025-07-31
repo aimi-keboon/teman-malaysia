@@ -460,6 +460,7 @@
       .form-group {
         display: flex;
         flex-direction: column;
+        margin-top: 10px;
       }
 
       .form-label {
@@ -813,16 +814,7 @@
                       </select>
                     </div>
 
-                    <div class="activities-input-section" style="display: none">
-                      <label for="activities-list" class="form-label">Activities You'd Like to Do: *</label>
-                      <textarea
-                        id="activities-list"
-                        name="activities_list"
-                        rows="4"
-                        class="form-textarea"
-                        placeholder="Please describe the activities, locations, and any specific requirements. For example: Shopping at mall, visit to park, recreational activities, social outings, etc."
-                      ></textarea>
-                    </div>
+                    
                     
                     <div class="package-notes">
                       <small>• Perfect for any leisure or social activities</small>
@@ -1001,6 +993,37 @@
                 </div>
               </div>
 
+              <!-- Activity Preferences -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-star"></i>
+                  Activity Preferences & Interests
+                </h3>
+                
+
+                <div class="form-group">
+                  <label for="activities-list" class="form-label">Activities You'd Like to Do: *</label>
+                  <textarea
+                    id="activities-list"
+                    name="activities_list"
+                    class="form-textarea"
+                    rows="4"
+                    placeholder="Please describe the activities, locations, and any specific requirements. For example: Shopping at mall, visit to park, recreational activities, social outings, etc."
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="activity-pace" class="form-label">Preferred Activity Pace</label>
+                  <select id="activity-pace" name="activity_pace" class="form-select">
+                    <option value="">Select pace preference</option>
+                    <option value="relaxed">Relaxed & leisurely</option>
+                    <option value="moderate">Moderate pace</option>
+                    <option value="active">Active & energetic</option>
+                    <option value="flexible">Flexible, adapt as needed</option>
+                  </select>
+                </div>
+              </div>
+
               <!-- Activity Details -->
               <div class="form-section">
                 <h3 class="form-section-title">
@@ -1140,7 +1163,6 @@
                     <span class="radio-custom"></span>
                     <div class="radio-content">
                       <strong>I will provide transportation</strong>
-                      <p>You will drive or arrange transportation for the activities</p>
                     </div>
                   </label>
 
@@ -1149,7 +1171,6 @@
                     <span class="radio-custom"></span>
                     <div class="radio-content">
                       <strong>Temanion will arrange transportation</strong>
-                      <p>Our Temanion will handle transportation arrangements</p>
                     </div>
                   </label>
 
@@ -1158,27 +1179,10 @@
                     <span class="radio-custom"></span>
                     <div class="radio-content">
                       <strong>E-Hailing Service (Grab/Taxi)</strong>
-                      <p>Use ride-hailing services for activities (additional costs apply)</p>
                     </div>
                   </label>
 
-                  <label class="radio-option">
-                    <input type="radio" name="transportation_mode" value="public-transport" required />
-                    <span class="radio-custom"></span>
-                    <div class="radio-content">
-                      <strong>Public Transportation</strong>
-                      <p>Use buses, trains, or other public transport for activities</p>
-                    </div>
-                  </label>
-
-                  <label class="radio-option">
-                    <input type="radio" name="transportation_mode" value="walking" required />
-                    <span class="radio-custom"></span>
-                    <div class="radio-content">
-                      <strong>Walking/Nearby Activities</strong>
-                      <p>Activities within walking distance, no transportation needed</p>
-                    </div>
-                  </label>
+                  
                 </div>
 
                 <div class="form-group" style="margin-top: 16px">
@@ -1193,87 +1197,7 @@
                 </div>
               </div>
 
-              <!-- Activity Preferences -->
-              <div class="form-section">
-                <h3 class="form-section-title">
-                  <i class="fas fa-star"></i>
-                  Activity Preferences & Interests
-                </h3>
-                
-                <div class="form-group">
-                  <label class="form-label">Activity Categories (Select all that interest you):</label>
-                  <div class="checkbox-group">
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="activity_categories[]" value="shopping" />
-                      <span class="checkmark"></span>
-                      Shopping & errands
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="activity_categories[]" value="nature" />
-                      <span class="checkmark"></span>
-                      Nature & outdoor activities
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="activity_categories[]" value="dining" />
-                      <span class="checkmark"></span>
-                      Dining & food experiences
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="activity_categories[]" value="culture" />
-                      <span class="checkmark"></span>
-                      Cultural activities & arts
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="activity_categories[]" value="entertainment" />
-                      <span class="checkmark"></span>
-                      Entertainment & shows
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="activity_categories[]" value="exercise" />
-                      <span class="checkmark"></span>
-                      Light exercise & wellness
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="activity_categories[]" value="social" />
-                      <span class="checkmark"></span>
-                      Social activities & meetups
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="activity_categories[]" value="hobbies" />
-                      <span class="checkmark"></span>
-                      Hobbies & crafts
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="activity_categories[]" value="sightseeing" />
-                      <span class="checkmark"></span>
-                      Sightseeing & tourism
-                    </label>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="activity-pace" class="form-label">Preferred Activity Pace</label>
-                  <select id="activity-pace" name="activity_pace" class="form-select">
-                    <option value="">Select pace preference</option>
-                    <option value="relaxed">Relaxed & leisurely</option>
-                    <option value="moderate">Moderate pace</option>
-                    <option value="active">Active & energetic</option>
-                    <option value="flexible">Flexible, adapt as needed</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="budget-range" class="form-label">Activity Budget Range (Optional)</label>
-                  <select id="budget-range" name="budget_range" class="form-select">
-                    <option value="">No specific budget</option>
-                    <option value="budget-friendly">Budget-friendly (Under RM50)</option>
-                    <option value="moderate">Moderate (RM50-150)</option>
-                    <option value="comfortable">Comfortable (RM150-300)</option>
-                    <option value="premium">Premium (Above RM300)</option>
-                  </select>
-                  <small class="form-help">This helps us suggest appropriate activities and venues</small>
-                </div>
-              </div>
+              
 
               <!-- Health & Mobility Information -->
               <div class="form-section">
@@ -1730,10 +1654,6 @@
             return false;
           }
 
-          if (!document.getElementById("activities-list").value.trim()) {
-            alert("Please describe the activities you'd like to do.");
-            return false;
-          }
         } else if (currentStep === 2) {
           const requiredFields = [
             "full_name", "phone", "email", "emergency_contact", "activity_date", "activity_time", 

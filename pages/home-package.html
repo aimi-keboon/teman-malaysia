@@ -1187,6 +1187,51 @@
                 </div>
               </div>
 
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-car"></i>
+                  Transportation for Activities
+                </h3>
+                <div style="display: grid; gap: 12px;">
+                  <label class="radio-option">
+                    <input type="radio" name="transportation_mode" value="client-provided" required />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>I will provide transportation</strong>
+                    </div>
+                  </label>
+
+                  <label class="radio-option">
+                    <input type="radio" name="transportation_mode" value="teman-provided" required />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>Temanion will arrange transportation</strong>
+                    </div>
+                  </label>
+
+                  <label class="radio-option">
+                    <input type="radio" name="transportation_mode" value="e-hailing" required />
+                    <span class="radio-custom"></span>
+                    <div class="radio-content">
+                      <strong>E-Hailing Service (Grab/Taxi)</strong>
+                    </div>
+                  </label>
+
+                  
+                </div>
+
+                <div class="form-group" style="margin-top: 16px">
+                  <label for="transportation-notes" class="form-label">Transportation Notes</label>
+                  <textarea
+                    id="transportation-notes"
+                    name="transportation_notes"
+                    class="form-textarea"
+                    rows="2"
+                    placeholder="Any specific transportation preferences, accessibility needs, or special instructions..."
+                  ></textarea>
+                </div>
+              </div>
+
               <!-- Care Schedule -->
               <div class="form-section">
                 <h3 class="form-section-title">
