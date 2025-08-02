@@ -706,125 +706,149 @@
           <form id="dialysis-booking-form" class="booking-form" data-form-type="dialysis">
             <!-- Step 1: Package Selection -->
             <div class="form-step active" data-step="1">
-              <h2 class="step-title">Choose Your Package</h2>
+ <h2 class="step-title">Choose Your Package</h2>
 
-              <div class="package-options">
-                <div class="package-option">
-                  <input
-                    type="radio"
-                    name="package"
-                    value="hourly"
-                    id="hourly-package"
-                    required
-                  />
-                  <label for="hourly-package" class="package-card">
-                    <div class="package-header">
-                      <div class="package-title">Hourly Rate</div>
-                      <div class="package-price">RM35/hour</div>
-                    </div>
-                    <div class="package-description">
-                      Flexible hourly booking for individual dialysis sessions or specific support needs.
-                    </div>
-                    
-                    <div class="hours-selection" style="display: none">
-                      <label for="hours" class="form-label">Number of Hours: *</label>
-                      <select name="hours" id="hours" class="form-select">
-                        <option value="">Select hours</option>
-                        <option value="2">2 hours - RM70</option>
-                        <option value="3">3 hours - RM105</option>
-                        <option value="4">4 hours - RM140</option>
-                        <option value="5">5 hours - RM175</option>
-                        <option value="6">6 hours - RM210</option>
-                        <option value="custom">More than 6 hours (Contact us)</option>
-                      </select>
-                    </div>
-                    
-                    <div class="package-notes">
-                      <small>• Perfect for occasional dialysis support</small>
-                      <small>• Flexible scheduling</small>
-                    </div>
-                  </label>
-                </div>
+ <div style="background: #e0f2fe; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+   <h3 style="color: #0277bd; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+     <i class="fas fa-info-circle"></i>
+     Our Dialysis Support Services
+   </h3>
+   <p style="color: #0288d1; margin: 0; font-size: 14px;">
+     <strong>Main Service:</strong> Transport + Support (send off & pickup for dialysis sessions)<br>
+     <strong>Add-on Service:</strong> Companion During Treatment (optional - Temanion stays with you during dialysis)
+   </p>
+ </div>
 
-                <div class="package-option">
-                  <input
-                    type="radio"
-                    name="package"
-                    value="package1"
-                    id="package1"
-                  />
-                  <label for="package1" class="package-card">
-                    <div class="package-header">
-                      <div class="package-title">3-Session Package</div>
-                      <div class="package-price">RM186</div>
-                    </div>
-                    <div class="package-description">
-                      6-hour package suitable for 3 dialysis sessions - perfect for regular treatment schedules.
-                    </div>
-                    
-                    <div class="package-notes">
-                      <small>• 6 hours total (2 hours per session)</small>
-                      <small>• Valid for 60 days</small>
-                      <small>• Best value for regular treatments</small>
-                    </div>
-                  </label>
-                </div>
+ <div class="package-options">
+   <div class="package-option">
+     <input
+       type="radio"
+       name="package"
+       value="hourly"
+       id="hourly-package"
+       required
+     />
+     <label for="hourly-package" class="package-card">
+       <div class="package-header">
+         <div class="package-title">Transport + Support (Hourly)</div>
+         <div class="package-price">RM35/hour</div>
+       </div>
+       <div class="package-description">
+         Send off and pickup service for dialysis sessions. Includes companionship during transport and waiting time. Minimum 2 hours per session.
+       </div>
+       
+       <div class="hours-selection" style="display: none">
+         <label for="hours" class="form-label">Number of Hours: *</label>
+         <select name="hours" id="hours" class="form-select">
+           <option value="">Select hours</option>
+           <option value="2">2 hours - RM70 (Minimum for 1 session)</option>
+           <option value="3">3 hours - RM105</option>
+           <option value="4">4 hours - RM140</option>
+           <option value="5">5 hours - RM175</option>
+           <option value="6">6 hours - RM210</option>
+           <option value="custom">More than 6 hours (Contact us)</option>
+         </select>
+       </div>
+       
+       <div class="package-notes">
+         <small>• Perfect for occasional dialysis support</small>
+         <small>• Includes transport to/from dialysis center</small>
+         <small>• Flexible scheduling</small>
+       </div>
+     </label>
+   </div>
 
-                <div class="package-option">
-                  <input
-                    type="radio"
-                    name="package"
-                    value="companion"
-                    id="companion-package"
-                  />
-                  <label for="companion-package" class="package-card">
-                    <div class="package-header">
-                      <div class="package-title">Companion During Treatment</div>
-                      <div class="package-price">RM30/hour</div>
-                    </div>
-                    <div class="package-description">
-                      Optional companionship service while you receive your dialysis treatment at the center.
-                    </div>
-                    
-                    <div class="hours-selection" style="display: none">
-                      <label for="companion-hours" class="form-label">Number of Hours: *</label>
-                      <select name="companion_hours" id="companion-hours" class="form-select">
-                        <option value="">Select hours</option>
-                        <option value="2">2 hours - RM60</option>
-                        <option value="3">3 hours - RM90</option>
-                        <option value="4">4 hours - RM120</option>
-                        <option value="5">5 hours - RM150</option>
-                        <option value="6">6 hours - RM180</option>
-                      </select>
-                    </div>
-                    
-                    <div class="package-notes">
-                      <small>• Emotional support during treatment</small>
-                      <small>• Help with entertainment/activities</small>
-                      <small>• Assistance with basic needs</small>
-                    </div>
-                  </label>
-                </div>
-              </div>
+   <div class="package-option">
+     <input
+       type="radio"
+       name="package"
+       value="package1"
+       id="package1"
+     />
+     <label for="package1" class="package-card">
+       <div class="package-header">
+         <div class="package-title">3-Session Package Deal</div>
+         <div class="package-price">RM186</div>
+       </div>
+       <div class="package-description">
+         Transport + Support for 3 dialysis sessions (6 hours total, 2 hours per session). Best value for regular treatment schedules.
+       </div>
+       
+       <div class="package-notes">
+         <small>• Save RM24 compared to hourly rate!</small>
+         <small>• 6 hours total - perfect for 3 sessions</small>
+         <small>• Valid for 60 days</small>
+         <small>• Includes transport for all sessions</small>
+       </div>
+     </label>
+   </div>
+ </div>
 
-              <div style="background: #fef2f2; padding: 16px; border-radius: 8px; margin-bottom: 32px;">
-                <h4 style="color: #dc2626; margin-bottom: 8px;">Additional Information:</h4>
-                <small style="display: block; color: #dc2626; margin-bottom: 4px;">• Transportation fee: RM0.80/KM or e-hailing fare</small>
-                <small style="display: block; color: #dc2626; margin-bottom: 4px;">• All remaining hours can be used before 60 days</small>
-                <small style="display: block; color: #dc2626;">• Surcharge: RM37/hour for Public Holiday/Sunday/last minute booking</small>
-              </div>
+ <div style="background: #f3e5f5; border: 2px dashed #9c27b0; border-radius: 12px; padding: 20px; margin: 30px 0;">
+   <h4 style="color: #7b1fa2; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+     <i class="fas fa-plus-circle"></i>
+     Add-on Service (Optional)
+   </h4>
+   <p style="color: #8e24aa; font-size: 14px; margin-bottom: 16px;">
+     Want someone to stay with you during your actual dialysis treatment? Add this companion service:
+   </p>
+   
+   <div class="package-option" style="margin: 0;">
+     <input
+       type="checkbox"
+       name="companion_addon"
+       value="companion"
+       id="companion-addon"
+     />
+     <label for="companion-addon" class="package-card" style="border-color: #9c27b0;">
+       <div class="package-header">
+         <div class="package-title">Companion During Treatment</div>
+         <div class="package-price">+RM30/hour</div>
+       </div>
+       <div class="package-description">
+         Temanion stays with you during your dialysis treatment at the center. This is in addition to the main transport service above.
+       </div>
+       
+       <div class="hours-selection" style="display: none">
+         <label for="companion-hours" class="form-label">Treatment Duration: *</label>
+         <select name="companion_hours" id="companion-hours" class="form-select">
+           <option value="">Select treatment duration</option>
+           <option value="2">2 hours - +RM60</option>
+           <option value="3">3 hours - +RM90</option>
+           <option value="4">4 hours - +RM120</option>
+           <option value="5">5 hours - +RM150</option>
+           <option value="6">6 hours - +RM180</option>
+         </select>
+       </div>
+       
+       <div class="package-notes">
+         <small>• Emotional support during treatment</small>
+         <small>• Help with entertainment/activities</small>
+         <small>• Assistance with basic needs</small>
+         <small>• Peace of mind for family members</small>
+       </div>
+     </label>
+   </div>
+ </div>
 
-              <div class="form-actions">
-                <button
-                  type="button"
-                  class="btn btn--primary btn--large"
-                  onclick="nextStep()"
-                >
-                  Continue to Details
-                  <i class="fas fa-arrow-right"></i>
-                </button>
-              </div>
-            </div>
+ <div style="background: #fef2f2; padding: 16px; border-radius: 8px; margin-bottom: 32px;">
+   <h4 style="color: #dc2626; margin-bottom: 8px;">Additional Information:</h4>
+   <small style="display: block; color: #dc2626; margin-bottom: 4px;">• Transportation fee: RM0.80/KM or e-hailing fare</small>
+   <small style="display: block; color: #dc2626; margin-bottom: 4px;">• All remaining hours can be used before 60 days</small>
+   <small style="display: block; color: #dc2626;">• Surcharge: RM37/hour for Public Holiday/Sunday/last minute booking</small>
+ </div>
+
+ <div class="form-actions">
+   <button
+     type="button"
+     class="btn btn--primary btn--large"
+     onclick="nextStep()"
+   >
+     Continue to Details
+     <i class="fas fa-arrow-right"></i>
+   </button>
+ </div>
+</div>
             <!-- Step 2: Personal Details -->
             <div class="form-step" data-step="2">
               <h2 class="step-title">Booking Details</h2>
@@ -996,127 +1020,253 @@
                 </div>
               </div>
 
-              <!-- Dialysis Information -->
-              <div class="form-section">
-                <h3 class="form-section-title">
-                  <i class="fas fa-hospital"></i>
-                  Dialysis Treatment Details
-                </h3>
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label for="dialysis-center" class="form-label">Dialysis Center *</label>
-                    <input
-                      type="text"
-                      id="dialysis-center"
-                      name="dialysis_center"
-                      class="form-input"
-                      placeholder="Name of dialysis center/hospital"
-                      required
-                    />
-                  </div>
+              <!-- Care Schedule -->
+<!-- Include Flatpickr CSS and JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-                  <div class="form-group">
-                    <label for="dialysis-type" class="form-label">Type of Dialysis</label>
-                    <select id="dialysis-type" name="dialysis_type" class="form-select">
-                      <option value="">Select dialysis type</option>
-                      <option value="hemodialysis">Hemodialysis</option>
-                      <option value="peritoneal">Peritoneal Dialysis</option>
-                      <option value="home-hemodialysis">Home Hemodialysis</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+<!-- Care Schedule -->
+<div class="form-section">
+ <h3 class="form-section-title">
+   <i class="fas fa-calendar-alt"></i>
+   Dialysis Treatment Schedule
+ </h3>
 
-                  <div class="form-group">
-                    <label for="treatment-frequency" class="form-label">Treatment Frequency</label>
-                    <select id="treatment-frequency" name="treatment_frequency" class="form-select">
-                      <option value="">Select frequency</option>
-                      <option value="3-times-week">3 times per week</option>
-                      <option value="2-times-week">2 times per week</option>
-                      <option value="daily">Daily</option>
-                      <option value="other">Other schedule</option>
-                    </select>
-                  </div>
+ <!-- Multi-date calendar -->
+ <div class="form-group">
+   <label for="multi-dates" class="form-label">Select Dialysis Treatment Dates *</label>
+   <input
+     type="text"
+     id="multi-dates"
+     name="multi_dates"
+     class="form-input"
+     placeholder="Select treatment dates"
+     readonly
+     required
+   />
+   <small class="form-help">Select specific dates; today and tomorrow are disabled</small>
+   <div id="date-limit-message" style="display:none; color: #666; margin-top: 5px; font-size: 0.875rem;">
+     If you're unsure of the remaining dates, you may plan or book them later with our representative.
+   </div>
+   <div id="date-count" style="color: #666; margin-top: 5px; font-size: 0.875rem;">
+     Selected dates: <span id="selected-count">0</span>/<span id="max-dates">0</span> sessions
+   </div>
+   <div id="hours-info" style="color: #ef4444; margin-top: 5px; font-size: 0.875rem; font-weight: 500;">
+     Please select a package first to enable date selection
+   </div>
+ </div>
 
-                  <div class="form-group">
-                    <label for="session-duration" class="form-label">Typical Session Duration</label>
-                    <select id="session-duration" name="session_duration" class="form-select">
-                      <option value="">Select duration</option>
-                      <option value="3-hours">3 hours</option>
-                      <option value="4-hours">4 hours</option>
-                      <option value="5-hours">5 hours</option>
-                      <option value="6-hours">6+ hours</option>
-                      <option value="varies">Varies</option>
-                    </select>
-                  </div>
+ <!-- Time Selection -->
+ <div class="form-grid">
+   <div class="form-group">
+     <label for="preferred-start-time" class="form-label">Treatment Start Time *</label>
+     <select id="preferred-start-time" name="preferred_start_time" class="form-select" required>
+       <option value="">Select start time</option>
+       <option value="06:00">06:00 AM</option>
+       <option value="07:00">07:00 AM</option>
+       <option value="08:00">08:00 AM</option>
+       <option value="09:00">09:00 AM</option>
+       <option value="10:00">10:00 AM</option>
+       <option value="11:00">11:00 AM</option>
+       <option value="12:00">12:00 PM</option>
+       <option value="13:00">01:00 PM</option>
+       <option value="14:00">02:00 PM</option>
+       <option value="15:00">03:00 PM</option>
+       <option value="16:00">04:00 PM</option>
+       <option value="17:00">05:00 PM</option>
+       <option value="18:00">06:00 PM</option>
+     </select>
+     <small class="form-help">Recommended: 30-45 minutes before dialysis appointment</small>
+   </div>
 
-                  <div class="form-group">
-                    <label for="treatment-days" class="form-label">Treatment Days</label>
-                    <div class="checkbox-group">
-                      <label class="checkbox-item">
-                        <input type="checkbox" name="treatment_days[]" value="monday" />
-                        <span class="checkmark"></span>
-                        Monday
-                      </label>
-                      <label class="checkbox-item">
-                        <input type="checkbox" name="treatment_days[]" value="tuesday" />
-                        <span class="checkmark"></span>
-                        Tuesday
-                      </label>
-                      <label class="checkbox-item">
-                        <input type="checkbox" name="treatment_days[]" value="wednesday" />
-                        <span class="checkmark"></span>
-                        Wednesday
-                      </label>
-                      <label class="checkbox-item">
-                        <input type="checkbox" name="treatment_days[]" value="thursday" />
-                        <span class="checkmark"></span>
-                        Thursday
-                      </label>
-                      <label class="checkbox-item">
-                        <input type="checkbox" name="treatment_days[]" value="friday" />
-                        <span class="checkmark"></span>
-                        Friday
-                      </label>
-                      <label class="checkbox-item">
-                        <input type="checkbox" name="treatment_days[]" value="saturday" />
-                        <span class="checkmark"></span>
-                        Saturday
-                      </label>
-                    </div>
-                  </div>
+   <div class="form-group">
+     <label for="session-duration" class="form-label">Typical Session Duration</label>
+     <select id="session-duration" name="session_duration" class="form-select">
+       <option value="">Select duration</option>
+       <option value="2">2 hours (minimum)</option>
+       <option value="3">3 hours</option>
+       <option value="4">4 hours</option>
+       <option value="5">5 hours</option>
+       <option value="6">6+ hours</option>
+     </select>
+     <small class="form-help">This helps us plan the service duration</small>
+   </div>
+ </div>
+</div>
 
-                  <div class="form-group">
-                    <label for="preferred-time" class="form-label">Preferred Treatment Time</label>
-                    <select id="preferred-time" name="preferred_time" class="form-select">
-                      <option value="">Select time slot</option>
-                      <option value="morning">Morning (6:00 AM - 12:00 PM)</option>
-                      <option value="afternoon">Afternoon (12:00 PM - 6:00 PM)</option>
-                      <option value="evening">Evening (6:00 PM - 12:00 AM)</option>
-                      <option value="flexible">Flexible</option>
-                    </select>
-                  </div>
+<!-- Flatpickr & Logic -->
+<script>
+ // Utility: format date as YYYY-MM-DD
+ function formatDate(date) {
+   return date.toISOString().split('T')[0];
+ }
 
-                  <div class="form-group">
-                    <label for="next-appointment" class="form-label">Next Appointment Date</label>
-                    <input
-                      type="date"
-                      id="next-appointment"
-                      name="next_appointment"
-                      class="form-input"
-                    />
-                  </div>
+ // Calculate date boundaries
+ const today = new Date();
+ const tomorrow = new Date(today);
+ tomorrow.setDate(today.getDate() + 1);
+ const dayAfterTomorrow = new Date(today);
+ dayAfterTomorrow.setDate(today.getDate() + 2);
 
-                  <div class="form-group">
-                    <label for="appointment-time" class="form-label">Next Appointment Time</label>
-                    <input
-                      type="time"
-                      id="appointment-time"
-                      name="appointment_time"
-                      class="form-input"
-                    />
-                  </div>
-                </div>
-              </div>
+ const minDateStr = formatDate(dayAfterTomorrow);
+
+ // Get DOM elements
+ const messageEl = document.getElementById("date-limit-message");
+ const countEl = document.getElementById("selected-count");
+ const maxDatesEl = document.getElementById("max-dates");
+ const hoursInfoEl = document.getElementById("hours-info");
+ const multiDatesInput = document.getElementById("multi-dates");
+
+ let fp = null;
+ let maxAllowedSessions = 0;
+
+ // Function to calculate max sessions based on selected package
+ function calculateMaxSessions() {
+   const selectedPackage = document.querySelector('input[name="package"]:checked');
+   
+   if (!selectedPackage) {
+     maxAllowedSessions = 0;
+     maxDatesEl.textContent = "0";
+     hoursInfoEl.textContent = "Please select a package first to enable date selection";
+     hoursInfoEl.style.color = "#ef4444";
+     multiDatesInput.disabled = true;
+     if (fp) fp.set('disabled', true);
+     return;
+   }
+
+   let totalHours = 0;
+   
+   if (selectedPackage.value === "hourly") {
+     const hoursSelect = document.getElementById("hours");
+     if (hoursSelect.value) {
+       totalHours = parseInt(hoursSelect.value) || 0;
+     }
+   } else if (selectedPackage.value === "package1") {
+     totalHours = 6; // 3-session package = 6 hours
+   }
+
+   if (totalHours > 0) {
+     // Calculate sessions: 2 hours = 1 session, 3 hours = 2 sessions, etc.
+     maxAllowedSessions = Math.floor(totalHours / 2);
+     if (totalHours % 2 === 1) {
+       maxAllowedSessions += 1; // Add 1 more session for odd hours (3hrs = 2 sessions)
+     }
+     
+     maxDatesEl.textContent = maxAllowedSessions;
+     
+     if (selectedPackage.value === "package1") {
+       hoursInfoEl.textContent = `Package includes 6 hours total - you can select up to ${maxAllowedSessions} treatment sessions`;
+     } else {
+       let sessionText = "";
+       if (totalHours === 2) {
+         sessionText = "1 session (2 hours)";
+       } else if (totalHours === 3) {
+         sessionText = "2 sessions (3 hours total)";
+       } else if (totalHours % 2 === 0) {
+         sessionText = `${maxAllowedSessions} sessions (${totalHours} hours total)`;
+       } else {
+         sessionText = `${maxAllowedSessions} sessions (${totalHours} hours total)`;
+       }
+       hoursInfoEl.textContent = `Based on ${totalHours} hours selected - you can select up to ${sessionText}`;
+     }
+     hoursInfoEl.style.color = "#10b981";
+     
+     multiDatesInput.disabled = false;
+     if (fp) {
+       fp.set('disabled', false);
+       // Clear dates if exceeding new limit
+       if (fp.selectedDates.length > maxAllowedSessions) {
+         fp.clear();
+       }
+     }
+   } else {
+     maxAllowedSessions = 0;
+     maxDatesEl.textContent = "0";
+     hoursInfoEl.textContent = "Please select hours to enable date selection";
+     hoursInfoEl.style.color = "#ef4444";
+     multiDatesInput.disabled = true;
+     if (fp) fp.set('disabled', true);
+   }
+
+   updateDateSelection(fp ? fp.selectedDates : [], fp);
+ }
+
+ // Initialize Flatpickr
+ function initializeFlatpickr() {
+   fp = flatpickr("#multi-dates", {
+     mode: "multiple",
+     dateFormat: "Y-m-d",
+     disable: [formatDate(today), formatDate(tomorrow)],
+     minDate: minDateStr,
+     disabled: true, // Start disabled
+     onChange: function(selectedDates, dateStr, instance) {
+       updateDateSelection(selectedDates, instance);
+     },
+     onReady: function(selectedDates, dateStr, instance) {
+       updateDateSelection(selectedDates, instance);
+     },
+     // Prevent selection beyond limit
+     onDayCreate: function(dObj, dStr, fp, dayElem) {
+       dayElem.addEventListener('click', function(e) {
+         if (fp.selectedDates.length >= maxAllowedSessions && !dayElem.classList.contains('selected')) {
+           e.preventDefault();
+           e.stopPropagation();
+           return false;
+         }
+       });
+     }
+   });
+ }
+
+ // Update date selection display and enforce limit
+ function updateDateSelection(selectedDates, instance) {
+   if (!instance) return;
+   
+   const count = selectedDates.length;
+   countEl.textContent = count;
+   
+   // Show/hide message for incomplete selection
+   if (count < maxAllowedSessions && maxAllowedSessions > 0) {
+     messageEl.style.display = "block";
+   } else {
+     messageEl.style.display = "none";
+   }
+   
+   // Visual feedback when at limit
+   if (count >= maxAllowedSessions && maxAllowedSessions > 0) {
+     const calendar = instance.calendarContainer;
+     if (calendar) {
+       const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
+       unselectedDays.forEach(day => {
+         day.style.opacity = '0.3';
+         day.style.pointerEvents = 'none';
+       });
+     }
+   } else {
+     const calendar = instance.calendarContainer;
+     if (calendar) {
+       const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
+       unselectedDays.forEach(day => {
+         day.style.opacity = '';
+         day.style.pointerEvents = '';
+       });
+     }
+   }
+ }
+
+ // Listen for package changes
+ document.addEventListener('change', function(e) {
+   if (e.target.name === 'package' || e.target.id === 'hours') {
+     calculateMaxSessions();
+   }
+ });
+
+ // Initialize when DOM is ready
+ document.addEventListener('DOMContentLoaded', function() {
+   initializeFlatpickr();
+   calculateMaxSessions();
+ });
+</script>
 
               <!-- Location Information -->
               <div class="form-section">
@@ -1306,46 +1456,6 @@
                       <option value="bahasa">Bahasa Malaysia</option>
                       <option value="other">Other</option>
                     </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="companion-experience" class="form-label">Experience Level</label>
-                    <select id="companion-experience" name="companion_experience" class="form-select">
-                      <option value="any">Any experience level</option>
-                      <option value="dialysis-experienced">Dialysis experience preferred</option>
-                      <option value="medical-background">Medical background preferred</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="companion-activities" class="form-label">Preferred Activities During Treatment</label>
-                  <div class="checkbox-group">
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="companion_activities[]" value="conversation" />
-                      <span class="checkmark"></span>
-                      Conversation/companionship
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="companion_activities[]" value="reading" />
-                      <span class="checkmark"></span>
-                      Reading assistance
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="companion_activities[]" value="entertainment" />
-                      <span class="checkmark"></span>
-                      Entertainment (music, videos)
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="companion_activities[]" value="quiet-presence" />
-                      <span class="checkmark"></span>
-                      Quiet presence/monitoring
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="companion_activities[]" value="snacks-drinks" />
-                      <span class="checkmark"></span>
-                      Help with snacks/drinks
-                    </label>
                   </div>
                 </div>
               </div>

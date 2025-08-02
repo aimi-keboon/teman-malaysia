@@ -705,114 +705,144 @@
           <!-- Booking Form -->
           <form id="health-booking-form" class="booking-form" data-form-type="health-appointments">
             <!-- Step 1: Package Selection -->
-            <div class="form-step active" data-step="1">
-              <h2 class="step-title">Choose Your Package</h2>
+<div class="form-step active" data-step="1">
+  <h2 class="step-title">Choose Your Package & Activities</h2>
 
-              <div class="package-options">
-                <div class="package-option">
-                  <input
-                    type="radio"
-                    name="package"
-                    value="hourly"
-                    id="hourly-package"
-                    required
-                  />
-                  <label for="hourly-package" class="package-card">
-                    <div class="package-header">
-                      <div class="package-title">Hourly Rate</div>
-                      <div class="package-price">RM35/hour</div>
-                    </div>
-                    <div class="package-description">
-                      Flexible hourly booking for shorter appointments or specific needs. Minimum 2 hours required.
-                    </div>
-                    
-                    <div class="hours-selection" style="display: none">
-                      <label for="hours" class="form-label">Number of Hours: *</label>
-                      <select name="hours" id="hours" class="form-select">
-                        <option value="">Select hours</option>
-                        <option value="2">2 hours - RM70</option>
-                        <option value="3">3 hours - RM105</option>
-                        <option value="4">4 hours - RM140</option>
-                        <option value="5">5 hours - RM175</option>
-                        <option value="6">6 hours - RM210</option>
-                        <option value="custom">More than 6 hours (Contact us)</option>
-                      </select>
-                    </div>
-                    
-                    <div class="package-notes">
-                      <small>• Perfect for routine checkups and short appointments</small>
-                      <small>• Flexible scheduling</small>
-                    </div>
-                  </label>
-                </div>
+  <div class="package-options">
+    <!-- Hourly Rate Package -->
+    <div class="package-option">
+      <input
+        type="radio"
+        name="package"
+        value="hourly"
+        id="hourly-package"
+        required
+      />
+      <label for="hourly-package" class="package-card">
+        <div class="package-header">
+          <div class="package-title">Hourly Rate</div>
+          <div class="package-price">RM35/hour</div>
+        </div>
+        <div class="package-description">
+          Flexible hourly booking for any leisure activities or social outings. Minimum 2 hours required.
+        </div>
+        
+        <div class="hours-selection" style="display: none">
+          <label for="hours" class="form-label">Number of Hours: *</label>
+          <select name="hours" id="hours" class="form-select">
+            <option value="">Select hours</option>
+            <option value="2">2 hours - RM70</option>
+            <option value="3">3 hours - RM105</option>
+            <option value="4">4 hours - RM140</option>
+            <option value="5">5 hours - RM175</option>
+            <option value="6">6 hours - RM210</option>
+            <option value="custom">More than 6 hours (Contact us)</option>
+          </select>
+        </div>
+        
+        <div class="package-notes">
+          <small>• Perfect for any leisure or social activities</small>
+          <small>• Completely customizable to your interests</small>
+          <small>• Flexible scheduling available</small>
+        </div>
+      </label>
+    </div>
 
-                <div class="package-option">
-                  <input
-                    type="radio"
-                    name="package"
-                    value="package1"
-                    id="package1"
-                  />
-                  <label for="package1" class="package-card">
-                    <div class="package-header">
-                      <div class="package-title">Package 1</div>
-                      <div class="package-price">RM132</div>
-                    </div>
-                    <div class="package-description">
-                      4-hour package ideal for comprehensive medical visits, consultations, and procedures.
-                    </div>
-                    
-                    <div class="package-notes">
-                      <small>• 4 hours of professional support</small>
-                      <small>• Additional hours at RM33/hour</small>
-                      <small>• Great for specialist appointments</small>
-                    </div>
-                  </label>
-                </div>
+    <!-- Package 1: 4 Hours -->
+    <div class="package-option">
+      <input
+        type="radio"
+        name="package"
+        value="package1"
+        id="package1"
+      />
+      <label for="package1" class="package-card">
+        <div class="package-header">
+          <div class="package-title">Package 1</div>
+          <div class="package-price">RM126</div>
+        </div>
+        <div class="package-description">
+          4 hours total for your activities and appointments. Great value for regular bookings with up to 2 appointment dates.
+        </div>
+        
+        <div class="package-notes">
+          <small>• Save RM14 compared to hourly rate!</small>
+          <small>• 4 hours total - perfect for 2 appointments</small>
+          <small>• Valid for 30 days after booking</small>
+          <small>• Great for medical appointments</small>
+        </div>
+      </label>
+    </div>
 
-                <div class="package-option">
-                  <input
-                    type="radio"
-                    name="package"
-                    value="package2"
-                    id="package2"
-                  />
-                  <label for="package2" class="package-card">
-                    <div class="package-header">
-                      <div class="package-title">Package 2</div>
-                      <div class="package-price">RM186</div>
-                    </div>
-                    <div class="package-description">
-                      6-hour package perfect for extended medical procedures, hospital visits, or multiple appointments.
-                    </div>
-                    
-                    <div class="package-notes">
-                      <small>• 6 hours of comprehensive support</small>
-                      <small>• Additional hours at RM31/hour</small>
-                      <small>• Best value for longer appointments</small>
-                    </div>
-                  </label>
-                </div>
-              </div>
+    <!-- Package 2: 6 Hours -->
+    <div class="package-option">
+      <input
+        type="radio"
+        name="package"
+        value="package2"
+        id="package2"
+      />
+      <label for="package2" class="package-card">
+        <div class="package-header">
+          <div class="package-title">Package 2</div>
+          <div class="package-price">RM180</div>
+        </div>
+        <div class="package-description">
+          6 hours total for extended activities and multiple appointments. Best value for comprehensive care with up to 3 appointment dates.
+        </div>
+        
+        <div class="package-notes">
+          <small>• Save RM30 compared to hourly rate!</small>
+          <small>• 6 hours total - perfect for 3 appointments</small>
+          <small>• Valid for 30 days after booking</small>
+          <small>• Ideal for multiple medical visits</small>
+        </div>
+      </label>
+    </div>
+  </div>
 
-              <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; margin-bottom: 32px;">
-                <h4 style="color: #1e40af; margin-bottom: 8px;">Additional Fees:</h4>
-                <small style="display: block; color: #1e40af; margin-bottom: 4px;">• Transportation: RM0.80/KM or e-hailing fare</small>
-                <small style="display: block; color: #1e40af; margin-bottom: 4px;">• Transport allowance: RM20/session</small>
-                <small style="display: block; color: #1e40af;">• Surcharge: RM37/hour for Public Holiday/Sunday/last minute booking</small>
-              </div>
+  <div style="background: #fffbeb; padding: 16px; border-radius: 8px; margin-bottom: 32px; border-left: 4px solid #f59e0b;">
+    <h4 style="color: #d97706; margin-bottom: 8px;">Additional Fees & Information:</h4>
+    <small style="display: block; color: #d97706; margin-bottom: 4px;">• Transportation fee: RM0.80/KM or e-hailing fare</small>
+    <small style="display: block; color: #d97706; margin-bottom: 4px;">• Transport allowance: RM20/session</small>
+    <small style="display: block; color: #d97706; margin-bottom: 4px;">• Surcharge: RM37/hour for Public Holiday/Sunday/last minute booking</small>
+    <small style="display: block; color: #d97706;">• For service longer than 6 hours, bulk purchase or customization - contact us for quote</small>
+  </div>
 
-              <div class="form-actions">
-                <button
-                  type="button"
-                  class="btn btn--primary btn--large"
-                  onclick="nextStep()"
-                >
-                  Continue to Details
-                  <i class="fas fa-arrow-right"></i>
-                </button>
-              </div>
-            </div>
+  <div class="form-actions">
+    <button
+      type="button"
+      class="btn btn--primary btn--large"
+      onclick="nextStep()"
+    >
+      Continue to Details
+      <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<script>
+// Handle package selection and show/hide hours selection
+document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("change", function (e) {
+    if (e.target.name === "package") {
+      const hoursSelections = document.querySelectorAll(".hours-selection");
+      hoursSelections.forEach(selection => {
+        selection.style.display = "none";
+      });
+
+      if (e.target.value === "hourly") {
+        document.querySelector("#hourly-package + .package-card .hours-selection").style.display = "block";
+      }
+      
+      // Trigger calendar update if the function exists
+      if (typeof calculateMaxAppointments === 'function') {
+        calculateMaxAppointments();
+      }
+    }
+  });
+});
+</script>
             <!-- Step 2: Personal Details -->
             <div class="form-step" data-step="2">
               <h2 class="step-title">Booking Details</h2>
@@ -985,90 +1015,399 @@
                 </div>
               </div>
 
-              <!-- Appointment Details -->
-              <div class="form-section">
-                <h3 class="form-section-title">
-                  <i class="fas fa-calendar-alt"></i>
-                  Appointment Details
-                </h3>
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label for="appointment-type" class="form-label">Type of Medical Appointment *</label>
-                    <select id="appointment-type" name="appointment_type" class="form-select" required>
-                      <option value="">Select appointment type</option>
-                      <option value="general-checkup">General Health Checkup</option>
-                      <option value="specialist">Specialist Consultation</option>
-                      <option value="diagnostic">Diagnostic Tests/Screening</option>
-                      <option value="treatment">Medical Treatment</option>
-                      <option value="therapy">Physical/Occupational Therapy</option>
-                      <option value="dental">Dental Appointment</option>
-                      <option value="eye-care">Eye Care/Optometry</option>
-                      <option value="mental-health">Mental Health/Counseling</option>
-                      <option value="vaccination">Vaccination</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
+             <!-- Include Flatpickr CSS and JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-                  <div class="form-group">
-                    <label for="medical-facility" class="form-label">Medical Facility/Hospital *</label>
-                    <input
-                      type="text"
-                      id="medical-facility"
-                      name="medical_facility"
-                      class="form-input"
-                      placeholder="Name of hospital, clinic, or medical center"
-                      required
-                    />
-                  </div>
+<!-- Appointment Details -->
+<div class="form-section">
+  <h3 class="form-section-title">
+    <i class="fas fa-calendar-alt"></i>
+    Appointment Details
+  </h3>
+  
+  <!-- Multi-date calendar -->
+  <div class="form-group">
+    <label for="appointment-dates" class="form-label">Select Appointment Dates *</label>
+    <input
+      type="text"
+      id="appointment-dates"
+      name="appointment_dates"
+      class="form-input"
+      placeholder="Select appointment dates"
+      readonly
+      required
+    />
+    <small class="form-help">Select specific dates; today and tomorrow are disabled</small>
+    <div id="appointment-date-limit-message" style="display:none; color: #666; margin-top: 5px; font-size: 0.875rem;">
+      If you're unsure of the remaining dates, you may plan or book them later with our representative.
+    </div>
+    <div id="appointment-date-count" style="color: #666; margin-top: 5px; font-size: 0.875rem;">
+      Selected dates: <span id="appointment-selected-count">0</span>/<span id="appointment-max-dates">0</span> sessions
+    </div>
+    <div id="appointment-hours-info" style="color: #ef4444; margin-top: 5px; font-size: 0.875rem; font-weight: 500;">
+      Please select hours in Step 1 first to enable date selection
+    </div>
+  </div>
 
-                  <div class="form-group">
-                    <label for="doctor-name" class="form-label">Doctor/Specialist Name</label>
-                    <input
-                      type="text"
-                      id="doctor-name"
-                      name="doctor_name"
-                      class="form-input"
-                      placeholder="Dr. Name (if known)"
-                    />
-                  </div>
+  <!-- 30-Day Validity Disclaimer -->
+  <div style="background: #fef2f2; border: 2px dashed #dc2626; border-radius: 12px; padding: 16px; margin: 20px 0;">
+    <h4 style="color: #dc2626; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+      <i class="fas fa-exclamation-triangle"></i>
+      Important: Validity Period
+    </h4>
+    <p style="color: #dc2626; font-size: 14px; margin: 0;">
+      <strong>All unused hours are only valid for 30 days after booking.</strong> Please plan your appointment dates within this period to avoid forfeiture of unused hours.
+    </p>
+  </div>
+  
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="appointment-type" class="form-label">Type of Medical Appointment *</label>
+      <select id="appointment-type" name="appointment_type" class="form-select" required>
+        <option value="">Select appointment type</option>
+        <option value="general-checkup">General Health Checkup</option>
+        <option value="specialist">Specialist Consultation</option>
+        <option value="diagnostic">Diagnostic Tests/Screening</option>
+        <option value="treatment">Medical Treatment</option>
+        <option value="therapy">Physical/Occupational Therapy</option>
+        <option value="dental">Dental Appointment</option>
+        <option value="eye-care">Eye Care/Optometry</option>
+        <option value="mental-health">Mental Health/Counseling</option>
+        <option value="vaccination">Vaccination</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
 
-                  <div class="form-group">
-                    <label for="appointment-date" class="form-label">Appointment Date *</label>
-                    <input
-                      type="date"
-                      id="appointment-date"
-                      name="appointment_date"
-                      class="form-input"
-                      required
-                    />
-                  </div>
+    
 
-                  <div class="form-group">
-                    <label for="appointment-time" class="form-label">Appointment Time *</label>
-                    <input
-                      type="time"
-                      id="appointment-time"
-                      name="appointment_time"
-                      class="form-input"
-                      required
-                    />
-                  </div>
+    <div class="form-group">
+      <label for="doctor-name" class="form-label">Doctor/Specialist Name</label>
+      <input
+        type="text"
+        id="doctor-name"
+        name="doctor_name"
+        class="form-input"
+        placeholder="Dr. Name (if known)"
+      />
+    </div>
 
-                  <div class="form-group">
-                    <label for="estimated-duration" class="form-label">Estimated Duration</label>
-                    <select id="estimated-duration" name="estimated_duration" class="form-select">
-                      <option value="">Select duration</option>
-                      <option value="30min">30 minutes</option>
-                      <option value="1hour">1 hour</option>
-                      <option value="1.5hours">1.5 hours</option>
-                      <option value="2hours">2 hours</option>
-                      <option value="3hours">3 hours</option>
-                      <option value="4hours">4+ hours</option>
-                      <option value="unknown">Unknown</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+    <div class="form-group">
+      <label for="appointment-time" class="form-label">Preferred Appointment Time *</label>
+      <select id="appointment-time" name="appointment_time" class="form-select" required>
+        <option value="">Select time</option>
+        <option value="06:00">06:00 AM</option>
+        <option value="07:00">07:00 AM</option>
+        <option value="08:00">08:00 AM</option>
+        <option value="09:00">09:00 AM</option>
+        <option value="10:00">10:00 AM</option>
+        <option value="11:00">11:00 AM</option>
+        <option value="12:00">12:00 PM</option>
+        <option value="13:00">01:00 PM</option>
+        <option value="14:00">02:00 PM</option>
+        <option value="15:00">03:00 PM</option>
+        <option value="16:00">04:00 PM</option>
+        <option value="17:00">05:00 PM</option>
+        <option value="18:00">06:00 PM</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="estimated-duration" class="form-label">Estimated Duration</label>
+      <select id="estimated-duration" name="estimated_duration" class="form-select">
+        <option value="">Select duration</option>
+        <option value="30min">30 minutes</option>
+        <option value="1hour">1 hour</option>
+        <option value="1.5hours">1.5 hours</option>
+        <option value="2hours">2 hours</option>
+        <option value="3hours">3 hours</option>
+        <option value="4hours">4+ hours</option>
+        <option value="unknown">Unknown</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- Flatpickr & Logic Script -->
+<script>
+// Utility: format date as YYYY-MM-DD
+function formatDate(date) {
+  return date.toISOString().split('T')[0];
+}
+
+// Calculate date boundaries
+const today = new Date();
+const tomorrow = new Date(today);
+tomorrow.setDate(today.getDate() + 1);
+const dayAfterTomorrow = new Date(today);
+dayAfterTomorrow.setDate(today.getDate() + 2);
+
+const minDateStr = formatDate(dayAfterTomorrow);
+
+// Get DOM elements
+const appointmentMessageEl = document.getElementById("appointment-date-limit-message");
+const appointmentCountEl = document.getElementById("appointment-selected-count");
+const appointmentMaxDatesEl = document.getElementById("appointment-max-dates");
+const appointmentHoursInfoEl = document.getElementById("appointment-hours-info");
+const appointmentDatesInput = document.getElementById("appointment-dates");
+
+let appointmentFp = null;
+let maxAllowedAppointments = 0;
+
+// Function to calculate max appointments based on selected package/hours
+function calculateMaxAppointments() {
+  // Check if we're in the context where the package selection exists
+  const selectedPackage = document.querySelector('input[name="package"]:checked');
+  
+  if (!selectedPackage) {
+    maxAllowedAppointments = 0;
+    appointmentMaxDatesEl.textContent = "0";
+    appointmentHoursInfoEl.textContent = "Please select a package in Step 1 first to enable date selection";
+    appointmentHoursInfoEl.style.color = "#ef4444";
+    appointmentDatesInput.disabled = true;
+    if (appointmentFp) appointmentFp.set('disabled', true);
+    return;
+  }
+
+  let totalHours = 0;
+  
+  if (selectedPackage.value === "hourly") {
+    const hoursSelect = document.getElementById("hours");
+    if (hoursSelect && hoursSelect.value) {
+      totalHours = parseInt(hoursSelect.value) || 0;
+    }
+  } else if (selectedPackage.value === "package1") {
+    totalHours = 4; // Package 1 = 4 hours
+  } else if (selectedPackage.value === "package2") {
+    totalHours = 6; // Package 2 = 6 hours
+  }
+
+  if (totalHours > 0) {
+    // Calculate appointments: 2 hours = 1 appointment, 3 hours = 2 appointments, etc.
+    // Logic: Every 2 hours = 1 appointment, with remainder hours counting as additional appointments
+    maxAllowedAppointments = Math.ceil(totalHours / 2);
+    
+    appointmentMaxDatesEl.textContent = maxAllowedAppointments;
+    
+    let appointmentText = "";
+    if (totalHours === 2) {
+      appointmentText = "1 appointment (2 hours)";
+    } else if (totalHours === 3) {
+      appointmentText = "2 appointments (3 hours total)";
+    } else if (totalHours === 4) {
+      appointmentText = "2 appointments (4 hours total)";
+    } else if (totalHours === 5) {
+      appointmentText = "3 appointments (5 hours total)";
+    } else if (totalHours === 6) {
+      appointmentText = "3 appointments (6 hours total)";
+    } else {
+      appointmentText = `${maxAllowedAppointments} appointments (${totalHours} hours total)`;
+    }
+    
+    if (selectedPackage.value === "package1") {
+      appointmentHoursInfoEl.textContent = `Package 1 includes 4 hours total - you can select up to ${appointmentText}`;
+    } else if (selectedPackage.value === "package2") {
+      appointmentHoursInfoEl.textContent = `Package 2 includes 6 hours total - you can select up to ${appointmentText}`;
+    } else {
+      appointmentHoursInfoEl.textContent = `Based on ${totalHours} hours selected - you can select up to ${appointmentText}`;
+    }
+    appointmentHoursInfoEl.style.color = "#10b981";
+    
+    appointmentDatesInput.disabled = false;
+    if (appointmentFp) {
+      appointmentFp.set('disabled', false);
+      // Clear dates if exceeding new limit
+      if (appointmentFp.selectedDates.length > maxAllowedAppointments) {
+        appointmentFp.clear();
+      }
+    }
+  } else {
+    maxAllowedAppointments = 0;
+    appointmentMaxDatesEl.textContent = "0";
+    if (selectedPackage.value === "hourly") {
+      appointmentHoursInfoEl.textContent = "Please select hours to enable date selection";
+    } else {
+      appointmentHoursInfoEl.textContent = "Please select a package to enable date selection";
+    }
+    appointmentHoursInfoEl.style.color = "#ef4444";
+    appointmentDatesInput.disabled = true;
+    if (appointmentFp) appointmentFp.set('disabled', true);
+  }
+
+  updateAppointmentDateSelection(appointmentFp ? appointmentFp.selectedDates : [], appointmentFp);
+}
+
+// Initialize Flatpickr for appointments
+function initializeAppointmentFlatpickr() {
+  appointmentFp = flatpickr("#appointment-dates", {
+    mode: "multiple",
+    dateFormat: "Y-m-d",
+    disable: [formatDate(today), formatDate(tomorrow)],
+    minDate: minDateStr,
+    disabled: true, // Start disabled
+    onChange: function(selectedDates, dateStr, instance) {
+      updateAppointmentDateSelection(selectedDates, instance);
+    },
+    onReady: function(selectedDates, dateStr, instance) {
+      updateAppointmentDateSelection(selectedDates, instance);
+    },
+    // Prevent selection beyond limit
+    onDayCreate: function(dObj, dStr, fp, dayElem) {
+      dayElem.addEventListener('click', function(e) {
+        if (fp.selectedDates.length >= maxAllowedAppointments && !dayElem.classList.contains('selected')) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+      });
+    }
+  });
+}
+
+// Update appointment date selection display and enforce limit
+function updateAppointmentDateSelection(selectedDates, instance) {
+  if (!instance) return;
+  
+  const count = selectedDates.length;
+  appointmentCountEl.textContent = count;
+  
+  // Show/hide message for incomplete selection
+  if (count < maxAllowedAppointments && maxAllowedAppointments > 0) {
+    appointmentMessageEl.style.display = "block";
+  } else {
+    appointmentMessageEl.style.display = "none";
+  }
+  
+  // Visual feedback when at limit
+  if (count >= maxAllowedAppointments && maxAllowedAppointments > 0) {
+    const calendar = instance.calendarContainer;
+    if (calendar) {
+      const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
+      unselectedDays.forEach(day => {
+        day.style.opacity = '0.3';
+        day.style.pointerEvents = 'none';
+      });
+    }
+  } else {
+    const calendar = instance.calendarContainer;
+    if (calendar) {
+      const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
+      unselectedDays.forEach(day => {
+        day.style.opacity = '';
+        day.style.pointerEvents = '';
+      });
+    }
+  }
+}
+
+// Listen for package and hours changes
+document.addEventListener('change', function(e) {
+  if (e.target.name === 'package' || e.target.id === 'hours') {
+    calculateMaxAppointments();
+  }
+});
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  initializeAppointmentFlatpickr();
+  calculateMaxAppointments();
+});
+
+// Make functions globally available for step navigation
+window.calculateMaxAppointments = calculateMaxAppointments;
+</script>
+
+<style>
+/* Additional styles for the appointment calendar */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.form-input,
+.form-select {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-help {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.form-section {
+  margin-bottom: 40px;
+  padding: 24px;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.form-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 24px;
+}
+
+.form-section-title i {
+  color: #ef4444;
+}
+
+/* Custom Flatpickr styling */
+.flatpickr-calendar {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.flatpickr-day.selected {
+  background: #ef4444 !important;
+  border-color: #ef4444 !important;
+}
+
+.flatpickr-day.selected:hover {
+  background: #dc2626 !important;
+  border-color: #dc2626 !important;
+}
+
+.flatpickr-day:hover {
+  background: #fef2f2 !important;
+  border-color: #ef4444 !important;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 
               <!-- Location Information -->
               <div class="form-section">
