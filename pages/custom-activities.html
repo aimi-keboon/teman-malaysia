@@ -1049,56 +1049,385 @@
                 </div>
               </div>
 
-              <!-- Activity Details -->
-              <div class="form-section">
-                <h3 class="form-section-title">
-                  <i class="fas fa-calendar-alt"></i>
-                  Activity Scheduling
-                </h3>
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label for="activity-date" class="form-label">Preferred Activity Date *</label>
-                    <input
-                      type="date"
-                      id="activity-date"
-                      name="activity_date"
-                      class="form-input"
-                      required
-                    />
-                    <small class="form-help">Activity can be scheduled from tomorrow onwards</small>
-                  </div>
+             <!-- Activity Scheduling -->
+<div class="form-section">
+  <h3 class="form-section-title">
+    <i class="fas fa-calendar-alt"></i>
+    Activity Scheduling
+  </h3>
+  
+  <!-- Multi-date calendar -->
+  <div class="form-group">
+    <label for="activity-dates" class="form-label">Select Activity Dates *</label>
+    <input
+      type="text"
+      id="activity-dates"
+      name="activity_dates"
+      class="form-input"
+      placeholder="Select activity dates"
+      readonly
+      required
+    />
+    <small class="form-help">Select specific dates; today and tomorrow are disabled</small>
+    <div id="activity-date-limit-message" style="display:none; color: #666; margin-top: 5px; font-size: 0.875rem;">
+      If you're unsure of the remaining dates, you may plan or book them later with our representative.
+    </div>
+    <div id="activity-date-count" style="color: #666; margin-top: 5px; font-size: 0.875rem;">
+      Selected dates: <span id="activity-selected-count">0</span>/<span id="activity-max-dates">0</span> sessions
+    </div>
+    <div id="activity-hours-info" style="color: #ef4444; margin-top: 5px; font-size: 0.875rem; font-weight: 500;">
+      Please select hours in Step 1 first to enable date selection
+    </div>
+  </div>
 
-                  <div class="form-group">
-                    <label for="activity-time" class="form-label">Preferred Start Time *</label>
-                    <select id="activity-time" name="activity_time" class="form-select" required>
-                      <option value="">Select time</option>
-                      <option value="07:00">07:00 AM</option>
-                      <option value="08:00">08:00 AM</option>
-                      <option value="09:00">09:00 AM</option>
-                      <option value="10:00">10:00 AM</option>
-                      <option value="11:00">11:00 AM</option>
-                      <option value="12:00">12:00 PM</option>
-                      <option value="13:00">01:00 PM</option>
-                      <option value="14:00">02:00 PM</option>
-                      <option value="15:00">03:00 PM</option>
-                      <option value="16:00">04:00 PM</option>
-                      <option value="17:00">05:00 PM</option>
-                      <option value="18:00">06:00 PM</option>
-                    </select>
-                  </div>
+  <!-- 30-Day Validity Disclaimer -->
+  <div style="background: #fef2f2; border: 2px dashed #dc2626; border-radius: 12px; padding: 16px; margin: 20px 0;">
+    <h4 style="color: #dc2626; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+      <i class="fas fa-exclamation-triangle"></i>
+      Important: Validity Period
+    </h4>
+    <p style="color: #dc2626; font-size: 14px; margin: 0;">
+      <strong>All unused hours are only valid for 30 days after booking.</strong> Please plan your activity dates within this period to avoid forfeiture of unused hours.
+    </p>
+  </div>
+  
+  <div class="form-grid">
+    <div class="form-group">
+      <label for="activity-time" class="form-label">Preferred Start Time *</label>
+      <select id="activity-time" name="activity_time" class="form-select" required>
+        <option value="">Select time</option>
+        <option value="07:00">07:00 AM</option>
+        <option value="08:00">08:00 AM</option>
+        <option value="09:00">09:00 AM</option>
+        <option value="10:00">10:00 AM</option>
+        <option value="11:00">11:00 AM</option>
+        <option value="12:00">12:00 PM</option>
+        <option value="13:00">01:00 PM</option>
+        <option value="14:00">02:00 PM</option>
+        <option value="15:00">03:00 PM</option>
+        <option value="16:00">04:00 PM</option>
+        <option value="17:00">05:00 PM</option>
+        <option value="18:00">06:00 PM</option>
+      </select>
+      <small class="form-help">Same start time will apply to all selected dates</small>
+    </div>
 
-                  <div class="form-group">
-                    <label for="frequency" class="form-label">Activity Frequency</label>
-                    <select id="frequency" name="frequency" class="form-select">
-                      <option value="one-time">One-time activity</option>
-                      <option value="weekly">Weekly</option>
-                      <option value="bi-weekly">Bi-weekly (Every 2 weeks)</option>
-                      <option value="monthly">Monthly</option>
-                      <option value="as-needed">As needed</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
+    <div class="form-group">
+      <label for="duration" class="form-label">Estimated Activity Duration</label>
+      <select id="duration" name="duration" class="form-select">
+        <option value="1 Hour">Less than 2 hours</option>
+        <option value="weekly">More than 2 hours</option>
+        <option value="as-needed">Not Sure</option>
+      </select>
+      <small class="form-help">For recurring activities, the same session pattern will repeat</small>
+    </div>
+  </div>
+</div>
+
+<!-- Flatpickr CSS & JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+
+<!-- Flatpickr & Logic Script -->
+<script>
+// Utility: format date as YYYY-MM-DD
+function formatDate(date) {
+  return date.toISOString().split('T')[0];
+}
+
+// Calculate date boundaries
+const today = new Date();
+const tomorrow = new Date(today);
+tomorrow.setDate(today.getDate() + 1);
+const dayAfterTomorrow = new Date(today);
+dayAfterTomorrow.setDate(today.getDate() + 2);
+
+const minDateStr = formatDate(dayAfterTomorrow);
+
+// Get DOM elements
+const activityMessageEl = document.getElementById("activity-date-limit-message");
+const activityCountEl = document.getElementById("activity-selected-count");
+const activityMaxDatesEl = document.getElementById("activity-max-dates");
+const activityHoursInfoEl = document.getElementById("activity-hours-info");
+const activityDatesInput = document.getElementById("activity-dates");
+
+let activityFp = null;
+let maxAllowedSessions = 0;
+
+// Function to calculate max sessions based on selected hours
+function calculateMaxSessions() {
+  // Check if we're in the context where the package selection exists
+  const selectedPackage = document.querySelector('input[name="package"]:checked');
+  
+  if (!selectedPackage) {
+    maxAllowedSessions = 0;
+    activityMaxDatesEl.textContent = "0";
+    activityHoursInfoEl.textContent = "Please select a package in Step 1 first to enable date selection";
+    activityHoursInfoEl.style.color = "#ef4444";
+    activityDatesInput.disabled = true;
+    if (activityFp) activityFp.set('disabled', true);
+    return;
+  }
+
+  let totalHours = 0;
+  
+  // For hourly rate package
+  if (selectedPackage.value === "basic") {
+    const hoursSelect = document.getElementById("hours");
+    if (hoursSelect && hoursSelect.value) {
+      totalHours = parseInt(hoursSelect.value) || 0;
+    }
+  }
+
+  if (totalHours > 0) {
+    // Calculate sessions: Each session = 2 hours minimum
+    // Logic: Every 2 hours = 1 session, with remainder hours counting as additional sessions
+    maxAllowedSessions = Math.ceil(totalHours / 2);
+    
+    activityMaxDatesEl.textContent = maxAllowedSessions;
+    
+    let sessionText = "";
+    if (totalHours === 2) {
+      sessionText = "1 session";
+    } else if (totalHours === 3) {
+      sessionText = "2 sessions";
+    } else if (totalHours === 4) {
+      sessionText = "2 sessions";
+    } else if (totalHours === 5) {
+      sessionText = "3 sessions";
+    } else if (totalHours === 6) {
+      sessionText = "3 sessions";
+    } else {
+      sessionText = `${maxAllowedSessions} sessions (${totalHours} hours total)`;
+    }
+    
+    activityHoursInfoEl.textContent = `Based on ${totalHours} hours selected - you can select up to ${sessionText}`;
+    activityHoursInfoEl.style.color = "#10b981";
+    
+    activityDatesInput.disabled = false;
+    if (activityFp) {
+      activityFp.set('disabled', false);
+      // Clear dates if exceeding new limit
+      if (activityFp.selectedDates.length > maxAllowedSessions) {
+        activityFp.clear();
+      }
+    }
+  } else {
+    maxAllowedSessions = 0;
+    activityMaxDatesEl.textContent = "0";
+    activityHoursInfoEl.textContent = "Please select hours to enable date selection";
+    activityHoursInfoEl.style.color = "#ef4444";
+    activityDatesInput.disabled = true;
+    if (activityFp) activityFp.set('disabled', true);
+  }
+
+  updateActivityDateSelection(activityFp ? activityFp.selectedDates : [], activityFp);
+}
+
+// Initialize Flatpickr for activities
+function initializeActivityFlatpickr() {
+  // Check if Flatpickr is loaded
+  if (typeof flatpickr === 'undefined') {
+    console.error('Flatpickr library not loaded');
+    return;
+  }
+
+  // Check if element exists
+  const inputElement = document.getElementById("activity-dates");
+  if (!inputElement) {
+    console.error('Activity dates input element not found');
+    return;
+  }
+
+  // Destroy existing instance if it exists
+  if (activityFp) {
+    activityFp.destroy();
+  }
+
+  activityFp = flatpickr("#activity-dates", {
+    mode: "multiple",
+    dateFormat: "Y-m-d",
+    disable: [formatDate(today), formatDate(tomorrow)],
+    minDate: minDateStr,
+    disabled: true, // Start disabled
+    clickOpens: true,
+    allowInput: false,
+    onChange: function(selectedDates, dateStr, instance) {
+      updateActivityDateSelection(selectedDates, instance);
+    },
+    onReady: function(selectedDates, dateStr, instance) {
+      updateActivityDateSelection(selectedDates, instance);
+    },
+    // Prevent selection beyond limit
+    onDayCreate: function(dObj, dStr, fp, dayElem) {
+      dayElem.addEventListener('click', function(e) {
+        if (fp.selectedDates.length >= maxAllowedSessions && !dayElem.classList.contains('selected')) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+      });
+    }
+  });
+
+  console.log('Flatpickr initialized:', activityFp);
+}
+
+// Update activity date selection display and enforce limit
+function updateActivityDateSelection(selectedDates, instance) {
+  if (!instance) return;
+  
+  const count = selectedDates.length;
+  activityCountEl.textContent = count;
+  
+  // Show/hide message for incomplete selection
+  if (count < maxAllowedSessions && maxAllowedSessions > 0) {
+    activityMessageEl.style.display = "block";
+  } else {
+    activityMessageEl.style.display = "none";
+  }
+  
+  // Visual feedback when at limit
+  if (count >= maxAllowedSessions && maxAllowedSessions > 0) {
+    const calendar = instance.calendarContainer;
+    if (calendar) {
+      const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
+      unselectedDays.forEach(day => {
+        day.style.opacity = '0.3';
+        day.style.pointerEvents = 'none';
+      });
+    }
+  } else {
+    const calendar = instance.calendarContainer;
+    if (calendar) {
+      const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
+      unselectedDays.forEach(day => {
+        day.style.opacity = '';
+        day.style.pointerEvents = '';
+      });
+    }
+  }
+}
+
+// Listen for package and hours changes
+document.addEventListener('change', function(e) {
+  if (e.target.name === 'package' || e.target.id === 'hours') {
+    calculateMaxSessions();
+  }
+});
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  // Add a small delay to ensure DOM is fully ready
+  setTimeout(() => {
+    initializeActivityFlatpickr();
+    calculateMaxSessions();
+  }, 100);
+});
+
+// Also initialize when page loads (fallback)
+window.addEventListener('load', function() {
+  if (!activityFp) {
+    initializeActivityFlatpickr();
+    calculateMaxSessions();
+  }
+});
+
+// Make functions globally available for step navigation
+window.calculateMaxSessions = calculateMaxSessions;
+</script>
+
+<style>
+/* Styles for the activity calendar */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.form-input,
+.form-select {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-help {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.form-section {
+  margin-bottom: 40px;
+  padding: 24px;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.form-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 24px;
+}
+
+.form-section-title i {
+  color: #ef4444;
+}
+
+/* Custom Flatpickr styling */
+.flatpickr-calendar {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.flatpickr-day.selected {
+  background: #ef4444 !important;
+  border-color: #ef4444 !important;
+}
+
+.flatpickr-day.selected:hover {
+  background: #dc2626 !important;
+  border-color: #dc2626 !important;
+}
+
+.flatpickr-day:hover {
+  background: #fef2f2 !important;
+  border-color: #ef4444 !important;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 
               <!-- Activity Locations -->
               <div class="form-section">
@@ -1154,14 +1483,7 @@
                     />
                   </div>
 
-                  <div class="form-group">
-                    <label for="state" class="form-label">State *</label>
-                    <select id="state" name="state" class="form-select" required>
-                      <option value="">Select State</option>
-                      <option value="kuala-lumpur">Kuala Lumpur</option>
-                      <option value="selangor">Selangor</option>
-                    </select>
-                  </div>
+                  
                 </div>
               </div>
 
@@ -1291,59 +1613,10 @@
                     </select>
                   </div>
 
-                  <div class="form-group">
-                    <label for="companion-age" class="form-label">Preferred Age Range</label>
-                    <select id="companion-age" name="companion_age" class="form-select">
-                      <option value="no-preference">No preference</option>
-                      <option value="young-adult">Young Adult (20-30)</option>
-                      <option value="adult">Adult (30-45)</option>
-                      <option value="mature">Mature (45-60)</option>
-                      <option value="senior">Senior (60+)</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="companion-personality" class="form-label">Preferred Personality</label>
-                    <select id="companion-personality" name="companion_personality" class="form-select">
-                      <option value="no-preference">No preference</option>
-                      <option value="outgoing">Outgoing & social</option>
-                      <option value="calm">Calm & patient</option>
-                      <option value="enthusiastic">Enthusiastic & energetic</option>
-                      <option value="professional">Professional & discrete</option>
-                    </select>
-                  </div>
+                  
                 </div>
 
-                <div class="form-group">
-                  <label for="companion-experience" class="form-label">Preferred Experience/Interests</label>
-                  <div class="checkbox-group">
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="companion_interests[]" value="local-knowledge" />
-                      <span class="checkmark"></span>
-                      Local area knowledge
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="companion_interests[]" value="photography" />
-                      <span class="checkmark"></span>
-                      Photography skills
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="companion_interests[]" value="arts-culture" />
-                      <span class="checkmark"></span>
-                      Arts & culture interest
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="companion_interests[]" value="fitness" />
-                      <span class="checkmark"></span>
-                      Fitness & wellness background
-                    </label>
-                    <label class="checkbox-item">
-                      <input type="checkbox" name="companion_interests[]" value="food" />
-                      <span class="checkmark"></span>
-                      Food & dining knowledge
-                    </label>
-                  </div>
-                </div>
+                
               </div>
 
               <!-- Additional Information -->
