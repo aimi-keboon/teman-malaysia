@@ -10,20 +10,32 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
-    
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png" />
+
     <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/responsive.css">
-    
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Include Flatpickr CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
 
     <style>
       /* Reset and base styles */
@@ -120,6 +132,21 @@
         background: #059669;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      }
+
+      .btn--payment {
+        background: #f59e0b;
+        color: white;
+        font-size: 18px;
+        padding: 20px 40px;
+        border-radius: 12px;
+        font-weight: 600;
+      }
+
+      .btn--payment:hover {
+        background: #d97706;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
       }
 
       /* Main Section */
@@ -370,6 +397,7 @@
         margin-top: 16px;
         padding-top: 16px;
         border-top: 1px solid #e5e7eb;
+        display: none;
       }
 
       .package-notes {
@@ -542,13 +570,6 @@
         margin: 0;
       }
 
-      /* Checkbox Group */
-      .checkbox-group {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 12px;
-      }
-
       /* Form Actions */
       .form-actions {
         display: flex;
@@ -571,6 +592,152 @@
 
       .back-link:hover {
         color: #3b82f6;
+      }
+
+      /* Summary Styles */
+      .booking-summary {
+        display: grid;
+        gap: 24px;
+        margin-bottom: 32px;
+      }
+
+      .summary-card {
+        background: #f9fafb;
+        border-radius: 12px;
+        padding: 24px;
+        border: 1px solid #e5e7eb;
+      }
+
+      .summary-card h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .summary-card h3 i {
+        color: #3b82f6;
+      }
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .summary-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+
+      .summary-label {
+        font-weight: 500;
+        color: #6b7280;
+        flex-shrink: 0;
+        margin-right: 16px;
+      }
+
+      .summary-value {
+        color: #1f2937;
+        text-align: right;
+        flex: 1;
+        word-break: break-word;
+      }
+
+      .summary-item.total {
+        font-size: 1.25rem;
+        font-weight: 600;
+        border-top: 2px solid #3b82f6;
+        padding-top: 16px;
+        margin-top: 16px;
+      }
+
+      .summary-item.total .summary-value {
+        color: #3b82f6;
+      }
+
+      .summary-divider {
+        height: 1px;
+        background: #e5e7eb;
+        margin: 16px 0;
+      }
+
+      .cost-note {
+        font-size: 12px;
+        color: #6b7280;
+        font-style: italic;
+        margin-top: 8px;
+      }
+
+      /* Modal Styles */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 500px;
+        text-align: center;
+        margin: 20px;
+      }
+
+      .success-icon {
+        font-size: 4rem;
+        color: #10b981;
+        margin-bottom: 20px;
+      }
+
+      .booking-reference {
+        background: #f0f9ff;
+        padding: 16px;
+        border-radius: 8px;
+        margin: 20px 0;
+        border: 1px solid #bfdbfe;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 24px;
+      }
+
+      /* Flatpickr Custom Styling */
+      .flatpickr-calendar {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+        border: 1px solid #e5e7eb !important;
+      }
+
+      .flatpickr-day.selected {
+        background: #ef4444 !important;
+        border-color: #ef4444 !important;
+      }
+
+      .flatpickr-day.selected:hover {
+        background: #dc2626 !important;
+        border-color: #dc2626 !important;
+      }
+
+      .flatpickr-day:hover {
+        background: #fef2f2 !important;
+        border-color: #ef4444 !important;
       }
 
       /* Responsive */
@@ -621,6 +788,16 @@
           align-items: flex-start;
           gap: 8px;
         }
+
+        .summary-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+        }
+
+        .summary-value {
+          text-align: left;
+        }
       }
 
       .text-center {
@@ -643,7 +820,8 @@
         <div class="booking__header text-center">
           <h1 class="booking__title">Health Appointment Support</h1>
           <p class="booking__subtitle">
-            Professional assistance for medical checkups and treatments with caring companionship
+            Professional assistance for medical checkups and treatments with
+            caring companionship
           </p>
         </div>
 
@@ -655,8 +833,12 @@
             </div>
             <h2>TEMAN to Health Appointments</h2>
           </div>
-          <p>Get the support you need for medical visits with our trained companions who provide assistance, emotional support, and practical help throughout your appointment.</p>
-          
+          <p>
+            Get the support you need for medical visits with our trained
+            companions who provide assistance, emotional support, and practical
+            help throughout your appointment.
+          </p>
+
           <div class="service-features">
             <div class="feature-item">
               <i class="fas fa-check"></i>
@@ -698,151 +880,174 @@
             </div>
             <div class="step" data-step="3">
               <div class="step__number">3</div>
-              <div class="step__label">Confirm</div>
+              <div class="step__label">Payment</div>
             </div>
           </div>
 
           <!-- Booking Form -->
-          <form id="health-booking-form" class="booking-form" data-form-type="health-appointments">
+          <form
+            id="health-booking-form"
+            class="booking-form"
+            data-form-type="health-appointments"
+          >
             <!-- Step 1: Package Selection -->
-<div class="form-step active" data-step="1">
-  <h2 class="step-title">Choose Your Package & Activities</h2>
+            <div class="form-step active" data-step="1">
+              <h2 class="step-title">Choose Your Package</h2>
 
-  <div class="package-options">
-    <!-- Hourly Rate Package -->
-    <div class="package-option">
-      <input
-        type="radio"
-        name="package"
-        value="hourly"
-        id="hourly-package"
-        required
-      />
-      <label for="hourly-package" class="package-card">
-        <div class="package-header">
-          <div class="package-title">Hourly Rate</div>
-          <div class="package-price">RM35/hour</div>
-        </div>
-        <div class="package-description">
-          Flexible hourly booking for any leisure activities or social outings. Minimum 2 hours required.
-        </div>
-        
-        <div class="hours-selection" style="display: none">
-          <label for="hours" class="form-label">Number of Hours: *</label>
-          <select name="hours" id="hours" class="form-select">
-            <option value="">Select hours</option>
-            <option value="2">2 hours - RM70</option>
-            <option value="3">3 hours - RM105</option>
-            <option value="4">4 hours - RM140</option>
-            <option value="5">5 hours - RM175</option>
-            <option value="6">6 hours - RM210</option>
-            <option value="custom">More than 6 hours (Contact us)</option>
-          </select>
-        </div>
-        
-        <div class="package-notes">
-          <small>• Perfect for any leisure or social activities</small>
-          <small>• Completely customizable to your interests</small>
-          <small>• Flexible scheduling available</small>
-        </div>
-      </label>
-    </div>
+              <div class="package-options">
+                <!-- Hourly Rate Package -->
+                <div class="package-option">
+                  <input
+                    type="radio"
+                    name="package"
+                    value="hourly"
+                    id="hourly-package"
+                    required
+                  />
+                  <label for="hourly-package" class="package-card">
+                    <div class="package-header">
+                      <div class="package-title">Hourly Rate</div>
+                      <div class="package-price">RM35/hour</div>
+                    </div>
+                    <div class="package-description">
+                      Flexible hourly booking for any health appointments.
+                      Minimum 2 hours required.
+                    </div>
 
-    <!-- Package 1: 4 Hours -->
-    <div class="package-option">
-      <input
-        type="radio"
-        name="package"
-        value="package1"
-        id="package1"
-      />
-      <label for="package1" class="package-card">
-        <div class="package-header">
-          <div class="package-title">Package 1</div>
-          <div class="package-price">RM126</div>
-        </div>
-        <div class="package-description">
-          4 hours total for your activities and appointments. Great value for regular bookings with up to 2 appointment dates.
-        </div>
-        
-        <div class="package-notes">
-          <small>• Save RM14 compared to hourly rate!</small>
-          <small>• 4 hours total - perfect for 2 appointments</small>
-          <small>• Valid for 30 days after booking</small>
-          <small>• Great for medical appointments</small>
-        </div>
-      </label>
-    </div>
+                    <div class="hours-selection">
+                      <label for="hours" class="form-label"
+                        >Number of Hours: *</label
+                      >
+                      <select
+                        name="hours"
+                        id="hours"
+                        class="form-select"
+                        required
+                      >
+                        <option value="">Select hours</option>
+                        <option value="2">2 hours - RM70</option>
+                        <option value="3">3 hours - RM105</option>
+                        <option value="4">4 hours - RM140</option>
+                        <option value="5">5 hours - RM175</option>
+                        <option value="6">6 hours - RM210</option>
+                        <option value="custom">
+                          More than 6 hours (Contact us)
+                        </option>
+                      </select>
+                    </div>
 
-    <!-- Package 2: 6 Hours -->
-    <div class="package-option">
-      <input
-        type="radio"
-        name="package"
-        value="package2"
-        id="package2"
-      />
-      <label for="package2" class="package-card">
-        <div class="package-header">
-          <div class="package-title">Package 2</div>
-          <div class="package-price">RM180</div>
-        </div>
-        <div class="package-description">
-          6 hours total for extended activities and multiple appointments. Best value for comprehensive care with up to 3 appointment dates.
-        </div>
-        
-        <div class="package-notes">
-          <small>• Save RM30 compared to hourly rate!</small>
-          <small>• 6 hours total - perfect for 3 appointments</small>
-          <small>• Valid for 30 days after booking</small>
-          <small>• Ideal for multiple medical visits</small>
-        </div>
-      </label>
-    </div>
-  </div>
+                    <div class="package-notes">
+                      <small>• Perfect for single appointments</small>
+                      <small>• Completely customizable to your needs</small>
+                      <small>• Flexible scheduling available</small>
+                    </div>
+                  </label>
+                </div>
 
-  <div style="background: #fffbeb; padding: 16px; border-radius: 8px; margin-bottom: 32px; border-left: 4px solid #f59e0b;">
-    <h4 style="color: #d97706; margin-bottom: 8px;">Additional Fees & Information:</h4>
-    <small style="display: block; color: #d97706; margin-bottom: 4px;">• Transportation fee: RM0.80/KM or e-hailing fare</small>
-    <small style="display: block; color: #d97706; margin-bottom: 4px;">• Transport allowance: RM20/session</small>
-    <small style="display: block; color: #d97706; margin-bottom: 4px;">• Surcharge: RM37/hour for Public Holiday/Sunday/last minute booking</small>
-    <small style="display: block; color: #d97706;">• For service longer than 6 hours, bulk purchase or customization - contact us for quote</small>
-  </div>
+                <!-- Package 1: 4 Hours -->
+                <div class="package-option">
+                  <input
+                    type="radio"
+                    name="package"
+                    value="package1"
+                    id="package1"
+                    required
+                  />
+                  <label for="package1" class="package-card">
+                    <div class="package-header">
+                      <div class="package-title">Package 1</div>
+                      <div class="package-price">RM126</div>
+                    </div>
+                    <div class="package-description">
+                      4 hours total for your activities and appointments. Great
+                      value for regular bookings with up to 2 appointment dates.
+                    </div>
 
-  <div class="form-actions">
-    <button
-      type="button"
-      class="btn btn--primary btn--large"
-      onclick="nextStep()"
-    >
-      Continue to Details
-      <i class="fas fa-arrow-right"></i>
-    </button>
-  </div>
-</div>
+                    <div class="package-notes">
+                      <small>• Save RM14 compared to hourly rate!</small>
+                      <small
+                        >• 4 hours total - perfect for 2 appointments</small
+                      >
+                      <small>• Valid for 30 days after booking</small>
+                      <small>• Great for medical appointments</small>
+                    </div>
+                  </label>
+                </div>
 
-<script>
-// Handle package selection and show/hide hours selection
-document.addEventListener("DOMContentLoaded", function () {
-  document.addEventListener("change", function (e) {
-    if (e.target.name === "package") {
-      const hoursSelections = document.querySelectorAll(".hours-selection");
-      hoursSelections.forEach(selection => {
-        selection.style.display = "none";
-      });
+                <!-- Package 2: 6 Hours -->
+                <div class="package-option">
+                  <input
+                    type="radio"
+                    name="package"
+                    value="package2"
+                    id="package2"
+                    required
+                  />
+                  <label for="package2" class="package-card">
+                    <div class="package-header">
+                      <div class="package-title">Package 2</div>
+                      <div class="package-price">RM180</div>
+                    </div>
+                    <div class="package-description">
+                      6 hours total for extended activities and multiple
+                      appointments. Best value for comprehensive care with up to
+                      3 appointment dates.
+                    </div>
 
-      if (e.target.value === "hourly") {
-        document.querySelector("#hourly-package + .package-card .hours-selection").style.display = "block";
-      }
-      
-      // Trigger calendar update if the function exists
-      if (typeof calculateMaxAppointments === 'function') {
-        calculateMaxAppointments();
-      }
-    }
-  });
-});
-</script>
+                    <div class="package-notes">
+                      <small>• Save RM30 compared to hourly rate!</small>
+                      <small
+                        >• 6 hours total - perfect for 3 appointments</small
+                      >
+                      <small>• Valid for 30 days after booking</small>
+                      <small>• Ideal for multiple medical visits</small>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div
+                style="
+                  background: #fffbeb;
+                  padding: 16px;
+                  border-radius: 8px;
+                  margin-bottom: 32px;
+                  border-left: 4px solid #f59e0b;
+                "
+              >
+                <h4 style="color: #d97706; margin-bottom: 8px">
+                  Additional Fees & Information:
+                </h4>
+                <small
+                  style="display: block; color: #d97706; margin-bottom: 4px"
+                  >• Transportation fee: RM0.80/KM or e-hailing fare</small
+                >
+                <small
+                  style="display: block; color: #d97706; margin-bottom: 4px"
+                  >• Transport allowance: RM20/session</small
+                >
+                <small
+                  style="display: block; color: #d97706; margin-bottom: 4px"
+                  >• Surcharge: RM37/hour for Public Holiday/Sunday/last minute
+                  booking</small
+                >
+                <small style="display: block; color: #d97706"
+                  >• For service longer than 6 hours, bulk purchase or
+                  customization - contact us for quote</small
+                >
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn btn--primary btn--large"
+                  onclick="nextStep()"
+                >
+                  Continue to Details<i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
             <!-- Step 2: Personal Details -->
             <div class="form-step" data-step="2">
               <h2 class="step-title">Booking Details</h2>
@@ -855,7 +1060,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </h3>
                 <div class="form-grid">
                   <div class="form-group">
-                    <label for="full-name" class="form-label">Full Name *</label>
+                    <label for="full-name" class="form-label"
+                      >Full Name *</label
+                    >
                     <input
                       type="text"
                       id="full-name"
@@ -867,8 +1074,14 @@ document.addEventListener("DOMContentLoaded", function () {
                   </div>
 
                   <div class="form-group">
-                    <label for="relationship" class="form-label">Relationship to Care Recipient</label>
-                    <select id="relationship" name="relationship" class="form-select">
+                    <label for="relationship" class="form-label"
+                      >Relationship to Care Recipient</label
+                    >
+                    <select
+                      id="relationship"
+                      name="relationship"
+                      class="form-select"
+                    >
                       <option value="">Select relationship</option>
                       <option value="self">Self</option>
                       <option value="spouse">Spouse</option>
@@ -895,7 +1108,9 @@ document.addEventListener("DOMContentLoaded", function () {
                   </div>
 
                   <div class="form-group">
-                    <label for="email" class="form-label">Email Address *</label>
+                    <label for="email" class="form-label"
+                      >Email Address *</label
+                    >
                     <input
                       type="email"
                       id="email"
@@ -904,18 +1119,25 @@ document.addEventListener("DOMContentLoaded", function () {
                       placeholder="your.email@example.com"
                       required
                     />
-                    <small class="form-help">Use company email if claiming staff benefit</small>
+                    <small class="form-help"
+                      >Use company email if claiming staff benefit</small
+                    >
                   </div>
+
                   <div class="form-group">
-                    <label for="employer" class="form-label">Employer Name</label>
+                    <label for="employer" class="form-label"
+                      >Employer Name</label
+                    >
                     <input
                       type="text"
                       id="employer"
                       name="employer"
                       class="form-input"
-                      
+                      placeholder="Your company name"
                     />
-                    <small class="form-help">For those claiming for Staff Benefit only</small>
+                    <small class="form-help"
+                      >For those claiming for Staff Benefit only</small
+                    >
                   </div>
 
                   <div class="form-group">
@@ -925,15 +1147,18 @@ document.addEventListener("DOMContentLoaded", function () {
                       id="staff_id"
                       name="staff_id"
                       class="form-input"
-                      
+                      placeholder="Your employee ID"
                     />
-                    <small class="form-help">For those claiming for Staff Benefit only</small>
+                    <small class="form-help"
+                      >For those claiming for Staff Benefit only</small
+                    >
                   </div>
                 </div>
-                 
 
                 <div class="form-group">
-                  <label for="emergency-contact" class="form-label">Emergency Contact Person *</label>
+                  <label for="emergency-contact" class="form-label"
+                    >Emergency Contact Person *</label
+                  >
                   <input
                     type="text"
                     id="emergency-contact"
@@ -953,7 +1178,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 </h3>
                 <div class="form-grid">
                   <div class="form-group">
-                    <label for="Care Recipient-name" class="form-label">Care Recipient Name</label>
+                    <label for="patient-name" class="form-label"
+                      >Care Recipient Name</label
+                    >
                     <input
                       type="text"
                       id="patient-name"
@@ -964,7 +1191,9 @@ document.addEventListener("DOMContentLoaded", function () {
                   </div>
 
                   <div class="form-group">
-                    <label for="patient-age" class="form-label">Care Recipient Age</label>
+                    <label for="patient-age" class="form-label"
+                      >Care Recipient Age</label
+                    >
                     <input
                       type="number"
                       id="patient-age"
@@ -977,23 +1206,39 @@ document.addEventListener("DOMContentLoaded", function () {
                   </div>
 
                   <div class="form-group">
-                    <label for="patient-gender" class="form-label">Gender</label>
-                    <select id="patient-gender" name="patient_gender" class="form-select">
+                    <label for="patient-gender" class="form-label"
+                      >Gender</label
+                    >
+                    <select
+                      id="patient-gender"
+                      name="patient_gender"
+                      class="form-select"
+                    >
+                      <option value="">Select gender</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                     </select>
                   </div>
 
                   <div class="form-group">
-                    <label for="patient-language" class="form-label">Preferred Language</label>
-                    <select id="patient-language" name="patient_language" class="form-select">
+                    <label for="patient-language" class="form-label"
+                      >Preferred Language</label
+                    >
+                    <select
+                      id="patient-language"
+                      name="patient_language"
+                      class="form-select"
+                    >
                       <option value="english">English</option>
                       <option value="bahasa">Bahasa Malaysia</option>
                       <option value="other">Other</option>
                     </select>
                   </div>
+
                   <div class="form-group">
-                    <label for="patient-weight" class="form-label">Care Recipient Weight</label>
+                    <label for="patient-weight" class="form-label"
+                      >Care Recipient Weight</label
+                    >
                     <input
                       type="number"
                       id="patient-weight"
@@ -1002,8 +1247,11 @@ document.addEventListener("DOMContentLoaded", function () {
                       placeholder="Weight in kg"
                     />
                   </div>
+
                   <div class="form-group">
-                    <label for="patient-height" class="form-label">Care Recipient Height</label>
+                    <label for="patient-height" class="form-label"
+                      >Care Recipient Height</label
+                    >
                     <input
                       type="number"
                       id="patient-height"
@@ -1015,400 +1263,198 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
               </div>
 
-             <!-- Include Flatpickr CSS and JS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+              <!-- Appointment Details -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-calendar-alt"></i>
+                  Appointment Details
+                </h3>
 
-<!-- Appointment Details -->
-<div class="form-section">
-  <h3 class="form-section-title">
-    <i class="fas fa-calendar-alt"></i>
-    Appointment Details
-  </h3>
-  
-  <!-- Multi-date calendar -->
-  <div class="form-group">
-    <label for="appointment-dates" class="form-label">Select Appointment Dates *</label>
-    <input
-      type="text"
-      id="appointment-dates"
-      name="appointment_dates"
-      class="form-input"
-      placeholder="Select appointment dates"
-      readonly
-      required
-    />
-    <small class="form-help">Select specific dates; today and tomorrow are disabled</small>
-    <div id="appointment-date-limit-message" style="display:none; color: #666; margin-top: 5px; font-size: 0.875rem;">
-      If you're unsure of the remaining dates, you may plan or book them later with our representative.
-    </div>
-    <div id="appointment-date-count" style="color: #666; margin-top: 5px; font-size: 0.875rem;">
-      Selected dates: <span id="appointment-selected-count">0</span>/<span id="appointment-max-dates">0</span> sessions
-    </div>
-    <div id="appointment-hours-info" style="color: #ef4444; margin-top: 5px; font-size: 0.875rem; font-weight: 500;">
-      Please select hours in Step 1 first to enable date selection
-    </div>
-  </div>
+                <!-- Multi-date calendar -->
+                <div class="form-group">
+                  <label for="appointment-dates" class="form-label"
+                    >Select Appointment Dates *</label
+                  >
+                  <input
+                    type="text"
+                    id="appointment-dates"
+                    name="appointment_dates"
+                    class="form-input"
+                    placeholder="Select appointment dates"
+                    readonly
+                    required
+                  />
+                  <small class="form-help"
+                    >Select specific dates; today and tomorrow are
+                    disabled</small
+                  >
+                  <div
+                    id="appointment-date-limit-message"
+                    style="
+                      display: none;
+                      color: #666;
+                      margin-top: 5px;
+                      font-size: 0.875rem;
+                    "
+                  >
+                    If you're unsure of the remaining dates, you may plan or
+                    book them later with our representative.
+                  </div>
+                  <div
+                    id="appointment-date-count"
+                    style="color: #666; margin-top: 5px; font-size: 0.875rem"
+                  >
+                    Selected dates:
+                    <span id="appointment-selected-count">0</span>/<span
+                      id="appointment-max-dates"
+                      >0</span
+                    >
+                    sessions
+                  </div>
+                  <div
+                    id="appointment-hours-info"
+                    style="
+                      color: #ef4444;
+                      margin-top: 5px;
+                      font-size: 0.875rem;
+                      font-weight: 500;
+                    "
+                  >
+                    Please select a package in Step 1 first to enable date
+                    selection
+                  </div>
+                </div>
 
-  <!-- 30-Day Validity Disclaimer -->
-  <div style="background: #fef2f2; border: 2px dashed #dc2626; border-radius: 12px; padding: 16px; margin: 20px 0;">
-    <h4 style="color: #dc2626; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-      <i class="fas fa-exclamation-triangle"></i>
-      Important: Validity Period
-    </h4>
-    <p style="color: #dc2626; font-size: 14px; margin: 0;">
-      <strong>All unused hours are only valid for 30 days after booking.</strong> Please plan your appointment dates within this period to avoid forfeiture of unused hours.
-    </p>
-  </div>
-  
-  <div class="form-grid">
-    <div class="form-group">
-      <label for="appointment-type" class="form-label">Type of Medical Appointment *</label>
-      <select id="appointment-type" name="appointment_type" class="form-select" required>
-        <option value="">Select appointment type</option>
-        <option value="general-checkup">General Health Checkup</option>
-        <option value="specialist">Specialist Consultation</option>
-        <option value="diagnostic">Diagnostic Tests/Screening</option>
-        <option value="treatment">Medical Treatment</option>
-        <option value="therapy">Physical/Occupational Therapy</option>
-        <option value="dental">Dental Appointment</option>
-        <option value="eye-care">Eye Care/Optometry</option>
-        <option value="mental-health">Mental Health/Counseling</option>
-        <option value="vaccination">Vaccination</option>
-        <option value="other">Other</option>
-      </select>
-    </div>
+                <!-- 30-Day Validity Disclaimer -->
+                <div
+                  style="
+                    background: #fef2f2;
+                    border: 2px dashed #dc2626;
+                    border-radius: 12px;
+                    padding: 16px;
+                    margin: 20px 0;
+                  "
+                >
+                  <h4
+                    style="
+                      color: #dc2626;
+                      margin-bottom: 8px;
+                      display: flex;
+                      align-items: center;
+                      gap: 8px;
+                    "
+                  >
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Important: Validity Period
+                  </h4>
+                  <p style="color: #dc2626; font-size: 14px; margin: 0">
+                    <strong
+                      >All unused hours are only valid for 30 days after
+                      booking.</strong
+                    >
+                    Please plan your appointment dates within this period to
+                    avoid forfeiture of unused hours.
+                  </p>
+                </div>
 
-    
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="appointment-type" class="form-label"
+                      >Type of Medical Appointment *</label
+                    >
+                    <select
+                      id="appointment-type"
+                      name="appointment_type"
+                      class="form-select"
+                      required
+                    >
+                      <option value="">Select appointment type</option>
+                      <option value="general-checkup">
+                        General Health Checkup
+                      </option>
+                      <option value="specialist">
+                        Specialist Consultation
+                      </option>
+                      <option value="diagnostic">
+                        Diagnostic Tests/Screening
+                      </option>
+                      <option value="treatment">Medical Treatment</option>
+                      <option value="therapy">
+                        Physical/Occupational Therapy
+                      </option>
+                      <option value="dental">Dental Appointment</option>
+                      <option value="eye-care">Eye Care/Optometry</option>
+                      <option value="mental-health">
+                        Mental Health/Counseling
+                      </option>
+                      <option value="vaccination">Vaccination</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
 
-    <div class="form-group">
-      <label for="doctor-name" class="form-label">Doctor/Specialist Name</label>
-      <input
-        type="text"
-        id="doctor-name"
-        name="doctor_name"
-        class="form-input"
-        placeholder="Dr. Name (if known)"
-      />
-    </div>
+                  <div class="form-group">
+                    <label for="doctor-name" class="form-label"
+                      >Doctor/Specialist Name</label
+                    >
+                    <input
+                      type="text"
+                      id="doctor-name"
+                      name="doctor_name"
+                      class="form-input"
+                      placeholder="Dr. Name (if known)"
+                    />
+                  </div>
 
-    <div class="form-group">
-      <label for="appointment-time" class="form-label">Preferred Appointment Time *</label>
-      <select id="appointment-time" name="appointment_time" class="form-select" required>
-         <option value="07:00">07:00 AM</option>
-        <option value="08:00">08:00 AM</option>
-        <option value="09:00">09:00 AM</option>
-        <option value="10:00">10:00 AM</option>
-        <option value="11:00">11:00 AM</option>
-        <option value="12:00">12:00 PM</option>
-        <option value="13:00">01:00 PM</option>
-        <option value="14:00">02:00 PM</option>
-        <option value="15:00">03:00 PM</option>
-        <option value="16:00">04:00 PM</option>
-        <option value="17:00">05:00 PM</option>
-        <option value="18:00">06:00 PM</option>
-        <option value="07:00">07:00 PM</option>
-        <option value="08:00">08:00 PM</option>
-        <option value="09:00">09:00 PM</option>
-      </select>
-    </div>
+                  <div class="form-group">
+                    <label for="appointment-time" class="form-label"
+                      >Preferred Appointment Time *</label
+                    >
+                    <select
+                      id="appointment-time"
+                      name="appointment_time"
+                      class="form-select"
+                      required
+                    >
+                      <option value="">Select time</option>
+                      <option value="07:00">07:00 AM</option>
+                      <option value="08:00">08:00 AM</option>
+                      <option value="09:00">09:00 AM</option>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="11:00">11:00 AM</option>
+                      <option value="12:00">12:00 PM</option>
+                      <option value="13:00">01:00 PM</option>
+                      <option value="14:00">02:00 PM</option>
+                      <option value="15:00">03:00 PM</option>
+                      <option value="16:00">04:00 PM</option>
+                      <option value="17:00">05:00 PM</option>
+                      <option value="18:00">06:00 PM</option>
+                      <option value="19:00">07:00 PM</option>
+                      <option value="20:00">08:00 PM</option>
+                      <option value="21:00">09:00 PM</option>
+                    </select>
+                  </div>
 
-    <div class="form-group">
-      <label for="estimated-duration" class="form-label">Estimated Duration</label>
-      <select id="estimated-duration" name="estimated_duration" class="form-select">
-        <option value="">Select duration</option>
-        <option value="30min">30 minutes</option>
-        <option value="1hour">1 hour</option>
-        <option value="1.5hours">1.5 hours</option>
-        <option value="2hours">2 hours</option>
-        <option value="3hours">3 hours</option>
-        <option value="4hours">4+ hours</option>
-        <option value="unknown">Unknown</option>
-      </select>
-    </div>
-  </div>
-</div>
-
-<!-- Flatpickr & Logic Script -->
-<script>
-// Utility: format date as YYYY-MM-DD
-function formatDate(date) {
-  return date.toISOString().split('T')[0];
-}
-
-// Calculate date boundaries
-const today = new Date();
-const tomorrow = new Date(today);
-tomorrow.setDate(today.getDate() + 1);
-const dayAfterTomorrow = new Date(today);
-dayAfterTomorrow.setDate(today.getDate() + 2);
-
-const minDateStr = formatDate(dayAfterTomorrow);
-
-// Get DOM elements
-const appointmentMessageEl = document.getElementById("appointment-date-limit-message");
-const appointmentCountEl = document.getElementById("appointment-selected-count");
-const appointmentMaxDatesEl = document.getElementById("appointment-max-dates");
-const appointmentHoursInfoEl = document.getElementById("appointment-hours-info");
-const appointmentDatesInput = document.getElementById("appointment-dates");
-
-let appointmentFp = null;
-let maxAllowedAppointments = 0;
-
-// Function to calculate max appointments based on selected package/hours
-function calculateMaxAppointments() {
-  // Check if we're in the context where the package selection exists
-  const selectedPackage = document.querySelector('input[name="package"]:checked');
-  
-  if (!selectedPackage) {
-    maxAllowedAppointments = 0;
-    appointmentMaxDatesEl.textContent = "0";
-    appointmentHoursInfoEl.textContent = "Please select a package in Step 1 first to enable date selection";
-    appointmentHoursInfoEl.style.color = "#ef4444";
-    appointmentDatesInput.disabled = true;
-    if (appointmentFp) appointmentFp.set('disabled', true);
-    return;
-  }
-
-  let totalHours = 0;
-  
-  if (selectedPackage.value === "hourly") {
-    const hoursSelect = document.getElementById("hours");
-    if (hoursSelect && hoursSelect.value) {
-      totalHours = parseInt(hoursSelect.value) || 0;
-    }
-  } else if (selectedPackage.value === "package1") {
-    totalHours = 4; // Package 1 = 4 hours
-  } else if (selectedPackage.value === "package2") {
-    totalHours = 6; // Package 2 = 6 hours
-  }
-
-  if (totalHours > 0) {
-    // Calculate appointments: 2 hours = 1 appointment, 3 hours = 2 appointments, etc.
-    // Logic: Every 2 hours = 1 appointment, with remainder hours counting as additional appointments
-    maxAllowedAppointments = Math.ceil(totalHours / 2);
-    
-    appointmentMaxDatesEl.textContent = maxAllowedAppointments;
-    
-    let appointmentText = "";
-    if (totalHours === 2) {
-      appointmentText = "1 appointment (2 hours)";
-    } else if (totalHours === 3) {
-      appointmentText = "2 appointments (3 hours total)";
-    } else if (totalHours === 4) {
-      appointmentText = "2 appointments (4 hours total)";
-    } else if (totalHours === 5) {
-      appointmentText = "3 appointments (5 hours total)";
-    } else if (totalHours === 6) {
-      appointmentText = "3 appointments (6 hours total)";
-    } else {
-      appointmentText = `${maxAllowedAppointments} appointments (${totalHours} hours total)`;
-    }
-    
-    if (selectedPackage.value === "package1") {
-      appointmentHoursInfoEl.textContent = `Package 1 includes 4 hours total - you can select up to ${appointmentText}`;
-    } else if (selectedPackage.value === "package2") {
-      appointmentHoursInfoEl.textContent = `Package 2 includes 6 hours total - you can select up to ${appointmentText}`;
-    } else {
-      appointmentHoursInfoEl.textContent = `Based on ${totalHours} hours selected - you can select up to ${appointmentText}`;
-    }
-    appointmentHoursInfoEl.style.color = "#10b981";
-    
-    appointmentDatesInput.disabled = false;
-    if (appointmentFp) {
-      appointmentFp.set('disabled', false);
-      // Clear dates if exceeding new limit
-      if (appointmentFp.selectedDates.length > maxAllowedAppointments) {
-        appointmentFp.clear();
-      }
-    }
-  } else {
-    maxAllowedAppointments = 0;
-    appointmentMaxDatesEl.textContent = "0";
-    if (selectedPackage.value === "hourly") {
-      appointmentHoursInfoEl.textContent = "Please select hours to enable date selection";
-    } else {
-      appointmentHoursInfoEl.textContent = "Please select a package to enable date selection";
-    }
-    appointmentHoursInfoEl.style.color = "#ef4444";
-    appointmentDatesInput.disabled = true;
-    if (appointmentFp) appointmentFp.set('disabled', true);
-  }
-
-  updateAppointmentDateSelection(appointmentFp ? appointmentFp.selectedDates : [], appointmentFp);
-}
-
-// Initialize Flatpickr for appointments
-function initializeAppointmentFlatpickr() {
-  appointmentFp = flatpickr("#appointment-dates", {
-    mode: "multiple",
-    dateFormat: "Y-m-d",
-    disable: [formatDate(today), formatDate(tomorrow)],
-    minDate: minDateStr,
-    disabled: true, // Start disabled
-    onChange: function(selectedDates, dateStr, instance) {
-      updateAppointmentDateSelection(selectedDates, instance);
-    },
-    onReady: function(selectedDates, dateStr, instance) {
-      updateAppointmentDateSelection(selectedDates, instance);
-    },
-    // Prevent selection beyond limit
-    onDayCreate: function(dObj, dStr, fp, dayElem) {
-      dayElem.addEventListener('click', function(e) {
-        if (fp.selectedDates.length >= maxAllowedAppointments && !dayElem.classList.contains('selected')) {
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        }
-      });
-    }
-  });
-}
-
-// Update appointment date selection display and enforce limit
-function updateAppointmentDateSelection(selectedDates, instance) {
-  if (!instance) return;
-  
-  const count = selectedDates.length;
-  appointmentCountEl.textContent = count;
-  
-  // Show/hide message for incomplete selection
-  if (count < maxAllowedAppointments && maxAllowedAppointments > 0) {
-    appointmentMessageEl.style.display = "block";
-  } else {
-    appointmentMessageEl.style.display = "none";
-  }
-  
-  // Visual feedback when at limit
-  if (count >= maxAllowedAppointments && maxAllowedAppointments > 0) {
-    const calendar = instance.calendarContainer;
-    if (calendar) {
-      const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
-      unselectedDays.forEach(day => {
-        day.style.opacity = '0.3';
-        day.style.pointerEvents = 'none';
-      });
-    }
-  } else {
-    const calendar = instance.calendarContainer;
-    if (calendar) {
-      const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
-      unselectedDays.forEach(day => {
-        day.style.opacity = '';
-        day.style.pointerEvents = '';
-      });
-    }
-  }
-}
-
-// Listen for package and hours changes
-document.addEventListener('change', function(e) {
-  if (e.target.name === 'package' || e.target.id === 'hours') {
-    calculateMaxAppointments();
-  }
-});
-
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-  initializeAppointmentFlatpickr();
-  calculateMaxAppointments();
-});
-
-// Make functions globally available for step navigation
-window.calculateMaxAppointments = calculateMaxAppointments;
-</script>
-
-<style>
-/* Additional styles for the appointment calendar */
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.form-label {
-  font-weight: 500;
-  color: #374151;
-  margin-bottom: 8px;
-  font-size: 14px;
-}
-
-.form-input,
-.form-select {
-  padding: 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: border-color 0.3s ease;
-}
-
-.form-input:focus,
-.form-select:focus {
-  outline: none;
-  border-color: #ef4444;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
-}
-
-.form-help {
-  font-size: 12px;
-  color: #6b7280;
-  margin-top: 4px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.form-section {
-  margin-bottom: 40px;
-  padding: 24px;
-  background: #f9fafb;
-  border-radius: 12px;
-}
-
-.form-section-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 24px;
-}
-
-.form-section-title i {
-  color: #ef4444;
-}
-
-/* Custom Flatpickr styling */
-.flatpickr-calendar {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
-  border: 1px solid #e5e7eb !important;
-}
-
-.flatpickr-day.selected {
-  background: #ef4444 !important;
-  border-color: #ef4444 !important;
-}
-
-.flatpickr-day.selected:hover {
-  background: #dc2626 !important;
-  border-color: #dc2626 !important;
-}
-
-.flatpickr-day:hover {
-  background: #fef2f2 !important;
-  border-color: #ef4444 !important;
-}
-
-@media (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
+                  <div class="form-group">
+                    <label for="estimated-duration" class="form-label"
+                      >Estimated Duration</label
+                    >
+                    <select
+                      id="estimated-duration"
+                      name="estimated_duration"
+                      class="form-select"
+                    >
+                      <option value="">Select duration</option>
+                      <option value="30min">30 minutes</option>
+                      <option value="1hour">1 hour</option>
+                      <option value="1.5hours">1.5 hours</option>
+                      <option value="2hours">2 hours</option>
+                      <option value="3hours">3 hours</option>
+                      <option value="4hours">4+ hours</option>
+                      <option value="unknown">Unknown</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
 
               <!-- Location Information -->
               <div class="form-section">
@@ -1417,7 +1463,9 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                   Location Details
                 </h3>
                 <div class="form-group">
-                  <label for="facility-address" class="form-label">Medical Facility Address *</label>
+                  <label for="facility-address" class="form-label"
+                    >Medical Facility Address *</label
+                  >
                   <textarea
                     id="facility-address"
                     name="facility_address"
@@ -1429,7 +1477,9 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                 </div>
 
                 <div class="form-group">
-                  <label for="pickup-address" class="form-label">Pickup Address *</label>
+                  <label for="pickup-address" class="form-label"
+                    >Pickup Address *</label
+                  >
                   <textarea
                     id="pickup-address"
                     name="pickup_address"
@@ -1442,7 +1492,9 @@ window.calculateMaxAppointments = calculateMaxAppointments;
 
                 <div class="form-grid">
                   <div class="form-group">
-                    <label for="pickup-time" class="form-label">Preferred Pickup Time *</label>
+                    <label for="pickup-time" class="form-label"
+                      >Preferred Pickup Time *</label
+                    >
                     <input
                       type="time"
                       id="pickup-time"
@@ -1450,11 +1502,15 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                       class="form-input"
                       required
                     />
-                    <small class="form-help">We recommend 30-60 minutes before appointment time</small>
+                    <small class="form-help"
+                      >We recommend 30-60 minutes before appointment time</small
+                    >
                   </div>
 
                   <div class="form-group">
-                    <label for="return-address" class="form-label">Return Address</label>
+                    <label for="return-address" class="form-label"
+                      >Return Address</label
+                    >
                     <input
                       type="text"
                       id="return-address"
@@ -1472,9 +1528,14 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                   <i class="fas fa-car"></i>
                   Transportation for Activities
                 </h3>
-                <div style="display: grid; gap: 12px;">
+                <div style="display: grid; gap: 12px">
                   <label class="radio-option">
-                    <input type="radio" name="transportation_mode" value="client-provided" required />
+                    <input
+                      type="radio"
+                      name="transportation_mode"
+                      value="client-provided"
+                      required
+                    />
                     <span class="radio-custom"></span>
                     <div class="radio-content">
                       <strong>I will provide transportation</strong>
@@ -1482,7 +1543,12 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                   </label>
 
                   <label class="radio-option">
-                    <input type="radio" name="transportation_mode" value="teman-provided" required />
+                    <input
+                      type="radio"
+                      name="transportation_mode"
+                      value="teman-provided"
+                      required
+                    />
                     <span class="radio-custom"></span>
                     <div class="radio-content">
                       <strong>Temanion will arrange transportation</strong>
@@ -1490,18 +1556,23 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                   </label>
 
                   <label class="radio-option">
-                    <input type="radio" name="transportation_mode" value="e-hailing" required />
+                    <input
+                      type="radio"
+                      name="transportation_mode"
+                      value="e-hailing"
+                      required
+                    />
                     <span class="radio-custom"></span>
                     <div class="radio-content">
                       <strong>E-Hailing Service (Grab/Taxi)</strong>
                     </div>
                   </label>
-
-                  
                 </div>
 
                 <div class="form-group" style="margin-top: 16px">
-                  <label for="transportation-notes" class="form-label">Transportation Notes</label>
+                  <label for="transportation-notes" class="form-label"
+                    >Transportation Notes</label
+                  >
                   <textarea
                     id="transportation-notes"
                     name="transportation_notes"
@@ -1520,7 +1591,9 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                 </h3>
 
                 <div class="form-group">
-                  <label for="medical-conditions" class="form-label">Medical Conditions</label>
+                  <label for="medical-conditions" class="form-label"
+                    >Medical Conditions</label
+                  >
                   <textarea
                     id="medical-conditions"
                     name="medical_conditions"
@@ -1531,7 +1604,9 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                 </div>
 
                 <div class="form-group">
-                  <label for="medications" class="form-label">Current Medications</label>
+                  <label for="medications" class="form-label"
+                    >Current Medications</label
+                  >
                   <textarea
                     id="medications"
                     name="medications"
@@ -1542,18 +1617,26 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                 </div>
 
                 <div class="form-group">
-                    <label for="mobility-assistance" class="form-label">Mobility Assistance Needed</label>
-                    <select id="mobility-assistance" name="mobility_assistance" class="form-select">
-                      <option value="no-preference">None</option>
-                      <option value="female">Wheelchair assistance</option>
-                      <option value="male">Walker/walking aid</option>
-                      <option value="male">Walking assistance</option>
-                      <option value="male">Other</option>
-                    </select>
-                  </div>
+                  <label for="mobility-assistance" class="form-label"
+                    >Mobility Assistance Needed</label
+                  >
+                  <select
+                    id="mobility-assistance"
+                    name="mobility_assistance"
+                    class="form-select"
+                  >
+                    <option value="none">None</option>
+                    <option value="wheelchair">Wheelchair assistance</option>
+                    <option value="walker">Walker/walking aid</option>
+                    <option value="walking">Walking assistance</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
 
                 <div class="form-group">
-                  <label for="special-requirements" class="form-label">Special Requirements</label>
+                  <label for="special-requirements" class="form-label"
+                    >Special Requirements</label
+                  >
                   <textarea
                     id="special-requirements"
                     name="special_requirements"
@@ -1572,11 +1655,19 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                 </h3>
 
                 <div class="form-group">
-                  <label for="companion-preferences" class="form-label">Companion Preferences</label>
+                  <label for="companion-preferences" class="form-label"
+                    >Companion Preferences</label
+                  >
                   <div class="form-grid">
                     <div class="form-group">
-                      <label for="companion-gender" class="form-label">Preferred Gender</label>
-                      <select id="companion-gender" name="companion_gender" class="form-select">
+                      <label for="companion-gender" class="form-label"
+                        >Preferred Gender</label
+                      >
+                      <select
+                        id="companion-gender"
+                        name="companion_gender"
+                        class="form-select"
+                      >
                         <option value="no-preference">No preference</option>
                         <option value="female">Female</option>
                         <option value="male">Male</option>
@@ -1584,8 +1675,14 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                     </div>
 
                     <div class="form-group">
-                      <label for="companion-language" class="form-label">Language Preference</label>
-                      <select id="companion-language" name="companion_language" class="form-select">
+                      <label for="companion-language" class="form-label"
+                        >Language Preference</label
+                      >
+                      <select
+                        id="companion-language"
+                        name="companion_language"
+                        class="form-select"
+                      >
                         <option value="english">English</option>
                         <option value="bahasa">Bahasa Malaysia</option>
                         <option value="other">Other</option>
@@ -1595,7 +1692,9 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                 </div>
 
                 <div class="form-group">
-                  <label for="additional-notes" class="form-label">Additional Notes</label>
+                  <label for="additional-notes" class="form-label"
+                    >Additional Notes</label
+                  >
                   <textarea
                     id="additional-notes"
                     name="additional_notes"
@@ -1605,8 +1704,10 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                   ></textarea>
                 </div>
 
-                 <div class="form-group">
-                  <label for="how-heard" class="form-label">How did you hear about us?</label>
+                <div class="form-group">
+                  <label for="how-heard" class="form-label"
+                    >How did you hear about us?</label
+                  >
                   <select id="how-heard" name="how_heard" class="form-select">
                     <option value="google">Google Search</option>
                     <option value="facebook">Facebook</option>
@@ -1622,35 +1723,62 @@ window.calculateMaxAppointments = calculateMaxAppointments;
               </div>
 
               <div class="form-actions">
-                <button type="button" class="btn btn--outline btn--large" onclick="prevStep()">
+                <button
+                  type="button"
+                  class="btn btn--outline btn--large"
+                  onclick="prevStep()"
+                >
                   <i class="fas fa-arrow-left"></i>
                   Previous
                 </button>
-                <button type="button" class="btn btn--primary btn--large" onclick="nextStep()">
-                  Review Booking
+                <button
+                  type="button"
+                  class="btn btn--primary btn--large"
+                  onclick="nextStep()"
+                >
+                  Review & Pay
                   <i class="fas fa-arrow-right"></i>
                 </button>
               </div>
             </div>
-
-            <!-- Step 3: Confirmation -->
+            <!-- Step 3: Payment & Confirmation -->
             <div class="form-step" data-step="3">
-              <h2 class="step-title">Booking Summary</h2>
+              <h2 class="step-title">Booking Summary & Payment</h2>
 
               <div class="booking-summary">
                 <div class="summary-card">
                   <h3><i class="fas fa-clipboard-list"></i> Service Details</h3>
                   <div class="summary-item">
                     <span class="summary-label">Service:</span>
-                    <span class="summary-value">Health Appointment Support</span>
+                    <span class="summary-value"
+                      >Health Appointment Support</span
+                    >
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Package:</span>
                     <span class="summary-value" id="summary-package">-</span>
                   </div>
                   <div class="summary-item">
-                    <span class="summary-label">Appointment:</span>
-                    <span class="summary-value" id="summary-appointment">-</span>
+                    <span class="summary-label">Appointment Dates:</span>
+                    <span class="summary-value" id="summary-appointment-dates"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Appointment Type:</span>
+                    <span class="summary-value" id="summary-appointment-type"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Appointment Time:</span>
+                    <span class="summary-value" id="summary-appointment-time"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Doctor/Specialist:</span>
+                    <span class="summary-value" id="summary-doctor">-</span>
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Medical Facility:</span>
@@ -1658,15 +1786,18 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Transportation:</span>
-                    <span class="summary-value" id="summary-transportation">-</span>
+                    <span class="summary-value" id="summary-transportation"
+                      >-</span
+                    >
                   </div>
                   <div class="summary-divider"></div>
                   <div class="summary-item total">
-                    <span class="summary-label">Estimated Cost:</span>
+                    <span class="summary-label">Package Cost:</span>
                     <span class="summary-value" id="summary-total">RM 0</span>
                   </div>
                   <p class="cost-note">
-                    *Final cost may vary based on additional services, transportation fees and allowance
+                    *Final cost may vary based on additional services,
+                    transportation fees and allowance
                   </p>
                 </div>
 
@@ -1685,56 +1816,266 @@ window.calculateMaxAppointments = calculateMaxAppointments;
                     <span class="summary-value" id="summary-email">-</span>
                   </div>
                   <div class="summary-item">
+                    <span class="summary-label">Relationship:</span>
+                    <span class="summary-value" id="summary-relationship"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Emergency Contact:</span>
+                    <span class="summary-value" id="summary-emergency">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Employer:</span>
+                    <span class="summary-value" id="summary-employer">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Staff ID:</span>
+                    <span class="summary-value" id="summary-staff-id">-</span>
+                  </div>
+                </div>
+
+                <div class="summary-card">
+                  <h3>
+                    <i class="fas fa-heart-pulse"></i> Care Recipient Details
+                  </h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Name:</span>
+                    <span class="summary-value" id="summary-patient-name"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Age:</span>
+                    <span class="summary-value" id="summary-patient-age"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Gender:</span>
+                    <span class="summary-value" id="summary-patient-gender"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Preferred Language:</span>
+                    <span class="summary-value" id="summary-patient-language"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Weight:</span>
+                    <span class="summary-value" id="summary-patient-weight"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Height:</span>
+                    <span class="summary-value" id="summary-patient-height"
+                      >-</span
+                    >
+                  </div>
+                </div>
+
+                <div class="summary-card">
+                  <h3>
+                    <i class="fas fa-map-marker-alt"></i> Location Details
+                  </h3>
+                  <div class="summary-item">
                     <span class="summary-label">Pickup Address:</span>
                     <span class="summary-value" id="summary-pickup">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Pickup Time:</span>
+                    <span class="summary-value" id="summary-pickup-time"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Return Address:</span>
+                    <span class="summary-value" id="summary-return">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Transportation Notes:</span>
+                    <span
+                      class="summary-value"
+                      id="summary-transportation-notes"
+                      >-</span
+                    >
+                  </div>
+                </div>
+
+                <div class="summary-card">
+                  <h3>
+                    <i class="fas fa-notes-medical"></i> Medical Information
+                  </h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Medical Conditions:</span>
+                    <span class="summary-value" id="summary-medical-conditions"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Current Medications:</span>
+                    <span class="summary-value" id="summary-medications"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Mobility Assistance:</span>
+                    <span class="summary-value" id="summary-mobility">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Special Requirements:</span>
+                    <span
+                      class="summary-value"
+                      id="summary-special-requirements"
+                      >-</span
+                    >
+                  </div>
+                </div>
+
+                <div class="summary-card">
+                  <h3>
+                    <i class="fas fa-user-friends"></i> Companion Preferences
+                  </h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Preferred Gender:</span>
+                    <span class="summary-value" id="summary-companion-gender"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Language Preference:</span>
+                    <span class="summary-value" id="summary-companion-language"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Additional Notes:</span>
+                    <span class="summary-value" id="summary-additional-notes"
+                      >-</span
+                    >
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label"
+                      >How did you hear about us:</span
+                    >
+                    <span class="summary-value" id="summary-how-heard">-</span>
                   </div>
                 </div>
               </div>
 
-              <div style="background: #f0f9ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 24px; margin-bottom: 32px;">
-                <h3 style="display: flex; align-items: center; gap: 8px; color: #1e40af; margin-bottom: 16px;">
+              <div
+                style="
+                  background: #f0f9ff;
+                  border: 1px solid #bfdbfe;
+                  border-radius: 12px;
+                  padding: 24px;
+                  margin-bottom: 32px;
+                "
+              >
+                <h3
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    color: #1e40af;
+                    margin-bottom: 16px;
+                  "
+                >
                   <i class="fas fa-info-circle"></i> What Happens Next?
                 </h3>
-                <ul style="list-style: none; padding: 0;">
-                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #1e40af;">
-                    <i class="fas fa-phone" style="width: 20px; text-align: center;"></i>
-                    Our team will contact you within 24 hours to confirm details and provide quotation
+                <ul style="list-style: none; padding: 0">
+                  <li
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 12px;
+                      margin-bottom: 12px;
+                      color: #1e40af;
+                    "
+                  >
+                    <i
+                      class="fas fa-credit-card"
+                      style="width: 20px; text-align: center"
+                    ></i>
+                    Complete your deposit payment to secure your booking
                   </li>
-                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #1e40af;">
-                    <i class="fas fa-user-check" style="width: 20px; text-align: center;"></i>
-                    We will assign a suitable Temanion based on your requirements
+                  <li style="display: flex; align-items: center;
+                      gap: 12px;
+                      margin-bottom: 12px;
+                      color: #1e40af;
+                    "
+                  >
+                    <i
+                      class="fas fa-phone"
+                      style="width: 20px; text-align: center"
+                    ></i>
+                    Our team will contact you within 24 hours to confirm details
                   </li>
-                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #1e40af;">
-                    <i class="fas fa-calendar-check" style="width: 20px; text-align: center;"></i>
-                    You will receive confirmation with your Temanion's details
+                  <li
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 12px;
+                      margin-bottom: 12px;
+                      color: #1e40af;
+                    "
+                  >
+                    <i
+                      class="fas fa-user-check"
+                      style="width: 20px; text-align: center"
+                    ></i>
+                    We will assign a suitable Temanion based on your
+                    requirements
                   </li>
-                  <li style="display: flex; align-items: center; gap: 12px; color: #1e40af;">
-                    <i class="fas fa-heart" style="width: 20px; text-align: center;"></i>
+                  <li
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 12px;
+                      color: #1e40af;
+                    "
+                  >
+                    <i
+                      class="fas fa-heart"
+                      style="width: 20px; text-align: center"
+                    ></i>
                     Your companion will arrive at the scheduled time
                   </li>
                 </ul>
               </div>
 
               <div style="margin-bottom: 32px;">
-                <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer;">
-                  <input type="checkbox" name="terms_agreed" required style="position: absolute; opacity: 0; pointer-events: none;" />
-                  <span class="checkmark"></span>
-                  <span style="font-size: 14px; color: #374151;">
-                    I agree to the <a href="#" style="color: #3b82f6; text-decoration: none;">Terms & Conditions</a> and 
-                    <a href="#" style="color: #3b82f6; text-decoration: none;">Privacy Policy</a>
-                  </span>
-                </label>
-              </div>
+  <label class="checkbox-item" style="margin-bottom: 0; padding: 16px; border: 1px solid #d1d5db; border-radius: 8px; cursor: pointer;">
+    <input type="checkbox" name="terms_agreed" required />
+    <span class="checkmark"></span>
+    <span style="font-size: 14px; color: #374151;">
+      I agree to the <a href="#" style="color: #3b82f6; text-decoration: none;">Terms & Conditions</a> and 
+      <a href="#" style="color: #3b82f6; text-decoration: none;">Privacy Policy</a> *
+    </span>
+  </label>
+</div>
 
               <div class="form-actions">
-                <button type="button" class="btn btn--outline btn--large" onclick="prevStep()">
+                <button
+                  type="button"
+                  class="btn btn--outline btn--large"
+                  onclick="prevStep()"
+                >
                   <i class="fas fa-arrow-left"></i>
                   Previous
                 </button>
-                <button type="submit" class="btn btn--primary btn--large" id="submit-booking-btn">
-                  <i class="fas fa-paper-plane"></i>
-                  Submit Booking Request
-                </button>
+                <a
+                  href="https://www.billplz.com/deposit4Teman"
+                  target="_blank"
+                  class="btn btn--payment btn--large"
+                  id="pay-deposit-btn"
+                >
+                  <i class="fas fa-credit-card"></i>
+                  Pay Deposit
+                </a>
               </div>
             </div>
           </form>
@@ -1748,16 +2089,21 @@ window.calculateMaxAppointments = calculateMaxAppointments;
         <div class="success-icon">
           <i class="fas fa-check-circle"></i>
         </div>
-        <h2>Booking Request Submitted!</h2>
+        <h2>Payment Redirecting!</h2>
         <p>
-          Thank you for choosing Teman Malaysia for your health appointment support. 
-          We've received your booking request and will contact you within 24 hours to confirm the details.
+          You will be redirected to our secure payment gateway to complete your
+          deposit payment.
         </p>
         <div class="booking-reference">
-          <strong>Reference Number: <span id="booking-ref-number"></span></strong>
+          <strong
+            >Reference Number: <span id="booking-ref-number"></span
+          ></strong>
         </div>
         <div class="modal-actions">
-          <button class="btn btn--primary" onclick="window.location.href='booking.html'">
+          <button
+            class="btn btn--primary"
+            onclick="window.location.href='booking.html'"
+          >
             Book Another Service
           </button>
           <button class="btn btn--outline" onclick="closeModal()">Close</button>
@@ -1769,10 +2115,209 @@ window.calculateMaxAppointments = calculateMaxAppointments;
     <div id="footer-placeholder"></div>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
       // Current step tracking
       let currentStep = 1;
       const totalSteps = 3;
+
+      // Flatpickr instance
+      let appointmentFp = null;
+      let maxAllowedAppointments = 0;
+
+      // Utility: format date as YYYY-MM-DD
+      function formatDate(date) {
+        return date.toISOString().split("T")[0];
+      }
+
+      // Calculate date boundaries
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      const dayAfterTomorrow = new Date(today);
+      dayAfterTomorrow.setDate(today.getDate() + 2);
+
+      const minDateStr = formatDate(dayAfterTomorrow);
+
+      // Get DOM elements
+      const appointmentMessageEl = document.getElementById(
+        "appointment-date-limit-message"
+      );
+      const appointmentCountEl = document.getElementById(
+        "appointment-selected-count"
+      );
+      const appointmentMaxDatesEl = document.getElementById(
+        "appointment-max-dates"
+      );
+      const appointmentHoursInfoEl = document.getElementById(
+        "appointment-hours-info"
+      );
+      const appointmentDatesInput =
+        document.getElementById("appointment-dates");
+
+      // Function to calculate max appointments based on selected package/hours
+      function calculateMaxAppointments() {
+        const selectedPackage = document.querySelector(
+          'input[name="package"]:checked'
+        );
+
+        if (!selectedPackage) {
+          maxAllowedAppointments = 0;
+          appointmentMaxDatesEl.textContent = "0";
+          appointmentHoursInfoEl.textContent =
+            "Please select a package in Step 1 first to enable date selection";
+          appointmentHoursInfoEl.style.color = "#ef4444";
+          appointmentDatesInput.disabled = true;
+          if (appointmentFp) appointmentFp.set("disabled", true);
+          return;
+        }
+
+        let totalHours = 0;
+
+        if (selectedPackage.value === "hourly") {
+          const hoursSelect = document.getElementById("hours");
+          if (
+            hoursSelect &&
+            hoursSelect.value &&
+            hoursSelect.value !== "custom"
+          ) {
+            totalHours = parseInt(hoursSelect.value) || 0;
+          } else if (hoursSelect.value === "custom") {
+            appointmentHoursInfoEl.textContent =
+              "Please contact us for custom hour arrangements";
+            appointmentHoursInfoEl.style.color = "#f59e0b";
+            appointmentDatesInput.disabled = true;
+            if (appointmentFp) appointmentFp.set("disabled", true);
+            return;
+          }
+        } else if (selectedPackage.value === "package1") {
+          totalHours = 4;
+        } else if (selectedPackage.value === "package2") {
+          totalHours = 6;
+        }
+
+        if (totalHours > 0) {
+          maxAllowedAppointments = Math.ceil(totalHours / 2);
+          appointmentMaxDatesEl.textContent = maxAllowedAppointments;
+
+          let appointmentText = "";
+          if (totalHours === 2) {
+            appointmentText = "1 appointment (2 hours)";
+          } else if (totalHours === 3) {
+            appointmentText = "2 appointments (3 hours total)";
+          } else if (totalHours === 4) {
+            appointmentText = "2 appointments (4 hours total)";
+          } else if (totalHours === 5) {
+            appointmentText = "3 appointments (5 hours total)";
+          } else if (totalHours === 6) {
+            appointmentText = "3 appointments (6 hours total)";
+          } else {
+            appointmentText = `${maxAllowedAppointments} appointments (${totalHours} hours total)`;
+          }
+
+          if (selectedPackage.value === "package1") {
+            appointmentHoursInfoEl.textContent = `Package 1 includes 4 hours total - you can select up to ${appointmentText}`;
+          } else if (selectedPackage.value === "package2") {
+            appointmentHoursInfoEl.textContent = `Package 2 includes 6 hours total - you can select up to ${appointmentText}`;
+          } else {
+            appointmentHoursInfoEl.textContent = `Based on ${totalHours} hours selected - you can select up to ${appointmentText}`;
+          }
+          appointmentHoursInfoEl.style.color = "#10b981";
+
+          appointmentDatesInput.disabled = false;
+          if (appointmentFp) {
+            appointmentFp.set("disabled", false);
+            if (appointmentFp.selectedDates.length > maxAllowedAppointments) {
+              appointmentFp.clear();
+            }
+          }
+        } else {
+          maxAllowedAppointments = 0;
+          appointmentMaxDatesEl.textContent = "0";
+          if (selectedPackage.value === "hourly") {
+            appointmentHoursInfoEl.textContent =
+              "Please select hours to enable date selection";
+          } else {
+            appointmentHoursInfoEl.textContent =
+              "Please select a package to enable date selection";
+          }
+          appointmentHoursInfoEl.style.color = "#ef4444";
+          appointmentDatesInput.disabled = true;
+          if (appointmentFp) appointmentFp.set("disabled", true);
+        }
+
+        updateAppointmentDateSelection(
+          appointmentFp ? appointmentFp.selectedDates : [],
+          appointmentFp
+        );
+      }
+
+      // Initialize Flatpickr for appointments
+      function initializeAppointmentFlatpickr() {
+        appointmentFp = flatpickr("#appointment-dates", {
+          mode: "multiple",
+          dateFormat: "Y-m-d",
+          disable: [formatDate(today), formatDate(tomorrow)],
+          minDate: minDateStr,
+          disabled: true,
+          onChange: function (selectedDates, dateStr, instance) {
+            updateAppointmentDateSelection(selectedDates, instance);
+          },
+          onReady: function (selectedDates, dateStr, instance) {
+            updateAppointmentDateSelection(selectedDates, instance);
+          },
+          onDayCreate: function (dObj, dStr, fp, dayElem) {
+            dayElem.addEventListener("click", function (e) {
+              if (
+                fp.selectedDates.length >= maxAllowedAppointments &&
+                !dayElem.classList.contains("selected")
+              ) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+              }
+            });
+          },
+        });
+      }
+
+      // Update appointment date selection display and enforce limit
+      function updateAppointmentDateSelection(selectedDates, instance) {
+        if (!instance) return;
+
+        const count = selectedDates.length;
+        appointmentCountEl.textContent = count;
+
+        if (count < maxAllowedAppointments && maxAllowedAppointments > 0) {
+          appointmentMessageEl.style.display = "block";
+        } else {
+          appointmentMessageEl.style.display = "none";
+        }
+
+        if (count >= maxAllowedAppointments && maxAllowedAppointments > 0) {
+          const calendar = instance.calendarContainer;
+          if (calendar) {
+            const unselectedDays = calendar.querySelectorAll(
+              ".flatpickr-day:not(.selected):not(.flatpickr-disabled)"
+            );
+            unselectedDays.forEach((day) => {
+              day.style.opacity = "0.3";
+              day.style.pointerEvents = "none";
+            });
+          }
+        } else {
+          const calendar = instance.calendarContainer;
+          if (calendar) {
+            const unselectedDays = calendar.querySelectorAll(
+              ".flatpickr-day:not(.selected):not(.flatpickr-disabled)"
+            );
+            unselectedDays.forEach((day) => {
+              day.style.opacity = "";
+              day.style.pointerEvents = "";
+            });
+          }
+        }
+      }
 
       // Update progress steps visual state
       function updateProgressSteps() {
@@ -1794,9 +2339,13 @@ window.calculateMaxAppointments = calculateMaxAppointments;
       function nextStep() {
         if (currentStep < totalSteps) {
           if (validateCurrentStep()) {
-            document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove("active");
+            document
+              .querySelector(`.form-step[data-step="${currentStep}"]`)
+              .classList.remove("active");
             currentStep++;
-            document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add("active");
+            document
+              .querySelector(`.form-step[data-step="${currentStep}"]`)
+              .classList.add("active");
             updateProgressSteps();
 
             if (currentStep === 3) {
@@ -1811,9 +2360,13 @@ window.calculateMaxAppointments = calculateMaxAppointments;
       // Navigate to previous step
       function prevStep() {
         if (currentStep > 1) {
-          document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove("active");
+          document
+            .querySelector(`.form-step[data-step="${currentStep}"]`)
+            .classList.remove("active");
           currentStep--;
-          document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add("active");
+          document
+            .querySelector(`.form-step[data-step="${currentStep}"]`)
+            .classList.add("active");
           updateProgressSteps();
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
@@ -1822,44 +2375,88 @@ window.calculateMaxAppointments = calculateMaxAppointments;
       // Validate current step
       function validateCurrentStep() {
         if (currentStep === 1) {
-          const packageSelected = document.querySelector('input[name="package"]:checked');
+          const packageSelected = document.querySelector(
+            'input[name="package"]:checked'
+          );
           if (!packageSelected) {
             alert("Please select a package before continuing.");
             return false;
           }
 
-          if (packageSelected.value === "hourly" && !document.getElementById("hours").value) {
+          if (
+            packageSelected.value === "hourly" &&
+            !document.getElementById("hours").value
+          ) {
             alert("Please select the number of hours.");
+            return false;
+          }
+
+          if (
+            packageSelected.value === "hourly" &&
+            document.getElementById("hours").value === "custom"
+          ) {
+            alert(
+              "Please contact us for custom hour arrangements. We'll redirect you to our contact page."
+            );
+            // You can redirect to contact page here
             return false;
           }
         } else if (currentStep === 2) {
           const requiredFields = [
-            "full_name", "phone", "email", "emergency_contact", "appointment_type", "medical_facility", 
-            "appointment_date", "appointment_time", "facility_address", "pickup_address", "pickup_time"
+            { name: "full_name", label: "Full Name" },
+            { name: "phone", label: "Phone Number" },
+            { name: "email", label: "Email Address" },
+            { name: "emergency_contact", label: "Emergency Contact" },
+            { name: "appointment_dates", label: "Appointment Dates" },
+            { name: "appointment_type", label: "Appointment Type" },
+            { name: "appointment_time", label: "Appointment Time" },
+            { name: "facility_address", label: "Medical Facility Address" },
+            { name: "pickup_address", label: "Pickup Address" },
+            { name: "pickup_time", label: "Pickup Time" },
           ];
 
           for (let field of requiredFields) {
-            const element = document.querySelector(`[name="${field}"]`);
-            if (!element.value.trim()) {
-              alert(`Please fill in the ${field.replace("_", " ")} field.`);
-              element.focus();
+            const element = document.querySelector(`[name="${field.name}"]`);
+            if (!element || !element.value.trim()) {
+              alert(`Please fill in the ${field.label} field.`);
+              if (element) element.focus();
               return false;
             }
           }
 
-          const transportationSelected = document.querySelector('input[name="transportation_mode"]:checked');
+          const transportationSelected = document.querySelector(
+            'input[name="transportation_mode"]:checked'
+          );
           if (!transportationSelected) {
             alert("Please select a transportation mode.");
+            return false;
+          }
+        } else if (currentStep === 3) {
+          const termsAgreed = document.querySelector(
+            'input[name="terms_agreed"]:checked'
+          );
+          if (!termsAgreed) {
+            alert(
+              "Please agree to the Terms & Conditions and Privacy Policy to continue."
+            );
             return false;
           }
         }
         return true;
       }
 
+      // Helper function to format text
+      function formatText(text) {
+        if (!text) return "-";
+        return text.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
+      }
+
       // Update booking summary
       function updateBookingSummary() {
         // Package details
-        const selectedPackage = document.querySelector('input[name="package"]:checked');
+        const selectedPackage = document.querySelector(
+          'input[name="package"]:checked'
+        );
         if (selectedPackage) {
           let packageInfo = "";
           let estimatedCost = 0;
@@ -1870,49 +2467,130 @@ window.calculateMaxAppointments = calculateMaxAppointments;
             estimatedCost = hours * 35;
           } else if (selectedPackage.value === "package1") {
             packageInfo = "Package 1 (4 hours)";
-            estimatedCost = 132;
+            estimatedCost = 126;
           } else if (selectedPackage.value === "package2") {
             packageInfo = "Package 2 (6 hours)";
-            estimatedCost = 186;
+            estimatedCost = 180;
           }
 
           document.getElementById("summary-package").textContent = packageInfo;
-          document.getElementById("summary-total").textContent = `RM ${estimatedCost}`;
+          document.getElementById(
+            "summary-total"
+          ).textContent = `RM ${estimatedCost}`;
         }
 
         // Appointment details
-        const appointmentDate = document.getElementById("appointment-date").value;
-        const appointmentTime = document.getElementById("appointment-time").value;
-        const appointmentType = document.getElementById("appointment-type").value;
-        
-        if (appointmentDate && appointmentTime) {
-          const formattedDate = new Date(appointmentDate).toLocaleDateString("en-MY", {
-            weekday: "long", year: "numeric", month: "long", day: "numeric"
-          });
-          document.getElementById("summary-appointment").textContent = 
-            `${appointmentType} on ${formattedDate} at ${appointmentTime}`;
-        }
+        const appointmentDates =
+          document.getElementById("appointment-dates").value;
+        const appointmentTime =
+          document.getElementById("appointment-time").value;
+        const appointmentType =
+          document.getElementById("appointment-type").value;
+
+        document.getElementById("summary-appointment-dates").textContent =
+          appointmentDates || "-";
+        document.getElementById("summary-appointment-type").textContent =
+          formatText(appointmentType);
+        document.getElementById("summary-appointment-time").textContent =
+          appointmentTime || "-";
+
+        // Doctor/Specialist
+        document.getElementById("summary-doctor").textContent =
+          document.getElementById("doctor-name").value || "Not specified";
 
         // Medical facility
-        document.getElementById("summary-facility").textContent = 
-          document.getElementById("medical-facility").value || "-";
+        document.getElementById("summary-facility").textContent =
+          document.getElementById("facility-address").value || "-";
 
         // Transportation
-        const transportation = document.querySelector('input[name="transportation_mode"]:checked');
+        const transportation = document.querySelector(
+          'input[name="transportation_mode"]:checked'
+        );
         if (transportation) {
-          const transportLabel = transportation.nextElementSibling.nextElementSibling.querySelector("strong").textContent;
-          document.getElementById("summary-transportation").textContent = transportLabel;
+          const transportLabel =
+            transportation.nextElementSibling.nextElementSibling.querySelector(
+              "strong"
+            ).textContent;
+          document.getElementById("summary-transportation").textContent =
+            transportLabel;
         }
 
         // Contact information
-        document.getElementById("summary-name").textContent = 
+        document.getElementById("summary-name").textContent =
           document.getElementById("full-name").value || "-";
-        document.getElementById("summary-phone").textContent = 
+        document.getElementById("summary-phone").textContent =
           document.getElementById("phone").value || "-";
-        document.getElementById("summary-email").textContent = 
+        document.getElementById("summary-email").textContent =
           document.getElementById("email").value || "-";
-        document.getElementById("summary-pickup").textContent = 
+        document.getElementById("summary-relationship").textContent =
+          formatText(document.getElementById("relationship").value) ||
+          "Not specified";
+        document.getElementById("summary-emergency").textContent =
+          document.getElementById("emergency-contact").value || "-";
+        document.getElementById("summary-employer").textContent =
+          document.getElementById("employer").value || "Not specified";
+        document.getElementById("summary-staff-id").textContent =
+          document.getElementById("staff_id").value || "Not specified";
+
+        // Care recipient information
+        document.getElementById("summary-patient-name").textContent =
+          document.getElementById("patient-name").value ||
+          "Same as contact person";
+        document.getElementById("summary-patient-age").textContent =
+          document.getElementById("patient-age").value
+            ? document.getElementById("patient-age").value + " years"
+            : "Not specified";
+        document.getElementById("summary-patient-gender").textContent =
+          formatText(document.getElementById("patient-gender").value) ||
+          "Not specified";
+        document.getElementById("summary-patient-language").textContent =
+          formatText(document.getElementById("patient-language").value) ||
+          "English";
+        document.getElementById("summary-patient-weight").textContent =
+          document.getElementById("patient-weight").value
+            ? document.getElementById("patient-weight").value + " kg"
+            : "Not specified";
+        document.getElementById("summary-patient-height").textContent =
+          document.getElementById("patient-height").value
+            ? document.getElementById("patient-height").value + " cm"
+            : "Not specified";
+
+        // Location details
+        document.getElementById("summary-pickup").textContent =
           document.getElementById("pickup-address").value || "-";
+        document.getElementById("summary-pickup-time").textContent =
+          document.getElementById("pickup-time").value || "-";
+        document.getElementById("summary-return").textContent =
+          document.getElementById("return-address").value || "Same as pickup";
+        document.getElementById("summary-transportation-notes").textContent =
+          document.getElementById("transportation-notes").value ||
+          "None specified";
+
+        // Medical information
+        document.getElementById("summary-medical-conditions").textContent =
+          document.getElementById("medical-conditions").value ||
+          "None specified";
+        document.getElementById("summary-medications").textContent =
+          document.getElementById("medications").value || "None specified";
+        document.getElementById("summary-mobility").textContent =
+          formatText(document.getElementById("mobility-assistance").value) ||
+          "None";
+        document.getElementById("summary-special-requirements").textContent =
+          document.getElementById("special-requirements").value ||
+          "None specified";
+
+        // Companion preferences
+        document.getElementById("summary-companion-gender").textContent =
+          formatText(document.getElementById("companion-gender").value) ||
+          "No preference";
+        document.getElementById("summary-companion-language").textContent =
+          formatText(document.getElementById("companion-language").value) ||
+          "English";
+        document.getElementById("summary-additional-notes").textContent =
+          document.getElementById("additional-notes").value || "None";
+        document.getElementById("summary-how-heard").textContent =
+          formatText(document.getElementById("how-heard").value) ||
+          "Google Search";
       }
 
       // Handle package selection
@@ -1920,39 +2598,65 @@ window.calculateMaxAppointments = calculateMaxAppointments;
         // Show/hide hours selection for hourly package
         document.addEventListener("change", function (e) {
           if (e.target.name === "package") {
-            const hoursSelection = document.querySelector(".hours-selection");
+            const hoursSelections =
+              document.querySelectorAll(".hours-selection");
+            hoursSelections.forEach((selection) => {
+              selection.style.display = "none";
+            });
+
             if (e.target.value === "hourly") {
-              hoursSelection.style.display = "block";
+              document.querySelector(
+                "#hourly-package + .package-card .hours-selection"
+              ).style.display = "block";
+              // Make hours required when hourly is selected
+              document
+                .getElementById("hours")
+                .setAttribute("required", "required");
             } else {
-              hoursSelection.style.display = "none";
+              // Remove required attribute when other packages are selected
+              document.getElementById("hours").removeAttribute("required");
             }
+
+            calculateMaxAppointments();
+          }
+
+          if (e.target.name === "package" || e.target.id === "hours") {
+            calculateMaxAppointments();
           }
         });
 
-        // Set minimum date to today
-        const today = new Date().toISOString().split("T")[0];
-        document.getElementById("appointment-date").setAttribute("min", today);
-
-        // Initialize progress steps
+        // Initialize components
+        initializeAppointmentFlatpickr();
+        calculateMaxAppointments();
         updateProgressSteps();
       });
 
-      // Handle form submission
-      document.getElementById("health-booking-form").addEventListener("submit", function (e) {
-        e.preventDefault();
+      // Handle payment button click
+      document
+        .getElementById("pay-deposit-btn")
+        .addEventListener("click", function (e) {
+          if (!validateCurrentStep()) {
+            e.preventDefault();
+            return false;
+          }
 
-        const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
-        if (!termsAgreed) {
-          alert("Please agree to the Terms & Conditions and Privacy Policy to continue.");
-          return;
-        }
+          // Generate reference number
+          const refNumber = "TM" + Date.now().toString().slice(-6);
+          document.getElementById("booking-ref-number").textContent = refNumber;
 
-        const refNumber = "TM" + Date.now().toString().slice(-6);
-        document.getElementById("booking-ref-number").textContent = refNumber;
-        document.getElementById("booking-success-modal").style.display = "flex";
+          // Store booking data (you might want to send this to your backend)
+          console.log("Booking data ready for payment processing");
 
-        console.log("Health appointment booking submitted successfully");
-      });
+          // Show modal briefly before redirect
+          document.getElementById("booking-success-modal").style.display =
+            "flex";
+
+          // Auto close modal after 3 seconds to let redirect happen
+          setTimeout(() => {
+            document.getElementById("booking-success-modal").style.display =
+              "none";
+          }, 3000);
+        });
 
       // Close modal function
       function closeModal() {
@@ -1965,10 +2669,13 @@ window.calculateMaxAppointments = calculateMaxAppointments;
           const headerResponse = await fetch("../components/header.html");
           if (headerResponse.ok) {
             const headerHTML = await headerResponse.text();
-            document.getElementById("header-placeholder").innerHTML = headerHTML;
+            document.getElementById("header-placeholder").innerHTML =
+              headerHTML;
 
             setTimeout(() => {
-              const bookingLink = document.querySelector('a[href="booking.html"]');
+              const bookingLink = document.querySelector(
+                'a[href="booking.html"]'
+              );
               if (bookingLink) {
                 bookingLink.classList.add("active");
               }
@@ -1979,7 +2686,8 @@ window.calculateMaxAppointments = calculateMaxAppointments;
           const footerResponse = await fetch("../components/footer.html");
           if (footerResponse.ok) {
             const footerHTML = await footerResponse.text();
-            document.getElementById("footer-placeholder").innerHTML = footerHTML;
+            document.getElementById("footer-placeholder").innerHTML =
+              footerHTML;
           }
 
           initializeMainJS();
@@ -2036,8 +2744,16 @@ window.calculateMaxAppointments = calculateMaxAppointments;
       }
 
       function initializeMainJS() {
-        console.log("Teman Malaysia health appointments booking loaded successfully!");
+        console.log(
+          "Teman Malaysia health appointments booking loaded successfully!"
+        );
       }
+
+      // Make functions globally available
+      window.calculateMaxAppointments = calculateMaxAppointments;
+      window.nextStep = nextStep;
+      window.prevStep = prevStep;
+      window.closeModal = closeModal;
 
       document.addEventListener("DOMContentLoaded", function () {
         loadComponents();
