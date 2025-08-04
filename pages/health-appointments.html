@@ -1706,9 +1706,10 @@
 
                 <div class="form-group">
                   <label for="how-heard" class="form-label"
-                    >How did you hear about us?</label
+                    >How did you hear about us? *</label
                   >
-                  <select id="how-heard" name="how_heard" class="form-select">
+                  <select id="how-heard" name="how_heard" class="form-select" required>
+                    <option value="">Please select an option</option>
                     <option value="google">Google Search</option>
                     <option value="facebook">Facebook</option>
                     <option value="instagram">Instagram</option>
@@ -2413,6 +2414,7 @@
             { name: "facility_address", label: "Medical Facility Address" },
             { name: "pickup_address", label: "Pickup Address" },
             { name: "pickup_time", label: "Pickup Time" },
+            { name: "how_heard", label: "How did you hear about us?" }
           ];
 
           for (let field of requiredFields) {

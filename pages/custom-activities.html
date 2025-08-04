@@ -1468,8 +1468,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="how-heard" class="form-label">How did you hear about us?</label>
-                  <select id="how-heard" name="how_heard" class="form-select">
+                  <label for="how-heard" class="form-label">How did you hear about us? *</label>
+                  <select id="how-heard" name="how_heard" class="form-select" required>
+                    <option value="">Please select an option</option>
                     <option value="google">Google Search</option>
                     <option value="facebook">Facebook</option>
                     <option value="instagram">Instagram</option>
@@ -1819,7 +1820,8 @@
             { name: "activity_dates", label: "Activity Dates" },
             { name: "activity_time", label: "Activity Start Time" },
             { name: "meeting_address", label: "Meeting/Pickup Address" },
-            { name: "activity_locations", label: "Activity Locations" }
+            { name: "activity_locations", label: "Activity Locations" },
+            { name: "how_heard", label: "How did you hear about us?" }
           ];
 
           for (let field of requiredFields) {
