@@ -31,6 +31,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
+    <!-- Include Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+
     <style>
       /* Reset and base styles */
       * {
@@ -115,6 +118,18 @@
       .btn--large {
         padding: 16px 32px;
         font-size: 16px;
+      }
+
+      .btn--success {
+        background: #16a34a;
+        color: white;
+        font-weight: 600;
+      }
+
+      .btn--success:hover {
+        background: #15803d;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
       }
 
       .btn--secondary {
@@ -611,6 +626,150 @@
         gap: 12px;
       }
 
+      /* Fixed checkbox styling */
+      .terms-checkbox {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        cursor: pointer;
+        margin-bottom: 32px;
+      }
+
+      .terms-checkbox input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .terms-checkbox .checkmark {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #d1d5db;
+        border-radius: 4px;
+        position: relative;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+        margin-top: 2px;
+      }
+
+      .terms-checkbox:hover .checkmark {
+        border-color: #059669;
+      }
+
+      .terms-checkbox input[type="checkbox"]:checked ~ .checkmark {
+        background: #059669;
+        border-color: #059669;
+      }
+
+      .terms-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
+        content: "✓";
+        color: white;
+        font-size: 12px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .terms-text {
+        font-size: 14px;
+        color: #374151;
+      }
+
+      .terms-text a {
+        color: #059669;
+        text-decoration: none;
+      }
+
+      .terms-text a:hover {
+        text-decoration: underline;
+      }
+
+      /* Summary Styles */
+      .booking-summary {
+        display: grid;
+        gap: 24px;
+        margin-bottom: 32px;
+      }
+
+      .summary-card {
+        background: #f9fafb;
+        border-radius: 12px;
+        padding: 24px;
+        border: 1px solid #e5e7eb;
+      }
+
+      .summary-card h3 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #1f2937;
+        margin-bottom: 20px;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      .summary-card h3 i {
+        color: #059669;
+      }
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .summary-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+
+      .summary-label {
+        font-weight: 500;
+        color: #6b7280;
+        flex: 0 0 40%;
+      }
+
+      .summary-value {
+        color: #1f2937;
+        text-align: right;
+        flex: 1;
+        word-break: break-word;
+      }
+
+      .summary-item.total {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 2px solid #059669;
+        font-size: 1.125rem;
+        font-weight: 600;
+      }
+
+      .summary-item.total .summary-label {
+        color: #1f2937;
+      }
+
+      .summary-item.total .summary-value {
+        color: #059669;
+        font-size: 1.25rem;
+      }
+
+      .cost-note {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 8px;
+        font-style: italic;
+      }
+
+      .summary-divider {
+        height: 1px;
+        background: #e5e7eb;
+        margin: 16px 0;
+      }
+
       /* Form Actions */
       .form-actions {
         display: flex;
@@ -633,6 +792,66 @@
 
       .back-link:hover {
         color: #059669;
+      }
+
+      /* Error styling */
+      .error {
+        border-color: #ef4444 !important;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+      }
+
+      .error-message {
+        color: #ef4444;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      /* Modal */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 500px;
+        text-align: center;
+        margin: 20px;
+      }
+
+      .success-icon {
+        font-size: 4rem;
+        color: #10b981;
+        margin-bottom: 20px;
+      }
+
+      .modal-content h2 {
+        color: #1f2937;
+        margin-bottom: 16px;
+      }
+
+      .booking-reference {
+        background: #f3f4f6;
+        padding: 16px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 24px;
       }
 
       /* Responsive */
@@ -758,7 +977,6 @@
                 <i class="fas fa-walking"></i>
                 Outdoor exercise & activities
               </div>
-
               <div class="service-item">
                 <i class="fas fa-baby"></i>
                 Diaper changing assistance
@@ -838,7 +1056,7 @@
                     <div class="package-notes">
                       <small>• Ideal for morning or afternoon care</small>
                       <small
-                        >• Suitable for independent seniors needing daily
+                        >• Suitable for independent seniors needingdaily
                         support</small
                       >
                       <small>• Best value for basic care needs</small>
@@ -985,6 +1203,7 @@
                 </button>
               </div>
             </div>
+            
             <!-- Step 2: Personal Details -->
             <div class="form-step" data-step="2">
               <h2 class="step-title">Care Requirements & Details</h2>
@@ -1147,6 +1366,7 @@
                       name="patient_gender"
                       class="form-select"
                     >
+                      <option value="">Select gender</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
                     </select>
@@ -1238,33 +1458,6 @@
                       required
                     />
                   </div>
-
-                  <div class="form-group">
-                    <label for="state" class="form-label">State *</label>
-                    <select
-                      id="state"
-                      name="state"
-                      class="form-select"
-                      required
-                    >
-                      <option value="">Select State</option>
-                      <option value="kuala-lumpur">Kuala Lumpur</option>
-                      <option value="selangor">Selangor</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="nearest-landmark" class="form-label"
-                      >Nearest Landmark</label
-                    >
-                    <input
-                      type="text"
-                      id="nearest-landmark"
-                      name="nearest_landmark"
-                      class="form-input"
-                      placeholder="e.g. Near KLCC, Opposite Hospital"
-                    />
-                  </div>
                 </div>
 
                 <div class="form-group">
@@ -1341,248 +1534,104 @@
                 </div>
               </div>
 
-             <!-- Care Schedule -->
-<!-- Include Flatpickr CSS and JS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+              <!-- Care Schedule -->
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-calendar-alt"></i>
+                  Care Schedule Preferences
+                </h3>
 
-<!-- Care Schedule -->
-<div class="form-section">
-  <h3 class="form-section-title">
-    <i class="fas fa-calendar-alt"></i>
-    Care Schedule Preferences
-  </h3>
+                <!-- Multi-date calendar -->
+                <div class="form-group">
+                  <label for="multi-dates" class="form-label">Select Multiple Care Dates *</label>
+                  <input
+                    type="text"
+                    id="multi-dates"
+                    name="multi_dates"
+                    class="form-input"
+                    placeholder="Select up to 20 dates"
+                    readonly
+                    required
+                  />
+                  <small class="form-help">Select specific dates; today and tomorrow are disabled</small>
+                  <div id="date-limit-message" style="display:none; color: #666; margin-top: 5px; font-size: 0.875rem;">
+                    If you're unsure of the remaining dates, you may plan or book them later with our representative.
+                  </div>
+                  <div id="date-count" style="color: #666; margin-top: 5px; font-size: 0.875rem;">
+                    Selected dates: <span id="selected-count">0</span>/20
+                  </div>
+                </div>
 
-  <!-- Multi-date calendar -->
-  <div class="form-group">
-    <label for="multi-dates" class="form-label">Select Multiple Care Dates *</label>
-    <input
-      type="text"
-      id="multi-dates"
-      name="multi_dates"
-      class="form-input"
-      placeholder="Select up to 20 dates"
-      readonly
-      required
-    />
-    <small class="form-help">Select specific dates; today and tomorrow are disabled</small>
-    <div id="date-limit-message" style="display:none; color: #666; margin-top: 5px; font-size: 0.875rem;">
-      If you're unsure of the remaining dates, you may plan or book them later with our representative.
-    </div>
-    <div id="date-count" style="color: #666; margin-top: 5px; font-size: 0.875rem;">
-      Selected dates: <span id="selected-count">0</span>/20
-    </div>
-  </div>
+                <!-- Time Selection -->
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="preferred-start-time" class="form-label">Start Time *</label>
+                    <select id="preferred-start-time" name="preferred_start_time" class="form-select" required>
+                      <option value="">Select start time</option>
+                      <option value="07:00">07:00 AM</option>
+                      <option value="08:00">08:00 AM</option>
+                      <option value="09:00">09:00 AM</option>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="11:00">11:00 AM</option>
+                      <option value="12:00">12:00 PM</option>
+                      <option value="13:00">01:00 PM</option>
+                      <option value="14:00">02:00 PM</option>
+                      <option value="15:00">03:00 PM</option>
+                      <option value="16:00">04:00 PM</option>
+                      <option value="17:00">05:00 PM</option>
+                      <option value="18:00">06:00 PM</option>
+                      <option value="19:00">07:00 PM</option>
+                      <option value="20:00">08:00 PM</option>
+                      <option value="21:00">09:00 PM</option>
+                    </select>
+                    <div id="start-time-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
+                  </div>
 
-  <!-- Time Selection -->
-  <div class="form-grid">
-    <div class="form-group">
-      <label for="preferred-start-time" class="form-label">Start Time *</label>
-      <select id="preferred-start-time" name="preferred_start_time" class="form-select" required>
-        <option value="">Select start time</option>
-        <option value="07:00">07:00 AM</option>
-        <option value="08:00">08:00 AM</option>
-        <option value="09:00">09:00 AM</option>
-        <option value="10:00">10:00 AM</option>
-        <option value="11:00">11:00 AM</option>
-        <option value="12:00">12:00 PM</option>
-        <option value="13:00">01:00 PM</option>
-        <option value="14:00">02:00 PM</option>
-        <option value="15:00">03:00 PM</option>
-        <option value="16:00">04:00 PM</option>
-        <option value="17:00">05:00 PM</option>
-        <option value="18:00">06:00 PM</option>
-        <option value="07:00">07:00 PM</option>
-        <option value="08:00">08:00 PM</option>
-        <option value="09:00">09:00 PM</option>
-      </select>
-      <div id="start-time-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
-    </div>
+                  <div class="form-group">
+                    <label for="preferred-end-time" class="form-label">End Time *</label>
+                    <select id="preferred-end-time" name="preferred_end_time" class="form-select" required>
+                      <option value="">Select end time</option>
+                      <option value="08:00">08:00 AM</option>
+                      <option value="09:00">09:00 AM</option>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="11:00">11:00 AM</option>
+                      <option value="12:00">12:00 PM</option>
+                      <option value="13:00">01:00 PM</option>
+                      <option value="14:00">02:00 PM</option>
+                      <option value="15:00">03:00 PM</option>
+                      <option value="16:00">04:00 PM</option>
+                      <option value="17:00">05:00 PM</option>
+                    </select>
+                    <div id="end-time-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
+                  </div>
+                </div>
 
-    <div class="form-group">
-      <label for="preferred-end-time" class="form-label">End Time *</label>
-      <select id="preferred-end-time" name="preferred_end_time" class="form-select" required>
-        <option value="">Select end time</option>
-        <option value="08:00">08:00 AM</option>
-        <option value="09:00">09:00 AM</option>
-        <option value="10:00">10:00 AM</option>
-        <option value="11:00">11:00 AM</option>
-        <option value="12:00">12:00 PM</option>
-        <option value="13:00">01:00 PM</option>
-        <option value="14:00">02:00 PM</option>
-        <option value="15:00">03:00 PM</option>
-        <option value="16:00">04:00 PM</option>
-        <option value="17:00">05:00 PM</option>
-      </select>
-      <div id="end-time-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
-    </div>
-  </div>
+                <!-- Date Range -->
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="start-date" class="form-label">Service Start Date *</label>
+                    <input
+                      type="date"
+                      id="start-date"
+                      name="start_date"
+                      class="form-input"
+                      required
+                    />
+                  </div>
 
-  <!-- Date Range -->
-  <div class="form-grid">
-    <div class="form-group">
-      <label for="start-date" class="form-label">Service Start Date *</label>
-      <input
-        type="date"
-        id="start-date"
-        name="start_date"
-        class="form-input"
-        required
-      />
-    </div>
-
-    <div class="form-group">
-      <label for="end-date" class="form-label">Service End Date *</label>
-      <input
-        type="date"
-        id="end-date"
-        name="end_date"
-        class="form-input"
-        required
-      />
-      <div id="date-range-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
-    </div>
-  </div>
-</div>
-
-<!-- Flatpickr & Logic -->
-<script>
-  // Utility: format date as YYYY-MM-DD
-  function formatDate(date) {
-    return date.toISOString().split('T')[0];
-  }
-
-  // Calculate date boundaries
-  const today = new Date();
-  const tomorrow = new Date(today);
-  tomorrow.setDate(today.getDate() + 1);
-  const dayAfterTomorrow = new Date(today);
-  dayAfterTomorrow.setDate(today.getDate() + 2);
-
-  const minDateStr = formatDate(dayAfterTomorrow);
-
-  // Set min on native date inputs
-  document.getElementById("start-date").setAttribute("min", minDateStr);
-  document.getElementById("end-date").setAttribute("min", minDateStr);
-
-  // Get DOM elements
-  const messageEl = document.getElementById("date-limit-message");
-  const countEl = document.getElementById("selected-count");
-  const startTimeEl = document.getElementById("preferred-start-time");
-  const endTimeEl = document.getElementById("preferred-end-time");
-  const startDateEl = document.getElementById("start-date");
-  const endDateEl = document.getElementById("end-date");
-
-  // Initialize Flatpickr with 20-date limit enforcement
-  const fp = flatpickr("#multi-dates", {
-    mode: "multiple",
-    dateFormat: "Y-m-d",
-    disable: [formatDate(today), formatDate(tomorrow)],
-    minDate: minDateStr,
-    onChange: function(selectedDates, dateStr, instance) {
-      updateDateSelection(selectedDates, instance);
-    },
-    onReady: function(selectedDates, dateStr, instance) {
-      updateDateSelection(selectedDates, instance);
-    },
-    // Prevent selection of more than 20 dates
-    onDayCreate: function(dObj, dStr, fp, dayElem) {
-      dayElem.addEventListener('click', function(e) {
-        if (fp.selectedDates.length >= 20 && !dayElem.classList.contains('selected')) {
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        }
-      });
-    }
-  });
-
-  // Update date selection display and enforce 20-date limit
-  function updateDateSelection(selectedDates, instance) {
-    const count = selectedDates.length;
-    countEl.textContent = count;
-    
-    // Show/hide message for less than 20 dates
-    if (count < 20) {
-      messageEl.style.display = "block";
-    } else {
-      messageEl.style.display = "none";
-    }
-    
-    // Visual feedback when at limit
-    if (count >= 20) {
-      const calendar = instance.calendarContainer;
-      if (calendar) {
-        const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
-        unselectedDays.forEach(day => {
-          day.style.opacity = '0.3';
-          day.style.pointerEvents = 'none';
-        });
-      }
-    } else {
-      const calendar = instance.calendarContainer;
-      if (calendar) {
-        const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
-        unselectedDays.forEach(day => {
-          day.style.opacity = '';
-          day.style.pointerEvents = '';
-        });
-      }
-    }
-  }
-
-  // Time validation
-  function validateTimes() {
-    const startTime = startTimeEl.value;
-    const endTime = endTimeEl.value;
-    const startError = document.getElementById("start-time-error");
-    const endError = document.getElementById("end-time-error");
-    
-    // Clear previous errors
-    startError.style.display = "none";
-    endError.style.display = "none";
-    
-    if (startTime && endTime) {
-      // Convert to comparable format (24-hour)
-      const startHour = parseInt(startTime.split(':')[0]);
-      const endHour = parseInt(endTime.split(':')[0]);
-      
-      if (endHour <= startHour) {
-        endError.textContent = "End time must be after start time";
-        endError.style.display = "block";
-        return false;
-      }
-    }
-    return true;
-  }
-
-  // Date range validation
-  function validateDateRange() {
-    const startDate = startDateEl.value;
-    const endDate = endDateEl.value;
-    const dateError = document.getElementById("date-range-error");
-    
-    dateError.style.display = "none";
-    
-    if (startDate && endDate) {
-      const start = new Date(startDate);
-      const end = new Date(endDate);
-      
-      if (end <= start) {
-        dateError.textContent = "End date must be after start date";
-        dateError.style.display = "block";
-        return false;
-      }
-    }
-    return true;
-  }
-
-  // Add event listeners for validation
-  startTimeEl.addEventListener('change', validateTimes);
-  endTimeEl.addEventListener('change', validateTimes);
-  startDateEl.addEventListener('change', validateDateRange);
-  endDateEl.addEventListener('change', validateDateRange);
-</script>
+                  <div class="form-group">
+                    <label for="end-date" class="form-label">Service End Date *</label>
+                    <input
+                      type="date"
+                      id="end-date"
+                      name="end_date"
+                      class="form-input"
+                      required
+                    />
+                    <div id="date-range-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
+                  </div>
+                </div>
+              </div>
 
               <!-- Care Services Needed -->
               <div class="form-section">
@@ -1809,85 +1858,10 @@
                     </select>
                   </div>
 
-                  <div class="form-group">
-                    <label for="companion-age" class="form-label"
-                      >Preferred Age Range</label
-                    >
-                    <select
-                      id="companion-age"
-                      name="companion_age"
-                      class="form-select"
-                    >
-                      <option value="no-preference">No preference</option>
-                      <option value="young-adult">Young Adult (20-30)</option>
-                      <option value="adult">Adult (30-45)</option>
-                      <option value="mature">Mature (45-60)</option>
-                      <option value="senior">Senior (60+)</option>
-                    </select>
-                  </div>
+                  
                 </div>
 
-                <div class="form-group">
-                  <label for="companion-personality" class="form-label"
-                    >Preferred Personality Traits</label
-                  >
-                  <div class="checkbox-group">
-                    <label class="checkbox-item">
-                      <input
-                        type="checkbox"
-                        name="companion_traits[]"
-                        value="patient"
-                      />
-                      <span class="checkmark"></span>
-                      Patient & calm
-                    </label>
-                    <label class="checkbox-item">
-                      <input
-                        type="checkbox"
-                        name="companion_traits[]"
-                        value="cheerful"
-                      />
-                      <span class="checkmark"></span>
-                      Cheerful & upbeat
-                    </label>
-                    <label class="checkbox-item">
-                      <input
-                        type="checkbox"
-                        name="companion_traits[]"
-                        value="gentle"
-                      />
-                      <span class="checkmark"></span>
-                      Gentle & caring
-                    </label>
-                    <label class="checkbox-item">
-                      <input
-                        type="checkbox"
-                        name="companion_traits[]"
-                        value="professional"
-                      />
-                      <span class="checkmark"></span>
-                      Professional & efficient
-                    </label>
-                    <label class="checkbox-item">
-                      <input
-                        type="checkbox"
-                        name="companion_traits[]"
-                        value="talkative"
-                      />
-                      <span class="checkmark"></span>
-                      Talkative & social
-                    </label>
-                    <label class="checkbox-item">
-                      <input
-                        type="checkbox"
-                        name="companion_traits[]"
-                        value="quiet"
-                      />
-                      <span class="checkmark"></span>
-                      Quiet & respectful
-                    </label>
-                  </div>
-                </div>
+               
               </div>
 
               <!-- Additional Information -->
@@ -1921,17 +1895,6 @@
                     rows="2"
                     placeholder="Will family members be present during care? Who should the Temanion coordinate with?"
                   ></textarea>
-                </div>
-
-                <div class="form-group">
-                  <label for="pets" class="form-label">Pets at Home</label>
-                  <input
-                    type="text"
-                    id="pets"
-                    name="pets"
-                    class="form-input"
-                    placeholder="List any pets and their temperament (if any)"
-                  />
                 </div>
 
                 <div class="form-group">
@@ -1984,11 +1947,13 @@
                 </button>
               </div>
             </div>
+
             <!-- Step 3: Confirmation -->
             <div class="form-step" data-step="3">
-              <h2 class="step-title">Booking Summary</h2>
+              <h2 class="step-title">Booking Summary & Payment</h2>
 
               <div class="booking-summary">
+                <!-- Service Details -->
                 <div class="summary-card">
                   <h3><i class="fas fa-clipboard-list"></i> Service Details</h3>
                   <div class="summary-item">
@@ -2004,12 +1969,20 @@
                     <span class="summary-value" id="summary-services">-</span>
                   </div>
                   <div class="summary-item">
+                    <span class="summary-label">Selected Dates:</span>
+                    <span class="summary-value" id="summary-dates">-</span>
+                  </div>
+                  <div class="summary-item">
                     <span class="summary-label">Schedule:</span>
                     <span class="summary-value" id="summary-schedule">-</span>
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Start Date:</span>
                     <span class="summary-value" id="summary-start-date">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Transportation:</span>
+                    <span class="summary-value" id="summary-transportation">-</span>
                   </div>
                   <div class="summary-divider"></div>
                   <div class="summary-item total">
@@ -2022,6 +1995,7 @@
                   </p>
                 </div>
 
+                <!-- Contact Information -->
                 <div class="summary-card">
                   <h3><i class="fas fa-user"></i> Contact Information</h3>
                   <div class="summary-item">
@@ -2041,216 +2015,138 @@
                     <span class="summary-value" id="summary-address">-</span>
                   </div>
                   <div class="summary-item">
-                    <span class="summary-label">Care Recipient:</span>
-                    <span class="summary-value" id="summary-care-recipient"
-                      >-</span
-                    >
+                    <span class="summary-label">Emergency Contact:</span>
+                    <span class="summary-value" id="summary-emergency">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Relationship:</span>
+                    <span class="summary-value" id="summary-relationship">-</span>
+                  </div>
+                </div>
+
+                <!-- Care Recipient Details -->
+                <div class="summary-card">
+                  <h3><i class="fas fa-heart-pulse"></i> Care Recipient Details</h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Name:</span>
+                    <span class="summary-value" id="summary-care-recipient">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Age & Gender:</span>
+                    <span class="summary-value" id="summary-recipient-details">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Language:</span>
+                    <span class="summary-value" id="summary-recipient-language">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Medical Conditions:</span>
+                    <span class="summary-value" id="summary-medical">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Mobility Level:</span>
+                    <span class="summary-value" id="summary-mobility">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Allergies:</span>
+                    <span class="summary-value" id="summary-allergies">-</span>
+                  </div>
+                </div>
+
+                <!-- Companion Preferences -->
+                <div class="summary-card">
+                  <h3><i class="fas fa-user-friends"></i> Companion Preferences</h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Preferred Gender:</span>
+                    <span class="summary-value" id="summary-companion-gender">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Language Preference:</span>
+                    <span class="summary-value" id="summary-companion-language">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Age Preference:</span>
+                    <span class="summary-value" id="summary-companion-age">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Personality Traits:</span>
+                    <span class="summary-value" id="summary-companion-traits">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Additional Notes:</span>
+                    <span class="summary-value" id="summary-notes">-</span>
                   </div>
                 </div>
               </div>
 
-              <div
-                style="
-                  background: #f0fdf4;
-                  border: 1px solid #bbf7d0;
-                  border-radius: 12px;
-                  padding: 24px;
-                  margin-bottom: 32px;
-                "
-              >
-                <h3
-                  style="
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    color: #047857;
-                    margin-bottom: 16px;
-                  "
-                >
+              <!-- What Happens Next -->
+              <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 24px; margin-bottom: 32px;">
+                <h3 style="display: flex; align-items: center; gap: 8px; color: #047857; margin-bottom: 16px;">
                   <i class="fas fa-info-circle"></i> What Happens Next?
                 </h3>
                 <ul style="list-style: none; padding: 0">
-                  <li
-                    style="
-                      display: flex;
-                      align-items: center;
-                      gap: 12px;
-                      margin-bottom: 12px;
-                      color: #047857;
-                    "
-                  >
-                    <i
-                      class="fas fa-phone"
-                      style="width: 20px; text-align: center"
-                    ></i>
-                    Our care coordinator will contact you within 24 hours to
-                    confirm details and provide quotation
+                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #047857;">
+                    <i class="fas fa-credit-card" style="width: 20px; text-align: center"></i>
+                    Pay the deposit to secure your booking
                   </li>
-                  <li
-                    style="
-                      display: flex;
-                      align-items: center;
-                      gap: 12px;
-                      margin-bottom: 12px;
-                      color: #047857;
-                    "
-                  >
-                    <i
-                      class="fas fa-user-check"
-                      style="width: 20px; text-align: center"
-                    ></i>
+                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #047857;">
+                    <i class="fas fa-phone" style="width: 20px; text-align: center"></i>
+                    Our care coordinator will contact you within 24 hours to confirm details and provide quotation
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #047857;">
+                    <i class="fas fa-user-check" style="width: 20px; text-align: center"></i>
                     We will match you with a Temanion based on your needs
                   </li>
-                  <li
-                    style="
-                      display: flex;
-                      align-items: center;
-                      gap: 12px;
-                      margin-bottom: 12px;
-                      color: #047857;
-                    "
-                  >
-                    <i
-                      class="fas fa-home"
-                      style="width: 20px; text-align: center"
-                    ></i>
-                    A care assessment visit will be scheduled before service
-                    begins
+                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #047857;">
+                    <i class="fas fa-home" style="width: 20px; text-align: center"></i>
+                    A care assessment visit will be scheduled before service begins
                   </li>
-                  <li
-                    style="
-                      display: flex;
-                      align-items: center;
-                      gap: 12px;
-                      color: #047857;
-                    "
-                  >
-                    <i
-                      class="fas fa-calendar-check"
-                      style="width: 20px; text-align: center"
-                    ></i>
-                    Your personalized home care schedule will commence as
-                    planned
+                  <li style="display: flex; align-items: center; gap: 12px; color: #047857;">
+                    <i class="fas fa-calendar-check" style="width: 20px; text-align: center"></i>
+                    Your personalized home care schedule will commence as planned
                   </li>
                 </ul>
               </div>
 
-              <div
-                style="
-                  background: #fffbeb;
-                  border: 1px solid #fed7aa;
-                  border-radius: 12px;
-                  padding: 24px;
-                  margin-bottom: 32px;
-                "
-              >
-                <h3
-                  style="
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    color: #ea580c;
-                    margin-bottom: 16px;
-                  "
-                >
-                  <i class="fas fa-exclamation-triangle"></i> Important Package
-                  Information
+              <!-- Important Package Information -->
+              <div style="background: #fffbeb; border: 1px solid #fed7aa; border-radius: 12px; padding: 24px; margin-bottom: 32px;">
+                <h3 style="display: flex; align-items: center; gap: 8px; color: #ea580c; margin-bottom: 16px;">
+                  <i class="fas fa-exclamation-triangle"></i> Important Package Information
                 </h3>
                 <ul style="list-style: none; padding: 0">
-                  <li
-                    style="
-                      display: flex;
-                      align-items: flex-start;
-                      gap: 12px;
-                      margin-bottom: 8px;
-                      color: #ea580c;
-                    "
-                  >
-                    <i
-                      class="fas fa-clock"
-                      style="width: 20px; text-align: center; margin-top: 2px"
-                    ></i>
-                    All 20 sessions must be used within 60 days of the start
-                    date
+                  <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; color: #ea580c;">
+                    <i class="fas fa-clock" style="width: 20px; text-align: center; margin-top: 2px"></i>
+                    All 20 sessions must be used within 60 days of the start date
                   </li>
-                  <li
-                    style="
-                      display: flex;
-                      align-items: flex-start;
-                      gap: 12px;
-                      margin-bottom: 8px;
-                      color: #ea580c;
-                    "
-                  >
-                    <i
-                      class="fas fa-calendar-times"
-                      style="width: 20px; text-align: center; margin-top: 2px"
-                    ></i>
-                    Services are available on weekdays only (Mon-Sat, excluding
-                    holidays)
+                  <li style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 8px; color: #ea580c;">
+                    <i class="fas fa-calendar-times" style="width: 20px; text-align: center; margin-top: 2px"></i>
+                    Services are available on weekdays only (Mon-Sat, excluding holidays)
                   </li>
-                  <li
-                    style="
-                      display: flex;
-                      align-items: flex-start;
-                      gap: 12px;
-                      color: #ea580c;
-                    "
-                  >
-                    <i
-                      class="fas fa-redo"
-                      style="width: 20px; text-align: center; margin-top: 2px"
-                    ></i>
-                    Sessions can be rescheduled but unused sessions cannot be
-                    refunded
+                  <li style="display: flex; align-items: flex-start; gap: 12px; color: #ea580c;">
+                    <i class="fas fa-redo" style="width: 20px; text-align: center; margin-top: 2px"></i>
+                    Sessions can be rescheduled but unused sessions cannot be refunded
                   </li>
                 </ul>
               </div>
 
-              <div style="margin-bottom: 32px">
-                <label
-                  style="
-                    display: flex;
-                    align-items: flex-start;
-                    gap: 12px;
-                    cursor: pointer;
-                  "
-                >
-                  <input
-                    type="checkbox"
-                    name="terms_agreed"
-                    required
-                    style="position: absolute; opacity: 0; pointer-events: none"
-                  />
-                  <span class="checkmark"></span>
-                  <span style="font-size: 14px; color: #374151">
-                    I agree to the
-                    <a href="#" style="color: #059669; text-decoration: none"
-                      >Terms & Conditions</a
-                    >,
-                    <a href="#" style="color: #059669; text-decoration: none"
-                      >Privacy Policy</a
-                    >, and package terms outlined above
-                  </span>
-                </label>
-              </div>
+              <!-- Fixed Terms & Conditions Checkbox -->
+              <label class="terms-checkbox">
+                <input type="checkbox" name="terms_agreed" required />
+                <span class="checkmark"></span>
+                <span class="terms-text">
+                  I agree to the <a href="#" target="_blank">Terms & Conditions</a>, 
+                  <a href="#" target="_blank">Privacy Policy</a>, and package terms outlined above. I understand that a deposit is required to secure the booking.
+                </span>
+              </label>
 
               <div class="form-actions">
-                <button
-                  type="button"
-                  class="btn btn--outline btn--large"
-                  onclick="prevStep()"
-                >
+                <button type="button" class="btn btn--outline btn--large" onclick="prevStep()">
                   <i class="fas fa-arrow-left"></i>
                   Previous
                 </button>
-                <button
-                  type="submit"
-                  class="btn btn--primary btn--large"
-                  id="submit-booking-btn"
-                >
-                  <i class="fas fa-paper-plane"></i>
-                  Submit Booking Request
+                <button type="button" class="btn btn--success btn--large" id="pay-deposit-btn" onclick="proceedToPayment()">
+                  <i class="fas fa-credit-card"></i>
+                  Pay Deposit & Confirm Booking
                 </button>
               </div>
             </div>
@@ -2272,15 +2168,10 @@
           contact you within 24 hours to finalize the details.
         </p>
         <div class="booking-reference">
-          <strong
-            >Reference Number: <span id="booking-ref-number"></span
-          ></strong>
+          <strong>Reference Number: <span id="booking-ref-number"></span></strong>
         </div>
         <div class="modal-actions">
-          <button
-            class="btn btn--primary"
-            onclick="window.location.href='booking.html'"
-          >
+          <button class="btn btn--primary" onclick="window.location.href='booking.html'">
             Book Another Service
           </button>
           <button class="btn btn--outline" onclick="closeModal()">Close</button>
@@ -2292,6 +2183,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
       // Current step tracking
       let currentStep = 1;
@@ -2317,13 +2209,9 @@
       function nextStep() {
         if (currentStep < totalSteps) {
           if (validateCurrentStep()) {
-            document
-              .querySelector(`.form-step[data-step="${currentStep}"]`)
-              .classList.remove("active");
+            document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove("active");
             currentStep++;
-            document
-              .querySelector(`.form-step[data-step="${currentStep}"]`)
-              .classList.add("active");
+            document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add("active");
             updateProgressSteps();
 
             if (currentStep === 3) {
@@ -2338,79 +2226,173 @@
       // Navigate to previous step
       function prevStep() {
         if (currentStep > 1) {
-          document
-            .querySelector(`.form-step[data-step="${currentStep}"]`)
-            .classList.remove("active");
+          document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove("active");
           currentStep--;
-          document
-            .querySelector(`.form-step[data-step="${currentStep}"]`)
-            .classList.add("active");
+          document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add("active");
           updateProgressSteps();
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }
 
-      // Validate current step
+      // Enhanced validation function
       function validateCurrentStep() {
+        clearValidationErrors();
+
         if (currentStep === 1) {
-          const packageSelected = document.querySelector(
-            'input[name="package"]:checked'
-          );
+          // Validate package selection
+          const packageSelected = document.querySelector('input[name="package"]:checked');
           if (!packageSelected) {
-            alert("Please select a home care package before continuing.");
+            showValidationError("Please select a home care package before continuing.");
             return false;
           }
+
         } else if (currentStep === 2) {
+          // Required fields validation
           const requiredFields = [
-            "full_name",
-            "phone",
-            "email",
-            "emergency_contact",
-            "patient_age",
-            "home_address",
-            "postcode",
-            "city",
-            "state",
-            "preferred_start_time",
-            "start_date",
+            { name: "full_name", label: "Full Name" },
+            { name: "phone", label: "Phone Number" },
+            { name: "email", label: "Email Address" },
+            { name: "emergency_contact", label: "Emergency Contact" },
+            { name: "patient_age", label: "Care Recipient Age" },
+            { name: "home_address", label: "Home Address" },
+            { name: "postcode", label: "Postcode" },
+            { name: "city", label: "City" },
+            { name: "multi_dates", label: "Care Dates" },
+            { name: "preferred_start_time", label: "Start Time" },
+            { name: "preferred_end_time", label: "End Time" },
+            { name: "start_date", label: "Service Start Date" },
+            { name: "end_date", label: "Service End Date" }
           ];
 
           for (let field of requiredFields) {
-            const element = document.querySelector(`[name="${field}"]`);
-            if (!element.value.trim()) {
-              alert(`Please fill in the ${field.replace("_", " ")} field.`);
-              element.focus();
+            const element = document.querySelector(`[name="${field.name}"], #${field.name.replace('_', '-')}`);
+            if (!element || !element.value.trim()) {
+              showValidationError(`Please fill in the ${field.label} field.`, field.name);
+              element?.focus();
               return false;
             }
           }
 
-          // Check if at least one day is selected
-          const daysSelected = document.querySelectorAll(
-            'input[name="preferred_days[]"]:checked'
-          );
-          if (daysSelected.length === 0) {
-            alert("Please select at least one preferred day for care.");
+          // Validate transportation mode
+          const transportationSelected = document.querySelector('input[name="transportation_mode"]:checked');
+          if (!transportationSelected) {
+            showValidationError("Please select a transportation mode.");
+            document.querySelector('input[name="transportation_mode"]')?.focus();
             return false;
           }
 
           // Check if at least one care service is selected
-          const servicesSelected = document.querySelectorAll(
-            'input[name="care_services[]"]:checked'
-          );
+          const servicesSelected = document.querySelectorAll('input[name="care_services[]"]:checked');
           if (servicesSelected.length === 0) {
-            alert("Please select at least one care service needed.");
+            showValidationError("Please select at least one care service needed.");
+            return false;
+          }
+
+          // Validate email format
+          const email = document.querySelector('[name="email"]')?.value;
+          if (email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+              showValidationError("Please enter a valid email address.", "email");
+              return false;
+            }
+          }
+
+          // Validate time selection
+          if (!validateTimes()) {
+            return false;
+          }
+
+          // Validate date range
+          if (!validateDateRange()) {
+            return false;
+          }
+
+        } else if (currentStep === 3) {
+          // Validate terms agreement
+          const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
+          if (!termsAgreed) {
+            showValidationError("Please agree to the Terms & Conditions and Privacy Policy to continue.");
+            return false;
+          }
+        }
+
+        return true;
+      }
+
+      // Show validation error
+      function showValidationError(message, fieldName = null) {
+        alert(message);
+        
+        if (fieldName) {
+          const field = document.querySelector(`[name="${fieldName}"], #${fieldName.replace('_', '-')}`);
+          if (field) {
+            field.classList.add('error');
+            field.focus();
+          }
+        }
+      }
+
+      // Clear validation errors
+      function clearValidationErrors() {
+        const errorFields = document.querySelectorAll('.error');
+        errorFields.forEach(field => field.classList.remove('error'));
+      }
+
+      // Time validation
+      function validateTimes() {
+        const startTime = document.getElementById("preferred-start-time")?.value;
+        const endTime = document.getElementById("preferred-end-time")?.value;
+        const startError = document.getElementById("start-time-error");
+        const endError = document.getElementById("end-time-error");
+        
+        // Clear previous errors
+        if (startError) startError.style.display = "none";
+        if (endError) endError.style.display = "none";
+        
+        if (startTime && endTime) {
+          // Convert to comparable format (24-hour)
+          const startHour = parseInt(startTime.split(':')[0]);
+          const endHour = parseInt(endTime.split(':')[0]);
+          
+          if (endHour <= startHour) {
+            if (endError) {
+              endError.textContent = "End time must be after start time";
+              endError.style.display = "block";
+            }
             return false;
           }
         }
         return true;
       }
 
-      // Update booking summary
+      // Date range validation
+      function validateDateRange() {
+        const startDate = document.getElementById("start-date")?.value;
+        const endDate = document.getElementById("end-date")?.value;
+        const dateError = document.getElementById("date-range-error");
+        
+        if (dateError) dateError.style.display = "none";
+        
+        if (startDate && endDate) {
+          const start = new Date(startDate);
+          const end = new Date(endDate);
+          
+          if (end <= start) {
+            if (dateError) {
+              dateError.textContent = "End date must be after start date";
+              dateError.style.display = "block";
+            }
+            return false;
+          }
+        }
+        return true;
+      }
+
+      // Enhanced booking summary update
       function updateBookingSummary() {
         // Package details
-        const selectedPackage = document.querySelector(
-          'input[name="package"]:checked'
-        );
+        const selectedPackage = document.querySelector('input[name="package"]:checked');
         if (selectedPackage) {
           let packageInfo = "";
           let packageCost = 0;
@@ -2427,15 +2409,11 @@
           }
 
           document.getElementById("summary-package").textContent = packageInfo;
-          document.getElementById(
-            "summary-total"
-          ).textContent = `RM ${packageCost}`;
+          document.getElementById("summary-total").textContent = `RM ${packageCost}`;
         }
 
         // Care services
-        const selectedServices = document.querySelectorAll(
-          'input[name="care_services[]"]:checked'
-        );
+        const selectedServices = document.querySelectorAll('input[name="care_services[]"]:checked');
         let servicesText = "";
         if (selectedServices.length > 0) {
           const serviceLabels = Array.from(selectedServices).map((service) => {
@@ -2446,62 +2424,71 @@
             servicesText += ` and ${serviceLabels.length - 3} more`;
           }
         }
-        document.getElementById("summary-services").textContent =
-          servicesText || "-";
+        document.getElementById("summary-services").textContent = servicesText || "None selected";
+
+        // Selected dates
+        const multiDates = document.getElementById("multi-dates")?.value;
+        document.getElementById("summary-dates").textContent = multiDates || "Not selected";
 
         // Schedule
-        const selectedDays = document.querySelectorAll(
-          'input[name="preferred_days[]"]:checked'
-        );
-        const startTime = document.getElementById("preferred-start-time").value;
+        const startTime = document.getElementById("preferred-start-time")?.value;
+        const endTime = document.getElementById("preferred-end-time")?.value;
         let scheduleText = "";
-        if (selectedDays.length > 0 && startTime) {
-          const dayLabels = Array.from(selectedDays).map((day) => {
-            return day.parentElement.textContent.trim();
-          });
-          scheduleText = `${dayLabels.join(", ")} at ${startTime}`;
+        if (startTime && endTime) {
+          scheduleText = `${startTime} - ${endTime}`;
         }
-        document.getElementById("summary-schedule").textContent =
-          scheduleText || "-";
+        document.getElementById("summary-schedule").textContent = scheduleText || "Not specified";
 
         // Start date
-        const startDate = document.getElementById("start-date").value;
+        const startDate = document.getElementById("start-date")?.value;
         if (startDate) {
-          const formattedDate = new Date(startDate).toLocaleDateString(
-            "en-MY",
-            {
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            }
-          );
-          document.getElementById("summary-start-date").textContent =
-            formattedDate;
+          const formattedDate = new Date(startDate).toLocaleDateString("en-MY", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+          document.getElementById("summary-start-date").textContent = formattedDate;
+        }
+
+        // Transportation
+        const transportation = document.querySelector('input[name="transportation_mode"]:checked');
+        if (transportation) {
+          const transportLabel = transportation.nextElementSibling.nextElementSibling.querySelector("strong").textContent;
+          document.getElementById("summary-transportation").textContent = transportLabel;
         }
 
         // Contact information
-        document.getElementById("summary-name").textContent =
-          document.getElementById("full-name").value || "-";
-        document.getElementById("summary-phone").textContent =
-          document.getElementById("phone").value || "-";
-        document.getElementById("summary-email").textContent =
-          document.getElementById("email").value || "-";
+        document.getElementById("summary-name").textContent = 
+          document.getElementById("full-name")?.value || "Not provided";
+        document.getElementById("summary-phone").textContent = 
+          document.getElementById("phone")?.value || "Not provided";
+        document.getElementById("summary-email").textContent = 
+          document.getElementById("email")?.value || "Not provided";
+
+        // Emergency contact
+        document.getElementById("summary-emergency").textContent = 
+          document.getElementById("emergency-contact")?.value || "Not provided";
+
+        // Relationship
+        const relationship = document.getElementById("relationship")?.value;
+        document.getElementById("summary-relationship").textContent = 
+          relationship ? relationship.charAt(0).toUpperCase() + relationship.slice(1).replace('-', ' ') : "Not specified";
 
         // Address
-        const address = document.getElementById("home-address").value;
-        const city = document.getElementById("city").value;
-        const state = document.getElementById("state").value;
+        const address = document.getElementById("home-address")?.value;
+        const city = document.getElementById("city")?.value;
+        const state = document.getElementById("state")?.value;
         if (address && city && state) {
-          document.getElementById(
-            "summary-address"
-          ).textContent = `${address}, ${city}, ${state}`;
+          const fullAddress = `${address}, ${city}, ${state}`;
+          document.getElementById("summary-address").textContent = 
+            fullAddress.length > 80 ? fullAddress.substring(0, 80) + "..." : fullAddress;
         }
 
         // Care recipient
-        const patientName = document.getElementById("patient-name").value;
-        const patientAge = document.getElementById("patient-age").value;
-        const relationship = document.getElementById("relationship").value;
+        const patientName = document.getElementById("patient-name")?.value;
+        const patientAge = document.getElementById("patient-age")?.value;
+        const patientGender = document.getElementById("patient-gender")?.value;
 
         let careRecipientText = "";
         if (patientName && patientAge) {
@@ -2513,51 +2500,200 @@
             careRecipientText = `Age: ${patientAge}`;
           }
         }
-        document.getElementById("summary-care-recipient").textContent =
-          careRecipientText || "-";
+        document.getElementById("summary-care-recipient").textContent = careRecipientText || "Not specified";
+
+        // Recipient details
+        let recipientDetails = "";
+        if (patientAge && patientGender) {
+          recipientDetails = `Age: ${patientAge}, ${patientGender.charAt(0).toUpperCase() + patientGender.slice(1)}`;
+        } else if (patientAge) {
+          recipientDetails = `Age: ${patientAge}`;
+        } else if (patientGender) {
+          recipientDetails = patientGender.charAt(0).toUpperCase() + patientGender.slice(1);
+        }
+        document.getElementById("summary-recipient-details").textContent = recipientDetails || "Not specified";
+
+        // Recipient language
+        const patientLanguage = document.getElementById("patient-language")?.value;
+        document.getElementById("summary-recipient-language").textContent = 
+          patientLanguage ? patientLanguage.charAt(0).toUpperCase() + patientLanguage.slice(1) : "English";
+
+        // Medical conditions
+        const medicalConditions = document.getElementById("medical-conditions")?.value;
+        document.getElementById("summary-medical").textContent = 
+          medicalConditions ? (medicalConditions.length > 100 ? medicalConditions.substring(0, 100) + "..." : medicalConditions) : "None specified";
+
+        // Mobility level
+        const mobility = document.getElementById("mobility-level")?.value;
+        document.getElementById("summary-mobility").textContent = 
+          mobility ? mobility.charAt(0).toUpperCase() + mobility.slice(1).replace('-', ' ') : "Not specified";
+
+        // Allergies
+        const allergies = document.getElementById("allergies")?.value;
+        document.getElementById("summary-allergies").textContent = 
+          allergies ? (allergies.length > 80 ? allergies.substring(0, 80) + "..." : allergies) : "None specified";
+
+        // Companion preferences
+        const companionGender = document.getElementById("companion-gender")?.value;
+        document.getElementById("summary-companion-gender").textContent = 
+          companionGender ? companionGender.charAt(0).toUpperCase() + companionGender.slice(1).replace('-', ' ') : "No preference";
+
+        const companionLanguage = document.getElementById("companion-language")?.value;
+        document.getElementById("summary-companion-language").textContent = 
+          companionLanguage ? companionLanguage.charAt(0).toUpperCase() + companionLanguage.slice(1) : "English";
+
+        
+
+
+        // Additional notes
+        const notes = document.getElementById("additional-notes")?.value;
+        document.getElementById("summary-notes").textContent = 
+          notes ? (notes.length > 100 ? notes.substring(0, 100) + "..." : notes) : "None";
+      }
+
+      // Payment processing function
+      function proceedToPayment() {
+        // Validate terms agreement before proceeding
+        const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
+        if (!termsAgreed) {
+          alert("Please agree to the Terms & Conditions and Privacy Policy before proceeding to payment.");
+          return;
+        }
+
+        // Show loading state
+        const payButton = document.getElementById('pay-deposit-btn');
+        const originalText = payButton.innerHTML;
+        payButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        payButton.disabled = true;
+
+        // Generate booking reference
+        const refNumber = "TM" + Date.now().toString().slice(-6);
+        
+        // Store booking data (in real implementation, this would be sent to backend)
+        const bookingData = {
+          reference: refNumber,
+          package: document.querySelector('input[name="package"]:checked')?.value,
+          contactName: document.getElementById("full-name")?.value,
+          phone: document.getElementById("phone")?.value,
+          email: document.getElementById("email")?.value,
+          timestamp: new Date().toISOString()
+        };
+
+        console.log("Home Care Package Booking Data:", bookingData);
+
+        // Simulate form submission delay, then redirect
+        setTimeout(() => {
+          // Redirect to Billplz payment page
+          window.location.href = "https://www.billplz.com/deposit4Teman";
+        }, 1500);
+      }
+
+      // Flatpickr and date selection logic
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      const dayAfterTomorrow = new Date(today);
+      dayAfterTomorrow.setDate(today.getDate() + 2);
+
+      function formatDate(date) {
+        return date.toISOString().split('T')[0];
+      }
+
+      const minDateStr = formatDate(dayAfterTomorrow);
+      const messageEl = document.getElementById("date-limit-message");
+      const countEl = document.getElementById("selected-count");
+
+      // Initialize Flatpickr with 20-date limit enforcement
+      const fp = flatpickr("#multi-dates", {
+        mode: "multiple",
+        dateFormat: "Y-m-d",
+        disable: [formatDate(today), formatDate(tomorrow)],
+        minDate: minDateStr,
+        onChange: function(selectedDates, dateStr, instance) {
+          updateDateSelection(selectedDates, instance);
+        },
+        onReady: function(selectedDates, dateStr, instance) {
+          updateDateSelection(selectedDates, instance);
+        },
+        // Prevent selection of more than 20 dates
+        onDayCreate: function(dObj, dStr, fp, dayElem) {
+          dayElem.addEventListener('click', function(e) {
+            if (fp.selectedDates.length >= 20 && !dayElem.classList.contains('selected')) {
+              e.preventDefault();
+              e.stopPropagation();
+              return false;
+            }
+          });
+        }
+      });
+
+      // Update date selection display and enforce 20-date limit
+      function updateDateSelection(selectedDates, instance) {
+        const count = selectedDates.length;
+        if (countEl) countEl.textContent = count;
+        
+        // Show/hide message for less than 20 dates
+        if (messageEl) {
+          if (count < 20) {
+            messageEl.style.display = "block";
+          } else {
+            messageEl.style.display = "none";
+          }
+        }
+        
+        // Visual feedback when at limit
+        if (count >= 20) {
+          const calendar = instance.calendarContainer;
+          if (calendar) {
+            const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
+            unselectedDays.forEach(day => {
+              day.style.opacity = '0.3';
+              day.style.pointerEvents = 'none';
+            });
+          }
+        } else {
+          const calendar = instance.calendarContainer;
+          if (calendar) {
+            const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
+            unselectedDays.forEach(day => {
+              day.style.opacity = '';
+              day.style.pointerEvents = '';
+            });
+          }
+        }
+      }
+
+      // Close modal function
+      function closeModal() {
+        const modal = document.getElementById("booking-success-modal");
+        if (modal) modal.style.display = "none";
       }
 
       // Handle form initialization
       document.addEventListener("DOMContentLoaded", function () {
-        // Set minimum date to tomorrow
-        const today = new Date();
-        const tomorrow = new Date(today);
-        tomorrow.setDate(tomorrow.getDate() + 1);
-        const minDate = tomorrow.toISOString().split("T")[0];
-        document.getElementById("start-date").setAttribute("min", minDate);
+        // Set minimum date to day after tomorrow
+        const startDateEl = document.getElementById("start-date");
+        const endDateEl = document.getElementById("end-date");
+        if (startDateEl) startDateEl.setAttribute("min", minDateStr);
+        if (endDateEl) endDateEl.setAttribute("min", minDateStr);
 
         // Initialize progress steps
         updateProgressSteps();
+
+        // Add event listeners for validation
+        const startTimeEl = document.getElementById("preferred-start-time");
+        const endTimeEl = document.getElementById("preferred-end-time");
+        const startDateFormEl = document.getElementById("start-date");
+        const endDateFormEl = document.getElementById("end-date");
+
+        if (startTimeEl) startTimeEl.addEventListener('change', validateTimes);
+        if (endTimeEl) endTimeEl.addEventListener('change', validateTimes);
+        if (startDateFormEl) startDateFormEl.addEventListener('change', validateDateRange);
+        if (endDateFormEl) endDateFormEl.addEventListener('change', validateDateRange);
+
+        // Load components
+        loadComponents();
       });
-
-      // Handle form submission
-      document
-        .getElementById("home-package-booking-form")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          const termsAgreed = document.querySelector(
-            'input[name="terms_agreed"]:checked'
-          );
-          if (!termsAgreed) {
-            alert(
-              "Please agree to the Terms & Conditions, Privacy Policy, and package terms to continue."
-            );
-            return;
-          }
-
-          const refNumber = "TM" + Date.now().toString().slice(-6);
-          document.getElementById("booking-ref-number").textContent = refNumber;
-          document.getElementById("booking-success-modal").style.display =
-            "flex";
-
-          console.log("Home care package booking submitted successfully");
-        });
-
-      // Close modal function
-      function closeModal() {
-        document.getElementById("booking-success-modal").style.display = "none";
-      }
 
       // Load header and footer components
       async function loadComponents() {
@@ -2565,13 +2701,11 @@
           const headerResponse = await fetch("../components/header.html");
           if (headerResponse.ok) {
             const headerHTML = await headerResponse.text();
-            document.getElementById("header-placeholder").innerHTML =
-              headerHTML;
+            const headerPlaceholder = document.getElementById("header-placeholder");
+            if (headerPlaceholder) headerPlaceholder.innerHTML = headerHTML;
 
             setTimeout(() => {
-              const bookingLink = document.querySelector(
-                'a[href="booking.html"]'
-              );
+              const bookingLink = document.querySelector('a[href="booking.html"]');
               if (bookingLink) {
                 bookingLink.classList.add("active");
               }
@@ -2582,8 +2716,8 @@
           const footerResponse = await fetch("../components/footer.html");
           if (footerResponse.ok) {
             const footerHTML = await footerResponse.text();
-            document.getElementById("footer-placeholder").innerHTML =
-              footerHTML;
+            const footerPlaceholder = document.getElementById("footer-placeholder");
+            if (footerPlaceholder) footerPlaceholder.innerHTML = footerHTML;
           }
 
           initializeMainJS();
@@ -2640,14 +2774,8 @@
       }
 
       function initializeMainJS() {
-        console.log(
-          "Teman Malaysia home care package booking loaded successfully!"
-        );
+        console.log("Teman Malaysia home care package booking loaded successfully!");
       }
-
-      document.addEventListener("DOMContentLoaded", function () {
-        loadComponents();
-      });
     </script>
     <script src="../assets/js/main.js"></script>
   </body>
