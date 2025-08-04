@@ -25,6 +25,9 @@
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Include Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+
     <style>
       /* Reset and base styles */
       * {
@@ -111,12 +114,12 @@
         font-size: 16px;
       }
 
-      .btn--secondary {
+      .btn--success {
         background: #10b981;
         color: white;
       }
 
-      .btn--secondary:hover {
+      .btn--success:hover {
         background: #059669;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
@@ -542,11 +545,142 @@
         margin: 0;
       }
 
-      /* Checkbox Group */
-      .checkbox-group {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      /* Fixed checkbox styling */
+      .terms-checkbox {
+        display: flex;
+        align-items: flex-start;
         gap: 12px;
+        cursor: pointer;
+        margin-bottom: 32px;
+      }
+
+      .terms-checkbox input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .terms-checkbox .checkmark {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #d1d5db;
+        border-radius: 4px;
+        position: relative;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+        margin-top: 2px;
+      }
+
+      .terms-checkbox:hover .checkmark {
+        border-color: #ef4444;
+      }
+
+      .terms-checkbox input[type="checkbox"]:checked ~ .checkmark {
+        background: #ef4444;
+        border-color: #ef4444;
+      }
+
+      .terms-checkbox input[type="checkbox"]:checked ~ .checkmark::after {
+        content: "✓";
+        color: white;
+        font-size: 12px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .terms-text {
+        font-size: 14px;
+        color: #374151;
+      }
+
+      .terms-text a {
+        color: #ef4444;
+        text-decoration: none;
+      }
+
+      .terms-text a:hover {
+        text-decoration: underline;
+      }
+
+      /* Summary Styles */
+      .booking-summary {
+        display: grid;
+        gap: 24px;
+        margin-bottom: 32px;
+      }
+
+      .summary-card {
+        background: #f9fafb;
+        border-radius: 12px;
+        padding: 24px;
+        border: 1px solid #e5e7eb;
+      }
+
+      .summary-card h3 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #1f2937;
+        margin-bottom: 20px;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      .summary-card h3 i {
+        color: #ef4444;
+      }
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .summary-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+
+      .summary-label {
+        font-weight: 500;
+        color: #6b7280;
+        flex: 0 0 40%;
+      }
+
+      .summary-value {
+        color: #1f2937;
+        text-align: right;
+        flex: 1;
+        word-break: break-word;
+      }
+
+      .summary-item.total {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 2px solid #ef4444;
+        font-size: 1.125rem;
+        font-weight: 600;
+      }
+
+      .summary-item.total .summary-label {
+        color: #1f2937;
+      }
+
+      .summary-item.total .summary-value {
+        color: #ef4444;
+        font-size: 1.25rem;
+      }
+
+      .cost-note {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 8px;
+        font-style: italic;
       }
 
       /* Form Actions */
@@ -571,6 +705,66 @@
 
       .back-link:hover {
         color: #ef4444;
+      }
+
+      /* Error styling */
+      .error {
+        border-color: #ef4444 !important;
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+      }
+
+      .error-message {
+        color: #ef4444;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      /* Modal */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        max-width: 500px;
+        text-align: center;
+        margin: 20px;
+      }
+
+      .success-icon {
+        font-size: 4rem;
+        color: #10b981;
+        margin-bottom: 20px;
+      }
+
+      .modal-content h2 {
+        color: #1f2937;
+        margin-bottom: 16px;
+      }
+
+      .booking-reference {
+        background: #f3f4f6;
+        padding: 16px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 24px;
       }
 
       /* Responsive */
@@ -706,149 +900,150 @@
           <form id="dialysis-booking-form" class="booking-form" data-form-type="dialysis">
             <!-- Step 1: Package Selection -->
             <div class="form-step active" data-step="1">
- <h2 class="step-title">Choose Your Package</h2>
+              <h2 class="step-title">Choose Your Package</h2>
 
- <div style="background: #e0f2fe; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
-   <h3 style="color: #0277bd; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-     <i class="fas fa-info-circle"></i>
-     Our Dialysis Support Services
-   </h3>
-   <p style="color: #0288d1; margin: 0; font-size: 14px;">
-     <strong>Main Service:</strong> Transport + Support (send off & pickup for dialysis sessions)<br>
-     <strong>Add-on Service:</strong> Companion During Treatment (optional - Temanion stays with you during dialysis)
-   </p>
- </div>
+              <div style="background: #e0f2fe; padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                <h3 style="color: #0277bd; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                  <i class="fas fa-info-circle"></i>
+                  Our Dialysis Support Services
+                </h3>
+                <p style="color: #0288d1; margin: 0; font-size: 14px;">
+                  <strong>Main Service:</strong> Transport + Support (send off & pickup for dialysis sessions)<br>
+                  <strong>Add-on Service:</strong> Companion During Treatment (optional - Temanion stays with you during dialysis)
+                </p>
+              </div>
 
- <div class="package-options">
-   <div class="package-option">
-     <input
-       type="radio"
-       name="package"
-       value="hourly"
-       id="hourly-package"
-       required
-     />
-     <label for="hourly-package" class="package-card">
-       <div class="package-header">
-         <div class="package-title">Transport + Support (Hourly)</div>
-         <div class="package-price">RM35/hour</div>
-       </div>
-       <div class="package-description">
-         Send off and pickup service for dialysis sessions. Includes companionship during transport and waiting time. Minimum 2 hours per session.
-       </div>
-       
-       <div class="hours-selection" style="display: none">
-         <label for="hours" class="form-label">Number of Hours: *</label>
-         <select name="hours" id="hours" class="form-select">
-           <option value="">Select hours</option>
-           <option value="2">2 hours - RM70 (Minimum for 1 session)</option>
-           <option value="3">3 hours - RM105</option>
-           <option value="4">4 hours - RM140</option>
-           <option value="5">5 hours - RM175</option>
-           <option value="6">6 hours - RM210</option>
-           <option value="custom">More than 6 hours (Contact us)</option>
-         </select>
-       </div>
-       
-       <div class="package-notes">
-         <small>• Perfect for occasional dialysis support</small>
-         <small>• Includes transport to/from dialysis center</small>
-         <small>• Flexible scheduling</small>
-       </div>
-     </label>
-   </div>
+              <div class="package-options">
+                <div class="package-option">
+                  <input
+                    type="radio"
+                    name="package"
+                    value="hourly"
+                    id="hourly-package"
+                    required
+                  />
+                  <label for="hourly-package" class="package-card">
+                    <div class="package-header">
+                      <div class="package-title">Transport + Support (Hourly)</div>
+                      <div class="package-price">RM35/hour</div>
+                    </div>
+                    <div class="package-description">
+                      Send off and pickup service for dialysis sessions. Includes companionship during transport and waiting time. Minimum 2 hours per session.
+                    </div>
+                    
+                    <div class="hours-selection" style="display: none">
+                      <label for="hours" class="form-label">Number of Hours: *</label>
+                      <select name="hours" id="hours" class="form-select">
+                        <option value="">Select hours</option>
+                        <option value="2">2 hours - RM70 (Minimum for 1 session)</option>
+                        <option value="3">3 hours - RM105</option>
+                        <option value="4">4 hours - RM140</option>
+                        <option value="5">5 hours - RM175</option>
+                        <option value="6">6 hours - RM210</option>
+                        <option value="custom">More than 6 hours (Contact us)</option>
+                      </select>
+                    </div>
+                    
+                    <div class="package-notes">
+                      <small>• Perfect for occasional dialysis support</small>
+                      <small>• Includes transport to/from dialysis center</small>
+                      <small>• Flexible scheduling</small>
+                    </div>
+                  </label>
+                </div>
 
-   <div class="package-option">
-     <input
-       type="radio"
-       name="package"
-       value="package1"
-       id="package1"
-     />
-     <label for="package1" class="package-card">
-       <div class="package-header">
-         <div class="package-title">3-Session Package Deal</div>
-         <div class="package-price">RM186</div>
-       </div>
-       <div class="package-description">
-         Transport + Support for 3 dialysis sessions (6 hours total, 2 hours per session). Best value for regular treatment schedules.
-       </div>
-       
-       <div class="package-notes">
-         <small>• Save RM24 compared to hourly rate!</small>
-         <small>• 6 hours total - perfect for 3 sessions</small>
-         <small>• Valid for 60 days</small>
-         <small>• Includes transport for all sessions</small>
-       </div>
-     </label>
-   </div>
- </div>
+                <div class="package-option">
+                  <input
+                    type="radio"
+                    name="package"
+                    value="package1"
+                    id="package1"
+                  />
+                  <label for="package1" class="package-card">
+                    <div class="package-header">
+                      <div class="package-title">3-Session Package Deal</div>
+                      <div class="package-price">RM186</div>
+                    </div>
+                    <div class="package-description">
+                      Transport + Support for 3 dialysis sessions (6 hours total, 2 hours per session). Best value for regular treatment schedules.
+                    </div>
+                    
+                    <div class="package-notes">
+                      <small>• Save RM24 compared to hourly rate!</small>
+                      <small>• 6 hours total - perfect for 3 sessions</small>
+                      <small>• Valid for 60 days</small>
+                      <small>• Includes transport for all sessions</small>
+                    </div>
+                  </label>
+                </div>
+              </div>
 
- <div style="background: #f3e5f5; border: 2px dashed #9c27b0; border-radius: 12px; padding: 20px; margin: 30px 0;">
-   <h4 style="color: #7b1fa2; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-     <i class="fas fa-plus-circle"></i>
-     Add-on Service (Optional)
-   </h4>
-   <p style="color: #8e24aa; font-size: 14px; margin-bottom: 16px;">
-     Want someone to stay with you during your actual dialysis treatment? Add this companion service:
-   </p>
-   
-   <div class="package-option" style="margin: 0;">
-     <input
-       type="checkbox"
-       name="companion_addon"
-       value="companion"
-       id="companion-addon"
-     />
-     <label for="companion-addon" class="package-card" style="border-color: #9c27b0;">
-       <div class="package-header">
-         <div class="package-title">Companion During Treatment</div>
-         <div class="package-price">+RM30/hour</div>
-       </div>
-       <div class="package-description">
-         Temanion stays with you during your dialysis treatment at the center. This is in addition to the main transport service above.
-       </div>
-       
-       <div class="hours-selection" style="display: none">
-         <label for="companion-hours" class="form-label">Treatment Duration: *</label>
-         <select name="companion_hours" id="companion-hours" class="form-select">
-           <option value="">Select treatment duration</option>
-           <option value="2">2 hours - +RM60</option>
-           <option value="3">3 hours - +RM90</option>
-           <option value="4">4 hours - +RM120</option>
-           <option value="5">5 hours - +RM150</option>
-           <option value="6">6 hours - +RM180</option>
-         </select>
-       </div>
-       
-       <div class="package-notes">
-         <small>• Emotional support during treatment</small>
-         <small>• Help with entertainment/activities</small>
-         <small>• Assistance with basic needs</small>
-         <small>• Peace of mind for family members</small>
-       </div>
-     </label>
-   </div>
- </div>
+              <div style="background: #f3e5f5; border: 2px dashed #9c27b0; border-radius: 12px; padding: 20px; margin: 30px 0;">
+                <h4 style="color: #7b1fa2; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                  <i class="fas fa-plus-circle"></i>
+                  Add-on Service (Optional)
+                </h4>
+                <p style="color: #8e24aa; font-size: 14px; margin-bottom: 16px;">
+                  Want someone to stay with you during your actual dialysis treatment? Add this companion service:
+                </p>
+                
+                <div class="package-option" style="margin: 0;">
+                  <input
+                    type="checkbox"
+                    name="companion_addon"
+                    value="companion"
+                    id="companion-addon"
+                  />
+                  <label for="companion-addon" class="package-card" style="border-color: #9c27b0;">
+                    <div class="package-header">
+                      <div class="package-title">Companion During Treatment</div>
+                      <div class="package-price">+RM30/hour</div>
+                    </div>
+                    <div class="package-description">
+                      Temanion stays with you during your dialysis treatment at the center. This is in addition to the main transport service above.
+                    </div>
+                    
+                    <div class="hours-selection" style="display: none">
+                      <label for="companion-hours" class="form-label">Treatment Duration: *</label>
+                      <select name="companion_hours" id="companion-hours" class="form-select">
+                        <option value="">Select treatment duration</option>
+                        <option value="2">2 hours - +RM60</option>
+                        <option value="3">3 hours - +RM90</option>
+                        <option value="4">4 hours - +RM120</option>
+                        <option value="5">5 hours - +RM150</option>
+                        <option value="6">6 hours - +RM180</option>
+                      </select>
+                    </div>
+                    
+                    <div class="package-notes">
+                      <small>• Emotional support during treatment</small>
+                      <small>• Help with entertainment/activities</small>
+                      <small>• Assistance with basic needs</small>
+                      <small>• Peace of mind for family members</small>
+                    </div>
+                  </label>
+                </div>
+              </div>
 
- <div style="background: #fef2f2; padding: 16px; border-radius: 8px; margin-bottom: 32px;">
-   <h4 style="color: #dc2626; margin-bottom: 8px;">Additional Information:</h4>
-   <small style="display: block; color: #dc2626; margin-bottom: 4px;">• Transportation fee: RM0.80/KM or e-hailing fare</small>
-   <small style="display: block; color: #dc2626; margin-bottom: 4px;">• All remaining hours can be used before 60 days</small>
-   <small style="display: block; color: #dc2626;">• Surcharge: RM37/hour for Public Holiday/Sunday/last minute booking</small>
- </div>
+              <div style="background: #fef2f2; padding: 16px; border-radius: 8px; margin-bottom: 32px;">
+                <h4 style="color: #dc2626; margin-bottom: 8px;">Additional Information:</h4>
+                <small style="display: block; color: #dc2626; margin-bottom: 4px;">• Transportation fee: RM0.80/KM or e-hailing fare</small>
+                <small style="display: block; color: #dc2626; margin-bottom: 4px;">• All remaining hours can be used before 60 days</small>
+                <small style="display: block; color: #dc2626;">• Surcharge: RM37/hour for Public Holiday/Sunday/last minute booking</small>
+              </div>
 
- <div class="form-actions">
-   <button
-     type="button"
-     class="btn btn--primary btn--large"
-     onclick="nextStep()"
-   >
-     Continue to Details
-     <i class="fas fa-arrow-right"></i>
-   </button>
- </div>
-</div>
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn btn--primary btn--large"
+                  onclick="nextStep()"
+                >
+                  Continue to Details
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
             <!-- Step 2: Personal Details -->
             <div class="form-step" data-step="2">
               <h2 class="step-title">Booking Details</h2>
@@ -912,14 +1107,14 @@
                     />
                     <small class="form-help">Use company email if claiming staff benefit</small>
                   </div>
-                   <div class="form-group">
+
+                  <div class="form-group">
                     <label for="employer" class="form-label">Employer Name</label>
                     <input
                       type="text"
                       id="employer"
                       name="employer"
                       class="form-input"
-                      
                     />
                     <small class="form-help">For those claiming for Staff Benefit only</small>
                   </div>
@@ -931,7 +1126,6 @@
                       id="staff_id"
                       name="staff_id"
                       class="form-input"
-                      
                     />
                     <small class="form-help">For those claiming for Staff Benefit only</small>
                   </div>
@@ -997,6 +1191,7 @@
                       <option value="other">Other</option>
                     </select>
                   </div>
+
                   <div class="form-group">
                     <label for="patient-weight" class="form-label">Care Recipient Weight</label>
                     <input
@@ -1007,6 +1202,7 @@
                       placeholder="Weight in kg"
                     />
                   </div>
+
                   <div class="form-group">
                     <label for="patient-height" class="form-label">Care Recipient Height</label>
                     <input
@@ -1021,254 +1217,75 @@
               </div>
 
               <!-- Care Schedule -->
-<!-- Include Flatpickr CSS and JS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+              <div class="form-section">
+                <h3 class="form-section-title">
+                  <i class="fas fa-calendar-alt"></i>
+                  Dialysis Treatment Schedule
+                </h3>
 
-<!-- Care Schedule -->
-<div class="form-section">
- <h3 class="form-section-title">
-   <i class="fas fa-calendar-alt"></i>
-   Dialysis Treatment Schedule
- </h3>
+                <!-- Multi-date calendar -->
+                <div class="form-group">
+                  <label for="multi-dates" class="form-label">Select Dialysis Treatment Dates *</label>
+                  <input
+                    type="text"
+                    id="multi-dates"
+                    name="multi_dates"
+                    class="form-input"
+                    placeholder="Select treatment dates"
+                    readonly
+                    required
+                  />
+                  <small class="form-help">Select specific dates; today and tomorrow are disabled</small>
+                  <div id="date-limit-message" style="display:none; color: #666; margin-top: 5px; font-size: 0.875rem;">
+                    If you're unsure of the remaining dates, you may plan or book them later with our representative.
+                  </div>
+                  <div id="date-count" style="color: #666; margin-top: 5px; font-size: 0.875rem;">
+                    Selected dates: <span id="selected-count">0</span>/<span id="max-dates">0</span> sessions
+                  </div>
+                  <div id="hours-info" style="color: #ef4444; margin-top: 5px; font-size: 0.875rem; font-weight: 500;">
+                    Please select a package first to enable date selection
+                  </div>
+                </div>
 
- <!-- Multi-date calendar -->
- <div class="form-group">
-   <label for="multi-dates" class="form-label">Select Dialysis Treatment Dates *</label>
-   <input
-     type="text"
-     id="multi-dates"
-     name="multi_dates"
-     class="form-input"
-     placeholder="Select treatment dates"
-     readonly
-     required
-   />
-   <small class="form-help">Select specific dates; today and tomorrow are disabled</small>
-   <div id="date-limit-message" style="display:none; color: #666; margin-top: 5px; font-size: 0.875rem;">
-     If you're unsure of the remaining dates, you may plan or book them later with our representative.
-   </div>
-   <div id="date-count" style="color: #666; margin-top: 5px; font-size: 0.875rem;">
-     Selected dates: <span id="selected-count">0</span>/<span id="max-dates">0</span> sessions
-   </div>
-   <div id="hours-info" style="color: #ef4444; margin-top: 5px; font-size: 0.875rem; font-weight: 500;">
-     Please select a package first to enable date selection
-   </div>
- </div>
+                <!-- Time Selection -->
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="preferred-start-time" class="form-label">Treatment Start Time *</label>
+                    <select id="preferred-start-time" name="preferred_start_time" class="form-select" required>
+                      <option value="">Select start time</option>
+                      <option value="07:00">07:00 AM</option>
+                      <option value="08:00">08:00 AM</option>
+                      <option value="09:00">09:00 AM</option>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="11:00">11:00 AM</option>
+                      <option value="12:00">12:00 PM</option>
+                      <option value="13:00">01:00 PM</option>
+                      <option value="14:00">02:00 PM</option>
+                      <option value="15:00">03:00 PM</option>
+                      <option value="16:00">04:00 PM</option>
+                      <option value="17:00">05:00 PM</option>
+                      <option value="18:00">06:00 PM</option>
+                      <option value="19:00">07:00 PM</option>
+                      <option value="20:00">08:00 PM</option>
+                      <option value="21:00">09:00 PM</option>
+                    </select>
+                    <small class="form-help">Recommended: 30-45 minutes before dialysis appointment</small>
+                  </div>
 
- <!-- Time Selection -->
- <div class="form-grid">
-   <div class="form-group">
-     <label for="preferred-start-time" class="form-label">Treatment Start Time *</label>
-     <select id="preferred-start-time" name="preferred_start_time" class="form-select" required>
-       <option value="">Select start time</option>
-       <option value="07:00">07:00 AM</option>
-        <option value="08:00">08:00 AM</option>
-        <option value="09:00">09:00 AM</option>
-        <option value="10:00">10:00 AM</option>
-        <option value="11:00">11:00 AM</option>
-        <option value="12:00">12:00 PM</option>
-        <option value="13:00">01:00 PM</option>
-        <option value="14:00">02:00 PM</option>
-        <option value="15:00">03:00 PM</option>
-        <option value="16:00">04:00 PM</option>
-        <option value="17:00">05:00 PM</option>
-        <option value="18:00">06:00 PM</option>
-        <option value="07:00">07:00 PM</option>
-        <option value="08:00">08:00 PM</option>
-        <option value="09:00">09:00 PM</option>
-     </select>
-     <small class="form-help">Recommended: 30-45 minutes before dialysis appointment</small>
-   </div>
-
-   <div class="form-group">
-     <label for="session-duration" class="form-label">Typical Session Duration</label>
-     <select id="session-duration" name="session_duration" class="form-select">
-       <option value="">Select duration</option>
-       <option value="2">2 hours (minimum)</option>
-       <option value="3">3 hours</option>
-       <option value="4">4 hours</option>
-       <option value="5">5 hours</option>
-       <option value="6">6+ hours</option>
-     </select>
-     <small class="form-help">This helps us plan the service duration</small>
-   </div>
- </div>
-</div>
-
-<!-- Flatpickr & Logic -->
-<script>
- // Utility: format date as YYYY-MM-DD
- function formatDate(date) {
-   return date.toISOString().split('T')[0];
- }
-
- // Calculate date boundaries
- const today = new Date();
- const tomorrow = new Date(today);
- tomorrow.setDate(today.getDate() + 1);
- const dayAfterTomorrow = new Date(today);
- dayAfterTomorrow.setDate(today.getDate() + 2);
-
- const minDateStr = formatDate(dayAfterTomorrow);
-
- // Get DOM elements
- const messageEl = document.getElementById("date-limit-message");
- const countEl = document.getElementById("selected-count");
- const maxDatesEl = document.getElementById("max-dates");
- const hoursInfoEl = document.getElementById("hours-info");
- const multiDatesInput = document.getElementById("multi-dates");
-
- let fp = null;
- let maxAllowedSessions = 0;
-
- // Function to calculate max sessions based on selected package
- function calculateMaxSessions() {
-   const selectedPackage = document.querySelector('input[name="package"]:checked');
-   
-   if (!selectedPackage) {
-     maxAllowedSessions = 0;
-     maxDatesEl.textContent = "0";
-     hoursInfoEl.textContent = "Please select a package first to enable date selection";
-     hoursInfoEl.style.color = "#ef4444";
-     multiDatesInput.disabled = true;
-     if (fp) fp.set('disabled', true);
-     return;
-   }
-
-   let totalHours = 0;
-   
-   if (selectedPackage.value === "hourly") {
-     const hoursSelect = document.getElementById("hours");
-     if (hoursSelect.value) {
-       totalHours = parseInt(hoursSelect.value) || 0;
-     }
-   } else if (selectedPackage.value === "package1") {
-     totalHours = 6; // 3-session package = 6 hours
-   }
-
-   if (totalHours > 0) {
-     // Calculate sessions: 2 hours = 1 session, 3 hours = 2 sessions, etc.
-     maxAllowedSessions = Math.floor(totalHours / 2);
-     if (totalHours % 2 === 1) {
-       maxAllowedSessions += 1; // Add 1 more session for odd hours (3hrs = 2 sessions)
-     }
-     
-     maxDatesEl.textContent = maxAllowedSessions;
-     
-     if (selectedPackage.value === "package1") {
-       hoursInfoEl.textContent = `Package includes 6 hours total - you can select up to ${maxAllowedSessions} treatment sessions`;
-     } else {
-       let sessionText = "";
-       if (totalHours === 2) {
-         sessionText = "1 session (2 hours)";
-       } else if (totalHours === 3) {
-         sessionText = "2 sessions (3 hours total)";
-       } else if (totalHours % 2 === 0) {
-         sessionText = `${maxAllowedSessions} sessions (${totalHours} hours total)`;
-       } else {
-         sessionText = `${maxAllowedSessions} sessions (${totalHours} hours total)`;
-       }
-       hoursInfoEl.textContent = `Based on ${totalHours} hours selected - you can select up to ${sessionText}`;
-     }
-     hoursInfoEl.style.color = "#10b981";
-     
-     multiDatesInput.disabled = false;
-     if (fp) {
-       fp.set('disabled', false);
-       // Clear dates if exceeding new limit
-       if (fp.selectedDates.length > maxAllowedSessions) {
-         fp.clear();
-       }
-     }
-   } else {
-     maxAllowedSessions = 0;
-     maxDatesEl.textContent = "0";
-     hoursInfoEl.textContent = "Please select hours to enable date selection";
-     hoursInfoEl.style.color = "#ef4444";
-     multiDatesInput.disabled = true;
-     if (fp) fp.set('disabled', true);
-   }
-
-   updateDateSelection(fp ? fp.selectedDates : [], fp);
- }
-
- // Initialize Flatpickr
- function initializeFlatpickr() {
-   fp = flatpickr("#multi-dates", {
-     mode: "multiple",
-     dateFormat: "Y-m-d",
-     disable: [formatDate(today), formatDate(tomorrow)],
-     minDate: minDateStr,
-     disabled: true, // Start disabled
-     onChange: function(selectedDates, dateStr, instance) {
-       updateDateSelection(selectedDates, instance);
-     },
-     onReady: function(selectedDates, dateStr, instance) {
-       updateDateSelection(selectedDates, instance);
-     },
-     // Prevent selection beyond limit
-     onDayCreate: function(dObj, dStr, fp, dayElem) {
-       dayElem.addEventListener('click', function(e) {
-         if (fp.selectedDates.length >= maxAllowedSessions && !dayElem.classList.contains('selected')) {
-           e.preventDefault();
-           e.stopPropagation();
-           return false;
-         }
-       });
-     }
-   });
- }
-
- // Update date selection display and enforce limit
- function updateDateSelection(selectedDates, instance) {
-   if (!instance) return;
-   
-   const count = selectedDates.length;
-   countEl.textContent = count;
-   
-   // Show/hide message for incomplete selection
-   if (count < maxAllowedSessions && maxAllowedSessions > 0) {
-     messageEl.style.display = "block";
-   } else {
-     messageEl.style.display = "none";
-   }
-   
-   // Visual feedback when at limit
-   if (count >= maxAllowedSessions && maxAllowedSessions > 0) {
-     const calendar = instance.calendarContainer;
-     if (calendar) {
-       const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
-       unselectedDays.forEach(day => {
-         day.style.opacity = '0.3';
-         day.style.pointerEvents = 'none';
-       });
-     }
-   } else {
-     const calendar = instance.calendarContainer;
-     if (calendar) {
-       const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
-       unselectedDays.forEach(day => {
-         day.style.opacity = '';
-         day.style.pointerEvents = '';
-       });
-     }
-   }
- }
-
- // Listen for package changes
- document.addEventListener('change', function(e) {
-   if (e.target.name === 'package' || e.target.id === 'hours') {
-     calculateMaxSessions();
-   }
- });
-
- // Initialize when DOM is ready
- document.addEventListener('DOMContentLoaded', function() {
-   initializeFlatpickr();
-   calculateMaxSessions();
- });
-</script>
+                  <div class="form-group">
+                    <label for="session-duration" class="form-label">Typical Session Duration</label>
+                    <select id="session-duration" name="session_duration" class="form-select">
+                      <option value="">Select duration</option>
+                      <option value="2">2 hours (minimum)</option>
+                      <option value="3">3 hours</option>
+                      <option value="4">4 hours</option>
+                      <option value="5">5 hours</option>
+                      <option value="6">6+ hours</option>
+                    </select>
+                    <small class="form-help">This helps us plan the service duration</small>
+                  </div>
+                </div>
+              </div>
 
               <!-- Location Information -->
               <div class="form-section">
@@ -1355,8 +1372,6 @@
                       <strong>E-Hailing Service (Grab/Taxi)</strong>
                     </div>
                   </label>
-
-                  
                 </div>
 
                 <div class="form-group" style="margin-top: 16px">
@@ -1412,15 +1427,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="mobility-assistance" class="form-label">Mobility Assistance Needed</label>
-                    <select id="mobility-assistance" name="mobility_assistance" class="form-select">
-                      <option value="no-preference">None</option>
-                      <option value="female">Wheelchair assistance</option>
-                      <option value="male">Walker/walking aid</option>
-                      <option value="male">Walking assistance</option>
-                      <option value="male">Other</option>
-                    </select>
-                  </div>
+                  <label for="mobility-assistance" class="form-label">Mobility Assistance Needed</label>
+                  <select id="mobility-assistance" name="mobility_assistance" class="form-select">
+                    <option value="none">None</option>
+                    <option value="wheelchair">Wheelchair assistance</option>
+                    <option value="walker">Walker/walking aid</option>
+                    <option value="walking">Walking assistance</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
 
                 <div class="form-group">
                   <label for="special-requirements" class="form-label">Special Requirements</label>
@@ -1491,7 +1506,7 @@
                   ></textarea>
                 </div>
 
-                 <div class="form-group">
+                <div class="form-group">
                   <label for="how-heard" class="form-label">How did you hear about us?</label>
                   <select id="how-heard" name="how_heard" class="form-select">
                     <option value="google">Google Search</option>
@@ -1517,13 +1532,14 @@
                   <i class="fas fa-arrow-right"></i>
                 </button>
               </div>
-
             </div>
+
             <!-- Step 3: Confirmation -->
             <div class="form-step" data-step="3">
               <h2 class="step-title">Booking Summary</h2>
 
               <div class="booking-summary">
+                <!-- Package & Service Details -->
                 <div class="summary-card">
                   <h3><i class="fas fa-clipboard-list"></i> Service Details</h3>
                   <div class="summary-item">
@@ -1535,12 +1551,16 @@
                     <span class="summary-value" id="summary-package">-</span>
                   </div>
                   <div class="summary-item">
-                    <span class="summary-label">Dialysis Center:</span>
-                    <span class="summary-value" id="summary-center">-</span>
+                    <span class="summary-label">Companion Add-on:</span>
+                    <span class="summary-value" id="summary-companion">-</span>
                   </div>
                   <div class="summary-item">
-                    <span class="summary-label">Treatment Schedule:</span>
-                    <span class="summary-value" id="summary-schedule">-</span>
+                    <span class="summary-label">Treatment Dates:</span>
+                    <span class="summary-value" id="summary-dates">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Treatment Start Time:</span>
+                    <span class="summary-value" id="summary-start-time">-</span>
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Transportation:</span>
@@ -1556,6 +1576,7 @@
                   </p>
                 </div>
 
+                <!-- Contact Information -->
                 <div class="summary-card">
                   <h3><i class="fas fa-user"></i> Contact Information</h3>
                   <div class="summary-item">
@@ -1571,8 +1592,121 @@
                     <span class="summary-value" id="summary-email">-</span>
                   </div>
                   <div class="summary-item">
+                    <span class="summary-label">Emergency Contact:</span>
+                    <span class="summary-value" id="summary-emergency">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Relationship:</span>
+                    <span class="summary-value" id="summary-relationship">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Employer:</span>
+                    <span class="summary-value" id="summary-employer">-</span>
+                  </div>
+                </div>
+
+                <!-- Care Recipient Information -->
+                <div class="summary-card">
+                  <h3><i class="fas fa-heart-pulse"></i> Care Recipient Information</h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Name:</span>
+                    <span class="summary-value" id="summary-patient-name">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Age:</span>
+                    <span class="summary-value" id="summary-patient-age">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Gender:</span>
+                    <span class="summary-value" id="summary-patient-gender">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Preferred Language:</span>
+                    <span class="summary-value" id="summary-patient-language">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Weight:</span>
+                    <span class="summary-value" id="summary-patient-weight">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Height:</span>
+                    <span class="summary-value" id="summary-patient-height">-</span>
+                  </div>
+                </div>
+
+                <!-- Location Details -->
+                <div class="summary-card">
+                  <h3><i class="fas fa-map-marker-alt"></i> Location Details</h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Dialysis Center:</span>
+                    <span class="summary-value" id="summary-center-address">-</span>
+                  </div>
+                  <div class="summary-item">
                     <span class="summary-label">Pickup Address:</span>
-                    <span class="summary-value" id="summary-pickup">-</span>
+                    <span class="summary-value" id="summary-pickup-address">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Return Address:</span>
+                    <span class="summary-value" id="summary-return-address">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Preferred Pickup Time:</span>
+                    <span class="summary-value" id="summary-pickup-time">-</span>
+                  </div>
+                </div>
+
+                <!-- Medical & Care Information -->
+                <div class="summary-card">
+                  <h3><i class="fas fa-notes-medical"></i> Medical & Care Information</h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Medical Conditions:</span>
+                    <span class="summary-value" id="summary-medical-conditions">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Medications:</span>
+                    <span class="summary-value" id="summary-medications">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Dietary Restrictions:</span>
+                    <span class="summary-value" id="summary-dietary">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Mobility Assistance:</span>
+                    <span class="summary-value" id="summary-mobility">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Special Requirements:</span>
+                    <span class="summary-value" id="summary-special-requirements">-</span>
+                  </div>
+                </div>
+
+                <!-- Companion Preferences -->
+                <div class="summary-card">
+                  <h3><i class="fas fa-user-friends"></i> Companion Preferences</h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Preferred Gender:</span>
+                    <span class="summary-value" id="summary-companion-gender">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Language Preference:</span>
+                    <span class="summary-value" id="summary-companion-language">-</span>
+                  </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="summary-card">
+                  <h3><i class="fas fa-comment-dots"></i> Additional Information</h3>
+                  <div class="summary-item">
+                    <span class="summary-label">Regular Treatment Schedule:</span>
+                    <span class="summary-value" id="summary-treatment-schedule">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">Additional Notes:</span>
+                    <span class="summary-value" id="summary-additional-notes">-</span>
+                  </div>
+                  <div class="summary-item">
+                    <span class="summary-label">How did you hear about us:</span>
+                    <span class="summary-value" id="summary-how-heard">-</span>
                   </div>
                 </div>
               </div>
@@ -1583,8 +1717,12 @@
                 </h3>
                 <ul style="list-style: none; padding: 0;">
                   <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #dc2626;">
+                    <i class="fas fa-credit-card" style="width: 20px; text-align: center;"></i>
+                    Pay a small deposit to secure your booking
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #dc2626;">
                     <i class="fas fa-phone" style="width: 20px; text-align: center;"></i>
-                    Our team will contact you within 24 hours to confirm details and provide quotation
+                    Our team will contact you within 24 hours to confirm details
                   </li>
                   <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #dc2626;">
                     <i class="fas fa-user-check" style="width: 20px; text-align: center;"></i>
@@ -1601,25 +1739,24 @@
                 </ul>
               </div>
 
-              <div style="margin-bottom: 32px;">
-                <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer;">
-                  <input type="checkbox" name="terms_agreed" required style="position: absolute; opacity: 0; pointer-events: none;" />
-                  <span class="checkmark"></span>
-                  <span style="font-size: 14px; color: #374151;">
-                    I agree to the <a href="#" style="color: #ef4444; text-decoration: none;">Terms & Conditions</a> and 
-                    <a href="#" style="color: #ef4444; text-decoration: none;">Privacy Policy</a>
-                  </span>
-                </label>
-              </div>
+              <!-- Fixed Terms & Conditions Checkbox -->
+              <label class="terms-checkbox">
+                <input type="checkbox" name="terms_agreed" required />
+                <span class="checkmark"></span>
+                <span class="terms-text">
+                  I agree to the <a href="#" target="_blank">Terms & Conditions</a> and 
+                  <a href="#" target="_blank">Privacy Policy</a>
+                </span>
+              </label>
 
               <div class="form-actions">
                 <button type="button" class="btn btn--outline btn--large" onclick="prevStep()">
                   <i class="fas fa-arrow-left"></i>
                   Previous
                 </button>
-                <button type="submit" class="btn btn--primary btn--large" id="submit-booking-btn">
-                  <i class="fas fa-paper-plane"></i>
-                  Submit Booking Request
+                <button type="button" class="btn btn--success btn--large" id="pay-deposit-btn" onclick="proceedToPayment()">
+                  <i class="fas fa-credit-card"></i>
+                  Pay Deposit & Confirm Booking
                 </button>
               </div>
             </div>
@@ -1655,6 +1792,7 @@
     <div id="footer-placeholder"></div>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
       // Current step tracking
       let currentStep = 1;
@@ -1705,89 +1843,147 @@
         }
       }
 
-      // Validate current step
+      // Enhanced validation function
       function validateCurrentStep() {
+        clearValidationErrors();
+
         if (currentStep === 1) {
+          // Validate package selection
           const packageSelected = document.querySelector('input[name="package"]:checked');
           if (!packageSelected) {
-            alert("Please select a package before continuing.");
+            showValidationError("Please select a package before continuing.");
             return false;
           }
 
-          if (packageSelected.value === "hourly" && !document.getElementById("hours").value) {
-            alert("Please select the number of hours.");
-            return false;
+          // Validate hours for hourly packages
+          if (packageSelected.value === "hourly") {
+            const hoursSelected = document.getElementById("hours").value;
+            if (!hoursSelected) {
+              showValidationError("Please select the number of hours.", "hours");
+              return false;
+            }
           }
 
-          if (packageSelected.value === "companion" && !document.getElementById("companion-hours").value) {
-            alert("Please select the number of companion hours.");
-            return false;
+          // Validate companion hours if companion addon is selected
+          const companionAddon = document.querySelector('input[name="companion_addon"]:checked');
+          if (companionAddon) {
+            const companionHours = document.getElementById("companion-hours").value;
+            if (!companionHours) {
+              showValidationError("Please select the companion duration.", "companion-hours");
+              return false;
+            }
           }
+
         } else if (currentStep === 2) {
-          const requiredFields = ["full_name", "phone", "email", "emergency_contact", "dialysis_center", "center_address", "pickup_address"];
+          // Required fields validation
+          const requiredFields = [
+            { name: "full_name", label: "Full Name" },
+            { name: "phone", label: "Phone Number" },
+            { name: "email", label: "Email Address" },
+            { name: "emergency_contact", label: "Emergency Contact" },
+            { name: "multi_dates", label: "Treatment Dates" },
+            { name: "preferred_start_time", label: "Treatment Start Time" },
+            { name: "center_address", label: "Dialysis Center Address" },
+            { name: "pickup_address", label: "Pickup Address" }
+          ];
 
           for (let field of requiredFields) {
-            const element = document.querySelector(`[name="${field}"]`);
-            if (!element.value.trim()) {
-              alert(`Please fill in the ${field.replace("_", " ")} field.`);
+            const element = document.querySelector(`[name="${field.name}"]`);
+            if (!element || !element.value.trim()) {
+              showValidationError(`Please fill in the ${field.label} field.`, field.name);
               element.focus();
               return false;
             }
           }
 
+          // Validate transportation mode
           const transportationSelected = document.querySelector('input[name="transportation_mode"]:checked');
           if (!transportationSelected) {
-            alert("Please select a transportation mode.");
+            showValidationError("Please select a transportation mode.");
+            document.querySelector('input[name="transportation_mode"]').focus();
+            return false;
+          }
+
+          // Validate email format
+          const email = document.querySelector('[name="email"]').value;
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            showValidationError("Please enter a valid email address.", "email");
+            return false;
+          }
+
+        } else if (currentStep === 3) {
+          // Validate terms agreement
+          const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
+          if (!termsAgreed) {
+            showValidationError("Please agree to the Terms & Conditions and Privacy Policy to continue.");
             return false;
           }
         }
+
         return true;
       }
 
-      // Update booking summary
+      // Show validation error
+      function showValidationError(message, fieldName = null) {
+        alert(message);
+        
+        if (fieldName) {
+          const field = document.querySelector(`[name="${fieldName}"], #${fieldName}`);
+          if (field) {
+            field.classList.add('error');
+            field.focus();
+          }
+        }
+      }
+
+      // Clear validation errors
+      function clearValidationErrors() {
+        const errorFields = document.querySelectorAll('.error');
+        errorFields.forEach(field => field.classList.remove('error'));
+      }
+
+      // Enhanced booking summary update
       function updateBookingSummary() {
         // Package details
         const selectedPackage = document.querySelector('input[name="package"]:checked');
-        if (selectedPackage) {
-          let packageInfo = "";
-          let estimatedCost = 0;
+        let packageInfo = "";
+        let estimatedCost = 0;
 
+        if (selectedPackage) {
           if (selectedPackage.value === "hourly") {
             const hours = document.getElementById("hours").value;
-            packageInfo = `Hourly Rate - ${hours} hours`;
+            packageInfo = `Hourly Rate - ${hours} hours (RM${hours * 35})`;
             estimatedCost = hours * 35;
           } else if (selectedPackage.value === "package1") {
-            packageInfo = "3-Session Package (6 hours total)";
+            packageInfo = "3-Session Package (6 hours total) - RM186";
             estimatedCost = 186;
-          } else if (selectedPackage.value === "companion") {
-            const hours = document.getElementById("companion-hours").value;
-            packageInfo = `Companion During Treatment - ${hours} hours`;
-            estimatedCost = hours * 30;
           }
-
-          document.getElementById("summary-package").textContent = packageInfo;
-          document.getElementById("summary-total").textContent = `RM ${estimatedCost}`;
         }
 
-        // Dialysis center
-        document.getElementById("summary-center").textContent = 
-          document.getElementById("dialysis-center").value || "-";
+        // Companion addon
+        const companionAddon = document.querySelector('input[name="companion_addon"]:checked');
+        let companionInfo = "None";
+        if (companionAddon) {
+          const companionHours = document.getElementById("companion-hours").value;
+          if (companionHours) {
+            const companionCost = companionHours * 30;
+            companionInfo = `${companionHours} hours (+RM${companionCost})`;
+            estimatedCost += companionCost;
+          }
+        }
 
-        // Treatment schedule
-        const nextAppointment = document.getElementById("next-appointment").value;
-        const appointmentTime = document.getElementById("appointment-time").value;
-        const treatmentFreq = document.getElementById("treatment-frequency").value;
+        // Update summary fields
+        document.getElementById("summary-package").textContent = packageInfo || "-";
+        document.getElementById("summary-companion").textContent = companionInfo;
+        document.getElementById("summary-total").textContent = `RM ${estimatedCost}`;
+
+        // Treatment details
+        const treatmentDates = document.getElementById("multi-dates").value;
+        document.getElementById("summary-dates").textContent = treatmentDates || "-";
         
-        let scheduleText = "";
-        if (nextAppointment && appointmentTime) {
-          const formattedDate = new Date(nextAppointment).toLocaleDateString("en-MY", {
-            weekday: "long", year: "numeric", month: "long", day: "numeric"
-          });
-          scheduleText = `Next: ${formattedDate} at ${appointmentTime}`;
-        } else if (treatmentFreq) {
-          scheduleText = treatmentFreq.replace("-", " ");
-        }
-        document.getElementById("summary-schedule").textContent = scheduleText || "-";
+        const startTime = document.getElementById("preferred-start-time").value;
+        document.getElementById("summary-start-time").textContent = startTime || "-";
 
         // Transportation
         const transportation = document.querySelector('input[name="transportation_mode"]:checked');
@@ -1803,60 +1999,268 @@
           document.getElementById("phone").value || "-";
         document.getElementById("summary-email").textContent = 
           document.getElementById("email").value || "-";
-        document.getElementById("summary-pickup").textContent = 
+        document.getElementById("summary-emergency").textContent = 
+          document.getElementById("emergency-contact").value || "-";
+        document.getElementById("summary-relationship").textContent = 
+          document.getElementById("relationship").value || "-";
+        document.getElementById("summary-employer").textContent = 
+          document.getElementById("employer").value || "-";
+
+        // Care recipient information
+        document.getElementById("summary-patient-name").textContent = 
+          document.getElementById("patient-name").value || "Same as contact person";
+        document.getElementById("summary-patient-age").textContent = 
+          document.getElementById("patient-age").value ? document.getElementById("patient-age").value + " years" : "-";
+        document.getElementById("summary-patient-gender").textContent = 
+          document.getElementById("patient-gender").value || "-";
+        document.getElementById("summary-patient-language").textContent = 
+          document.getElementById("patient-language").value || "-";
+        document.getElementById("summary-patient-weight").textContent = 
+          document.getElementById("patient-weight").value ? document.getElementById("patient-weight").value + " kg" : "-";
+        document.getElementById("summary-patient-height").textContent = 
+          document.getElementById("patient-height").value ? document.getElementById("patient-height").value + " cm" : "-";
+
+        // Location details
+        document.getElementById("summary-center-address").textContent = 
+          document.getElementById("center-address").value || "-";
+        document.getElementById("summary-pickup-address").textContent = 
           document.getElementById("pickup-address").value || "-";
+        document.getElementById("summary-return-address").textContent = 
+          document.getElementById("return-address").value || "Same as pickup address";
+        document.getElementById("summary-pickup-time").textContent = 
+          document.getElementById("pickup-time").value || "-";
+
+        // Medical & care information
+        document.getElementById("summary-medical-conditions").textContent = 
+          document.getElementById("medical-conditions").value || "None specified";
+        document.getElementById("summary-medications").textContent = 
+          document.getElementById("medications").value || "None specified";
+        document.getElementById("summary-dietary").textContent = 
+          document.getElementById("dietary-restrictions").value || "None specified";
+        document.getElementById("summary-mobility").textContent = 
+          document.getElementById("mobility-assistance").value || "None";
+        document.getElementById("summary-special-requirements").textContent = 
+          document.getElementById("special-requirements").value || "None specified";
+
+        // Companion preferences
+        document.getElementById("summary-companion-gender").textContent = 
+          document.getElementById("companion-gender").value || "-";
+        document.getElementById("summary-companion-language").textContent = 
+          document.getElementById("companion-language").value || "-";
+
+        // Additional information
+        document.getElementById("summary-treatment-schedule").textContent = 
+          document.getElementById("treatment-schedule").value || "Not specified";
+        document.getElementById("summary-additional-notes").textContent = 
+          document.getElementById("additional-notes").value || "None";
+        document.getElementById("summary-how-heard").textContent = 
+          document.getElementById("how-heard").value || "-";
       }
 
-      // Handle package selection
-      document.addEventListener("DOMContentLoaded", function () {
-        // Show/hide hours selection for different packages
-        document.addEventListener("change", function (e) {
-          if (e.target.name === "package") {
-            const hoursSelections = document.querySelectorAll(".hours-selection");
-            hoursSelections.forEach(selection => {
-              selection.style.display = "none";
-            });
-
-            if (e.target.value === "hourly") {
-              document.querySelector("#hourly-package + .package-card .hours-selection").style.display = "block";
-            } else if (e.target.value === "companion") {
-              document.querySelector("#companion-package + .package-card .hours-selection").style.display = "block";
-            }
-          }
-        });
-
-        // Set minimum date to today
-        const today = new Date().toISOString().split("T")[0];
-        const nextAppointmentField = document.getElementById("next-appointment");
-        if (nextAppointmentField) {
-          nextAppointmentField.setAttribute("min", today);
-        }
-
-        // Initialize progress steps
-        updateProgressSteps();
-      });
-
-      // Handle form submission
-      document.getElementById("dialysis-booking-form").addEventListener("submit", function (e) {
-        e.preventDefault();
-
+      // Payment processing function
+      function proceedToPayment() {
+        // Validate terms agreement before proceeding
         const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
         if (!termsAgreed) {
-          alert("Please agree to the Terms & Conditions and Privacy Policy to continue.");
+          alert("Please agree to the Terms & Conditions and Privacy Policy before proceeding to payment.");
           return;
         }
 
+        // Generate booking reference
         const refNumber = "TM" + Date.now().toString().slice(-6);
+        
+        // Store booking data (in real implementation, this would be sent to backend)
+        const bookingData = {
+          reference: refNumber,
+          package: document.querySelector('input[name="package"]:checked')?.value,
+          hours: document.getElementById("hours").value,
+          companionAddon: document.querySelector('input[name="companion_addon"]:checked')?.value,
+          companionHours: document.getElementById("companion-hours").value,
+          contactName: document.getElementById("full-name").value,
+          phone: document.getElementById("phone").value,
+          email: document.getElementById("email").value,
+          // ... add other relevant fields
+          timestamp: new Date().toISOString()
+        };
+
+        console.log("Booking Data:", bookingData);
+
+        // Redirect to Billplz payment page
+        window.open("https://www.billplz.com/deposit4Teman", "_blank");
+        
+        // Show success modal
         document.getElementById("booking-ref-number").textContent = refNumber;
         document.getElementById("booking-success-modal").style.display = "flex";
+      }
 
-        console.log("Dialysis treatment booking submitted successfully");
-      });
+      // Flatpickr and date selection logic
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(today.getDate() + 1);
+      const dayAfterTomorrow = new Date(today);
+      dayAfterTomorrow.setDate(today.getDate() + 2);
+
+      function formatDate(date) {
+        return date.toISOString().split('T')[0];
+      }
+
+      const minDateStr = formatDate(dayAfterTomorrow);
+      const messageEl = document.getElementById("date-limit-message");
+      const countEl = document.getElementById("selected-count");
+      const maxDatesEl = document.getElementById("max-dates");
+      const hoursInfoEl = document.getElementById("hours-info");
+      const multiDatesInput = document.getElementById("multi-dates");
+
+      let fp = null;
+      let maxAllowedSessions = 0;
+
+      function calculateMaxSessions() {
+        const selectedPackage = document.querySelector('input[name="package"]:checked');
+        
+        if (!selectedPackage) {
+          maxAllowedSessions = 0;
+          maxDatesEl.textContent = "0";
+          hoursInfoEl.textContent = "Please select a package first to enable date selection";
+          hoursInfoEl.style.color = "#ef4444";
+          multiDatesInput.disabled = true;
+          if (fp) fp.set('disabled', true);
+          return;
+        }
+
+        let totalHours = 0;
+        
+        if (selectedPackage.value === "hourly") {
+          const hoursSelect = document.getElementById("hours");
+          if (hoursSelect.value) {
+            totalHours = parseInt(hoursSelect.value) || 0;
+          }
+        } else if (selectedPackage.value === "package1") {
+          totalHours = 6;
+        }
+
+        if (totalHours > 0) {
+          maxAllowedSessions = Math.floor(totalHours / 2);
+          if (totalHours % 2 === 1) {
+            maxAllowedSessions += 1;
+          }
+          
+          maxDatesEl.textContent = maxAllowedSessions;
+          
+          if (selectedPackage.value === "package1") {
+            hoursInfoEl.textContent = `Package includes 6 hours total - you can select up to ${maxAllowedSessions} treatment sessions`;
+          } else {
+            hoursInfoEl.textContent = `Based on ${totalHours} hours selected - you can select up to ${maxAllowedSessions} sessions`;
+          }
+          hoursInfoEl.style.color = "#10b981";
+          
+          multiDatesInput.disabled = false;
+          if (fp) {
+            fp.set('disabled', false);
+            if (fp.selectedDates.length > maxAllowedSessions) {
+              fp.clear();
+            }
+          }
+        } else {
+          maxAllowedSessions = 0;
+          maxDatesEl.textContent = "0";
+          hoursInfoEl.textContent = "Please select hours to enable date selection";
+          hoursInfoEl.style.color = "#ef4444";
+          multiDatesInput.disabled = true;
+          if (fp) fp.set('disabled', true);
+        }
+
+        updateDateSelection(fp ? fp.selectedDates : [], fp);
+      }
+
+      function initializeFlatpickr() {
+        fp = flatpickr("#multi-dates", {
+          mode: "multiple",
+          dateFormat: "Y-m-d",
+          disable: [formatDate(today), formatDate(tomorrow)],
+          minDate: minDateStr,
+          disabled: true,
+          onChange: function(selectedDates, dateStr, instance) {
+            updateDateSelection(selectedDates, instance);
+          },
+          onReady: function(selectedDates, dateStr, instance) {
+            updateDateSelection(selectedDates, instance);
+          }
+        });
+      }
+
+      function updateDateSelection(selectedDates, instance) {
+        if (!instance) return;
+        
+        const count = selectedDates.length;
+        countEl.textContent = count;
+        
+        if (count < maxAllowedSessions && maxAllowedSessions > 0) {
+          messageEl.style.display = "block";
+        } else {
+          messageEl.style.display = "none";
+        }
+        
+        if (count >= maxAllowedSessions && maxAllowedSessions > 0) {
+          const calendar = instance.calendarContainer;
+          if (calendar) {
+            const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
+            unselectedDays.forEach(day => {
+              day.style.opacity = '0.3';
+              day.style.pointerEvents = 'none';
+            });
+          }
+        } else {
+          const calendar = instance.calendarContainer;
+          if (calendar) {
+            const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
+            unselectedDays.forEach(day => {
+              day.style.opacity = '';
+              day.style.pointerEvents = '';
+            });
+          }
+        }
+      }
 
       // Close modal function  
       function closeModal() {
         document.getElementById("booking-success-modal").style.display = "none";
       }
+
+      // Event listeners
+      document.addEventListener('DOMContentLoaded', function() {
+        initializeFlatpickr();
+        calculateMaxSessions();
+        updateProgressSteps();
+
+        // Package and hours change listeners
+        document.addEventListener('change', function(e) {
+          if (e.target.name === 'package' || e.target.id === 'hours') {
+            calculateMaxSessions();
+          }
+
+          // Show/hide hours selection for different packages
+          if (e.target.name === 'package') {
+            const hoursSelections = document.querySelectorAll('.hours-selection');
+            hoursSelections.forEach(selection => {
+              selection.style.display = 'none';
+            });
+
+            if (e.target.value === 'hourly') {
+              document.querySelector('#hourly-package + .package-card .hours-selection').style.display = 'block';
+            }
+          }
+
+          // Show/hide companion hours selection
+          if (e.target.name === 'companion_addon') {
+            const companionHoursSelection = document.querySelector('#companion-addon + .package-card .hours-selection');
+            if (e.target.checked) {
+              companionHoursSelection.style.display = 'block';
+            } else {
+              companionHoursSelection.style.display = 'none';
+            }
+          }
+        });
+      });
 
       // Load header and footer components
       async function loadComponents() {
@@ -1887,7 +2291,6 @@
         }
       }
 
-      // Initialize navigation functionality
       function initializeNavigation() {
         const navToggle = document.getElementById("nav-toggle");
         const navMenu = document.getElementById("nav-menu");
