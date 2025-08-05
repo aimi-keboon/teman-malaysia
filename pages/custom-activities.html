@@ -898,7 +898,13 @@
           </div>
 
           <!-- Booking Form -->
-          <form id="custom-activities-booking-form" class="booking-form" data-form-type="custom-activities">
+          <form
+  id="custom-activities-booking-form"
+  class="booking-form"
+  data-form-type="custom-activities"
+  action="https://formspree.io/f/xblkzawz"
+  method="POST"
+>
             <!-- Step 1: Package Selection -->
             <div class="form-step active" data-step="1">
               <h2 class="step-title">Choose Your Package</h2>
@@ -2012,42 +2018,138 @@
 
       // Payment processing function
       function proceedToPayment() {
-        // Validate terms agreement before proceeding
-        const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
-        if (!termsAgreed) {
-          alert("Please agree to the Terms & Conditions and Privacy Policy before proceeding to payment.");
-          return;
+  // Validate terms agreement before proceeding
+  const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
+  if (!termsAgreed) {
+    alert("Please agree to the Terms & Conditions and Privacy Policy before proceeding to payment.");
+    return;
+  }
+
+  // Show loading state
+  const payButton = document.getElementById('pay-deposit-btn');
+  const originalText = payButton.innerHTML;
+  payButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+  payButton.disabled = true;
+
+  // Generate booking reference
+  const refNumber = "TM" + Date.now().toString().slice(-6);
+
+  // Calculate estimated cost
+  let estimatedCost = 0;
+  const selectedPackage = document.querySelector('input[name="package"]:checked');
+  if (selectedPackage && selectedPackage.value === "hourly") {
+    const hours = document.getElementById("hours").value;
+    if (hours && hours !== "custom") {
+      estimatedCost = hours * 35;
+    }
+  }
+
+  // Prepare form data for Google Sheets
+  const formData = new FormData();
+  formData.append('booking_reference', refNumber);
+  formData.append('service_type', 'Custom Activities Companion');
+  formData.append('estimated_cost', estimatedCost > 0 ? `RM ${estimatedCost}` : 'Contact for quote');
+  
+  // Get all form fields
+  const form = document.getElementById('custom-activities-booking-form');
+  const formElements = form.elements;
+  
+  for (let element of formElements) {
+    if (element.name && element.value) {
+      if (element.type === 'checkbox' || element.type === 'radio') {
+        if (element.checked) {
+          formData.append(element.name, element.value);
         }
-
-        // Show loading state
-        const payButton = document.getElementById('pay-deposit-btn');
-        const originalText = payButton.innerHTML;
-        payButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-        payButton.disabled = true;
-
-        // Generate booking reference
-        const refNumber = "TM" + Date.now().toString().slice(-6);
-        
-        // Store booking data (in real implementation, this would be sent to backend)
-        const bookingData = {
-          reference: refNumber,
-          package: document.querySelector('input[name="package"]:checked')?.value,
-          hours: document.getElementById("hours").value,
-          contactName: document.getElementById("full-name").value,
-          phone: document.getElementById("phone").value,
-          email: document.getElementById("email").value,
-          timestamp: new Date().toISOString()
-        };
-
-        console.log("Booking Data:", bookingData);
-
-        // Simulate form submission delay, then redirect
-        setTimeout(() => {
-          // Redirect to Billplz payment page
-          window.location.href = "https://www.billplz.com/deposit4Teman";
-        }, 1500);
+      } else {
+        formData.append(element.name, element.value);
       }
+    }
+  }
 
+  // Convert FormData to URLSearchParams for Google Apps Script
+  const params = new URLSearchParams();
+  for (let [key, value] of formData.entries()) {
+    params.append(key, value);
+  }
+
+  // Submit to Google Apps Script (replace with your actual deployment URL)
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrpiZqxiQkfgzJZrJPcwa_9gfb-u-QdxztKbSCzfwsSde3bYowQWEn87Fg5Vv19sql/exec';
+  
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    body: params,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      // Success - also submit to Formspree for email notification
+      return fetch('https://formspree.io/f/xblkzawz', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+    } else {
+      throw new Error('Google Sheets submission failed: ' + data.message);
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      // Both submissions successful - show success modal first
+      document.getElementById("booking-ref-number").textContent = refNumber;
+      document.getElementById("booking-success-modal").style.display = "flex";
+      
+      // IMMEDIATE redirect to payment page
+      setTimeout(() => {
+        window.location.href = "https://www.billplz.com/deposit4Teman";
+      }, 1500);
+      
+    } else {
+      throw new Error('Formspree submission failed');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('There was an error submitting your booking. Please try again or contact us directly.');
+    
+    // Even if submission fails, still redirect to payment
+    setTimeout(() => {
+      window.location.href = "https://www.billplz.com/deposit4Teman";
+    }, 1000);
+  })
+  .finally(() => {
+    // Reset button state
+    payButton.innerHTML = originalText;
+    payButton.disabled = false;
+  });
+}
+
+// ALTERNATIVE: If you want immediate redirect without form submission, replace with this simpler version:
+
+function proceedToPaymentSimple() {
+  // Validate terms agreement before proceeding
+  const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
+  if (!termsAgreed) {
+    alert("Please agree to the Terms & Conditions and Privacy Policy before proceeding to payment.");
+    return;
+  }
+
+  // Generate booking reference for display
+  const refNumber = "TM" + Date.now().toString().slice(-6);
+  document.getElementById("booking-ref-number").textContent = refNumber;
+  
+  // Show success modal briefly
+  document.getElementById("booking-success-modal").style.display = "flex";
+  
+  // Immediate redirect to Billplz
+  setTimeout(() => {
+    window.location.href = "https://www.billplz.com/deposit4Teman";
+  }, 1000);
+}
       // Flatpickr and date selection logic
       const today = new Date();
       const tomorrow = new Date(today);

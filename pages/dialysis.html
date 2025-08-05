@@ -897,7 +897,7 @@
           </div>
 
           <!-- Booking Form -->
-          <form id="dialysis-booking-form" class="booking-form" data-form-type="dialysis">
+          <form id="dialysis-booking-form" class="booking-form" data-form-type="dialysis" action="https://formspree.io/f/xzzvjavz" method="POST">
             <!-- Step 1: Package Selection -->
             <div class="form-step active" data-step="1">
               <h2 class="step-title">Choose Your Package</h2>
@@ -2058,40 +2058,121 @@
       }
 
       // Payment processing function
-      function proceedToPayment() {
-        // Validate terms agreement before proceeding
-        const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
-        if (!termsAgreed) {
-          alert("Please agree to the Terms & Conditions and Privacy Policy before proceeding to payment.");
-          return;
+
+function proceedToPayment() {
+  // Validate terms agreement before proceeding
+  const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
+  if (!termsAgreed) {
+    alert("Please agree to the Terms & Conditions and Privacy Policy before proceeding to payment.");
+    return;
+  }
+
+  // Generate booking reference
+  const refNumber = "TM" + Date.now().toString().slice(-6);
+  
+  // Show loading state
+  const payButton = document.getElementById("pay-deposit-btn");
+  const originalText = payButton.innerHTML;
+  payButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+  payButton.disabled = true;
+
+  // Calculate estimated cost
+  let estimatedCost = 0;
+  const selectedPackage = document.querySelector('input[name="package"]:checked');
+  if (selectedPackage) {
+    if (selectedPackage.value === "hourly") {
+      const hours = document.getElementById("hours").value;
+      estimatedCost = hours * 35;
+    } else if (selectedPackage.value === "package1") {
+      estimatedCost = 186;
+    }
+  }
+  const companionAddon = document.querySelector('input[name="companion_addon"]:checked');
+  if (companionAddon) {
+    const companionHours = document.getElementById("companion-hours").value;
+    if (companionHours) {
+      estimatedCost += companionHours * 30;
+    }
+  }
+
+  // Prepare form data for Google Sheets
+  const formData = new FormData();
+  formData.append('booking_reference', refNumber);
+  formData.append('service_type', 'Dialysis Treatment Support');
+  formData.append('estimated_cost', `RM ${estimatedCost}`);
+  
+  // Get all form fields
+  const form = document.getElementById('dialysis-booking-form');
+  const formElements = form.elements;
+  
+  for (let element of formElements) {
+    if (element.name && element.value) {
+      if (element.type === 'checkbox' || element.type === 'radio') {
+        if (element.checked) {
+          formData.append(element.name, element.value);
         }
-
-        // Generate booking reference
-        const refNumber = "TM" + Date.now().toString().slice(-6);
-        
-        // Store booking data (in real implementation, this would be sent to backend)
-        const bookingData = {
-          reference: refNumber,
-          package: document.querySelector('input[name="package"]:checked')?.value,
-          hours: document.getElementById("hours").value,
-          companionAddon: document.querySelector('input[name="companion_addon"]:checked')?.value,
-          companionHours: document.getElementById("companion-hours").value,
-          contactName: document.getElementById("full-name").value,
-          phone: document.getElementById("phone").value,
-          email: document.getElementById("email").value,
-          // ... add other relevant fields
-          timestamp: new Date().toISOString()
-        };
-
-        console.log("Booking Data:", bookingData);
-
-        // Redirect to Billplz payment page
-        window.open("https://www.billplz.com/deposit4Teman", "_blank");
-        
-        // Show success modal
-        document.getElementById("booking-ref-number").textContent = refNumber;
-        document.getElementById("booking-success-modal").style.display = "flex";
+      } else {
+        formData.append(element.name, element.value);
       }
+    }
+  }
+
+  // Convert FormData to URLSearchParams for Google Apps Script
+  const params = new URLSearchParams();
+  for (let [key, value] of formData.entries()) {
+    params.append(key, value);
+  }
+
+  // Submit to Google Apps Script (replace with your actual deployment URL)
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxcsJx_qUFQluS-tDkmya50OTrv5dTSC1MQ3-yctg3YcTr092e0aHvlBl-WoX2bifBz/exec';
+  
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    body: params,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      // Success - also submit to Formspree for email notification
+      return fetch('https://formspree.io/f/xzzvjavz', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+    } else {
+      throw new Error('Google Sheets submission failed: ' + data.message);
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      // Both submissions successful
+      document.getElementById("booking-ref-number").textContent = refNumber;
+      document.getElementById("booking-success-modal").style.display = "flex";
+      
+      // Optional: Redirect to payment page
+      setTimeout(() => {
+        window.open("https://www.billplz.com/deposit4Teman", "_blank");
+      }, 2000);
+      
+    } else {
+      throw new Error('Formspree submission failed');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('There was an error submitting your booking. Please try again or contact us directly.');
+  })
+  .finally(() => {
+    // Reset button state
+    payButton.innerHTML = originalText;
+    payButton.disabled = false;
+  });
+}
 
       // Flatpickr and date selection logic
       const today = new Date();

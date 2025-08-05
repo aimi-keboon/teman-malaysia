@@ -1004,10 +1004,12 @@
 
           <!-- Booking Form -->
           <form
-            id="home-package-booking-form"
-            class="booking-form"
-            data-form-type="home-package"
-          >
+  id="home-package-booking-form"
+  class="booking-form"
+  data-form-type="home-package"
+  action="https://formspree.io/f/mzzvjaqp"
+  method="POST"
+>
             <!-- Step 1: Package Selection -->
             <div class="form-step active" data-step="1">
               <h2 class="step-title">Choose Your Home Care Package</h2>
@@ -2526,40 +2528,126 @@
 
       // Payment processing function
       function proceedToPayment() {
-        // Validate terms agreement before proceeding
-        const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
-        if (!termsAgreed) {
-          alert("Please agree to the Terms & Conditions and Privacy Policy before proceeding to payment.");
-          return;
+  // Validate terms agreement before proceeding
+  const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
+  if (!termsAgreed) {
+    alert("Please agree to the Terms & Conditions and Privacy Policy before proceeding to payment.");
+    return;
+  }
+
+  // Show loading state
+  const payButton = document.getElementById('pay-deposit-btn');
+  const originalText = payButton.innerHTML;
+  payButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+  payButton.disabled = true;
+
+  // Generate booking reference
+  const refNumber = "TM" + Date.now().toString().slice(-6);
+
+  // Calculate package cost
+  let packageCost = 0;
+  let packageName = "";
+  const selectedPackage = document.querySelector('input[name="package"]:checked');
+  if (selectedPackage) {
+    if (selectedPackage.value === "package1") {
+      packageCost = 2800;
+      packageName = "Package 1 (4 hours/day, 20 sessions)";
+    } else if (selectedPackage.value === "package2") {
+      packageCost = 3780;
+      packageName = "Package 2 (6 hours/day, 20 sessions)";
+    } else if (selectedPackage.value === "package3") {
+      packageCost = 4720;
+      packageName = "Package 3 (8 hours/day, 20 sessions)";
+    }
+  }
+
+  // Prepare form data for Google Sheets
+  const formData = new FormData();
+  formData.append('booking_reference', refNumber);
+  formData.append('service_type', 'Home Care Package');
+  formData.append('package_cost', `RM ${packageCost}`);
+  
+  // Get all form fields
+  const form = document.getElementById('home-package-booking-form');
+  const formElements = form.elements;
+  
+  for (let element of formElements) {
+    if (element.name && element.value) {
+      if (element.type === 'checkbox') {
+        if (element.checked) {
+          // Handle checkbox arrays properly
+          if (element.name.includes('[]')) {
+            formData.append(element.name, element.value);
+          } else {
+            formData.append(element.name, element.value);
+          }
         }
-
-        // Show loading state
-        const payButton = document.getElementById('pay-deposit-btn');
-        const originalText = payButton.innerHTML;
-        payButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-        payButton.disabled = true;
-
-        // Generate booking reference
-        const refNumber = "TM" + Date.now().toString().slice(-6);
-        
-        // Store booking data (in real implementation, this would be sent to backend)
-        const bookingData = {
-          reference: refNumber,
-          package: document.querySelector('input[name="package"]:checked')?.value,
-          contactName: document.getElementById("full-name")?.value,
-          phone: document.getElementById("phone")?.value,
-          email: document.getElementById("email")?.value,
-          timestamp: new Date().toISOString()
-        };
-
-        console.log("Home Care Package Booking Data:", bookingData);
-
-        // Simulate form submission delay, then redirect
-        setTimeout(() => {
-          // Redirect to Billplz payment page
-          window.location.href = "https://www.billplz.com/deposit4Teman";
-        }, 1500);
+      } else if (element.type === 'radio') {
+        if (element.checked) {
+          formData.append(element.name, element.value);
+        }
+      } else {
+        formData.append(element.name, element.value);
       }
+    }
+  }
+
+  // Convert FormData to URLSearchParams for Google Apps Script
+  const params = new URLSearchParams();
+  for (let [key, value] of formData.entries()) {
+    params.append(key, value);
+  }
+
+  // Submit to Google Apps Script with your actual URL
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxMS8h48ZPobWQ5BGkzeLvP-faAM3Iyl5pXs5-K-SWd4jLMO3c34Lot_KnUpsgNqjPSEQ/exec';
+  
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    body: params,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      // Success - also submit to Formspree for email notification
+      return fetch('https://formspree.io/f/mzzvjaqp', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+    } else {
+      throw new Error('Google Sheets submission failed: ' + data.message);
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      // Both submissions successful
+      document.getElementById("booking-ref-number").textContent = refNumber;
+      document.getElementById("booking-success-modal").style.display = "flex";
+      
+      // Redirect to payment page after short delay
+      setTimeout(() => {
+        window.location.href = "https://www.billplz.com/deposit4Teman";
+      }, 2000);
+      
+    } else {
+      throw new Error('Formspree submission failed');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('There was an error submitting your booking. Please try again or contact us directly.');
+  })
+  .finally(() => {
+    // Reset button state
+    payButton.innerHTML = originalText;
+    payButton.disabled = false;
+  });
+}
 
       // Flatpickr and date selection logic
       const today = new Date();
