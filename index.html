@@ -254,7 +254,7 @@
     }
 
     .service-package-tabs__title {
-        font-size: 1.5rem;
+        font-size: 2rem;
         font-weight: 700;
         color: var(--gray-900);
         margin-bottom: 0.5rem;
@@ -293,18 +293,39 @@
     }
 
     .tab-button.active {
-        color: var(--primary-color);
-        border-bottom-color: var(--primary-color);
-    }
+    color: var(--white);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-bottom-color: transparent;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(77, 208, 225, 0.3);
+}
 
-    .tab-content {
-        display: none;
-        animation: fadeInTab 0.3s ease;
-    }
+.tab-button.active:hover {
+    color: var(--white);
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+}
 
-    .tab-content.active {
-        display: block;
-    }
+   .tab-content {
+    display: none;
+    animation: fadeInTab 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+    background: linear-gradient(135deg, rgba(77, 208, 225, 0.12), rgba(38, 166, 154, 0.12));
+    border: 2px solid rgba(77, 208, 225, 0.3);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(77, 208, 225, 0.15);
+    transition: all 0.3s ease;
+}
+
+.tab-content.active:hover {
+    box-shadow: 0 6px 20px rgba(77, 208, 225, 0.2);
+    border-color: rgba(77, 208, 225, 0.4);
+    background: linear-gradient(135deg, rgba(77, 208, 225, 0.15), rgba(38, 166, 154, 0.15));
+}
 
     @keyframes fadeInTab {
         from { opacity: 0; transform: translateY(10px); }
@@ -388,7 +409,7 @@
     }
 
     .service-package-card__action {
-        text-align: left;
+        text-align: center;
     }
 
     .service-package-card__book-btn {
@@ -638,12 +659,7 @@
         height: 60px;
         width: auto;
         margin: 0 auto;
-        filter: grayscale(100%);
         transition: var(--transition-fast);
-    }
-
-    .news__item:hover img {
-        filter: grayscale(0%);
     }
 
     @keyframes scroll {
@@ -1287,16 +1303,16 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero__content animate-on-scroll">
-                <h1 class="hero__title">Your loved ones are in good hands with Teman</h1>
+                <h1 class="hero__title">Care You Can Trust. A Teman They Deserve</h1>
                 <p class="hero__subtitle">
-                    Reliable and safe care companions to suit all needs and empower a healthy aged living
+                    Care companions you can rely on, supporting all needs for a healthy ageing journey
                 </p>
             </div>
             
             <div class="service-package-tabs animate-on-scroll">
                 <div class="service-package-tabs__header">
-                    <h2 class="service-package-tabs__title">Our Care Service Packages</h2>
-                    <p class="service-package-tabs__subtitle">Choose the perfect care solution for your loved ones</p>
+                    <h2 class="service-package-tabs__title">Our Personalised Care Solutions</h2>
+                    <p class="service-package-tabs__subtitle">Choose the perfect service for your loved ones</p>
                 </div>
                 
                 <div class="tab-navigation">
@@ -1311,15 +1327,15 @@
                     <div class="service-package-card">
                         <img src="assets/images/memory-3.jpg" alt="TEMAN Health Appointments" class="service-package-card__image">
                         <div class="service-package-card__content">
-                            <h3 class="service-package-card__title">TEMAN Appointment Aid</h3>
+                            <h3 class="service-package-card__title">TEMAN Health Appointments</h3>
                             <p class="service-package-card__description">
-                                Assistance to go to medical checkups and treatments with professional companionship and safe transportation.
+                                Professional companionship and safe transport for a wide range of medical appointments.
                             </p>
                             
                             <div class="service-package-card__features">
                                 <h4>Service Options:</h4>
                                 <div class="feature-grid">
-                                    <div class="feature-item">Professional medical appointment support</div>
+                                    <div class="feature-item">Professional medical appointment assistant</div>
                                     <div class="feature-item">Transportation assistance available</div>
                                     <div class="feature-item">Flexible scheduling options</div>
                                 </div>
@@ -1341,7 +1357,7 @@
                         <div class="service-package-card__content">
                             <h3 class="service-package-card__title">TEMAN to Dialysis Treatments</h3>
                             <p class="service-package-card__description">
-                                Assistance to go to dialysis center to get their treatments with specialized care and transportation support.
+                                Reliable escort to regular dialysis sessions, including specialised care and transport.
                             </p>
                             
                             <div class="service-package-card__features">
@@ -1370,18 +1386,18 @@
                         <div class="service-package-card__content">
                             <h3 class="service-package-card__title">TEMAN Customised Activities</h3>
                             <p class="service-package-card__description">
-                                Accompany and assistance to do any kind of leisure activities, social outings, and daily errands.
+                                Personalised companionship and assistance for social outings, leisure activities, or daily errands.
                             </p>
                             
                             <div class="service-package-card__features">
                                 <h4>Activities Include:</h4>
                                 <div class="feature-grid">
-                                    <div class="feature-item">Shopping and errands</div>
-                                    <div class="feature-item">Social activities and outings</div>
+                                    <div class="feature-item">Shopping & errands</div>
+                                    <div class="feature-item">Social activities & outings</div>
                                     <div class="feature-item">Recreational activities</div>
                                     <div class="feature-item">Bank or administrative appointments</div>
                                     <div class="feature-item">Exercise and fitness activities</div>
-                                    <div class="feature-item">Customized to your preferences</div>
+                                    <div class="feature-item">Customised to your preferences</div>
                                 </div>
                             </div>
                             
@@ -1401,7 +1417,7 @@
                         <div class="service-package-card__content">
                             <h3 class="service-package-card__title">TEMAN at Home Package</h3>
                             <p class="service-package-card__description">
-                                Day care services to provide assistance with daily activities in the comfort of your own home.
+                                Long-term day care services offering support with daily tasks, and a reassuring presence in your home comfort.
                             </p>
                             
                             <div class="service-package-card__features">
@@ -1412,6 +1428,7 @@
                                     <div class="feature-item">Companionship & mind wellness</div>
                                     <div class="feature-item">Bathing/personal care</div>
                                     <div class="feature-item">Outdoor exercise/activities</div>
+                                    <div class="feature-item">And Others</div>
                                 </div>
                             </div>
                             
@@ -1449,9 +1466,10 @@
                     </div>
                     
                     <div class="about__text">
-                        <p>We provide care companionship services to improve your loved one's quality of life and provide needed assistance for them.</p>
-                        <p>Teman Malaysia offers a safe experience by providing guardians' updates on their loved ones' whereabouts and activities.</p>
-                        <p>We will match our customers with our Temanions to perform varied activities such as daily chores, attend appointments, or enjoy their free time through a library of curated activities.</p>
+                        <p style="text-align: center;">We provide care companionship services to improve your loved one's quality of life and and ensure the right level of care is always there for them.</p>
+                        <p style="text-align: center;"> <strong>We believe the elderly are empowered with confidence to maintain active and independent with the reassurance and a helping hand from others.</strong></p>
+                        <p style="text-align: center;">Teman Malaysia offers a safe experience by providing guardians' updates on their loved ones' whereabouts and activities.</p>
+                        <p style="text-align: center;">We will match our customers with our Temanions to perform varied activities such as daily chores, attend appointments, or enjoy their free time through a library of curated activities.</p>
                     </div>
                 </div>
             </div>
