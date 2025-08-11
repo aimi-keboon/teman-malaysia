@@ -110,6 +110,35 @@ color: var(--gray-900);
 border-color: transparent;
 }
 
+.process-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0.5rem;
+}
+
+.process-icon {
+    height: 60px;
+    width: auto;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.process-icon:hover {
+    transform: scale(1.1);
+}
+
+.process-connector {
+    height: 30px;
+    width: auto;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
 /* Hero Section */
 .hero {
 position: relative;
@@ -817,6 +846,35 @@ transform: translateY(0);
 }
 
 /* Responsive Design */
+
+@media (max-width: 768px) {
+    .process-icon {
+        height: 45px;
+    }
+    
+    .process-connector {
+        height: 25px;
+    }
+    
+    .process-flow {
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .process-icon {
+        height: 35px;
+    }
+    
+    .process-connector {
+        height: 20px;
+    }
+    
+    .process-flow {
+        gap: 0.5rem;
+    }
+}
+
 @media (max-width: 1024px) {
 .container {
     padding: 0 1.5rem;
@@ -1138,8 +1196,8 @@ transform: translateY(0);
 <!-- Hero Section -->
 <section class="hero">
 <div class="container">
-<h1 class="hero__title animate-on-scroll">Friendly Temanion is Always Available!</h1>
-<p class="hero__description animate-on-scroll">We are ready to help you to take care of your loved ones.</p>
+<h1 class="hero__title animate-on-scroll">Your Temanion Is Just a Call Away</h1>
+<p class="hero__description animate-on-scroll">We’re always here to care for your loved ones. Kindly, professionally, and when you need us most.</p>
 </div>
 </section>
 
@@ -1176,30 +1234,29 @@ transform: translateY(0);
     <h2 class="section-title">How Teman Malaysia Works</h2>
     <div class="section-divider"></div>
     <p class="section-subtitle">Connecting caring companions with those who need support through our innovative platform</p>
+     <div class="process-flow animate-on-scroll">
+    <img src="../assets/images/process-icon-1.png" alt="Step 1" class="process-icon">
+    <img src="../assets/images/process-plus.png" alt="Plus" class="process-connector">
+    <img src="../assets/images/process-icon-2.png" alt="Step 2" class="process-icon">
+    <img src="../assets/images/process-equals.png" alt="Equals" class="process-connector">
+    <img src="../assets/images/process-icon-3.png" alt="Result" class="process-icon">
+</div>
 </div>
 
 <div class="about-grid">
     <div class="about-card animate-on-scroll">
-        <div class="about-icon-wrapper">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
+       
         <h3>How It Works</h3>
         <p>Our platform seamlessly connects customers with qualified Temanions who are matched based on specific needs and preferences. Temanions provide assistance with daily tasks, accompany clients to appointments, run errands, and engage in meaningful activities that enhance quality of life.</p>
+
+       
+
     </div>
     
     <div class="about-card animate-on-scroll">
-        <div class="about-icon-wrapper">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
+        
         <h3>Meet Our Temanions</h3>
-        <p>Temanions are passionate, caring Malaysians who serve as professional care companions. The name creatively combines the Malay word "teman" (friend) with "companion," reflecting our commitment to providing genuine friendship alongside professional care services.</p>
+        <p>Temanions are passionate, caring Malaysians who serve as professional care companions. The name creatively combines the Malay word <strong>"teman"</strong> (friend) with <strong>"companion"</strong>, reflecting our commitment to providing genuine friendship alongside professional care services.</p>
     </div>
 </div>
 </div>
@@ -1245,25 +1302,23 @@ transform: translateY(0);
     <div class="vision-mission-card animate-on-scroll">
         <div class="vision-mission-header">
             <div class="vision-mission-icon">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
+        <svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+             viewBox="0 0 32 32" xml:space="preserve">
+            <style type="text/css">
+                .st0{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+            </style>
+            <line class="st0" x1="16" y1="16" x2="22" y2="10"/>
+            <polygon class="st0" points="30,6 26,6 26,2 22,6 22,10 26,10 "/>
+            <circle class="st0" cx="16" cy="16" r="6"/>
+            <path class="st0" d="M27,9c1.3,2,2,4.4,2,7c0,7.2-5.8,13-13,13S3,23.2,3,16S8.8,3,16,3c2.6,0,5,0.7,7,2"/>
+        </svg>
+    </div>
             <h3 class="vision-mission-title">Our Mission</h3>
             <p class="vision-mission-subtitle">Making a difference every day</p>
         </div>
         
         <ul class="vision-mission-content">
-            <li class="vision-mission-item">
-                <div class="vision-mission-item-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                        <line x1="8" y1="21" x2="16" y2="21"/>
-                        <line x1="12" y1="17" x2="12" y2="21"/>
-                    </svg>
-                </div>
-                <p class="vision-mission-item-text">Leverage cutting-edge technology to enhance care companionship services and improve accessibility.</p>
-            </li>
+            
             
             <li class="vision-mission-item">
                 <div class="vision-mission-item-icon">
@@ -1287,6 +1342,17 @@ transform: translateY(0);
                     </svg>
                 </div>
                 <p class="vision-mission-item-text">Create meaningful employment opportunities that contribute to reducing unemployment while building a caring community.</p>
+            </li>
+
+            <li class="vision-mission-item">
+                <div class="vision-mission-item-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                </div>
+                <p class="vision-mission-item-text">Leverage cutting-edge technology to enhance care companionship services and improve accessibility.</p>
             </li>
         </ul>
     </div>
