@@ -1549,47 +1549,30 @@
 
                 <!-- Time Selection -->
                 <div class="form-grid">
-                  <div class="form-group">
-                    <label for="preferred-start-time" class="form-label">Start Time *</label>
-                    <select id="preferred-start-time" name="preferred_start_time" class="form-select" required>
-                      <option value="">Select start time</option>
-                      <option value="07:00">07:00 AM</option>
-                      <option value="08:00">08:00 AM</option>
-                      <option value="09:00">09:00 AM</option>
-                      <option value="10:00">10:00 AM</option>
-                      <option value="11:00">11:00 AM</option>
-                      <option value="12:00">12:00 PM</option>
-                      <option value="13:00">01:00 PM</option>
-                      <option value="14:00">02:00 PM</option>
-                      <option value="15:00">03:00 PM</option>
-                      <option value="16:00">04:00 PM</option>
-                      <option value="17:00">05:00 PM</option>
-                      <option value="18:00">06:00 PM</option>
-                      <option value="19:00">07:00 PM</option>
-                      <option value="20:00">08:00 PM</option>
-                      <option value="21:00">09:00 PM</option>
-                    </select>
-                    <div id="start-time-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
-                  </div>
+  <div class="form-group">
+    <label for="preferred-start-time" class="form-label">Start Time *</label>
+    <input
+      type="time"
+      id="preferred-start-time"
+      name="preferred_start_time"
+      class="form-input"
+      required
+    />
+    <div id="start-time-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
+  </div>
 
-                  <div class="form-group">
-                    <label for="preferred-end-time" class="form-label">End Time *</label>
-                    <select id="preferred-end-time" name="preferred_end_time" class="form-select" required>
-                      <option value="">Select end time</option>
-                      <option value="08:00">08:00 AM</option>
-                      <option value="09:00">09:00 AM</option>
-                      <option value="10:00">10:00 AM</option>
-                      <option value="11:00">11:00 AM</option>
-                      <option value="12:00">12:00 PM</option>
-                      <option value="13:00">01:00 PM</option>
-                      <option value="14:00">02:00 PM</option>
-                      <option value="15:00">03:00 PM</option>
-                      <option value="16:00">04:00 PM</option>
-                      <option value="17:00">05:00 PM</option>
-                    </select>
-                    <div id="end-time-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
-                  </div>
-                </div>
+  <div class="form-group">
+    <label for="preferred-end-time" class="form-label">End Time *</label>
+    <input
+      type="time"
+      id="preferred-end-time"
+      name="preferred_end_time"
+      class="form-input"
+      required
+    />
+    <div id="end-time-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
+  </div>
+</div>
 
                 <!-- Date Range -->
                 <div class="form-grid">
