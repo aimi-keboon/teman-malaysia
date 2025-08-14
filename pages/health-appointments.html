@@ -886,162 +886,164 @@
 
           <!-- Booking Form -->
           <form
-  id="health-booking-form"
-  class="booking-form"
-  data-form-type="health-appointments"
-  action="https://formspree.io/f/xnnzgblw"
-  method="POST"
->
+            id="health-booking-form"
+            class="booking-form"
+            data-form-type="health-appointments"
+            action="https://formspree.io/f/xnnzgblw"
+            method="POST"
+          >
             <!-- Step 1: Package Selection -->
-<div class="form-step active" data-step="1">
-  <h2 class="step-title">Choose Your Package</h2>
+            <div class="form-step active" data-step="1">
+              <h2 class="step-title">Choose Your Package</h2>
 
-  <div class="package-options">
-    <!-- Hourly Rate Package -->
-    <div class="package-option">
-      <input
-        type="radio"
-        name="package"
-        value="hourly"
-        id="hourly-package"
-        required
-      />
-      <label for="hourly-package" class="package-card">
-        <div class="package-header">
-          <div class="package-title">Hourly Rate</div>
-          <div class="package-price">RM35/hour</div>
-        </div>
-        <div class="package-description">
-          Flexible hourly booking for any health appointments.
-          Minimum 2 hours required for single session.
-        </div>
+              <div class="package-options">
+                <!-- Hourly Rate Package -->
+                <div class="package-option">
+                  <input
+                    type="radio"
+                    name="package"
+                    value="hourly"
+                    id="hourly-package"
+                    required
+                  />
+                  <label for="hourly-package" class="package-card">
+                    <div class="package-header">
+                      <div class="package-title">Hourly Rate</div>
+                      <div class="package-price">RM35/hour</div>
+                    </div>
+                    <div class="package-description">
+                      Flexible hourly booking for any health appointments.
+                      Minimum 2 hours required for single session.
+                    </div>
 
-        <div class="hours-selection">
-          <label for="hours" class="form-label"
-            >Number of Hours: *</label
-          >
-          <select
-            name="hours"
-            id="hours"
-            class="form-select"
-            required
-          >
-            <option value="">Select hours</option>
-            <option value="2">2 hours - RM70</option>
-            <option value="3">3 hours - RM105</option>
-            <option value="4">4 hours - RM140</option>
-            <option value="5">5 hours - RM175</option>
-            <option value="6">6 hours - RM210</option>
-            <option value="" disabled>More than 6 hours (Contact us)</option>
-          </select>
-        </div>
+                    <div class="hours-selection">
+                      <label for="hours" class="form-label"
+                        >Number of Hours: *</label
+                      >
+                      <select
+                        name="hours"
+                        id="hours"
+                        class="form-select"
+                        required
+                      >
+                        <option value="">Select hours</option>
+                        <option value="2">2 hours - RM70</option>
+                        <option value="3">3 hours - RM105</option>
+                        <option value="4">4 hours - RM140</option>
+                        <option value="5">5 hours - RM175</option>
+                        <option value="6">6 hours - RM210</option>
+                        <option value="" disabled>
+                          More than 6 hours (Contact us)
+                        </option>
+                      </select>
+                    </div>
 
-        <div class="package-notes">
-          <small>• Perfect for single appointments</small>
-          <small>• Completely customizable to your needs</small>
-          <small>• Flexible scheduling available</small>
-        </div>
-      </label>
-    </div>
+                    <div class="package-notes">
+                      <small>• Perfect for single appointments</small>
+                      <small>• Completely customizable to your needs</small>
+                      <small>• Flexible scheduling available</small>
+                    </div>
+                  </label>
+                </div>
 
-    <!-- Package 1: 4 Hours -->
-    <div class="package-option">
-      <input
-        type="radio"
-        name="package"
-        value="package1"
-        id="package1"
-        required
-      />
-      <label for="package1" class="package-card">
-        <div class="package-header">
-          <div class="package-title">Package 1</div>
-          <div class="package-price">RM126</div>
-        </div>
-        <div class="package-description">
-          4 hours for single session activities and appointments. Great
-          value for extended single appointments.
-        </div>
+                <!-- Package 1: 4 Hours -->
+                <div class="package-option">
+                  <input
+                    type="radio"
+                    name="package"
+                    value="package1"
+                    id="package1"
+                    required
+                  />
+                  <label for="package1" class="package-card">
+                    <div class="package-header">
+                      <div class="package-title">Package 1</div>
+                      <div class="package-price">RM126</div>
+                    </div>
+                    <div class="package-description">
+                      4 hours for single session activities and appointments.
+                      Great value for extended single appointments.
+                    </div>
 
-        <div class="package-notes">
-          <small>• Save RM14 compared to hourly rate!</small>
-          <small>• 4 hours for single session</small>
-          <small>• Valid for 30 days after booking</small>
-          <small>• Great for extended medical appointments</small>
-        </div>
-      </label>
-    </div>
+                    <div class="package-notes">
+                      <small>• Save RM14 compared to hourly rate!</small>
+                      <small>• 4 hours for single session</small>
+                      <small>• Valid for 30 days after booking</small>
+                      <small>• Great for extended medical appointments</small>
+                    </div>
+                  </label>
+                </div>
 
-    <!-- Package 2: 6 Hours -->
-    <div class="package-option">
-      <input
-        type="radio"
-        name="package"
-        value="package2"
-        id="package2"
-        required
-      />
-      <label for="package2" class="package-card">
-        <div class="package-header">
-          <div class="package-title">Package 2</div>
-          <div class="package-price">RM180</div>
-        </div>
-        <div class="package-description">
-          6 hours for extended single session activities and comprehensive
-          care. Best value for full-day appointments.
-        </div>
+                <!-- Package 2: 6 Hours -->
+                <div class="package-option">
+                  <input
+                    type="radio"
+                    name="package"
+                    value="package2"
+                    id="package2"
+                    required
+                  />
+                  <label for="package2" class="package-card">
+                    <div class="package-header">
+                      <div class="package-title">Package 2</div>
+                      <div class="package-price">RM180</div>
+                    </div>
+                    <div class="package-description">
+                      6 hours for extended single session activities and
+                      comprehensive care. Best value for full-day appointments.
+                    </div>
 
-        <div class="package-notes">
-          <small>• Save RM30 compared to hourly rate!</small>
-          <small>• 6 hours for single session</small>
-          <small>• Valid for 30 days after booking</small>
-          <small>• Ideal for full-day medical care</small>
-        </div>
-      </label>
-    </div>
-  </div>
+                    <div class="package-notes">
+                      <small>• Save RM30 compared to hourly rate!</small>
+                      <small>• 6 hours for single session</small>
+                      <small>• Valid for 30 days after booking</small>
+                      <small>• Ideal for full-day medical care</small>
+                    </div>
+                  </label>
+                </div>
+              </div>
 
-  <div
-    style="
-      background: #fffbeb;
-      padding: 16px;
-      border-radius: 8px;
-      margin-bottom: 32px;
-      border-left: 4px solid #f59e0b;
-    "
-  >
-    <h4 style="color: #d97706; margin-bottom: 8px">
-      Additional Fees & Information:
-    </h4>
-    <small
-      style="display: block; color: #d97706; margin-bottom: 4px"
-      >• Transportation fee: RM0.80/KM or e-hailing fare</small
-    >
-    <small
-      style="display: block; color: #d97706; margin-bottom: 4px"
-      >• Transport allowance: RM20/session</small
-    >
-    <small
-      style="display: block; color: #d97706; margin-bottom: 4px"
-      >• Surcharge: RM37/hour for Public Holiday/Sunday/last minute
-      booking</small
-    >
-    <small style="display: block; color: #d97706"
-      >• For service longer than 6 hours, bulk purchase or
-      customization - contact us for quote</small
-    >
-  </div>
+              <div
+                style="
+                  background: #fffbeb;
+                  padding: 16px;
+                  border-radius: 8px;
+                  margin-bottom: 32px;
+                  border-left: 4px solid #f59e0b;
+                "
+              >
+                <h4 style="color: #d97706; margin-bottom: 8px">
+                  Additional Fees & Information:
+                </h4>
+                <small
+                  style="display: block; color: #d97706; margin-bottom: 4px"
+                  >• Transportation fee: RM0.80/KM or e-hailing fare</small
+                >
+                <small
+                  style="display: block; color: #d97706; margin-bottom: 4px"
+                  >• Transport allowance: RM20/session</small
+                >
+                <small
+                  style="display: block; color: #d97706; margin-bottom: 4px"
+                  >• Surcharge: RM37/hour for Public Holiday/Sunday/last minute
+                  booking</small
+                >
+                <small style="display: block; color: #d97706"
+                  >• For service longer than 6 hours, bulk purchase or
+                  customization - contact us for quote</small
+                >
+              </div>
 
-  <div class="form-actions">
-    <button
-      type="button"
-      class="btn btn--primary btn--large"
-      onclick="nextStep()"
-    >
-      Continue to Details<i class="fas fa-arrow-right"></i>
-    </button>
-  </div>
-</div>
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn btn--primary btn--large"
+                  onclick="nextStep()"
+                >
+                  Continue to Details<i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
 
             <!-- Step 2: Personal Details -->
             <div class="form-step" data-step="2">
@@ -1267,41 +1269,46 @@
 
                 <!-- Multi-date calendar -->
                 <div class="form-group">
-  <label for="appointment-dates" class="form-label"
-    >Select Appointment Date *</label
-  >
-  <input
-    type="text"
-    id="appointment-dates"
-    name="appointment_dates"
-    class="form-input"
-    placeholder="Select appointment date"
-    readonly
-    required
-  />
-  <small class="form-help"
-    >Select a specific date; today and tomorrow are
-    disabled</small
-  >
-  <div
-    id="appointment-date-count"
-    style="color: #666; margin-top: 5px; font-size: 0.875rem; display: none;"
-  >
-    Selected date: <span id="appointment-selected-count"></span>
-  </div>
-  <div
-    id="appointment-hours-info"
-    style="
-      color: #ef4444;
-      margin-top: 5px;
-      font-size: 0.875rem;
-      font-weight: 500;
-    "
-  >
-    Please select a package in Step 1 first to enable date
-    selection
-  </div>
-</div>
+                  <label for="appointment-dates" class="form-label"
+                    >Select Appointment Date *</label
+                  >
+                  <input
+                    type="text"
+                    id="appointment-dates"
+                    name="appointment_dates"
+                    class="form-input"
+                    placeholder="Select appointment date"
+                    readonly
+                    required
+                  />
+                  <small class="form-help"
+                    >Select a specific date; today and tomorrow are
+                    disabled</small
+                  >
+                  <div
+                    id="appointment-date-count"
+                    style="
+                      color: #666;
+                      margin-top: 5px;
+                      font-size: 0.875rem;
+                      display: none;
+                    "
+                  >
+                    Selected date: <span id="appointment-selected-count"></span>
+                  </div>
+                  <div
+                    id="appointment-hours-info"
+                    style="
+                      color: #ef4444;
+                      margin-top: 5px;
+                      font-size: 0.875rem;
+                      font-weight: 500;
+                    "
+                  >
+                    Please select a package in Step 1 first to enable date
+                    selection
+                  </div>
+                </div>
 
                 <!-- 30-Day Validity Disclaimer -->
                 <div
@@ -1384,15 +1391,17 @@
                   </div>
 
                   <div class="form-group">
-  <label for="appointment-time" class="form-label">Preferred Appointment Time *</label>
-  <input
-    type="time"
-    id="appointment-time"
-    name="appointment_time"
-    class="form-input"
-    required
-  />
-</div>
+                    <label for="appointment-time" class="form-label"
+                      >Preferred Appointment Time *</label
+                    >
+                    <input
+                      type="time"
+                      id="appointment-time"
+                      name="appointment_time"
+                      class="form-input"
+                      required
+                    />
+                  </div>
 
                   <div class="form-group">
                     <label for="estimated-duration" class="form-label"
@@ -1552,7 +1561,7 @@
 
                 <div class="form-group">
                   <label for="medical-conditions" class="form-label"
-                    >Medical Conditions</label
+                    >Medical Conditions *</label
                   >
                   <textarea
                     id="medical-conditions"
@@ -1560,6 +1569,7 @@
                     class="form-textarea"
                     rows="3"
                     placeholder="Please list any medical conditions, disabilities, or health concerns that our companion should be aware of..."
+                    required
                   ></textarea>
                 </div>
 
@@ -1578,13 +1588,15 @@
 
                 <div class="form-group">
                   <label for="mobility-assistance" class="form-label"
-                    >Mobility Assistance Needed</label
+                    >Mobility Assistance Needed *</label
                   >
                   <select
                     id="mobility-assistance"
                     name="mobility_assistance"
                     class="form-select"
+                    required
                   >
+                    <option value="">Select mobility assistance</option>
                     <option value="none">None</option>
                     <option value="wheelchair">Wheelchair assistance</option>
                     <option value="walker">Walker/walking aid</option>
@@ -1595,7 +1607,7 @@
 
                 <div class="form-group">
                   <label for="special-requirements" class="form-label"
-                    >Special Requirements</label
+                    >Special Requirements *</label
                   >
                   <textarea
                     id="special-requirements"
@@ -1603,6 +1615,7 @@
                     class="form-textarea"
                     rows="3"
                     placeholder="Any specific assistance needed, allergies, dietary restrictions, or other important information..."
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -1668,7 +1681,12 @@
                   <label for="how-heard" class="form-label"
                     >How did you hear about us? *</label
                   >
-                  <select id="how-heard" name="how_heard" class="form-select" required>
+                  <select
+                    id="how-heard"
+                    name="how_heard"
+                    class="form-select"
+                    required
+                  >
                     <option value="">Please select an option</option>
                     <option value="google">Google Search</option>
                     <option value="facebook">Facebook</option>
@@ -1963,7 +1981,10 @@
                     ></i>
                     Complete your deposit payment to secure your booking
                   </li>
-                  <li style="display: flex; align-items: center;
+                  <li
+                    style="
+                      display: flex;
+                      align-items: center;
                       gap: 12px;
                       margin-bottom: 12px;
                       color: #1e40af;
@@ -2008,16 +2029,32 @@
                 </ul>
               </div>
 
-              <div style="margin-bottom: 32px;">
-  <label class="checkbox-item" style="margin-bottom: 0; padding: 16px; border: 1px solid #d1d5db; border-radius: 8px; cursor: pointer;">
-    <input type="checkbox" name="terms_agreed" required />
-    <span class="checkmark"></span>
-    <span style="font-size: 14px; color: #374151;">
-      I agree to the <a href="#" style="color: #3b82f6; text-decoration: none;">Terms & Conditions</a> and 
-      <a href="#" style="color: #3b82f6; text-decoration: none;">Privacy Policy</a> *
-    </span>
-  </label>
-</div>
+              <div style="margin-bottom: 32px">
+                <label
+                  class="checkbox-item"
+                  style="
+                    margin-bottom: 0;
+                    padding: 16px;
+                    border: 1px solid #d1d5db;
+                    border-radius: 8px;
+                    cursor: pointer;
+                  "
+                >
+                  <input type="checkbox" name="terms_agreed" required />
+                  <span class="checkmark"></span>
+                  <span style="font-size: 14px; color: #374151">
+                    I agree to the
+                    <a href="#" style="color: #3b82f6; text-decoration: none"
+                      >Terms & Conditions</a
+                    >
+                    and
+                    <a href="#" style="color: #3b82f6; text-decoration: none"
+                      >Privacy Policy</a
+                    >
+                    *
+                  </span>
+                </label>
+              </div>
 
               <div class="form-actions">
                 <button
@@ -2075,7 +2112,7 @@
     <!-- Footer Component -->
     <div id="footer-placeholder"></div>
 
-   <!-- Scripts -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
       // Current step tracking
@@ -2106,8 +2143,11 @@
       const appointmentHoursInfoEl = document.getElementById(
         "appointment-hours-info"
       );
-      const appointmentDatesInput = document.getElementById("appointment-dates");
-      const appointmentDateCountDiv = document.getElementById("appointment-date-count");
+      const appointmentDatesInput =
+        document.getElementById("appointment-dates");
+      const appointmentDateCountDiv = document.getElementById(
+        "appointment-date-count"
+      );
 
       // Function to update display based on selected package
       function calculateMaxAppointments() {
@@ -2121,7 +2161,8 @@
           appointmentHoursInfoEl.style.color = "#ef4444";
           appointmentDatesInput.disabled = true;
           if (appointmentFp) appointmentFp.set("disabled", true);
-          if (appointmentDateCountDiv) appointmentDateCountDiv.style.display = "none";
+          if (appointmentDateCountDiv)
+            appointmentDateCountDiv.style.display = "none";
           return;
         }
 
@@ -2143,7 +2184,8 @@
             appointmentHoursInfoEl.style.color = "#f59e0b";
             appointmentDatesInput.disabled = true;
             if (appointmentFp) appointmentFp.set("disabled", true);
-            if (appointmentDateCountDiv) appointmentDateCountDiv.style.display = "none";
+            if (appointmentDateCountDiv)
+              appointmentDateCountDiv.style.display = "none";
             return;
           }
         } else if (selectedPackage.value === "package1") {
@@ -2173,7 +2215,8 @@
           appointmentHoursInfoEl.style.color = "#ef4444";
           appointmentDatesInput.disabled = true;
           if (appointmentFp) appointmentFp.set("disabled", true);
-          if (appointmentDateCountDiv) appointmentDateCountDiv.style.display = "none";
+          if (appointmentDateCountDiv)
+            appointmentDateCountDiv.style.display = "none";
         }
 
         updateAppointmentDateSelection(
@@ -2195,7 +2238,7 @@
           },
           onReady: function (selectedDates, dateStr, instance) {
             updateAppointmentDateSelection(selectedDates, instance);
-          }
+          },
         });
       }
 
@@ -2204,7 +2247,7 @@
         if (!instance || !appointmentDateCountDiv) return;
 
         const count = selectedDates.length;
-        
+
         if (count > 0) {
           appointmentCountEl.textContent = formatDate(selectedDates[0]);
           appointmentDateCountDiv.style.display = "block";
@@ -2214,22 +2257,24 @@
       }
 
       // Add event listeners for package changes
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         // Initialize flatpickr
         initializeAppointmentFlatpickr();
-        
+
         // Listen for package changes
-        const packageInputs = document.querySelectorAll('input[name="package"]');
-        packageInputs.forEach(input => {
-          input.addEventListener('change', calculateMaxAppointments);
+        const packageInputs = document.querySelectorAll(
+          'input[name="package"]'
+        );
+        packageInputs.forEach((input) => {
+          input.addEventListener("change", calculateMaxAppointments);
         });
-        
+
         // Listen for hours changes
-        const hoursSelect = document.getElementById('hours');
+        const hoursSelect = document.getElementById("hours");
         if (hoursSelect) {
-          hoursSelect.addEventListener('change', calculateMaxAppointments);
+          hoursSelect.addEventListener("change", calculateMaxAppointments);
         }
-        
+
         // Initial calculation
         calculateMaxAppointments();
       });
@@ -2328,7 +2373,13 @@
             { name: "facility_address", label: "Medical Facility Address" },
             { name: "pickup_address", label: "Pickup Address" },
             { name: "pickup_time", label: "Pickup Time" },
-            { name: "how_heard", label: "How did you hear about us?" }
+            { name: "how_heard", label: "How did you hear about us?" },
+            { name: "medical_conditions", label: "Medical Conditions" },
+            {
+              name: "mobility_assistance",
+              label: "Mobility Assistance Needed",
+            },
+            { name: "special_requirements", label: "Special Requirements" },
           ];
 
           for (let field of requiredFields) {
@@ -2549,115 +2600,127 @@
 
       // Handle payment button click
       document
-  .getElementById("pay-deposit-btn")
-  .addEventListener("click", function (e) {
-    e.preventDefault(); // Prevent default link behavior
-    
-    if (!validateCurrentStep()) {
-      return false;
-    }
+        .getElementById("pay-deposit-btn")
+        .addEventListener("click", function (e) {
+          e.preventDefault(); // Prevent default link behavior
 
-    // Show loading state
-    const payButton = this;
-    const originalHTML = payButton.innerHTML;
-    payButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-    payButton.style.pointerEvents = 'none';
-
-    // Generate booking reference
-    const refNumber = "TM" + Date.now().toString().slice(-6);
-    
-    // Calculate estimated cost
-    let estimatedCost = 0;
-    const selectedPackage = document.querySelector('input[name="package"]:checked');
-    if (selectedPackage) {
-      if (selectedPackage.value === "hourly") {
-        const hours = document.getElementById("hours").value;
-        estimatedCost = hours * 35;
-      } else if (selectedPackage.value === "package1") {
-        estimatedCost = 126;
-      } else if (selectedPackage.value === "package2") {
-        estimatedCost = 180;
-      }
-    }
-
-    // Prepare form data for Google Sheets
-    const formData = new FormData();
-    formData.append('booking_reference', refNumber);
-    formData.append('service_type', 'Health Appointment Support');
-    formData.append('estimated_cost', `RM ${estimatedCost}`);
-    
-    // Get all form fields
-    const form = document.getElementById('health-booking-form');
-    const formElements = form.elements;
-    
-    for (let element of formElements) {
-      if (element.name && element.value) {
-        if (element.type === 'checkbox' || element.type === 'radio') {
-          if (element.checked) {
-            formData.append(element.name, element.value);
+          if (!validateCurrentStep()) {
+            return false;
           }
-        } else {
-          formData.append(element.name, element.value);
-        }
-      }
-    }
 
-    // Convert FormData to URLSearchParams for Google Apps Script
-    const params = new URLSearchParams();
-    for (let [key, value] of formData.entries()) {
-      params.append(key, value);
-    }
+          // Show loading state
+          const payButton = this;
+          const originalHTML = payButton.innerHTML;
+          payButton.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Processing...';
+          payButton.style.pointerEvents = "none";
 
-    // Submit to Google Apps Script
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9wG_PUM1N7kSkpMM9sucVbZ_AiS0UqnQ-_HdOkKxyxMbciHH_19O8R-kHRg3rLZqDsA/exec';
-    
-    fetch(GOOGLE_SCRIPT_URL, {
-      method: 'POST',
-      body: params,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.status === 'success') {
-        // Success - also submit to Formspree for email notification
-        return fetch('https://formspree.io/f/xnnzgblw', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
+          // Generate booking reference
+          const refNumber = "TM" + Date.now().toString().slice(-6);
+
+          // Calculate estimated cost
+          let estimatedCost = 0;
+          const selectedPackage = document.querySelector(
+            'input[name="package"]:checked'
+          );
+          if (selectedPackage) {
+            if (selectedPackage.value === "hourly") {
+              const hours = document.getElementById("hours").value;
+              estimatedCost = hours * 35;
+            } else if (selectedPackage.value === "package1") {
+              estimatedCost = 126;
+            } else if (selectedPackage.value === "package2") {
+              estimatedCost = 180;
+            }
           }
+
+          // Prepare form data for Google Sheets
+          const formData = new FormData();
+          formData.append("booking_reference", refNumber);
+          formData.append("service_type", "Health Appointment Support");
+          formData.append("estimated_cost", `RM ${estimatedCost}`);
+
+          // Get all form fields
+          const form = document.getElementById("health-booking-form");
+          const formElements = form.elements;
+
+          for (let element of formElements) {
+            if (element.name && element.value) {
+              if (element.type === "checkbox" || element.type === "radio") {
+                if (element.checked) {
+                  formData.append(element.name, element.value);
+                }
+              } else {
+                formData.append(element.name, element.value);
+              }
+            }
+          }
+
+          // Convert FormData to URLSearchParams for Google Apps Script
+          const params = new URLSearchParams();
+          for (let [key, value] of formData.entries()) {
+            params.append(key, value);
+          }
+
+          // Submit to Google Apps Script
+          const GOOGLE_SCRIPT_URL =
+            "https://script.google.com/macros/s/AKfycbx9wG_PUM1N7kSkpMM9sucVbZ_AiS0UqnQ-_HdOkKxyxMbciHH_19O8R-kHRg3rLZqDsA/exec";
+
+          fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            body: params,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.status === "success") {
+                // Success - also submit to Formspree for email notification
+                return fetch("https://formspree.io/f/xnnzgblw", {
+                  method: "POST",
+                  body: formData,
+                  headers: {
+                    Accept: "application/json",
+                  },
+                });
+              } else {
+                throw new Error(
+                  "Google Sheets submission failed: " + data.message
+                );
+              }
+            })
+            .then((response) => {
+              if (response.ok) {
+                // Both submissions successful
+                document.getElementById("booking-ref-number").textContent =
+                  refNumber;
+                document.getElementById("booking-success-modal").style.display =
+                  "flex";
+
+                // Redirect to payment page after short delay
+                setTimeout(() => {
+                  window.open(
+                    "https://www.billplz.com/deposit4Teman",
+                    "_blank"
+                  );
+                }, 2000);
+              } else {
+                throw new Error("Formspree submission failed");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert(
+                "There was an error submitting your booking. Please try again or contact us directly."
+              );
+            })
+            .finally(() => {
+              // Reset button state
+              payButton.innerHTML = originalHTML;
+              payButton.style.pointerEvents = "auto";
+            });
         });
-      } else {
-        throw new Error('Google Sheets submission failed: ' + data.message);
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        // Both submissions successful
-        document.getElementById("booking-ref-number").textContent = refNumber;
-        document.getElementById("booking-success-modal").style.display = "flex";
-        
-        // Redirect to payment page after short delay
-        setTimeout(() => {
-          window.open("https://www.billplz.com/deposit4Teman", "_blank");
-        }, 2000);
-        
-      } else {
-        throw new Error('Formspree submission failed');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      alert('There was an error submitting your booking. Please try again or contact us directly.');
-    })
-    .finally(() => {
-      // Reset button state
-      payButton.innerHTML = originalHTML;
-      payButton.style.pointerEvents = 'auto';
-    });
-  });
 
       // Close modal function
       function closeModal() {

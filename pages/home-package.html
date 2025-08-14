@@ -32,7 +32,10 @@
     />
 
     <!-- Include Flatpickr CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
 
     <style>
       /* Reset and base styles */
@@ -1004,12 +1007,12 @@
 
           <!-- Booking Form -->
           <form
-  id="home-package-booking-form"
-  class="booking-form"
-  data-form-type="home-package"
-  action="https://formspree.io/f/mzzvjaqp"
-  method="POST"
->
+            id="home-package-booking-form"
+            class="booking-form"
+            data-form-type="home-package"
+            action="https://formspree.io/f/mzzvjaqp"
+            method="POST"
+          >
             <!-- Step 1: Package Selection -->
             <div class="form-step active" data-step="1">
               <h2 class="step-title">Choose Your Home Care Package</h2>
@@ -1188,7 +1191,7 @@
                 </button>
               </div>
             </div>
-            
+
             <!-- Step 2: Personal Details -->
             <div class="form-step" data-step="2">
               <h2 class="step-title">Care Requirements & Details</h2>
@@ -1528,7 +1531,9 @@
 
                 <!-- Multi-date calendar -->
                 <div class="form-group">
-                  <label for="multi-dates" class="form-label">Select Multiple Care Dates *</label>
+                  <label for="multi-dates" class="form-label"
+                    >Select Multiple Care Dates *</label
+                  >
                   <input
                     type="text"
                     id="multi-dates"
@@ -1538,46 +1543,83 @@
                     readonly
                     required
                   />
-                  <small class="form-help">Select specific dates; today and tomorrow are disabled</small>
-                  <div id="date-limit-message" style="display:none; color: #666; margin-top: 5px; font-size: 0.875rem;">
-                    If you're unsure of the remaining dates, you may plan or book them later with our representative.
+                  <small class="form-help"
+                    >Select specific dates; today and tomorrow are
+                    disabled</small
+                  >
+                  <div
+                    id="date-limit-message"
+                    style="
+                      display: none;
+                      color: #666;
+                      margin-top: 5px;
+                      font-size: 0.875rem;
+                    "
+                  >
+                    If you're unsure of the remaining dates, you may plan or
+                    book them later with our representative.
                   </div>
-                  <div id="date-count" style="color: #666; margin-top: 5px; font-size: 0.875rem;">
+                  <div
+                    id="date-count"
+                    style="color: #666; margin-top: 5px; font-size: 0.875rem"
+                  >
                     Selected dates: <span id="selected-count">0</span>/20
                   </div>
                 </div>
 
                 <!-- Time Selection -->
                 <div class="form-grid">
-  <div class="form-group">
-    <label for="preferred-start-time" class="form-label">Start Time *</label>
-    <input
-      type="time"
-      id="preferred-start-time"
-      name="preferred_start_time"
-      class="form-input"
-      required
-    />
-    <div id="start-time-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
-  </div>
+                  <div class="form-group">
+                    <label for="preferred-start-time" class="form-label"
+                      >Start Time *</label
+                    >
+                    <input
+                      type="time"
+                      id="preferred-start-time"
+                      name="preferred_start_time"
+                      class="form-input"
+                      required
+                    />
+                    <div
+                      id="start-time-error"
+                      style="
+                        display: none;
+                        color: #d32f2f;
+                        font-size: 0.875rem;
+                        margin-top: 5px;
+                      "
+                    ></div>
+                  </div>
 
-  <div class="form-group">
-    <label for="preferred-end-time" class="form-label">End Time *</label>
-    <input
-      type="time"
-      id="preferred-end-time"
-      name="preferred_end_time"
-      class="form-input"
-      required
-    />
-    <div id="end-time-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
-  </div>
-</div>
+                  <div class="form-group">
+                    <label for="preferred-end-time" class="form-label"
+                      >End Time *</label
+                    >
+                    <input
+                      type="time"
+                      id="preferred-end-time"
+                      name="preferred_end_time"
+                      class="form-input"
+                      required
+                    />
+                    <div
+                      id="end-time-error"
+                      style="
+                        display: none;
+                        color: #d32f2f;
+                        font-size: 0.875rem;
+                        margin-top: 5px;
+                      "
+                    ></div>
+                  </div>
+                </div>
 
                 <!-- Date Range -->
                 <div class="form-grid">
                   <div class="form-group">
-                    <label for="start-date" class="form-label">Service Start Date *</label>
+                    <label for="start-date" class="form-label"
+                      >Service Start Date *</label
+                    >
                     <input
                       type="date"
                       id="start-date"
@@ -1588,7 +1630,9 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="end-date" class="form-label">Service End Date *</label>
+                    <label for="end-date" class="form-label"
+                      >Service End Date *</label
+                    >
                     <input
                       type="date"
                       id="end-date"
@@ -1596,7 +1640,15 @@
                       class="form-input"
                       required
                     />
-                    <div id="date-range-error" style="display:none; color: #d32f2f; font-size: 0.875rem; margin-top: 5px;"></div>
+                    <div
+                      id="date-range-error"
+                      style="
+                        display: none;
+                        color: #d32f2f;
+                        font-size: 0.875rem;
+                        margin-top: 5px;
+                      "
+                    ></div>
                   </div>
                 </div>
               </div>
@@ -1689,7 +1741,7 @@
 
                 <div class="form-group">
                   <label for="medical-conditions" class="form-label"
-                    >Medical Conditions & Diagnoses</label
+                    >Medical Conditions & Diagnoses *</label
                   >
                   <textarea
                     id="medical-conditions"
@@ -1697,6 +1749,7 @@
                     class="form-textarea"
                     rows="3"
                     placeholder="Please list any medical conditions, chronic illnesses, disabilities, or health concerns..."
+                    required
                   ></textarea>
                 </div>
 
@@ -1715,7 +1768,7 @@
 
                 <div class="form-group">
                   <label for="allergies" class="form-label"
-                    >Allergies & Dietary Restrictions</label
+                    >Allergies & Dietary Restrictions *</label
                   >
                   <textarea
                     id="allergies"
@@ -1723,17 +1776,19 @@
                     class="form-textarea"
                     rows="2"
                     placeholder="Food allergies, medication allergies, dietary restrictions, etc..."
+                    required
                   ></textarea>
                 </div>
 
                 <div class="form-group">
                   <label for="mobility-level" class="form-label"
-                    >Mobility Level</label
+                    >Mobility Level *</label
                   >
                   <select
                     id="mobility-level"
                     name="mobility_level"
                     class="form-select"
+                    required
                   >
                     <option value="">Select mobility level</option>
                     <option value="fully-mobile">
@@ -1751,12 +1806,13 @@
 
                 <div class="form-group">
                   <label for="cognitive-status" class="form-label"
-                    >Cognitive Status</label
+                    >Cognitive Status *</label
                   >
                   <select
                     id="cognitive-status"
                     name="cognitive_status"
                     class="form-select"
+                    required
                   >
                     <option value="">Select cognitive status</option>
                     <option value="alert-oriented">
@@ -1776,7 +1832,7 @@
 
                 <div class="form-group">
                   <label for="special-requirements" class="form-label"
-                    >Special Care Requirements</label
+                    >Special Care Requirements *</label
                   >
                   <textarea
                     id="special-requirements"
@@ -1784,6 +1840,7 @@
                     class="form-textarea"
                     rows="4"
                     placeholder="Any specific care procedures, behavioral considerations, equipment needed, or other important information..."
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -1825,11 +1882,7 @@
                       <option value="other">Other</option>
                     </select>
                   </div>
-
-                  
                 </div>
-
-               
               </div>
 
               <!-- Additional Information -->
@@ -1882,7 +1935,12 @@
                   <label for="how-heard" class="form-label"
                     >How did you hear about us? *</label
                   >
-                  <select id="how-heard" name="how_heard" class="form-select" required>
+                  <select
+                    id="how-heard"
+                    name="how_heard"
+                    class="form-select"
+                    required
+                  >
                     <option value="">Please select an option</option>
                     <option value="google">Google Search</option>
                     <option value="facebook">Facebook</option>
@@ -1951,7 +2009,9 @@
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Transportation:</span>
-                    <span class="summary-value" id="summary-transportation">-</span>
+                    <span class="summary-value" id="summary-transportation"
+                      >-</span
+                    >
                   </div>
                   <div class="summary-divider"></div>
                   <div class="summary-item total">
@@ -1985,24 +2045,34 @@
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Relationship:</span>
-                    <span class="summary-value" id="summary-relationship">-</span>
+                    <span class="summary-value" id="summary-relationship"
+                      >-</span
+                    >
                   </div>
                 </div>
 
                 <!-- Care Recipient Details -->
                 <div class="summary-card">
-                  <h3><i class="fas fa-heart-pulse"></i> Care Recipient Details</h3>
+                  <h3>
+                    <i class="fas fa-heart-pulse"></i> Care Recipient Details
+                  </h3>
                   <div class="summary-item">
                     <span class="summary-label">Name:</span>
-                    <span class="summary-value" id="summary-care-recipient">-</span>
+                    <span class="summary-value" id="summary-care-recipient"
+                      >-</span
+                    >
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Age & Gender:</span>
-                    <span class="summary-value" id="summary-recipient-details">-</span>
+                    <span class="summary-value" id="summary-recipient-details"
+                      >-</span
+                    >
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Language:</span>
-                    <span class="summary-value" id="summary-recipient-language">-</span>
+                    <span class="summary-value" id="summary-recipient-language"
+                      >-</span
+                    >
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Medical Conditions:</span>
@@ -2020,22 +2090,32 @@
 
                 <!-- Companion Preferences -->
                 <div class="summary-card">
-                  <h3><i class="fas fa-user-friends"></i> Companion Preferences</h3>
+                  <h3>
+                    <i class="fas fa-user-friends"></i> Companion Preferences
+                  </h3>
                   <div class="summary-item">
                     <span class="summary-label">Preferred Gender:</span>
-                    <span class="summary-value" id="summary-companion-gender">-</span>
+                    <span class="summary-value" id="summary-companion-gender"
+                      >-</span
+                    >
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Language Preference:</span>
-                    <span class="summary-value" id="summary-companion-language">-</span>
+                    <span class="summary-value" id="summary-companion-language"
+                      >-</span
+                    >
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Age Preference:</span>
-                    <span class="summary-value" id="summary-companion-age">-</span>
+                    <span class="summary-value" id="summary-companion-age"
+                      >-</span
+                    >
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Personality Traits:</span>
-                    <span class="summary-value" id="summary-companion-traits">-</span>
+                    <span class="summary-value" id="summary-companion-traits"
+                      >-</span
+                    >
                   </div>
                   <div class="summary-item">
                     <span class="summary-label">Additional Notes:</span>
@@ -2045,43 +2125,144 @@
               </div>
 
               <!-- What Happens Next -->
-              <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 24px; margin-bottom: 32px;">
-                <h3 style="display: flex; align-items: center; gap: 8px; color: #047857; margin-bottom: 16px;">
+              <div
+                style="
+                  background: #f0fdf4;
+                  border: 1px solid #bbf7d0;
+                  border-radius: 12px;
+                  padding: 24px;
+                  margin-bottom: 32px;
+                "
+              >
+                <h3
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    color: #047857;
+                    margin-bottom: 16px;
+                  "
+                >
                   <i class="fas fa-info-circle"></i> What Happens Next?
                 </h3>
                 <ul style="list-style: none; padding: 0">
-                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #047857;">
-                    <i class="fas fa-credit-card" style="width: 20px; text-align: center"></i>
+                  <li
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 12px;
+                      margin-bottom: 12px;
+                      color: #047857;
+                    "
+                  >
+                    <i
+                      class="fas fa-credit-card"
+                      style="width: 20px; text-align: center"
+                    ></i>
                     Pay the deposit to secure your booking
                   </li>
-                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #047857;">
-                    <i class="fas fa-phone" style="width: 20px; text-align: center"></i>
-                    Our care coordinator will contact you within 24 hours to confirm details and provide quotation
+                  <li
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 12px;
+                      margin-bottom: 12px;
+                      color: #047857;
+                    "
+                  >
+                    <i
+                      class="fas fa-phone"
+                      style="width: 20px; text-align: center"
+                    ></i>
+                    Our care coordinator will contact you within 24 hours to
+                    confirm details and provide quotation
                   </li>
-                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #047857;">
-                    <i class="fas fa-user-check" style="width: 20px; text-align: center"></i>
+                  <li
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 12px;
+                      margin-bottom: 12px;
+                      color: #047857;
+                    "
+                  >
+                    <i
+                      class="fas fa-user-check"
+                      style="width: 20px; text-align: center"
+                    ></i>
                     We will match you with a Temanion based on your needs
                   </li>
-                  <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #047857;">
-                    <i class="fas fa-home" style="width: 20px; text-align: center"></i>
-                    A care assessment visit will be scheduled before service begins
+                  <li
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 12px;
+                      margin-bottom: 12px;
+                      color: #047857;
+                    "
+                  >
+                    <i
+                      class="fas fa-home"
+                      style="width: 20px; text-align: center"
+                    ></i>
+                    A care assessment visit will be scheduled before service
+                    begins
                   </li>
-                  <li style="display: flex; align-items: center; gap: 12px; color: #047857;">
-                    <i class="fas fa-calendar-check" style="width: 20px; text-align: center"></i>
-                    Your personalized home care schedule will commence as planned
+                  <li
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 12px;
+                      color: #047857;
+                    "
+                  >
+                    <i
+                      class="fas fa-calendar-check"
+                      style="width: 20px; text-align: center"
+                    ></i>
+                    Your personalized home care schedule will commence as
+                    planned
                   </li>
                 </ul>
               </div>
 
               <!-- Important Package Information -->
-              <div style="background: #fffbeb; border: 1px solid #fed7aa; border-radius: 12px; padding: 24px; margin-bottom: 32px;">
-                <h3 style="display: flex; align-items: center; gap: 8px; color: #ea580c; margin-bottom: 16px;">
-                  <i class="fas fa-exclamation-triangle"></i> Important Package Information
+              <div
+                style="
+                  background: #fffbeb;
+                  border: 1px solid #fed7aa;
+                  border-radius: 12px;
+                  padding: 24px;
+                  margin-bottom: 32px;
+                "
+              >
+                <h3
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    color: #ea580c;
+                    margin-bottom: 16px;
+                  "
+                >
+                  <i class="fas fa-exclamation-triangle"></i> Important Package
+                  Information
                 </h3>
                 <ul style="list-style: none; padding: 0">
-                  <li style="display: flex; align-items: flex-start; gap: 12px; color: #ea580c;">
-                    <i class="fas fa-redo" style="width: 20px; text-align: center; margin-top: 2px"></i>
-                    Sessions can be rescheduled but unused sessions cannot be refunded
+                  <li
+                    style="
+                      display: flex;
+                      align-items: flex-start;
+                      gap: 12px;
+                      color: #ea580c;
+                    "
+                  >
+                    <i
+                      class="fas fa-redo"
+                      style="width: 20px; text-align: center; margin-top: 2px"
+                    ></i>
+                    Sessions can be rescheduled but unused sessions cannot be
+                    refunded
                   </li>
                 </ul>
               </div>
@@ -2091,17 +2272,29 @@
                 <input type="checkbox" name="terms_agreed" required />
                 <span class="checkmark"></span>
                 <span class="terms-text">
-                  I agree to the <a href="#" target="_blank">Terms & Conditions</a>, 
-                  <a href="#" target="_blank">Privacy Policy</a>, and package terms outlined above. I understand that a deposit is required to secure the booking.
+                  I agree to the
+                  <a href="#" target="_blank">Terms & Conditions</a>,
+                  <a href="#" target="_blank">Privacy Policy</a>, and package
+                  terms outlined above. I understand that a deposit is required
+                  to secure the booking.
                 </span>
               </label>
 
               <div class="form-actions">
-                <button type="button" class="btn btn--outline btn--large" onclick="prevStep()">
+                <button
+                  type="button"
+                  class="btn btn--outline btn--large"
+                  onclick="prevStep()"
+                >
                   <i class="fas fa-arrow-left"></i>
                   Previous
                 </button>
-                <button type="button" class="btn btn--success btn--large" id="pay-deposit-btn" onclick="proceedToPayment()">
+                <button
+                  type="button"
+                  class="btn btn--success btn--large"
+                  id="pay-deposit-btn"
+                  onclick="proceedToPayment()"
+                >
                   <i class="fas fa-credit-card"></i>
                   Pay Deposit & Confirm Booking
                 </button>
@@ -2125,10 +2318,15 @@
           contact you within 24 hours to finalize the details.
         </p>
         <div class="booking-reference">
-          <strong>Reference Number: <span id="booking-ref-number"></span></strong>
+          <strong
+            >Reference Number: <span id="booking-ref-number"></span
+          ></strong>
         </div>
         <div class="modal-actions">
-          <button class="btn btn--primary" onclick="window.location.href='booking.html'">
+          <button
+            class="btn btn--primary"
+            onclick="window.location.href='booking.html'"
+          >
             Book Another Service
           </button>
           <button class="btn btn--outline" onclick="closeModal()">Close</button>
@@ -2166,9 +2364,13 @@
       function nextStep() {
         if (currentStep < totalSteps) {
           if (validateCurrentStep()) {
-            document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove("active");
+            document
+              .querySelector(`.form-step[data-step="${currentStep}"]`)
+              .classList.remove("active");
             currentStep++;
-            document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add("active");
+            document
+              .querySelector(`.form-step[data-step="${currentStep}"]`)
+              .classList.add("active");
             updateProgressSteps();
 
             if (currentStep === 3) {
@@ -2183,9 +2385,13 @@
       // Navigate to previous step
       function prevStep() {
         if (currentStep > 1) {
-          document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove("active");
+          document
+            .querySelector(`.form-step[data-step="${currentStep}"]`)
+            .classList.remove("active");
           currentStep--;
-          document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.add("active");
+          document
+            .querySelector(`.form-step[data-step="${currentStep}"]`)
+            .classList.add("active");
           updateProgressSteps();
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
@@ -2197,12 +2403,15 @@
 
         if (currentStep === 1) {
           // Validate package selection
-          const packageSelected = document.querySelector('input[name="package"]:checked');
+          const packageSelected = document.querySelector(
+            'input[name="package"]:checked'
+          );
           if (!packageSelected) {
-            showValidationError("Please select a home care package before continuing.");
+            showValidationError(
+              "Please select a home care package before continuing."
+            );
             return false;
           }
-
         } else if (currentStep === 2) {
           // Required fields validation
           const requiredFields = [
@@ -2219,30 +2428,54 @@
             { name: "preferred_end_time", label: "End Time" },
             { name: "start_date", label: "Service Start Date" },
             { name: "end_date", label: "Service End Date" },
-            { name: "how_heard", label: "How did you hear about us?" }
+            { name: "how_heard", label: "How did you hear about us?" },
+            {
+              name: "medical_conditions",
+              label: "Medical Conditions & Diagnoses",
+            },
+            { name: "allergies", label: "Allergies & Dietary Restrictions" },
+            { name: "mobility_level", label: "Mobility Level" },
+            { name: "cognitive_status", label: "Cognitive Status" },
+            {
+              name: "special_requirements",
+              label: "Special Care Requirements",
+            },
           ];
 
           for (let field of requiredFields) {
-            const element = document.querySelector(`[name="${field.name}"], #${field.name.replace('_', '-')}`);
+            const element = document.querySelector(
+              `[name="${field.name}"], #${field.name.replace("_", "-")}`
+            );
             if (!element || !element.value.trim()) {
-              showValidationError(`Please fill in the ${field.label} field.`, field.name);
+              showValidationError(
+                `Please fill in the ${field.label} field.`,
+                field.name
+              );
               element?.focus();
               return false;
             }
           }
 
           // Validate transportation mode
-          const transportationSelected = document.querySelector('input[name="transportation_mode"]:checked');
+          const transportationSelected = document.querySelector(
+            'input[name="transportation_mode"]:checked'
+          );
           if (!transportationSelected) {
             showValidationError("Please select a transportation mode.");
-            document.querySelector('input[name="transportation_mode"]')?.focus();
+            document
+              .querySelector('input[name="transportation_mode"]')
+              ?.focus();
             return false;
           }
 
           // Check if at least one care service is selected
-          const servicesSelected = document.querySelectorAll('input[name="care_services[]"]:checked');
+          const servicesSelected = document.querySelectorAll(
+            'input[name="care_services[]"]:checked'
+          );
           if (servicesSelected.length === 0) {
-            showValidationError("Please select at least one care service needed.");
+            showValidationError(
+              "Please select at least one care service needed."
+            );
             return false;
           }
 
@@ -2251,7 +2484,10 @@
           if (email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-              showValidationError("Please enter a valid email address.", "email");
+              showValidationError(
+                "Please enter a valid email address.",
+                "email"
+              );
               return false;
             }
           }
@@ -2265,12 +2501,15 @@
           if (!validateDateRange()) {
             return false;
           }
-
         } else if (currentStep === 3) {
           // Validate terms agreement
-          const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
+          const termsAgreed = document.querySelector(
+            'input[name="terms_agreed"]:checked'
+          );
           if (!termsAgreed) {
-            showValidationError("Please agree to the Terms & Conditions and Privacy Policy to continue.");
+            showValidationError(
+              "Please agree to the Terms & Conditions and Privacy Policy to continue."
+            );
             return false;
           }
         }
@@ -2281,11 +2520,13 @@
       // Show validation error
       function showValidationError(message, fieldName = null) {
         alert(message);
-        
+
         if (fieldName) {
-          const field = document.querySelector(`[name="${fieldName}"], #${fieldName.replace('_', '-')}`);
+          const field = document.querySelector(
+            `[name="${fieldName}"], #${fieldName.replace("_", "-")}`
+          );
           if (field) {
-            field.classList.add('error');
+            field.classList.add("error");
             field.focus();
           }
         }
@@ -2293,26 +2534,28 @@
 
       // Clear validation errors
       function clearValidationErrors() {
-        const errorFields = document.querySelectorAll('.error');
-        errorFields.forEach(field => field.classList.remove('error'));
+        const errorFields = document.querySelectorAll(".error");
+        errorFields.forEach((field) => field.classList.remove("error"));
       }
 
       // Time validation
       function validateTimes() {
-        const startTime = document.getElementById("preferred-start-time")?.value;
+        const startTime = document.getElementById(
+          "preferred-start-time"
+        )?.value;
         const endTime = document.getElementById("preferred-end-time")?.value;
         const startError = document.getElementById("start-time-error");
         const endError = document.getElementById("end-time-error");
-        
+
         // Clear previous errors
         if (startError) startError.style.display = "none";
         if (endError) endError.style.display = "none";
-        
+
         if (startTime && endTime) {
           // Convert to comparable format (24-hour)
-          const startHour = parseInt(startTime.split(':')[0]);
-          const endHour = parseInt(endTime.split(':')[0]);
-          
+          const startHour = parseInt(startTime.split(":")[0]);
+          const endHour = parseInt(endTime.split(":")[0]);
+
           if (endHour <= startHour) {
             if (endError) {
               endError.textContent = "End time must be after start time";
@@ -2329,13 +2572,13 @@
         const startDate = document.getElementById("start-date")?.value;
         const endDate = document.getElementById("end-date")?.value;
         const dateError = document.getElementById("date-range-error");
-        
+
         if (dateError) dateError.style.display = "none";
-        
+
         if (startDate && endDate) {
           const start = new Date(startDate);
           const end = new Date(endDate);
-          
+
           if (end <= start) {
             if (dateError) {
               dateError.textContent = "End date must be after start date";
@@ -2350,7 +2593,9 @@
       // Enhanced booking summary update
       function updateBookingSummary() {
         // Package details
-        const selectedPackage = document.querySelector('input[name="package"]:checked');
+        const selectedPackage = document.querySelector(
+          'input[name="package"]:checked'
+        );
         if (selectedPackage) {
           let packageInfo = "";
           let packageCost = 0;
@@ -2367,11 +2612,15 @@
           }
 
           document.getElementById("summary-package").textContent = packageInfo;
-          document.getElementById("summary-total").textContent = `RM ${packageCost}`;
+          document.getElementById(
+            "summary-total"
+          ).textContent = `RM ${packageCost}`;
         }
 
         // Care services
-        const selectedServices = document.querySelectorAll('input[name="care_services[]"]:checked');
+        const selectedServices = document.querySelectorAll(
+          'input[name="care_services[]"]:checked'
+        );
         let servicesText = "";
         if (selectedServices.length > 0) {
           const serviceLabels = Array.from(selectedServices).map((service) => {
@@ -2382,56 +2631,74 @@
             servicesText += ` and ${serviceLabels.length - 3} more`;
           }
         }
-        document.getElementById("summary-services").textContent = servicesText || "None selected";
+        document.getElementById("summary-services").textContent =
+          servicesText || "None selected";
 
         // Selected dates
         const multiDates = document.getElementById("multi-dates")?.value;
-        document.getElementById("summary-dates").textContent = multiDates || "Not selected";
+        document.getElementById("summary-dates").textContent =
+          multiDates || "Not selected";
 
         // Schedule
-        const startTime = document.getElementById("preferred-start-time")?.value;
+        const startTime = document.getElementById(
+          "preferred-start-time"
+        )?.value;
         const endTime = document.getElementById("preferred-end-time")?.value;
         let scheduleText = "";
         if (startTime && endTime) {
           scheduleText = `${startTime} - ${endTime}`;
         }
-        document.getElementById("summary-schedule").textContent = scheduleText || "Not specified";
+        document.getElementById("summary-schedule").textContent =
+          scheduleText || "Not specified";
 
         // Start date
         const startDate = document.getElementById("start-date")?.value;
         if (startDate) {
-          const formattedDate = new Date(startDate).toLocaleDateString("en-MY", {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          });
-          document.getElementById("summary-start-date").textContent = formattedDate;
+          const formattedDate = new Date(startDate).toLocaleDateString(
+            "en-MY",
+            {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            }
+          );
+          document.getElementById("summary-start-date").textContent =
+            formattedDate;
         }
 
         // Transportation
-        const transportation = document.querySelector('input[name="transportation_mode"]:checked');
+        const transportation = document.querySelector(
+          'input[name="transportation_mode"]:checked'
+        );
         if (transportation) {
-          const transportLabel = transportation.nextElementSibling.nextElementSibling.querySelector("strong").textContent;
-          document.getElementById("summary-transportation").textContent = transportLabel;
+          const transportLabel =
+            transportation.nextElementSibling.nextElementSibling.querySelector(
+              "strong"
+            ).textContent;
+          document.getElementById("summary-transportation").textContent =
+            transportLabel;
         }
 
         // Contact information
-        document.getElementById("summary-name").textContent = 
+        document.getElementById("summary-name").textContent =
           document.getElementById("full-name")?.value || "Not provided";
-        document.getElementById("summary-phone").textContent = 
+        document.getElementById("summary-phone").textContent =
           document.getElementById("phone")?.value || "Not provided";
-        document.getElementById("summary-email").textContent = 
+        document.getElementById("summary-email").textContent =
           document.getElementById("email")?.value || "Not provided";
 
         // Emergency contact
-        document.getElementById("summary-emergency").textContent = 
+        document.getElementById("summary-emergency").textContent =
           document.getElementById("emergency-contact")?.value || "Not provided";
 
         // Relationship
         const relationship = document.getElementById("relationship")?.value;
-        document.getElementById("summary-relationship").textContent = 
-          relationship ? relationship.charAt(0).toUpperCase() + relationship.slice(1).replace('-', ' ') : "Not specified";
+        document.getElementById("summary-relationship").textContent =
+          relationship
+            ? relationship.charAt(0).toUpperCase() +
+              relationship.slice(1).replace("-", " ")
+            : "Not specified";
 
         // Address
         const address = document.getElementById("home-address")?.value;
@@ -2439,8 +2706,10 @@
         const state = document.getElementById("state")?.value;
         if (address && city && state) {
           const fullAddress = `${address}, ${city}, ${state}`;
-          document.getElementById("summary-address").textContent = 
-            fullAddress.length > 80 ? fullAddress.substring(0, 80) + "..." : fullAddress;
+          document.getElementById("summary-address").textContent =
+            fullAddress.length > 80
+              ? fullAddress.substring(0, 80) + "..."
+              : fullAddress;
         }
 
         // Care recipient
@@ -2458,179 +2727,218 @@
             careRecipientText = `Age: ${patientAge}`;
           }
         }
-        document.getElementById("summary-care-recipient").textContent = careRecipientText || "Not specified";
+        document.getElementById("summary-care-recipient").textContent =
+          careRecipientText || "Not specified";
 
         // Recipient details
         let recipientDetails = "";
         if (patientAge && patientGender) {
-          recipientDetails = `Age: ${patientAge}, ${patientGender.charAt(0).toUpperCase() + patientGender.slice(1)}`;
+          recipientDetails = `Age: ${patientAge}, ${
+            patientGender.charAt(0).toUpperCase() + patientGender.slice(1)
+          }`;
         } else if (patientAge) {
           recipientDetails = `Age: ${patientAge}`;
         } else if (patientGender) {
-          recipientDetails = patientGender.charAt(0).toUpperCase() + patientGender.slice(1);
+          recipientDetails =
+            patientGender.charAt(0).toUpperCase() + patientGender.slice(1);
         }
-        document.getElementById("summary-recipient-details").textContent = recipientDetails || "Not specified";
+        document.getElementById("summary-recipient-details").textContent =
+          recipientDetails || "Not specified";
 
         // Recipient language
-        const patientLanguage = document.getElementById("patient-language")?.value;
-        document.getElementById("summary-recipient-language").textContent = 
-          patientLanguage ? patientLanguage.charAt(0).toUpperCase() + patientLanguage.slice(1) : "English";
+        const patientLanguage =
+          document.getElementById("patient-language")?.value;
+        document.getElementById("summary-recipient-language").textContent =
+          patientLanguage
+            ? patientLanguage.charAt(0).toUpperCase() + patientLanguage.slice(1)
+            : "English";
 
         // Medical conditions
-        const medicalConditions = document.getElementById("medical-conditions")?.value;
-        document.getElementById("summary-medical").textContent = 
-          medicalConditions ? (medicalConditions.length > 100 ? medicalConditions.substring(0, 100) + "..." : medicalConditions) : "None specified";
+        const medicalConditions =
+          document.getElementById("medical-conditions")?.value;
+        document.getElementById("summary-medical").textContent =
+          medicalConditions
+            ? medicalConditions.length > 100
+              ? medicalConditions.substring(0, 100) + "..."
+              : medicalConditions
+            : "None specified";
 
         // Mobility level
         const mobility = document.getElementById("mobility-level")?.value;
-        document.getElementById("summary-mobility").textContent = 
-          mobility ? mobility.charAt(0).toUpperCase() + mobility.slice(1).replace('-', ' ') : "Not specified";
+        document.getElementById("summary-mobility").textContent = mobility
+          ? mobility.charAt(0).toUpperCase() +
+            mobility.slice(1).replace("-", " ")
+          : "Not specified";
 
         // Allergies
         const allergies = document.getElementById("allergies")?.value;
-        document.getElementById("summary-allergies").textContent = 
-          allergies ? (allergies.length > 80 ? allergies.substring(0, 80) + "..." : allergies) : "None specified";
+        document.getElementById("summary-allergies").textContent = allergies
+          ? allergies.length > 80
+            ? allergies.substring(0, 80) + "..."
+            : allergies
+          : "None specified";
 
         // Companion preferences
-        const companionGender = document.getElementById("companion-gender")?.value;
-        document.getElementById("summary-companion-gender").textContent = 
-          companionGender ? companionGender.charAt(0).toUpperCase() + companionGender.slice(1).replace('-', ' ') : "No preference";
+        const companionGender =
+          document.getElementById("companion-gender")?.value;
+        document.getElementById("summary-companion-gender").textContent =
+          companionGender
+            ? companionGender.charAt(0).toUpperCase() +
+              companionGender.slice(1).replace("-", " ")
+            : "No preference";
 
-        const companionLanguage = document.getElementById("companion-language")?.value;
-        document.getElementById("summary-companion-language").textContent = 
-          companionLanguage ? companionLanguage.charAt(0).toUpperCase() + companionLanguage.slice(1) : "English";
-
-        
-
+        const companionLanguage =
+          document.getElementById("companion-language")?.value;
+        document.getElementById("summary-companion-language").textContent =
+          companionLanguage
+            ? companionLanguage.charAt(0).toUpperCase() +
+              companionLanguage.slice(1)
+            : "English";
 
         // Additional notes
         const notes = document.getElementById("additional-notes")?.value;
-        document.getElementById("summary-notes").textContent = 
-          notes ? (notes.length > 100 ? notes.substring(0, 100) + "..." : notes) : "None";
+        document.getElementById("summary-notes").textContent = notes
+          ? notes.length > 100
+            ? notes.substring(0, 100) + "..."
+            : notes
+          : "None";
       }
 
       // Payment processing function
       function proceedToPayment() {
-  // Validate terms agreement before proceeding
-  const termsAgreed = document.querySelector('input[name="terms_agreed"]:checked');
-  if (!termsAgreed) {
-    alert("Please agree to the Terms & Conditions and Privacy Policy before proceeding to payment.");
-    return;
-  }
+        // Validate terms agreement before proceeding
+        const termsAgreed = document.querySelector(
+          'input[name="terms_agreed"]:checked'
+        );
+        if (!termsAgreed) {
+          alert(
+            "Please agree to the Terms & Conditions and Privacy Policy before proceeding to payment."
+          );
+          return;
+        }
 
-  // Show loading state
-  const payButton = document.getElementById('pay-deposit-btn');
-  const originalText = payButton.innerHTML;
-  payButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-  payButton.disabled = true;
+        // Show loading state
+        const payButton = document.getElementById("pay-deposit-btn");
+        const originalText = payButton.innerHTML;
+        payButton.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        payButton.disabled = true;
 
-  // Generate booking reference
-  const refNumber = "TM" + Date.now().toString().slice(-6);
+        // Generate booking reference
+        const refNumber = "TM" + Date.now().toString().slice(-6);
 
-  // Calculate package cost
-  let packageCost = 0;
-  let packageName = "";
-  const selectedPackage = document.querySelector('input[name="package"]:checked');
-  if (selectedPackage) {
-    if (selectedPackage.value === "package1") {
-      packageCost = 2800;
-      packageName = "Package 1 (4 hours/day, 20 sessions)";
-    } else if (selectedPackage.value === "package2") {
-      packageCost = 3780;
-      packageName = "Package 2 (6 hours/day, 20 sessions)";
-    } else if (selectedPackage.value === "package3") {
-      packageCost = 4720;
-      packageName = "Package 3 (8 hours/day, 20 sessions)";
-    }
-  }
-
-  // Prepare form data for Google Sheets
-  const formData = new FormData();
-  formData.append('booking_reference', refNumber);
-  formData.append('service_type', 'Home Care Package');
-  formData.append('package_cost', `RM ${packageCost}`);
-  
-  // Get all form fields
-  const form = document.getElementById('home-package-booking-form');
-  const formElements = form.elements;
-  
-  for (let element of formElements) {
-    if (element.name && element.value) {
-      if (element.type === 'checkbox') {
-        if (element.checked) {
-          // Handle checkbox arrays properly
-          if (element.name.includes('[]')) {
-            formData.append(element.name, element.value);
-          } else {
-            formData.append(element.name, element.value);
+        // Calculate package cost
+        let packageCost = 0;
+        let packageName = "";
+        const selectedPackage = document.querySelector(
+          'input[name="package"]:checked'
+        );
+        if (selectedPackage) {
+          if (selectedPackage.value === "package1") {
+            packageCost = 2800;
+            packageName = "Package 1 (4 hours/day, 20 sessions)";
+          } else if (selectedPackage.value === "package2") {
+            packageCost = 3780;
+            packageName = "Package 2 (6 hours/day, 20 sessions)";
+          } else if (selectedPackage.value === "package3") {
+            packageCost = 4720;
+            packageName = "Package 3 (8 hours/day, 20 sessions)";
           }
         }
-      } else if (element.type === 'radio') {
-        if (element.checked) {
-          formData.append(element.name, element.value);
+
+        // Prepare form data for Google Sheets
+        const formData = new FormData();
+        formData.append("booking_reference", refNumber);
+        formData.append("service_type", "Home Care Package");
+        formData.append("package_cost", `RM ${packageCost}`);
+
+        // Get all form fields
+        const form = document.getElementById("home-package-booking-form");
+        const formElements = form.elements;
+
+        for (let element of formElements) {
+          if (element.name && element.value) {
+            if (element.type === "checkbox") {
+              if (element.checked) {
+                // Handle checkbox arrays properly
+                if (element.name.includes("[]")) {
+                  formData.append(element.name, element.value);
+                } else {
+                  formData.append(element.name, element.value);
+                }
+              }
+            } else if (element.type === "radio") {
+              if (element.checked) {
+                formData.append(element.name, element.value);
+              }
+            } else {
+              formData.append(element.name, element.value);
+            }
+          }
         }
-      } else {
-        formData.append(element.name, element.value);
+
+        // Convert FormData to URLSearchParams for Google Apps Script
+        const params = new URLSearchParams();
+        for (let [key, value] of formData.entries()) {
+          params.append(key, value);
+        }
+
+        // Submit to Google Apps Script with your actual URL
+        const GOOGLE_SCRIPT_URL =
+          "https://script.google.com/macros/s/AKfycbxMS8h48ZPobWQ5BGkzeLvP-faAM3Iyl5pXs5-K-SWd4jLMO3c34Lot_KnUpsgNqjPSEQ/exec";
+
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          body: params,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status === "success") {
+              // Success - also submit to Formspree for email notification
+              return fetch("https://formspree.io/f/mzzvjaqp", {
+                method: "POST",
+                body: formData,
+                headers: {
+                  Accept: "application/json",
+                },
+              });
+            } else {
+              throw new Error(
+                "Google Sheets submission failed: " + data.message
+              );
+            }
+          })
+          .then((response) => {
+            if (response.ok) {
+              // Both submissions successful
+              document.getElementById("booking-ref-number").textContent =
+                refNumber;
+              document.getElementById("booking-success-modal").style.display =
+                "flex";
+
+              // Redirect to payment page after short delay
+              setTimeout(() => {
+                window.location.href = "https://www.billplz.com/deposit4Teman";
+              }, 2000);
+            } else {
+              throw new Error("Formspree submission failed");
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert(
+              "There was an error submitting your booking. Please try again or contact us directly."
+            );
+          })
+          .finally(() => {
+            // Reset button state
+            payButton.innerHTML = originalText;
+            payButton.disabled = false;
+          });
       }
-    }
-  }
-
-  // Convert FormData to URLSearchParams for Google Apps Script
-  const params = new URLSearchParams();
-  for (let [key, value] of formData.entries()) {
-    params.append(key, value);
-  }
-
-  // Submit to Google Apps Script with your actual URL
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxMS8h48ZPobWQ5BGkzeLvP-faAM3Iyl5pXs5-K-SWd4jLMO3c34Lot_KnUpsgNqjPSEQ/exec';
-  
-  fetch(GOOGLE_SCRIPT_URL, {
-    method: 'POST',
-    body: params,
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.status === 'success') {
-      // Success - also submit to Formspree for email notification
-      return fetch('https://formspree.io/f/mzzvjaqp', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-    } else {
-      throw new Error('Google Sheets submission failed: ' + data.message);
-    }
-  })
-  .then(response => {
-    if (response.ok) {
-      // Both submissions successful
-      document.getElementById("booking-ref-number").textContent = refNumber;
-      document.getElementById("booking-success-modal").style.display = "flex";
-      
-      // Redirect to payment page after short delay
-      setTimeout(() => {
-        window.location.href = "https://www.billplz.com/deposit4Teman";
-      }, 2000);
-      
-    } else {
-      throw new Error('Formspree submission failed');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('There was an error submitting your booking. Please try again or contact us directly.');
-  })
-  .finally(() => {
-    // Reset button state
-    payButton.innerHTML = originalText;
-    payButton.disabled = false;
-  });
-}
 
       // Flatpickr and date selection logic
       const today = new Date();
@@ -2640,7 +2948,7 @@
       dayAfterTomorrow.setDate(today.getDate() + 2);
 
       function formatDate(date) {
-        return date.toISOString().split('T')[0];
+        return date.toISOString().split("T")[0];
       }
 
       const minDateStr = formatDate(dayAfterTomorrow);
@@ -2653,29 +2961,32 @@
         dateFormat: "Y-m-d",
         disable: [formatDate(today), formatDate(tomorrow)],
         minDate: minDateStr,
-        onChange: function(selectedDates, dateStr, instance) {
+        onChange: function (selectedDates, dateStr, instance) {
           updateDateSelection(selectedDates, instance);
         },
-        onReady: function(selectedDates, dateStr, instance) {
+        onReady: function (selectedDates, dateStr, instance) {
           updateDateSelection(selectedDates, instance);
         },
         // Prevent selection of more than 20 dates
-        onDayCreate: function(dObj, dStr, fp, dayElem) {
-          dayElem.addEventListener('click', function(e) {
-            if (fp.selectedDates.length >= 20 && !dayElem.classList.contains('selected')) {
+        onDayCreate: function (dObj, dStr, fp, dayElem) {
+          dayElem.addEventListener("click", function (e) {
+            if (
+              fp.selectedDates.length >= 20 &&
+              !dayElem.classList.contains("selected")
+            ) {
               e.preventDefault();
               e.stopPropagation();
               return false;
             }
           });
-        }
+        },
       });
 
       // Update date selection display and enforce 20-date limit
       function updateDateSelection(selectedDates, instance) {
         const count = selectedDates.length;
         if (countEl) countEl.textContent = count;
-        
+
         // Show/hide message for less than 20 dates
         if (messageEl) {
           if (count < 20) {
@@ -2684,24 +2995,28 @@
             messageEl.style.display = "none";
           }
         }
-        
+
         // Visual feedback when at limit
         if (count >= 20) {
           const calendar = instance.calendarContainer;
           if (calendar) {
-            const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
-            unselectedDays.forEach(day => {
-              day.style.opacity = '0.3';
-              day.style.pointerEvents = 'none';
+            const unselectedDays = calendar.querySelectorAll(
+              ".flatpickr-day:not(.selected):not(.flatpickr-disabled)"
+            );
+            unselectedDays.forEach((day) => {
+              day.style.opacity = "0.3";
+              day.style.pointerEvents = "none";
             });
           }
         } else {
           const calendar = instance.calendarContainer;
           if (calendar) {
-            const unselectedDays = calendar.querySelectorAll('.flatpickr-day:not(.selected):not(.flatpickr-disabled)');
-            unselectedDays.forEach(day => {
-              day.style.opacity = '';
-              day.style.pointerEvents = '';
+            const unselectedDays = calendar.querySelectorAll(
+              ".flatpickr-day:not(.selected):not(.flatpickr-disabled)"
+            );
+            unselectedDays.forEach((day) => {
+              day.style.opacity = "";
+              day.style.pointerEvents = "";
             });
           }
         }
@@ -2730,10 +3045,12 @@
         const startDateFormEl = document.getElementById("start-date");
         const endDateFormEl = document.getElementById("end-date");
 
-        if (startTimeEl) startTimeEl.addEventListener('change', validateTimes);
-        if (endTimeEl) endTimeEl.addEventListener('change', validateTimes);
-        if (startDateFormEl) startDateFormEl.addEventListener('change', validateDateRange);
-        if (endDateFormEl) endDateFormEl.addEventListener('change', validateDateRange);
+        if (startTimeEl) startTimeEl.addEventListener("change", validateTimes);
+        if (endTimeEl) endTimeEl.addEventListener("change", validateTimes);
+        if (startDateFormEl)
+          startDateFormEl.addEventListener("change", validateDateRange);
+        if (endDateFormEl)
+          endDateFormEl.addEventListener("change", validateDateRange);
 
         // Load components
         loadComponents();
@@ -2745,11 +3062,14 @@
           const headerResponse = await fetch("../components/header.html");
           if (headerResponse.ok) {
             const headerHTML = await headerResponse.text();
-            const headerPlaceholder = document.getElementById("header-placeholder");
+            const headerPlaceholder =
+              document.getElementById("header-placeholder");
             if (headerPlaceholder) headerPlaceholder.innerHTML = headerHTML;
 
             setTimeout(() => {
-              const bookingLink = document.querySelector('a[href="booking.html"]');
+              const bookingLink = document.querySelector(
+                'a[href="booking.html"]'
+              );
               if (bookingLink) {
                 bookingLink.classList.add("active");
               }
@@ -2760,7 +3080,8 @@
           const footerResponse = await fetch("../components/footer.html");
           if (footerResponse.ok) {
             const footerHTML = await footerResponse.text();
-            const footerPlaceholder = document.getElementById("footer-placeholder");
+            const footerPlaceholder =
+              document.getElementById("footer-placeholder");
             if (footerPlaceholder) footerPlaceholder.innerHTML = footerHTML;
           }
 
@@ -2818,7 +3139,9 @@
       }
 
       function initializeMainJS() {
-        console.log("Teman Malaysia home care package booking loaded successfully!");
+        console.log(
+          "Teman Malaysia home care package booking loaded successfully!"
+        );
       }
     </script>
     <script src="../assets/js/main.js"></script>
