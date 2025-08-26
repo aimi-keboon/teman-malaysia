@@ -533,6 +533,36 @@
         }
     }
 
+    .section__quote {
+  max-width: 800px;
+  margin: 3rem auto 0; /* center align with breathing space */
+  padding: 2rem;
+  font-size: 1.25rem; /* slightly bigger than body */
+  font-style: italic;
+  line-height: 1.8;
+  text-align: center;
+  color: #333; /* softer than black */
+  background: #f9f9f9; /* subtle background highlight */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.section__quote p {
+  margin: 0;
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
     @media (max-width: 768px) {
         .container {
             padding: 0 1rem;
@@ -631,7 +661,7 @@
             <div class="hero__content animate-on-scroll">
                 <h1 class="hero__title">Start Your Career with Teman Malaysia</h1>
                 <p class="hero__subtitle">
-                    We are looking for individuals who are as driven as we are to improve the quality of life for those we serve. Join us in an incredibly rewarding mission that makes a real difference in people's lives.
+                    Join us on an incredibly rewarding mission that makes a real difference in people's lives.
                 </p>
             </div>
         </div>
@@ -642,124 +672,134 @@
         <div class="container">
             <div class="mission__content animate-on-scroll">
                 <p class="mission__text">
-                    We strive to create a positive impact in empowering seniors and adults with disabilities with the support they need. For us, it serves as the cornerstone for all we do rather than just being a bonus.
+                    At Teman Malaysia, we strive to create a positive impact in empowering seniors and adults with disabilities with the support they need. For us, it serves as the cornerstone for all we do rather than just being a bonus.
+
                 </p>
                 <p class="mission__text">
-                    We also welcome fresh talents to join our <span class="mission__highlight">Teman Internship Program</span>, designed to advance your career and give you an opportunity to contribute to our mission while gaining valuable experience in the care industry.
+                    We are looking for individuals who are as driven as we are to improve the quality of life for those we serve. This could be you.
                 </p>
             </div>
         </div>
     </section>
 
     <!-- Why Join Section -->
-    <section class="why-join section">
-        <div class="container">
-            <div class="section__header animate-on-scroll">
-                <span class="section__tag">WHY CHOOSE US</span>
-                <h2 class="section__title">Why Work with Teman Malaysia?</h2>
-                <div class="section__divider"></div>
-                <p class="section__subtitle">
-                    Discover what makes Teman Malaysia a great place to build your career while making a meaningful impact
+   <section class="why-join section">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <span class="section__tag">WHY CHOOSE US</span>
+            <h2 class="section__title">Why Work with Teman Malaysia?</h2>
+            <div class="section__divider"></div>
+            <p class="section__subtitle">
+                Discover what makes Teman Malaysia a great place to build your career while making a meaningful impact
+            </p>
+        </div>
+        
+        <div class="benefits-grid animate-on-scroll">
+            <div class="benefit-card">
+                <div class="benefit-card__icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="benefit-card__title">Flexible Gig Opportunities</h3>
+                <p class="benefit-card__description">
+                    Caregiving with Teman Malaysia fits easily into your lifestyle, making it ideal for homemakers, students, new jobseekers, or anyone balancing other commitments. Select jobs according to your schedule.
                 </p>
             </div>
             
-            <div class="benefits-grid animate-on-scroll">
-                <div class="benefit-card">
-                    <div class="benefit-card__icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3 class="benefit-card__title">Meaningful Work</h3>
-                    <p class="benefit-card__description">
-                        Every day, you'll make a real difference in the lives of seniors and individuals with disabilities. Your work directly contributes to improving their quality of life and independence.
-                    </p>
+            <div class="benefit-card">
+                <div class="benefit-card__icon">
+                    <i class="fas fa-graduation-cap"></i>
                 </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-card__icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="benefit-card__title">Supportive Community</h3>
-                    <p class="benefit-card__description">
-                        Join a team of caring, responsible people who come together to support one another. We create strong bonds and maintain a cohesive, collaborative workplace.
-                    </p>
+                <h3 class="benefit-card__title">Training & Growth</h3>
+                <p class="benefit-card__description">
+                    No prior experience? No problem. We provide training that equips you with practical caregiving skills and meaningful new experiences. Temanions also learn valuable practical lessons and skills on the job.
+                </p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-card__icon">
+                    <i class="fas fa-wallet"></i>
                 </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-card__icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="benefit-card__title">Career Growth</h3>
-                    <p class="benefit-card__description">
-                        We invest in your professional development with training opportunities, mentorship programs, and clear pathways for advancement within our organization.
-                    </p>
+                <h3 class="benefit-card__title">Weekly Payments</h3>
+                <p class="benefit-card__description">
+                    Your effort is valued — and rewarded on time. Caregivers receive weekly payments for services rendered.
+                </p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-card__icon">
+                    <i class="fas fa-handshake"></i>
                 </div>
+                <h3 class="benefit-card__title">Long-Term Prospects</h3>
+                <p class="benefit-card__description">
+                    Many clients return to the caregivers they trust, creating opportunities for stable income and lasting bonds.
+                </p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-card__icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3 class="benefit-card__title">Meaningful Impact</h3>
+                <p class="benefit-card__description">
+                    Be part of a movement that transforms elderly care today — and builds a caring culture for our own future as we age.
+                </p>
             </div>
         </div>
-    </section>
 
-    <!-- What We Offer Section -->
-    <section class="what-we-offer section">
-        <div class="container">
-            <div class="section__header animate-on-scroll">
-                <span class="section__tag">WHAT WE PROVIDE</span>
-                <h2 class="section__title">What We Bring to You</h2>
-                <div class="section__divider"></div>
-                <p class="section__subtitle">
-                    We believe in supporting our team members with comprehensive benefits and opportunities
+        <div class="section__quote animate-on-scroll">
+            <p>
+                “At Teman Malaysia, you’re not just taking on a job — you’re shaping lives, creating connections, and building a future where ageing with dignity is the norm. Join us and be the change.”
+            </p>
+        </div>
+    </div>
+</section>
+
+   <!-- What We Offer Section -->
+<section class="what-we-offer section">
+    <div class="container">
+        <div class="section__header animate-on-scroll">
+            <span class="section__tag">WHAT WE PROVIDE</span>
+            <h2 class="section__title">What We Bring to You</h2>
+            <div class="section__divider"></div>
+            <p class="section__subtitle">
+                We believe in supporting our team members with comprehensive benefits and opportunities
+            </p>
+        </div>
+        
+        <div class="offer-grid animate-on-scroll">
+            <div class="offer-item">
+                <div class="offer-item__icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h4 class="offer-item__title">Training & Community: The Teman Difference</h4>
+                <p class="offer-item__description">
+                    Discover how our training programs and supportive community set you apart — giving you the confidence, skills, and connection to thrive as a caregiver.
                 </p>
             </div>
             
-            <div class="offer-grid animate-on-scroll">
-                <div class="offer-item">
-                    <div class="offer-item__icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h4 class="offer-item__title">Professional Training</h4>
-                    <p class="offer-item__description">Comprehensive training programs to develop your skills in care, communication, and professional development.</p>
+            <div class="offer-item">
+                <div class="offer-item__icon">
+                    <i class="fas fa-users"></i>
                 </div>
-                
-                <div class="offer-item">
-                    <div class="offer-item__icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h4 class="offer-item__title">Flexible Scheduling</h4>
-                    <p class="offer-item__description">Work-life balance with flexible scheduling options that fit your lifestyle and commitments.</p>
+                <h4 class="offer-item__title">Training & Community: The Teman Promise</h4>
+                <p class="offer-item__description">
+                    At Teman Malaysia, we promise more than a job — we offer training, teamwork, and ongoing support to help you grow with purpose.
+                </p>
+            </div>
+            
+            <div class="offer-item">
+                <div class="offer-item__icon">
+                    <i class="fas fa-road"></i>
                 </div>
-                
-                <div class="offer-item">
-                    <div class="offer-item__icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <h4 class="offer-item__title">Mentorship Support</h4>
-                    <p class="offer-item__description">Guidance from experienced team members to help you succeed and grow in your role.</p>
-                </div>
-                
-                <div class="offer-item">
-                    <div class="offer-item__icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h4 class="offer-item__title">Recognition Programs</h4>
-                    <p class="offer-item__description">Regular recognition and appreciation for your contributions and achievements.</p>
-                </div>
-                
-                <div class="offer-item">
-                    <div class="offer-item__icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h4 class="offer-item__title">Internship Opportunities</h4>
-                    <p class="offer-item__description">Structured internship programs for students and fresh graduates to gain real-world experience.</p>
-                </div>
-                
-                <div class="offer-item">
-                    <div class="offer-item__icon">
-                        <i class="fas fa-shield-check"></i>
-                    </div>
-                    <h4 class="offer-item__title">Safe Work Environment</h4>
-                    <p class="offer-item__description">Commitment to maintaining safe, ethical, and supportive working conditions for all team members.</p>
-                </div>
+                <h4 class="offer-item__title">Training & Community: The Teman Pathway</h4>
+                <p class="offer-item__description">
+                    Your journey as a caregiver begins here. With comprehensive training and a strong community behind you, Teman is your pathway to a meaningful career.
+                </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Work Culture Section -->
     <section class="work-culture section">
@@ -862,9 +902,9 @@
                 <p class="ready-to-join__subtitle">
                     If you'd like to help us live out our mission and be part of something meaningful, we'd love to hear from you.
                 </p>
-                <a href="contact.html" class="btn btn--dark btn--large">
-                    <i class="fas fa-arrow-right"></i>
-                    Get in Touch
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeYrTwvKfJzbkAEDQbBDMMENRgYSLVwF3Pq3e9Ktad83apnGg/viewform" class="btn btn--dark btn--large">
+                    
+                    Apply Now!
                 </a>
             </div>
         </div>
