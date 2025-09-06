@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elderly Care Malaysia Blog - Penjagaan Warga Emas</title>
+    <meta name="description" content="Comprehensive resources and insights for elderly care in Malaysia - bridging families, communities, and quality care services">
+
+    <!-- Link to existing CSS files -->
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Enhanced Styles for Blog -->
+    <style>
+        :root {
+            --primary-color: #4dd0e1;
+            --primary-dark: #26a69a;
+            --primary-light: #e0f7fa;
+            --secondary-color: #ffc107;
+            --accent-color: #ff9800;
+
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --transition-fast: 150ms ease-in-out;
+            --transition-normal: 300ms ease-in-out;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            --radius-md: 0.375rem;
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-3xl: 1.5rem;
+            --radius-full: 9999px;
+        }
+
+        /* Override main content padding for blog */
+        .blog-main {
+            padding-top: 140px;
+            min-height: calc(100vh - 140px);
+        }
+
+        /* Hero Section for Blog */
+        .blog-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--gray-900);
+            text-align: center;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 15s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .blog-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .blog-hero h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.8;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .lang-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--white);
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--gray-900);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--gray-900);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .lang-btn:hover {
+            transform: translateY(-2px);
+            background: var(--white);
+            color: var(--gray-900);
+        }
+
+        /* Stats Highlight */
+        .stats-highlight {
+            background: var(--white);
+            border-radius: var(--radius-3xl);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+        }
+
+        .stats-highlight strong {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-highlight p {
+            color: var(--gray-700);
+            font-size: 1rem;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: var(--radius-3xl);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-light);
+        }
+
+        .blog-card .date {
+            color: var(--gray-500);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--gray-100);
+            border-radius: var(--radius-full);
+        }
+
+        .blog-card h3 {
+            color: var(--gray-900);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .blog-card p {
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .references {
+            background: var(--gray-50);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+            margin-top: 1.5rem;
+        }
+
+        .references h4 {
+            color: var(--primary-dark);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .references ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .references li {
+            color: var(--gray-600);
+            font-size: 0.8rem;
+            margin-bottom: 0.25rem;
+            position: relative;
+            padding-left: 1rem;
+            line-height: 1.4;
+        }
+
+        .references li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Content Toggle */
+        .content-en, .content-ms {
+            display: none;
+        }
+
+        .content-en.active, .content-ms.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .language-toggle {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .lang-btn {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-card {
+                padding: 1.5rem;
+            }
+
+            .blog-hero {
+                padding: 3rem 0;
+            }
+
+            .section {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Component -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="blog-main">
+        <!-- Hero Section -->
+        <section class="blog-hero">
+            <div class="container">
+                <h1>Elderly Care Malaysia</h1>
+                <h2>Penjagaan Warga Emas Malaysia</h2>
+                <p>Comprehensive resources and insights for elderly care in Malaysia - bridging families, communities, and quality care services</p>
+                
+                <div class="language-toggle">
+                    <button class="lang-btn active" onclick="showLanguage('en')" id="en-btn">English</button>
+                    <button class="lang-btn" onclick="showLanguage('ms')" id="ms-btn">Bahasa Melayu</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- English Content -->
+        <section class="section content-en active" id="en-content">
+            <div class="container">
+                <div class="stats-highlight">
+                    <strong>Malaysia's Aging Population: Key Facts 2025</strong>
+                    <p>11.6% of Malaysia's population (3.9 million people) are aged 60+ in 2024 | Projected to reach 17.3% by 2040 | 494 nursing homes nationwide as of 2025</p>
+                </div>
+
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="date">September 2025</div>
+                        <h3>Malaysia's Demographic Shift: Preparing for an Aged Nation by 2040</h3>
+                        <p>Malaysia is experiencing an unprecedented demographic transformation. According to the Department of Statistics Malaysia (DOSM), the elderly population aged 60 and above currently comprises 11.6% of the total population (3.9 million people) in 2024, up from just 5.5% in 1970. By 2040, this figure is projected to reach 17.3% (6.4 million people), with Malaysia expected to achieve "super-aged society" status by 2057 when 20.5% of the population will be over 60.</p>
+                        <p>This rapid aging is attributed to declining fertility rates, improved healthcare, and increased life expectancy. The implications are far-reaching, affecting healthcare systems, pension schemes, and family structures across the nation.</p>
+                        
+                        <div class="references">
+                            <h4>References:</h4>
+                            <ul>
+                                <li>The Star. (2024). "Elderly population to hit 17% by 2040, says Stats Dept"</li>
+                                <li>United Nations Development Programme Malaysia. (2024). "Navigating the future of care for older persons in Malaysia by 2040"</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="date">August 2025</div>
+                        <h3>Current State of Elderly Care Facilities in Malaysia</h3>
+                        <p>As of January 2025, Malaysia hosts 494 nursing homes, representing a 9.43% increase from 2023. However, this growth falls short of meeting the escalating demand. The country currently has 393 registered elderly care centers and 26 nursing homes, with estimates indicating between 700 to over 1,000 unregistered facilities operating nationwide.</p>
+                        <p>A significant challenge exists in the urban-rural divide, with most facilities concentrated in urban areas, leaving rural communities underserved. The shortage of trained caregivers and geriatric specialists compounds these accessibility issues.</p>
+                        
+                        <div class="references">
+                            <h4>References:</h4>
+                            <ul>
+                                <li>Ixora Senior Care. (2025). "Elderly Care in Malaysia: Trends & Statistics for 2025"</li>
+                                <li>UNDP Malaysia. (2024). "Navigating the future of care for older persons in Malaysia by 2040"</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="date">July 2025</div>
+                        <h3>Types of Elderly Care Services Available in Malaysia</h3>
+                        <p>Malaysia offers diverse elderly care options including home care services (RM20-40 per hour), assisted living facilities (RM1,500-10,000 monthly), nursing homes (RM2,000-6,000 monthly), and day care centers. Home care services have gained popularity, allowing seniors to remain in familiar environments while receiving professional support.</p>
+                        <p>Specialized services include post-operative care, dementia care, palliative care, and rehabilitation services. Companies like Care Concierge, My Aged Care, and Komune Care lead the market with comprehensive service packages tailored to individual needs.</p>
+                        
+                        <div class="references">
+                            <h4>References:</h4>
+                            <ul>
+                                <li>Elderly Care Malaysia. (2023). "Elderly Care Centre Malaysia 2025"</li>
+                                <li>Care Concierge. (2024). "Home Care and Nursing Service for Elderly"</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="date">June 2025</div>
+                        <h3>Financial Challenges and Support Systems</h3>
+                        <p>The Employees' Provident Fund (EPF) reveals that 58% of 54-year-old members have less than RM100,000 saved—insufficient for the recommended RM240,000 needed to generate RM1,000 monthly income for 20 years post-retirement. Only 29% of older persons receive any form of pension.</p>
+                        <p>Government support includes Bantuan Warga Emas cash assistance, Bantuan Keluarga Malaysia (RM300 for seniors 60+), and the Medical Relief Fund (TBP) covering treatment costs exceeding RM50,000. However, broader financial protection mechanisms are urgently needed.</p>
+                        
+                        <div class="references">
+                            <h4>References:</h4>
+                            <ul>
+                                <li>UNDP Malaysia. (2024). "Community support to technological integration"</li>
+                                <li>Homage Malaysia. (2023). "Financial Assistance for the Elderly in Malaysia"</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="date">May 2025</div>
+                        <h3>Government Policies and the 12th Malaysia Plan</h3>
+                        <p>The 12th Malaysia Plan (2021-2025) emphasizes senior-friendly community development through Pusat Aktiviti Warga Emas (PAWE) activity centers and age-friendly healthcare facilities. The government is developing IoT-enabled homecare monitoring and virtual medical consultations to support aging in place.</p>
+                        <p>The upcoming Senior Citizens Bill and National Action Plan for Senior Citizens demonstrate Malaysia's commitment to elderly welfare. The 13th Malaysia Plan (RMK13) will adopt a whole-of-government approach focusing on long-term care, social protection, and flexible employment for older citizens.</p>
+                        
+                        <div class="references">
+                            <h4>References:</h4>
+                            <ul>
+                                <li>The Vibes. (2025). "Government prioritises ageing population with holistic approach in RMK13"</li>
+                                <li>US Trade Gov. (2024). "Malaysia Healthcare Aging Population"</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="date">April 2025</div>
+                        <h3>Healthcare Challenges for Malaysia's Elderly</h3>
+                        <p>Despite increased life expectancy, health span has not kept pace. The Khazanah Research Institute estimates that 9.5 years of life expectancy will be spent in poor health due to non-communicable diseases (NCDs). Three out of four elderly aged 70+ have health problems including arthritis, hypertension, diabetes, and heart complications.</p>
+                        <p>Malaysia's healthcare system, primarily designed for acute care, requires restructuring to address chronic disease management and long-term care needs. The shortage of geriatric specialists and rehabilitation services poses significant challenges.</p>
+                        
+                        <div class="references">
+                            <h4>References:</h4>
+                            <ul>
+                                <li>Malaysian Journal of Medical Sciences. (2024). "Healthy Ageing in Malaysia by 2030"</li>
+                                <li>PMC. "The Problems and Challenges of the Aging Population of Malaysia"</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="date">March 2025</div>
+                        <h3>Technology Integration in Elderly Care</h3>
+                        <p>Gerontechnology—technology designed for elderly needs—emerges as a crucial solution. Telehealth services, wearable health devices, and remote monitoring systems are revolutionizing elderly care in Malaysia. These technologies enable early health issue identification, reduce hospital admissions, and support independent living.</p>
+                        <p>Smart home technologies, medication management systems, and emergency response devices are becoming increasingly important in maintaining elderly independence while ensuring safety and health monitoring.</p>
+                        
+                        <div class="references">
+                            <h4>References:</h4>
+                            <ul>
+                                <li>UNDP Malaysia. (2024). "Technology-driven elderly care solutions"</li>
+                                <li>US Trade Gov. (2024). "IoT in homecare monitoring and virtual consultations"</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="date">February 2025</div>
+                        <h3>Family Caregiving and Community Support</h3>
+                        <p>Research shows 75% of elderly live with family members, 15% with spouses, and 10% alone. More than 70% of Malaysians believe it's the young generation's duty to care for elderly family members, placing significant burden on a shrinking workforce.</p>
+                        <p>Community-based support programs, adult day care centers, and respite care services are essential to support family caregivers. The development of multigenerational housing policies and community care programs can strengthen family-based care systems.</p>
+                        
+                        <div class="references">
+                            <h4>References:</h4>
+                            <ul>
+                                <li>Malaysia Population Research Hub. "Elderly Population Statistics"</li>
+                                <li>Statista. (2024). "Share of aging population Malaysia 2015-2024"</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="date">January 2025</div>
+                        <h3>Regional Disparities in Elderly Care</h3>
+                        <p>Perak leads with 14.9% elderly population, followed by Sarawak (13.4%) and Kedah (13.3%). Twenty districts have the highest elderly concentrations, including Lubok Antu, Sarawak (21.8%), and Sri Aman, Sarawak (18.7%). Rural areas face greater challenges with limited access to specialized care facilities and services.</p>
+                        <p>Urban areas offer better healthcare access and facilities, but face higher costs. Rural elderly often rely more heavily on traditional family support systems, which are increasingly strained by urbanization and migration patterns.</p>
+                        
+                        <div class="references">
+                            <h4>References:</h4>
+                            <ul>
+                                <li>The Star. (2024). "Elderly population statistics by state and district"</li>
+                                <li>DOSM. (2024). "MyAgeing Dashboard launch"</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="date">December 2024</div>
+                        <h3>Market Outlook and Investment Opportunities</h3>
+                        <p>Malaysia's elderly care market was valued at USD 975.13 billion in 2024 and is projected to reach USD 1,485.21 billion by 2032, with a CAGR of 5.40%. This growth is driven by increasing demand for home care services, assisted living facilities, and specialized medical equipment.</p>
+                        <p>Investment opportunities exist in technology-enabled care solutions, staff training programs, facility development, and innovative service delivery models. The sector presents significant potential for both local and international investors.</p>
+                        
+                        <div class="references">
+                            <h4>References:</h4>
+                            <ul>
+                                <li>Data Bridge Market Research. (2024). "Malaysia Elderly Care Market Report"</li>
+                                <li>US Trade Gov. (2024). "Opportunities for senior living villages and medical equipment"</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bahasa Melayu Content -->
+        <section class="section content-ms" id="ms-content">
+            <div class="container">
+                <div class="stats-highlight">
+                    <strong>Populasi Warga Emas Malaysia: Fakta Utama 2025</strong>
+                    <p>11.6% penduduk Malaysia (3.9 juta orang) berusia 60+ pada 2024 | Dijangka mencapai 17.3% menjelang 2040 | 494 rumah orang tua di seluruh negara setakat 2025</p>
+                </div>
+
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="date">September 2025</div>
+                        <h3>Perubahan Demografi Malaysia: Bersedia untuk Negara Warga Emas menjelang 2040</h3>
+                        <p>Malaysia sedang mengalami transformasi demografi yang tidak pernah terjadi sebelumnya. Menurut Jabatan Perangkaan Malaysia (DOSM), populasi warga emas berusia 60 tahun ke atas kini terdiri daripada 11.6% daripada jumlah penduduk (3.9 juta orang) pada 2024, meningkat daripada hanya 5.5% pada 1970. Menjelang 2040, angka ini diunjurkan mencapai 17.3% (6.4 juta orang), dengan Malaysia dijangka mencapai status "masyarakat super-emas" menjelang 2057 apabila 20.5% penduduk akan berusia lebih 60 tahun.</p>
+                        <p>Penuaan pesat ini disebabkan oleh penurunan kadar kesuburan, peningkatan penjagaan kesihatan, dan peningkatan jangka hayat. Implikasinya adalah sangat luas, mempengaruhi sistem penjagaan kesihatan, skim pencen, dan struktur keluarga di seluruh negara.</p>
+                        
+                        <div class="references">
+                            <h4>Rujukan:</h4>
+                            <ul>
+                                <li>The Star. (2024). "Populasi warga emas akan mencapai 17% menjelang 2040"</li>
+                                <li>Program Pembangunan Pertubuhan Bangsa-Bangsa Bersatu Malaysia. (2024). "Menavigasi masa depan penjagaan warga emas di Malaysia menjelang 2040"</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="date">Ogos 2025</div>
+                        <h3>Keadaan Semasa Kemudahan Penjagaan Warga Emas di Malaysia</h3>
+                        <p>Setakat Januari 2025, Malaysia mempunyai 494 rumah penjagaan, mewakili peningkatan 9.43% daripada 2023. Walau bagaimanapun, pertumbuhan ini tidak mencukupi untuk memenuhi permintaan yang semakin meningkat. Negara ini kini mempunyai 393 pusat penjagaan warga emas berdaftar dan 26 rumah penjagaan, dengan anggaran antara 700 hingga lebih 1,000 kemudahan tidak berdaftar beroperasi di seluruh negara.</p>
+                        <p>Cabaran ketara wujud dalam jurang bandar-luar bandar, dengan kebanyakan kemudahan tertumpu di kawasan bandar, menyebabkan komuniti luar bandar kurang mendapat perkhidmatan. Kekurangan penjaga terlatih dan pakar geriatrik memburukkan lagi isu kebolehcapaian ini.</p>
+                        
+                        <div class="references">
+                            <h4>Rujukan:</h4>
+                            <ul>
+                                <li>Ixora Senior Care. (2025). "Penjagaan Warga Emas di Malaysia: Trend & Statistik untuk 2025"</li>
+                                <li>UNDP Malaysia. (2024). "Menavigasi masa depan penjagaan warga emas di Malaysia menjelang 2040"</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Additional Malay articles continue here with the same structure... -->
+                    <article class="blog-card">
+                        <div class="date">Julai 2025</div>
+                        <h3>Jenis Perkhidmatan Penjagaan Warga Emas yang Tersedia di Malaysia</h3>
+                        <p>Malaysia menawarkan pelbagai pilihan penjagaan warga emas termasuk perkhidmatan penjagaan di rumah (RM20-40 sejam), kemudahan hidup berbantuan (RM1,500-10,000 bulanan), rumah penjagaan (RM2,000-6,000 bulanan), dan pusat jagaan harian. Perkhidmatan penjagaan di rumah semakin popular, membolehkan warga emas kekal dalam persekitaran yang dikenali sambil menerima sokongan profesional.</p>
+                        <p>Perkhidmatan khusus termasuk penjagaan pasca-pembedahan, penjagaan demensia, penjagaan paliatif, dan perkhidmatan pemulihan. Syarikat seperti Care Concierge, My Aged Care, dan Komune Care mengetuai pasaran dengan pakej perkhidmatan menyeluruh yang disesuaikan dengan keperluan individu.</p>
+                        
+                        <div class="references">
+                            <h4>Rujukan:</h4>
+                            <ul>
+                                <li>Elderly Care Malaysia. (2023). "Pusat Penjagaan Warga Emas Malaysia 2025"</li>
+                                <li>Care Concierge. (2024). "Perkhidmatan Penjagaan dan Kejururawatan di Rumah untuk Warga Emas"</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // Language toggle functionality
+        function showLanguage(lang) {
+            const enContent = document.getElementById('en-content');
+            const msContent = document.getElementById('ms-content');
+            const enBtn = document.getElementById('en-btn');
+            const msBtn = document.getElementById('ms-btn');
+
+            if (lang === 'en') {
+                enContent.classList.add('active');
+                msContent.classList.remove('active');
+                enBtn.classList.add('active');
+                msBtn.classList.remove('active');
+            } else {
+                enContent.classList.remove('active');
+                msContent.classList.add('active');
+                enBtn.classList.remove('active');
+                msBtn.classList.add('active');
+            }
+        }
+
+        // Load header and footer components
+        async function loadComponents() {
+            try {
+                // Load header
+                const headerResponse = await fetch('../components/header.html');
+                if (headerResponse.ok) {
+                    const headerHTML = await headerResponse.text();
+                    document.getElementById('header-placeholder').innerHTML = headerHTML;
+                    
+                    // Mark the current page as active in navigation
+                    setTimeout(() => {
+                        const blogLink = document.querySelector('a[href="blog.html"]');
+                        if (blogLink) {
+                            blogLink.classList.add('active');
+                        }
+                        
+                        // Initialize navigation after header is loaded
+                        initializeNavigation();
+                    }, 100);
+                }
+
+                // Load footer
+                const footerResponse = await fetch('../components/footer.html');
+                if (footerResponse.ok) {
+                    const footerHTML = await footerResponse.text();
+                    document.getElementById('footer-placeholder').innerHTML = footerHTML;
+                }
+
+                // Initialize main JavaScript after components are loaded
+                initializeMainJS();
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+
+        // Initialize navigation functionality
+        function initializeNavigation() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('show');
+                    const icon = navToggle.querySelector('i');
+                    if (navMenu.classList.contains('show')) {
+                        icon.className = 'fas fa-times';
+                    } else {
+                        icon.className = 'fas fa-bars';
+                    }
+                });
+
+                // Close menu when clicking on nav links
+                document.querySelectorAll('.nav__link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('show');
+                        const icon = navToggle.querySelector('i');
+                        if (icon) icon.className = 'fas fa-bars';
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                        navMenu.classList.remove('show');
+                        const icon = navToggle.querySelector('i');
+                        if (icon) icon.className = 'fas fa-bars';
+                    }
+                });
+            }
+
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (header) {
+                    if (window.scrollY > 100) {
+                        header.style.background = 'rgba(255, 255, 255, 0.98)';
+                        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                    } else {
+                        header.style.background = 'rgba(255, 255, 255, 0.95)';
+                        header.style.boxShadow = 'none';
+                    }
+                }
+            });
+        }
+
+        // Initialize main functionality
+        function initializeMainJS() {
+            // Include your existing main.js functionality here
+            if (typeof window.TemanMalaysia !== 'undefined') {
+                console.log('Teman Malaysia blog page loaded successfully!');
+            }
+        }
+
+        // Scroll animations for blog cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations for blog cards
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.blog-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease-out';
+                observer.observe(card);
+            });
+
+            // Load components when DOM is ready
+            loadComponents();
+        });
+
+        // Smooth scrolling for anchor links
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('a[href^="#"]')) {
+                e.preventDefault();
+                const target = document.querySelector(e.target.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+
+        console.log('Elderly Care Malaysia Blog loaded successfully!');
+    </script>
+
+    <!-- Load your existing main JavaScript -->
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
