@@ -2229,8 +2229,8 @@
                 <span class="checkmark"></span>
                 <span class="terms-text">
                   I agree to the
-                  <a href="#" target="_blank">Terms & Conditions</a>,
-                  <a href="#" target="_blank">Privacy Policy</a>, and package
+                  <a href="terms.html" target="_blank">Terms & Conditions</a>,
+                  <a href="privacy.html" target="_blank">Privacy Policy</a>, and package
                   terms outlined above. I understand that a deposit is required
                   to secure the booking.
                 </span>
@@ -2269,10 +2269,23 @@
         </div>
         <h2>Booking Request Submitted!</h2>
         <p>
-          Thank you for choosing Teman Malaysia for your home care needs. We've
-          received your package booking request and our care coordinator will
-          contact you within 24 hours to finalize the details.
+          Thank you for choosing Teman Malaysia for your Home Package
+          support. We've received your booking request and will contact you
+          within 24 hours to confirm the details.
         </p>
+        <p>
+          To complete your deposit payment, please proceed to our secure payment
+          gateway:
+          <a
+            href="https://www.billplz.com/deposit4Teman"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: blue;"
+          >
+            Click here to make your payment
+          </a>
+        </p>
+
         <div class="booking-reference">
           <strong
             >Reference Number: <span id="booking-ref-number"></span
@@ -2841,7 +2854,7 @@
 
         // Submit to Google Apps Script with your actual URL
         const GOOGLE_SCRIPT_URL =
-          "https://script.google.com/macros/s/AKfycbxMS8h48ZPobWQ5BGkzeLvP-faAM3Iyl5pXs5-K-SWd4jLMO3c34Lot_KnUpsgNqjPSEQ/exec";
+          "https://script.google.com/macros/s/AKfycbzM9Fo-INrQz0u6BJ-sgEbFc4sPAEs2Cb1j3DaYop4EvOdhVSjINQqFZVBS8R0l7TEigQ/exec";
 
         fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
