@@ -1174,6 +1174,17 @@
                   </div>
 
                   <div class="form-group">
+                    <label for="ic-number" class="form-label">IC Number</label>
+                    <input
+                      type="text"
+                      id="ic-number"
+                      name="ic_number"
+                      class="form-input"
+                      placeholder="123456-12-1234"
+                    />
+                  </div>
+
+                  <div class="form-group">
                     <label for="relationship" class="form-label"
                       >Relationship to Care Recipient</label
                     >
@@ -1984,6 +1995,10 @@
                     <span class="summary-value" id="summary-name">-</span>
                   </div>
                   <div class="summary-item">
+                    <span class="summary-label">IC Number:</span>
+                    <span class="summary-value" id="summary-ic-number">-</span>
+                  </div>
+                  <div class="summary-item">
                     <span class="summary-label">Phone:</span>
                     <span class="summary-value" id="summary-phone">-</span>
                   </div>
@@ -2230,9 +2245,9 @@
                 <span class="terms-text">
                   I agree to the
                   <a href="terms.html" target="_blank">Terms & Conditions</a>,
-                  <a href="privacy.html" target="_blank">Privacy Policy</a>, and package
-                  terms outlined above. I understand that a deposit is required
-                  to secure the booking.
+                  <a href="privacy.html" target="_blank">Privacy Policy</a>, and
+                  package terms outlined above. I understand that a deposit is
+                  required to secure the booking.
                 </span>
               </label>
 
@@ -2269,9 +2284,9 @@
         </div>
         <h2>Booking Request Submitted!</h2>
         <p>
-          Thank you for choosing Teman Malaysia for your Home Package
-          support. We've received your booking request and will contact you
-          within 24 hours to confirm the details.
+          Thank you for choosing Teman Malaysia for your Home Package support.
+          We've received your booking request and will contact you within 24
+          hours to confirm the details.
         </p>
         <p>
           To complete your deposit payment, please proceed to our secure payment
@@ -2280,7 +2295,7 @@
             href="https://www.billplz.com/deposit4Teman"
             target="_blank"
             rel="noopener noreferrer"
-            style="color: blue;"
+            style="color: blue"
           >
             Click here to make your payment
           </a>
@@ -2652,6 +2667,8 @@
         // Contact information
         document.getElementById("summary-name").textContent =
           document.getElementById("full-name")?.value || "Not provided";
+        document.getElementById("summary-ic-number").textContent =
+          document.getElementById("ic-number")?.value || "Not provided";
         document.getElementById("summary-phone").textContent =
           document.getElementById("phone")?.value || "Not provided";
         document.getElementById("summary-email").textContent =
@@ -2854,7 +2871,7 @@
 
         // Submit to Google Apps Script with your actual URL
         const GOOGLE_SCRIPT_URL =
-          "https://script.google.com/macros/s/AKfycbzM9Fo-INrQz0u6BJ-sgEbFc4sPAEs2Cb1j3DaYop4EvOdhVSjINQqFZVBS8R0l7TEigQ/exec";
+          "https://script.google.com/macros/s/AKfycbyvuJ84qdac6nJYS03ZOwFT3N8zAyS9IrTYV0G5IGW2s-bwfYoSOlj-W79N4s-WgStn_Q/exec";
 
         fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
