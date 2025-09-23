@@ -1117,6 +1117,17 @@
                   </div>
 
                   <div class="form-group">
+                    <label for="ic-number" class="form-label">IC Number</label>
+                    <input
+                      type="text"
+                      id="ic-number"
+                      name="ic_number"
+                      class="form-input"
+                      placeholder="123456-12-1234"
+                    />
+                  </div>
+
+                  <div class="form-group">
                     <label for="relationship" class="form-label"
                       >Relationship to Care Recipient</label
                     >
@@ -1785,6 +1796,10 @@
                     <span class="summary-value" id="summary-name">-</span>
                   </div>
                   <div class="summary-item">
+                    <span class="summary-label">IC Number:</span>
+                    <span class="summary-value" id="summary-ic-number">-</span>
+                  </div>
+                  <div class="summary-item">
                     <span class="summary-label">Phone:</span>
                     <span class="summary-value" id="summary-phone">-</span>
                   </div>
@@ -2071,7 +2086,8 @@
                 <span class="checkmark"></span>
                 <span class="terms-text">
                   I agree to the
-                  <a href="terms.html" target="_blank">Terms & Conditions</a> and
+                  <a href="terms.html" target="_blank">Terms & Conditions</a>
+                  and
                   <a href="privacy.html" target="_blank">Privacy Policy</a>
                 </span>
               </label>
@@ -2120,7 +2136,7 @@
             href="https://www.billplz.com/deposit4Teman"
             target="_blank"
             rel="noopener noreferrer"
-            style="color: blue;"
+            style="color: blue"
           >
             Click here to make your payment
           </a>
@@ -2403,6 +2419,8 @@
         // Contact information
         document.getElementById("summary-name").textContent =
           document.getElementById("full-name").value || "-";
+        document.getElementById("summary-ic-number").textContent =
+          document.getElementById("ic-number").value || "-";
         document.getElementById("summary-phone").textContent =
           document.getElementById("phone").value || "-";
         document.getElementById("summary-email").textContent =
@@ -2555,7 +2573,7 @@
 
         // Submit to Google Apps Script (replace with your actual deployment URL)
         const GOOGLE_SCRIPT_URL =
-          "https://script.google.com/macros/s/AKfycbzqavkuXhUudYQJN1VwFTAX1YQHqmaBDMtVvhrAj5XZbMyJLysKDlnulaX6c8Lj33k/exec";
+          "https://script.google.com/macros/s/AKfycbx3ezy1ci9BOGYljJ_94B4UDl1RipSO0iWDwy7CwLSfIC84ItNim8VohBRO1pEi4r1A/exec";
 
         fetch(GOOGLE_SCRIPT_URL, {
           method: "POST",
