@@ -957,8 +957,7 @@
                       </div>
                     </div>
                     <div class="package-description">
-                      Suitable for shorter appointment
-                      sessions.
+                      Suitable for shorter appointment sessions.
                     </div>
                   </label>
                 </div>
@@ -1048,9 +1047,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="ic-number" class="form-label"
-                      >IC Number</label
-                    >
+                    <label for="ic-number" class="form-label">IC Number</label>
                     <input
                       type="text"
                       id="ic-number"
@@ -1275,8 +1272,8 @@
                     required
                   />
                   <small class="form-help"
-                    >Select a specific date; today and tomorrow are
-                    disabled</small
+                    >Select a specific date; bookings must be made at least 5
+                    days in advance</small
                   >
                   <div
                     id="appointment-date-count"
@@ -2049,11 +2046,15 @@
                   <span class="checkmark"></span>
                   <span style="font-size: 14px; color: #374151">
                     I agree to the
-                    <a href="terms.html" style="color: #3b82f6; text-decoration: none"
+                    <a
+                      href="terms.html"
+                      style="color: #3b82f6; text-decoration: none"
                       >Terms & Conditions</a
                     >
                     and
-                    <a href="privacy.html" style="color: #3b82f6; text-decoration: none"
+                    <a
+                      href="privacy.html"
+                      style="color: #3b82f6; text-decoration: none"
                       >Privacy Policy</a
                     >
                     *
@@ -2105,7 +2106,7 @@
             href="https://www.billplz.com/deposit4Teman"
             target="_blank"
             rel="noopener noreferrer"
-            style="color: blue;"
+            style="color: blue"
           >
             Click here to make your payment
           </a>
@@ -2152,8 +2153,10 @@
       tomorrow.setDate(today.getDate() + 1);
       const dayAfterTomorrow = new Date(today);
       dayAfterTomorrow.setDate(today.getDate() + 2);
+      const fiveDaysFromNow = new Date(today);
+      fiveDaysFromNow.setDate(today.getDate() + 5);
 
-      const minDateStr = formatDate(dayAfterTomorrow);
+      const minDateStr = formatDate(fiveDaysFromNow);
 
       // Get DOM elements
       const appointmentCountEl = document.getElementById(
@@ -2247,9 +2250,8 @@
       // Initialize Flatpickr for appointments - SINGLE DATE MODE
       function initializeAppointmentFlatpickr() {
         appointmentFp = flatpickr("#appointment-dates", {
-          mode: "single", // Changed from "multiple" to "single"
+          mode: "single",
           dateFormat: "Y-m-d",
-          disable: [formatDate(today), formatDate(tomorrow)],
           minDate: minDateStr,
           disabled: true,
           onChange: function (selectedDates, dateStr, instance) {
