@@ -1290,8 +1290,8 @@
                     required
                   />
                   <small class="form-help"
-                    >Select specific dates; today and tomorrow are
-                    disabled</small
+                    >Select specific dates; bookings must be made at least 5
+                    days in advance</small
                   >
                   <div
                     id="activity-date-limit-message"
@@ -2667,12 +2667,14 @@
       tomorrow.setDate(today.getDate() + 1);
       const dayAfterTomorrow = new Date(today);
       dayAfterTomorrow.setDate(today.getDate() + 2);
+      const fiveDaysFromNow = new Date(today);
+      fiveDaysFromNow.setDate(today.getDate() + 5);
 
       function formatDate(date) {
         return date.toISOString().split("T")[0];
       }
 
-      const minDateStr = formatDate(dayAfterTomorrow);
+      const minDateStr = formatDate(fiveDaysFromNow);
       const messageEl = document.getElementById("activity-date-limit-message");
       const countEl = document.getElementById("activity-selected-count");
       const maxDatesEl = document.getElementById("activity-max-dates");
@@ -2750,7 +2752,6 @@
         fp = flatpickr("#activity-dates", {
           mode: "multiple",
           dateFormat: "Y-m-d",
-          disable: [formatDate(today), formatDate(tomorrow)],
           minDate: minDateStr,
           disabled: true,
           onChange: function (selectedDates, dateStr, instance) {
