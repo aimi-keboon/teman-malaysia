@@ -16,6 +16,11 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/main.css" />
     <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <!-- Flatpickr CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1259,9 +1264,10 @@
 
                 <!-- Multi-date calendar -->
                 <div class="form-group">
-                  <label for="appointment-dates" class="form-label"
-                    >Select Appointment Date *</label
-                  >
+                  <label for="appointment-dates" class="form-label">
+                    Select Appointment Date *
+                  </label>
+
                   <input
                     type="text"
                     id="appointment-dates"
@@ -1269,67 +1275,14 @@
                     class="form-input"
                     placeholder="Select appointment date"
                     readonly
+                    onfocus="this.blur();"
                     required
                   />
-                  <small class="form-help"
-                    >Select a specific date; bookings must be made at least 5
-                    days in advance</small
-                  >
-                  <div
-                    id="appointment-date-count"
-                    style="
-                      color: #666;
-                      margin-top: 5px;
-                      font-size: 0.875rem;
-                      display: none;
-                    "
-                  >
-                    Selected date: <span id="appointment-selected-count"></span>
-                  </div>
-                  <div
-                    id="appointment-hours-info"
-                    style="
-                      color: #ef4444;
-                      margin-top: 5px;
-                      font-size: 0.875rem;
-                      font-weight: 500;
-                    "
-                  >
-                    Please select a package in Step 1 first to enable date
-                    selection
-                  </div>
-                </div>
 
-                <!-- 30-Day Validity Disclaimer -->
-                <div
-                  style="
-                    background: #fef2f2;
-                    border: 2px dashed #dc2626;
-                    border-radius: 12px;
-                    padding: 16px;
-                    margin: 20px 0;
-                  "
-                >
-                  <h4
-                    style="
-                      color: #dc2626;
-                      margin-bottom: 8px;
-                      display: flex;
-                      align-items: center;
-                      gap: 8px;
-                    "
-                  >
-                    <i class="fas fa-exclamation-triangle"></i>
-                    Important: Validity Period
-                  </h4>
-                  <p style="color: #dc2626; font-size: 14px; margin: 0">
-                    <strong
-                      >All unused hours are only valid for 30 days after
-                      booking.</strong
-                    >
-                    Please plan your appointment dates within this period to
-                    avoid forfeiture of unused hours.
-                  </p>
+                  <small class="form-help">
+                    Select a specific date; bookings must be made at least 5
+                    days in advance
+                  </small>
                 </div>
 
                 <div class="form-grid">
@@ -2847,5 +2800,34 @@
       });
     </script>
     <script src="../assets/js/main.js"></script>
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Minimum booking date = today + 5 days
+        const today = new Date();
+        const minDate = new Date();
+        minDate.setDate(today.getDate() + 5);
+
+        // Apply Flatpickr to the date fields on this page
+        const selectors = [
+          "#appointment-dates",
+          "#multi-dates",
+          "#activity-dates",
+        ];
+
+        selectors.forEach((sel) => {
+          const el = document.querySelector(sel);
+          if (el) {
+            flatpickr(el, {
+              dateFormat: "Y-m-d",
+              minDate: minDate.toISOString().split("T")[0],
+              disableMobile: true,
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>

@@ -10,20 +10,31 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
-    
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+    <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png" />
+
     <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/main.css">
-    <link rel="stylesheet" href="../assets/css/responsive.css">
-    
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <!-- Flatpickr CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <style>
       /* Reset and base styles */
@@ -138,12 +149,12 @@
 
       /* Service Selection Grid */
       .services-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
       .service-card {
         background: white;
@@ -165,24 +176,24 @@
       }
 
       .service-card__header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 20px;
-}
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 20px;
+      }
 
       .service-icon {
-  width: 60px;
-  height: 60px;
-  background: #3b82f6;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-bottom: 16px;
-}
+        width: 60px;
+        height: 60px;
+        background: #3b82f6;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-bottom: 16px;
+      }
 
       .service-icon i {
         font-size: 24px;
@@ -389,21 +400,21 @@
 
       /* Responsive Design */
       @media (max-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-}
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 16px;
+        }
+      }
 
-@media (max-width: 768px) {
-  .booking__title {
-    font-size: 2rem;
-  }
+      @media (max-width: 768px) {
+        .booking__title {
+          font-size: 2rem;
+        }
 
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
+        .services-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
 
         .service-card {
           padding: 24px;
@@ -448,7 +459,8 @@
         <div class="booking__header">
           <h1 class="booking__title">Choose Your Care Service</h1>
           <p class="booking__subtitle">
-            Select the service that best fits your needs. Our experienced Temanions are here to provide quality care and companionship.
+            Select the service that best fits your needs. Our experienced
+            Temanions are here to provide quality care and companionship.
           </p>
         </div>
 
@@ -461,16 +473,30 @@
               </div>
               <div class="service-info">
                 <h3>TEMAN Health Appointments</h3>
-                <p>Professional assistance for medical checkups and treatments with caring companionship.</p>
+                <p>
+                  Professional assistance for medical checkups and treatments
+                  with caring companionship.
+                </p>
               </div>
             </div>
-            
+
             <div class="service-features">
               <ul>
-                <li><i class="fas fa-check"></i> Accompaniment to medical appointments</li>
-                <li><i class="fas fa-check"></i> Assistance with mobility and transportation</li>
-                <li><i class="fas fa-check"></i> Help with paperwork and communication</li>
-                <li><i class="fas fa-check"></i> Emotional support during visits</li>
+                <li>
+                  <i class="fas fa-check"></i> Accompaniment to medical
+                  appointments
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Assistance with mobility and
+                  transportation
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Help with paperwork and
+                  communication
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Emotional support during visits
+                </li>
               </ul>
             </div>
 
@@ -495,16 +521,25 @@
               </div>
               <div class="service-info">
                 <h3>TEMAN to Dialysis Treatments</h3>
-                <p>Specialized support for dialysis sessions with understanding and experienced companions.</p>
+                <p>
+                  Specialized support for dialysis sessions with understanding
+                  and experienced companions.
+                </p>
               </div>
             </div>
-            
+
             <div class="service-features">
               <ul>
-                <li><i class="fas fa-check"></i> Transportation to dialysis center</li>
-                <li><i class="fas fa-check"></i> Companionship during treatment</li>
+                <li>
+                  <i class="fas fa-check"></i> Transportation to dialysis center
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Companionship during treatment
+                </li>
                 <li><i class="fas fa-check"></i> Assistance with mobility</li>
-                <li><i class="fas fa-check"></i> Support for multiple sessions</li>
+                <li>
+                  <i class="fas fa-check"></i> Support for multiple sessions
+                </li>
               </ul>
             </div>
 
@@ -530,17 +565,31 @@
               </div>
               <div class="service-info">
                 <h3>TEMAN Customised Activities</h3>
-                <p>Personalized companionship for leisure activities, social outings, and recreational pursuits.</p>
+                <p>
+                  Personalized companionship for leisure activities, social
+                  outings, and recreational pursuits.
+                </p>
               </div>
             </div>
-            
+
             <div class="service-features">
               <ul>
-                <li><i class="fas fa-check"></i> Shopping and errands assistance</li>
-                <li><i class="fas fa-check"></i> Social outings and recreational activities</li>
-                <li><i class="fas fa-check"></i> Park visits and outdoor exercises</li>
-                <li><i class="fas fa-check"></i> Cultural and entertainment events</li>
-                <li><i class="fas fa-check"></i> Customized activity planning</li>
+                <li>
+                  <i class="fas fa-check"></i> Shopping and errands assistance
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Social outings and recreational
+                  activities
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Park visits and outdoor exercises
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Cultural and entertainment events
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Customized activity planning
+                </li>
               </ul>
             </div>
 
@@ -565,17 +614,34 @@
               </div>
               <div class="service-info">
                 <h3>TEMAN at Home Package</h3>
-                <p>Comprehensive day care services providing assistance with daily activities in the comfort of home.</p>
+                <p>
+                  Comprehensive day care services providing assistance with
+                  daily activities in the comfort of home.
+                </p>
               </div>
             </div>
-            
+
             <div class="service-features">
               <ul>
-                <li><i class="fas fa-check"></i> Medication dispensing and reminders</li>
-                <li><i class="fas fa-check"></i> Meal preparation and feeding assistance</li>
-                <li><i class="fas fa-check"></i> Light physiotherapy and exercises</li>
-                <li><i class="fas fa-check"></i> Personal care and hygiene assistance</li>
-                <li><i class="fas fa-check"></i> Companionship and wellness activities</li>
+                <li>
+                  <i class="fas fa-check"></i> Medication dispensing and
+                  reminders
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Meal preparation and feeding
+                  assistance
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Light physiotherapy and exercises
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Personal care and hygiene
+                  assistance
+                </li>
+                <li>
+                  <i class="fas fa-check"></i> Companionship and wellness
+                  activities
+                </li>
               </ul>
             </div>
 
@@ -590,20 +656,25 @@
               <i class="fas fa-arrow-right cta-arrow"></i>
             </div>
           </a>
-
-          
         </div>
 
         <!-- Quick Contact Section -->
         <div class="quick-contact">
           <h3>Need Help Choosing?</h3>
-          <p>Our friendly team can help you select the best service for  your needs.</p>
+          <p>
+            Our friendly team can help you select the best service for your
+            needs.
+          </p>
           <div class="contact-options">
             <a href="tel:+60139362705" class="contact-btn">
               <i class="fas fa-phone"></i>
               Call Us Now
             </a>
-            <a href="https://wa.me/601156453964" class="contact-btn" target="_blank">
+            <a
+              href="https://wa.me/601156453964"
+              class="contact-btn"
+              target="_blank"
+            >
               <i class="fab fa-whatsapp"></i>
               WhatsApp
             </a>
@@ -623,28 +694,37 @@
                 <i class="fas fa-user-check"></i>
               </div>
               <h4>Trained Professionals</h4>
-              <p>All our Temanions are carefully screened, trained, and experienced in providing quality care.</p>
+              <p>
+                All our Temanions are carefully screened, trained, and
+                experienced in providing quality care.
+              </p>
             </div>
             <div class="benefit-item">
               <div class="benefit-icon">
                 <i class="fas fa-clock"></i>
               </div>
               <h4>Flexible Scheduling</h4>
-              <p>Book services around your schedule - no fixed contracts required.</p>
+              <p>
+                Book services around your schedule - no fixed contracts
+                required.
+              </p>
             </div>
             <div class="benefit-item">
               <div class="benefit-icon">
                 <i class="fas fa-heart"></i>
               </div>
               <h4>Compassionate Care</h4>
-              <p>We provide not just assistance, but genuine companionship and emotional support.</p>
+              <p>
+                We provide not just assistance, but genuine companionship and
+                emotional support.
+              </p>
             </div>
             <div class="benefit-item">
               <div class="benefit-icon">
                 <i class="fas fa-shield-alt"></i>
               </div>
               <h4>Safe & Reliable</h4>
-              <p>Rest assured with regular updates and a supportive team. </p>
+              <p>Rest assured with regular updates and a supportive team.</p>
             </div>
           </div>
         </div>
@@ -663,11 +743,14 @@
           const headerResponse = await fetch("../components/header.html");
           if (headerResponse.ok) {
             const headerHTML = await headerResponse.text();
-            document.getElementById("header-placeholder").innerHTML = headerHTML;
+            document.getElementById("header-placeholder").innerHTML =
+              headerHTML;
 
             // Mark the current page as active in navigation
             setTimeout(() => {
-              const bookingLink = document.querySelector('a[href="booking.html"]');
+              const bookingLink = document.querySelector(
+                'a[href="booking.html"]'
+              );
               if (bookingLink) {
                 bookingLink.classList.add("active");
               }
@@ -681,7 +764,8 @@
           const footerResponse = await fetch("../components/footer.html");
           if (footerResponse.ok) {
             const footerHTML = await footerResponse.text();
-            document.getElementById("footer-placeholder").innerHTML = footerHTML;
+            document.getElementById("footer-placeholder").innerHTML =
+              footerHTML;
           }
 
           // Initialize main JavaScript after components are loaded
@@ -744,26 +828,26 @@
       // Initialize main functionality
       function initializeMainJS() {
         // Add smooth scroll behavior for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const target = document.querySelector(this.getAttribute("href"));
             if (target) {
               target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+                behavior: "smooth",
+                block: "start",
               });
             }
           });
         });
 
         // Add loading state for service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-          card.addEventListener('click', function(e) {
-            const loadingText = this.querySelector('.cta-text');
+        document.querySelectorAll(".service-card").forEach((card) => {
+          card.addEventListener("click", function (e) {
+            const loadingText = this.querySelector(".cta-text");
             const originalText = loadingText.textContent;
-            loadingText.textContent = 'Loading...';
-            
+            loadingText.textContent = "Loading...";
+
             // Reset text after a short delay (in case of quick back navigation)
             setTimeout(() => {
               loadingText.textContent = originalText;
@@ -780,5 +864,34 @@
       });
     </script>
     <script src="../assets/js/main.js"></script>
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Minimum booking date = today + 5 days
+        const today = new Date();
+        const minDate = new Date();
+        minDate.setDate(today.getDate() + 5);
+
+        // Apply Flatpickr to the date fields on this page
+        const selectors = [
+          "#appointment-dates",
+          "#multi-dates",
+          "#activity-dates",
+        ];
+
+        selectors.forEach((sel) => {
+          const el = document.querySelector(sel);
+          if (el) {
+            flatpickr(el, {
+              dateFormat: "Y-m-d",
+              minDate: minDate.toISOString().split("T")[0],
+              disableMobile: true, // ensures calendar opens on mobile
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
